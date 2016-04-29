@@ -1,0 +1,13 @@
+# Uncomment this line to define a global platform for your project
+ platform :ios, '7.0'
+
+
+target 'XFLegoVIPERExample' do
+pod 'MJExtension'
+pod 'AFNetworking', '~> 2.0'
+pod 'AFNetworking-RACExtensions'
+pod 'ReactiveCocoa'
+pod 'MBProgressHUD', '~> 0.9.1'
+
+end
+
