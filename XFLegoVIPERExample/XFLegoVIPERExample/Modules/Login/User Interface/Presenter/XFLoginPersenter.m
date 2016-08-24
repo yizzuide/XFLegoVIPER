@@ -25,11 +25,11 @@
     @weakify(self)
     [[XFConvertInteractorToType(id<XFLoginInteractorInputProt>) loginWithUserName:name password:pwd] subscribeNext:^(id x) {
         @strongify(self)
-        [XFConvertActivityToType(id<XFLoginUserInterfaceProt>) requestFinish];
+        [XFConvertUserInterfaceToType(id<XFLoginUserInterfaceProt>) requestFinish];
         self.intentData = x;
         [self didRequestLoginCancel];
     } error:^(NSError *error) {
-        [XFConvertActivityToType(id<XFLoginUserInterfaceProt>) showError:@"用户名或密码错误！"];
+        [XFConvertUserInterfaceToType(id<XFLoginUserInterfaceProt>) showError:@"用户名或密码错误！"];
     }];
 }
 @end

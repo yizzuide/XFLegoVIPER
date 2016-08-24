@@ -1,6 +1,6 @@
 //
 //  XFWireframe.h
-//  VIPERGem
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 15/12/22.
 //  Copyright © 2015年 yizzuide. All rights reserved.
@@ -42,12 +42,14 @@
  *  @param activityClass    视图层
  *  @param perstentClass    交互层
  *  @param interactorClass  业务层
+ *  @param interactorClass  数据层
  *
  *  @return Routing
  */
 - (instancetype)buildModulesAssemblyWithActivityClass:(Class)activityClass
-                                                  presenterClass:(Class)perstentClass
-                                                 interactorClass:(Class)interactorClass;
+                                       presenterClass:(Class)perstentClass
+                                      interactorClass:(Class)interactorClass
+                                     dataManagerClass:(Class)dataManagerClass;
 /**
  *  构建关系层
  *
@@ -61,7 +63,8 @@
 - (instancetype)buildModulesAssemblyWithActivityClass:(Class)activityClass
                                        navigatorClass:(Class)navigatorClass
                                        presenterClass:(Class)perstentClass
-                                      interactorClass:(Class)interactorClass;
+                                      interactorClass:(Class)interactorClass
+                                     dataManagerClass:(Class)dataManagerClass;
 /**
  *  获得当前真实存在的视图
  *

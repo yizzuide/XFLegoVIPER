@@ -9,6 +9,8 @@
 #ifndef XFLoginUserInterfaceProt_h
 #define XFLoginUserInterfaceProt_h
 
+#import <CoreFoundation/CoreFoundation.h>
+
 @protocol XFUserInterfaceProt;
 @protocol XFLoginUserInterfaceProt <XFUserInterfaceProt>
 

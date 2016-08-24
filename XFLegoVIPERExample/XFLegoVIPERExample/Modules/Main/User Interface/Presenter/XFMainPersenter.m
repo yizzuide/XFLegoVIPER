@@ -16,10 +16,10 @@
     [XFConvertRoutingToType(id<XFMainWireFrameInputProt>) transitionToLoginMoudle];
 }
 
-- (void)viewWillBecomeFoucsWithIntentData:(id)intentData
+- (void)viewWillBecomeFocusWithIntentData:(id)intentData
 {
     NSLog(@"%@",intentData);
     self.expressData = intentData;
-    [self.activity fillData:self.expressData];
+    [self.userInterface fillData:self.expressData];
 }
 @end

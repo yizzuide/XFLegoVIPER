@@ -1,9 +1,9 @@
 //
 //  UIViewController+XFLego.h
-//  CreativeButton
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 16/2/24.
-//  Copyright © 2016年 RightBrain-Tech. All rights reserved.
+//  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

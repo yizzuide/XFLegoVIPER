@@ -6,8 +6,11 @@
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
-#import "XFActivity.h"
 
-@interface XFMainActivity : XFActivity
+#import "UIViewController+XFLego.h"
+#import "XFLegoVIPER.h"
+
+
+@interface XFMainActivity : UIViewController
 
 @end

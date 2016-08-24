@@ -15,7 +15,7 @@
 
 + (instancetype)routing
 {
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFMainActivity class] presenterClass:[XFMainPersenter class] interactorClass:nil];
+    return [[super routing] buildModulesAssemblyWithActivityClass:[XFMainActivity class] presenterClass:[XFMainPersenter class] interactorClass:nil dataManagerClass:nil];
 }
 
 - (void)transitionToLoginMoudle

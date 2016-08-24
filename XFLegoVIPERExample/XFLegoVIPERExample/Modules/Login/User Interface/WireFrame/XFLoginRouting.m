@@ -15,7 +15,7 @@
 
 + (instancetype)routing
 {
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFLoginActivity class] presenterClass:[XFLoginPersenter class] interactorClass:[XFLoginInteractor class]];
+    return [[super routing] buildModulesAssemblyWithActivityClass:[XFLoginActivity class] presenterClass:[XFLoginPersenter class] interactorClass:[XFLoginInteractor class] dataManagerClass:nil];
 }
 
 - (void)loginToDissmiss

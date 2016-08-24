@@ -1,6 +1,6 @@
 //
 //  XFPersenter.m
-//  VIPERGem
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 15/12/21.
 //  Copyright © 2015年 yizzuide. All rights reserved.
@@ -12,19 +12,14 @@
 
 - (void)bindView:(id)view
 {
-    self.activity = view;
-}
-
-- (id<XFUserInterfaceProt>)currentInterface
-{
-    return self.activity;
+    self.userInterface = view;
 }
 
 - (void)viewDidLoad{}
 - (void)viewDidUnLoad{}
 
-- (void)viewWillBecomeFoucsWithIntentData:(id)intentData{}
-- (void)viewWillResignFoucs{}
+- (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
+- (void)viewWillResignFocus{}
 
 
 - (void)render
@@ -33,8 +28,8 @@
     [self.interactor fetchRenderDataWithBlock:^(id obj) {
         weakSelf.expressData = [weakSelf filterWithData:obj];
         // 如果有接受者采用直接推送
-        if ([weakSelf.activity respondsToSelector:@selector(fillData:)]) {
-            [weakSelf.activity fillData:weakSelf.expressData];
+        if ([weakSelf.userInterface respondsToSelector:@selector(fillData:)]) {
+            [weakSelf.userInterface fillData:weakSelf.expressData];
         }
     }];
     

@@ -1,6 +1,6 @@
 //
 //  XFActivity.m
-//  VIPERGem
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 15/12/21.
 //  Copyright © 2015年 yizzuide. All rights reserved.
@@ -22,14 +22,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [LEGORealProt(XFPresenter *, self.eventHandler) bindView:self];
-    [LEGORealProt(XFPresenter *, self.eventHandler) viewDidLoad];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
+    [XFConvertPresenterToType(XFPresenter *) bindView:self];
+    [XFConvertPresenterToType(XFPresenter *) viewDidLoad];
+#pragma clang diagnostic pop
 }
 
 - (void)fillData:(id)data{}
 
 - (void)dealloc
 {
-    [LEGORealProt(XFPresenter *, self.eventHandler) viewDidUnLoad];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
+    [XFConvertPresenterToType(XFPresenter *) viewDidUnLoad];
+#pragma clang diagnostic pop
 }
 @end

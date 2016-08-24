@@ -1,6 +1,6 @@
 //
 //  XFUIOperatorProt.h
-//  VIPERGem
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 15/12/22.
 //  Copyright © 2015年 yizzuide. All rights reserved.
@@ -14,9 +14,9 @@
 @protocol XFUIOperatorProt <NSObject>
 
 /**
- *  当前UI交互者的视图给Routing
+ *  当前UI交互者的视图给Routing的接口
  */
-@property (nonatomic, weak, readonly) id<XFUserInterfaceProt> currentInterface;
+@property (nonatomic, weak) id<XFUserInterfaceProt> userInterface;
 
 /**
  *  传回的意图数据
@@ -26,12 +26,12 @@
 /**
  *  视图将重获焦点
  */
-- (void)viewWillBecomeFoucsWithIntentData:(id)intentData;
+- (void)viewWillBecomeFocusWithIntentData:(id)intentData;
 
 /**
  *  视图将失去焦点
  */
-- (void)viewWillResignFoucs;
+- (void)viewWillResignFocus;
 
 @end
 

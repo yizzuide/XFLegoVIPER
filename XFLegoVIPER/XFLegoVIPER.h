@@ -1,6 +1,6 @@
 //
 //  XFBushVIPER.h
-//  VIPERGem
+//  XFLegoVIPER
 //
 //  Created by yizzuide on 15/12/21.
 //  Copyright © 2015年 yizzuide. All rights reserved.
@@ -19,6 +19,9 @@
 #import "XFRouting.h"
 #import "XFInteractorProt.h"
 #import "XFInteractor.h"
+#import "XFDataManagerProt.h"
+#import "XFDataManager.h"
+
 
 
 #endif /* XFLegoVIPER_h */

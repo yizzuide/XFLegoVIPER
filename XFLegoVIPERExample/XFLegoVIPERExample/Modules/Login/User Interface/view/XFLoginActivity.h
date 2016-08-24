@@ -6,9 +6,11 @@
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
-#import "XFActivity.h"
-#import "XFLoginUserInterfaceProt.h"
 
-@interface XFLoginActivity : XFActivity<XFLoginUserInterfaceProt>
+#import "XFLoginUserInterfaceProt.h"
+#import "XFLegoVIPER.h"
+#import "UIViewController+XFLego.h"
+
+@interface XFLoginActivity : UIViewController<XFLoginUserInterfaceProt>
 
 @end
