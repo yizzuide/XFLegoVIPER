@@ -110,6 +110,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 2、请求事件处理
+
 上面的操作会自动绑定在`XFSearchRouting`设置的事件处理者`XFSearchPersenter`,请求事件处理者可以使用：
 ```objc
     // 转换为事件处理实现的接口
