@@ -8,6 +8,7 @@ pod 'AFNetworking', '~> 2.0'
 pod 'AFNetworking-RACExtensions'
 pod 'ReactiveCocoa'
 pod 'MBProgressHUD', '~> 0.9.1'
+pod 'SDWebImage'
 
 end
 

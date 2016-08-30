@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "XFMainRouting.h"
+#import "XFSearchRouting.h"
+#import <SDWebImage/SDWebImageDownloader.h>
+
 
 @interface AppDelegate ()
 
@@ -18,13 +21,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
-    [[XFMainRouting routing] showRootActivityOnWindow:self.window];
+    // Example 1 登录：usr：aa pwd: 123456
+     //[[XFMainRouting routing] showRootActivityOnWindow:self.window isNavigationControllor:NO];
+    
+    // Example 2
+    XFSearchRouting *searchRouting = [XFSearchRouting routing];
+    // 配置导航栏
+    UINavigationController *navigation = searchRouting.realNavigator;
+    navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
+    [navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    [searchRouting showRootActivityOnWindow:self.window isNavigationControllor:YES];
     
     [self.window makeKeyAndVisible];
+    
+    [self setWebImageUserAgent];
     return YES;
+}
+
+// 使用SDWebImage支持URL有逗号也能显示
+- (void)setWebImageUserAgent
+{
+    NSString *userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], [[UIScreen mainScreen] scale]];
+    
+    
+    if (userAgent) {
+        if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+            NSMutableString *mutableUserAgent = [userAgent mutableCopy];
+            if (CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
+                userAgent = mutableUserAgent;
+            }
+        }
+        [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
