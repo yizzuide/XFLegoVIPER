@@ -47,6 +47,7 @@
         //NSLog(@"%@",x);
         // 设置意图数据
         self.intentData = x;
+        // 请求Routing切换界面
         [XFConvertRoutingToType(id<XFSearchWireFramePort>) transitionToShowResultsMoudle];
     }] doError:^(NSError *error) {
         NSLog(@"error %@",error);

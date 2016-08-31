@@ -15,6 +15,9 @@
 
 + (instancetype)routing
 {
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFPictureResultsActivity class] presenterClass:[XFPictureResultsPresenter class] interactorClass:[XFPictureResultsInteractor class] dataManagerClass:nil];
+    return [[super routing] buildModulesAssemblyWithActivityClass:[XFPictureResultsActivity class]
+                                                   presenterClass:[XFPictureResultsPresenter class]
+                                                  interactorClass:[XFPictureResultsInteractor class]
+                                                 dataManagerClass:nil];
 }
 @end

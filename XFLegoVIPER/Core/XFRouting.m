@@ -29,6 +29,7 @@
     }else{
         mainWindow.rootViewController = LEGORealInterface([self realInterface]);
     }
+    [mainWindow makeKeyAndVisible];
 }
 
 #pragma mark - Modal方式

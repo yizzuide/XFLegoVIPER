@@ -35,8 +35,6 @@
     
     [searchRouting showRootActivityOnWindow:self.window isNavigationControllor:YES];
     
-    [self.window makeKeyAndVisible];
-    
     [self setWebImageUserAgent];
     return YES;
 }
