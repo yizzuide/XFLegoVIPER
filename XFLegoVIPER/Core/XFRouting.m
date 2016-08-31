@@ -142,14 +142,14 @@
     }
     
     if (perstentClass) {
-        XFPresenter *persenter = [[perstentClass alloc] init];
-        activity.eventHandler = persenter;
-        persenter.routing = self;
-        self.uiOperator = persenter;
+        XFPresenter *presenter = [[perstentClass alloc] init];
+        activity.eventHandler = presenter;
+        presenter.routing = self;
+        self.uiOperator = presenter;
         // other...
         if (interactorClass) {
             XFInteractor *interactor = [[interactorClass alloc] init];
-            persenter.interactor = interactor;
+            presenter.interactor = interactor;
             
             if(dataManagerClass){
                 XFDataManager *dataManager = [[dataManagerClass alloc] init];

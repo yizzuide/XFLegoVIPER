@@ -8,14 +8,14 @@
 
 #import "XFLoginRouting.h"
 #import "XFLoginActivity.h"
-#import "XFLoginPersenter.h"
+#import "XFLoginPresenter.h"
 #import "XFLoginInteractor.h"
 
 @implementation XFLoginRouting
 
 + (instancetype)routing
 {
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFLoginActivity class] presenterClass:[XFLoginPersenter class] interactorClass:[XFLoginInteractor class] dataManagerClass:nil];
+    return [[super routing] buildModulesAssemblyWithActivityClass:[XFLoginActivity class] presenterClass:[XFLoginPresenter class] interactorClass:[XFLoginInteractor class] dataManagerClass:nil];
 }
 
 - (void)loginToDissmiss

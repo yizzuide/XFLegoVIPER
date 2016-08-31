@@ -1,15 +1,15 @@
 //
-//  XFMainPersenter.m
+//  XFMainPresenter.m
 //  XFLegoVIPERExample
 //
 //  Created by yizzuide on 16/4/18.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
-#import "XFMainPersenter.h"
+#import "XFMainPresenter.h"
 #import "XFMainWireFrameInputPort.h"
 
-@implementation XFMainPersenter
+@implementation XFMainPresenter
 
 - (void)didRequestToLoginTransition
 {

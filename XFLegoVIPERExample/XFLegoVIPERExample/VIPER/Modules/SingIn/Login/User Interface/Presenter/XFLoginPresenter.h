@@ -1,5 +1,5 @@
 //
-//  XFMainPersenter.h
+//  XFLoginPresenter.h
 //  XFLegoVIPERExample
 //
 //  Created by yizzuide on 16/4/18.
@@ -7,8 +7,8 @@
 //
 
 #import "XFPresenter.h"
-#import "XFMainEventInputPort.h"
+#import "XFLoginEventInputPort.h"
 
-@interface XFMainPersenter : XFPresenter <XFMainEventInputPort>
+@interface XFLoginPresenter : XFPresenter<XFLoginEventInputPort>
 
 @end
