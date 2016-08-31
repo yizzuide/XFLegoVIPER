@@ -86,7 +86,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 ###显示视图层`XFActivity`
-在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPersenter`,这个在后面会讲到。 
+在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPresenter`,这个在后面会讲到。 
 
 1、把一个`UIViewController`转为VIPER里的View的两种方式：
 第一种，导入分类`UIViewController+XFLego.h`头文件（如果当前继承的父类不是`UIViewController`的话，推荐使用这种）：
@@ -110,11 +110,11 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 2、请求事件处理
 
-上面的操作会自动绑定在`XFSearchRouting`设置的事件处理者`XFSearchPersenter`,请求事件处理者可以使用：
+上面的操作会自动绑定在`XFSearchRouting`设置的事件处理者`XFSearchPresenter`,请求事件处理者可以使用：
 ```objc
     // 转换为事件处理实现的接口
     id<XFSearchEventHandlerPort> presenter = XFConvertPresenterToType(id<XFSearchEventHandlerPort>);
-    [persenter loginButtonClickWithName:name pwd:pwd];
+    [presenter loginButtonClickWithName:name pwd:pwd];
 ```
 如果采用MVVM的双向绑定思想，则可以结合ReactiveCocoa的信号传递：
 ```objc
@@ -128,8 +128,8 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // 其它绑定...
 ```
 
-###事件处理层`XFPersenter`
-事件处理层负责界面上的按钮点击事件、页面数据推送填充，而不能对View的渲染、布局直接操作，只针对View行为做出响应。Persenter持有对内容提供者Provider转换过来的界面显示数据`***ExpressData`类的强引用，这个类与模型不同，它拥有界面所需显示的所有对象数据。另外View和Persenter是不能直接引用到模型数据的。
+###事件处理层`XFPresenter`
+事件处理层负责界面上的按钮点击事件、页面数据推送填充，而不能对View的渲染、布局直接操作，只针对View行为做出响应。Presenter持有对内容提供者Provider转换过来的界面显示数据`***ExpressData`类的强引用，这个类与模型不同，它拥有界面所需显示的所有对象数据。另外View和Presenter是不能直接引用到模型数据的。
 
 1、界面显示移除回调方法
 ```objc
