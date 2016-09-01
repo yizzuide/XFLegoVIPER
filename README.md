@@ -89,7 +89,8 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPresenter`,这个在后面会讲到。 
 
 1、把一个`UIViewController`转为VIPER里的View的两种方式：
-第一种，导入分类`UIViewController+XFLego.h`头文件（如果当前继承的父类不是`UIViewController`的话，推荐使用这种）：
+
+第一种，导入分类`UIViewController+XFLego.h`头文件（推荐使用这种）：
 ```objc
 #import <UIKit/UIKit.h>
 #import "UIViewController+XFLego.h"
@@ -98,7 +99,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 @end
 ```
-第二种，继承自类`XFActivity`（如果当前就是继承普通的`UIViewController`的话，推荐使用这种）：
+第二种，继承自类`XFActivity`（不推荐）：
 ```objc
 #import <UIKit/UIKit.h>
 #import "XFActivity"
