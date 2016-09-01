@@ -2,7 +2,7 @@
     <img src="./ScreenShot/logo.jpg" alt="logo" />
 </p>
 <p align="center">
-  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.0.1-brightgreen.svg" alt="cocoapods" /></a>
+  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.0.2-brightgreen.svg" alt="cocoapods" /></a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
@@ -28,7 +28,7 @@
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.0.1'
+> pod 'XFLegoVIPER','1.0.2'
 
 2、使用手动添加
 
