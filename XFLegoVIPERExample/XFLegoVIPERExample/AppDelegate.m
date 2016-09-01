@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "XFMainRouting.h"
 #import "XFSearchRouting.h"
 #import <SDWebImage/SDWebImageDownloader.h>
 
@@ -23,10 +22,6 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
-    // Example 1 登录：usr：aa pwd: 123456
-     //[[XFMainRouting routing] showRootActivityOnWindow:self.window isNavigationControllor:NO];
-    
-    // Example 2
     XFSearchRouting *searchRouting = [XFSearchRouting routing];
     // 配置导航栏
     UINavigationController *navigation = searchRouting.realNavigator;

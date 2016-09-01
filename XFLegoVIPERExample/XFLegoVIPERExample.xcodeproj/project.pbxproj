@@ -16,8 +16,6 @@
 		401689021D755CCB00311CD2 /* XFPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688F81D755CCB00311CD2 /* XFPresenter.m */; };
 		401689031D755CCB00311CD2 /* XFRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688FA1D755CCB00311CD2 /* XFRouting.m */; };
 		401689041D755CCB00311CD2 /* XFViewRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688FC1D755CCB00311CD2 /* XFViewRender.m */; };
-		4016890E1D76BEC500311CD2 /* XFLoginPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4016890D1D76BEC500311CD2 /* XFLoginPresenter.m */; };
-		401689111D76BF2E00311CD2 /* XFMainPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 401689101D76BF2E00311CD2 /* XFMainPresenter.m */; };
 		4024C3EE1CC48BB5000D8182 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C3ED1CC48BB5000D8182 /* main.m */; };
 		4024C3F11CC48BB5000D8182 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C3F01CC48BB5000D8182 /* AppDelegate.m */; };
 		4024C3F91CC48BB5000D8182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4024C3F81CC48BB5000D8182 /* Assets.xcassets */; };
@@ -26,15 +24,6 @@
 		4024C4121CC48BB5000D8182 /* XFLegoVIPERExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C4111CC48BB5000D8182 /* XFLegoVIPERExampleUITests.m */; };
 		4024C4871CC4E607000D8182 /* XFRACHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C4861CC4E607000D8182 /* XFRACHttpTool.m */; };
 		4024C48B1CC4EB9F000D8182 /* XFUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C48A1CC4EB9F000D8182 /* XFUITool.m */; };
-		40435A721D6FF2D600E6A87C /* XFLoginInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A441D6FF2D600E6A87C /* XFLoginInteractor.m */; };
-		40435A731D6FF2D600E6A87C /* XFLoginInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A471D6FF2D600E6A87C /* XFLoginInfoModel.m */; };
-		40435A741D6FF2D600E6A87C /* XFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A4A1D6FF2D600E6A87C /* XFUserService.m */; };
-		40435A761D6FF2D600E6A87C /* XFLoginActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A571D6FF2D600E6A87C /* XFLoginActivity.m */; };
-		40435A771D6FF2D600E6A87C /* XFLoginActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40435A581D6FF2D600E6A87C /* XFLoginActivity.xib */; };
-		40435A781D6FF2D600E6A87C /* XFLoginRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A5B1D6FF2D600E6A87C /* XFLoginRouting.m */; };
-		40435A7A1D6FF2D600E6A87C /* XFMainActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A6C1D6FF2D600E6A87C /* XFMainActivity.m */; };
-		40435A7B1D6FF2D600E6A87C /* XFMainActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40435A6D1D6FF2D600E6A87C /* XFMainActivity.xib */; };
-		40435A7C1D6FF2D600E6A87C /* XFMainRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435A701D6FF2D600E6A87C /* XFMainRouting.m */; };
 		40435AAF1D7025FC00E6A87C /* XFSearchActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435AAD1D7025FC00E6A87C /* XFSearchActivity.m */; };
 		40435AB01D7025FC00E6A87C /* XFSearchActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40435AAE1D7025FC00E6A87C /* XFSearchActivity.xib */; };
 		40435AB31D70287700E6A87C /* XFSearchRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435AB21D70287700E6A87C /* XFSearchRouting.m */; };
@@ -100,10 +89,6 @@
 		401689091D7576BA00311CD2 /* XFSearchWireFramePort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSearchWireFramePort.h; sourceTree = "<group>"; };
 		4016890A1D75874300311CD2 /* XFSearchInteractorPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFSearchInteractorPort.h; sourceTree = "<group>"; };
 		4016890B1D75A53700311CD2 /* XFPictureResultsInteractorPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFPictureResultsInteractorPort.h; sourceTree = "<group>"; };
-		4016890C1D76BEC500311CD2 /* XFLoginPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginPresenter.h; sourceTree = "<group>"; };
-		4016890D1D76BEC500311CD2 /* XFLoginPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLoginPresenter.m; sourceTree = "<group>"; };
-		4016890F1D76BF2E00311CD2 /* XFMainPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMainPresenter.h; sourceTree = "<group>"; };
-		401689101D76BF2E00311CD2 /* XFMainPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMainPresenter.m; sourceTree = "<group>"; };
 		4024C3E91CC48BB5000D8182 /* XFLegoVIPERExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFLegoVIPERExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C3ED1CC48BB5000D8182 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4024C3EF1CC48BB5000D8182 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -126,28 +111,6 @@
 		4024C4861CC4E607000D8182 /* XFRACHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRACHttpTool.m; sourceTree = "<group>"; };
 		4024C4891CC4EB9F000D8182 /* XFUITool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFUITool.h; sourceTree = "<group>"; };
 		4024C48A1CC4EB9F000D8182 /* XFUITool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFUITool.m; sourceTree = "<group>"; };
-		40435A431D6FF2D600E6A87C /* XFLoginInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginInteractor.h; sourceTree = "<group>"; };
-		40435A441D6FF2D600E6A87C /* XFLoginInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLoginInteractor.m; sourceTree = "<group>"; };
-		40435A461D6FF2D600E6A87C /* XFLoginInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginInfoModel.h; sourceTree = "<group>"; };
-		40435A471D6FF2D600E6A87C /* XFLoginInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLoginInfoModel.m; sourceTree = "<group>"; };
-		40435A491D6FF2D600E6A87C /* XFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFUserService.h; sourceTree = "<group>"; };
-		40435A4A1D6FF2D600E6A87C /* XFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFUserService.m; sourceTree = "<group>"; };
-		40435A4C1D6FF2D600E6A87C /* XFLoginEventInputPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginEventInputPort.h; sourceTree = "<group>"; };
-		40435A4D1D6FF2D600E6A87C /* XFLoginInteratorInputPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginInteratorInputPort.h; sourceTree = "<group>"; };
-		40435A4E1D6FF2D600E6A87C /* XFLoginUserInterfacePort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginUserInterfacePort.h; sourceTree = "<group>"; };
-		40435A4F1D6FF2D600E6A87C /* XFLoginWireFrameInputPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginWireFrameInputPort.h; sourceTree = "<group>"; };
-		40435A561D6FF2D600E6A87C /* XFLoginActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginActivity.h; sourceTree = "<group>"; };
-		40435A571D6FF2D600E6A87C /* XFLoginActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLoginActivity.m; sourceTree = "<group>"; };
-		40435A581D6FF2D600E6A87C /* XFLoginActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFLoginActivity.xib; sourceTree = "<group>"; };
-		40435A5A1D6FF2D600E6A87C /* XFLoginRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLoginRouting.h; sourceTree = "<group>"; };
-		40435A5B1D6FF2D600E6A87C /* XFLoginRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLoginRouting.m; sourceTree = "<group>"; };
-		40435A631D6FF2D600E6A87C /* XFMainEventInputPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMainEventInputPort.h; sourceTree = "<group>"; };
-		40435A641D6FF2D600E6A87C /* XFMainWireFrameInputPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMainWireFrameInputPort.h; sourceTree = "<group>"; };
-		40435A6B1D6FF2D600E6A87C /* XFMainActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMainActivity.h; sourceTree = "<group>"; };
-		40435A6C1D6FF2D600E6A87C /* XFMainActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMainActivity.m; sourceTree = "<group>"; };
-		40435A6D1D6FF2D600E6A87C /* XFMainActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMainActivity.xib; sourceTree = "<group>"; };
-		40435A6F1D6FF2D600E6A87C /* XFMainRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMainRouting.h; sourceTree = "<group>"; };
-		40435A701D6FF2D600E6A87C /* XFMainRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMainRouting.m; sourceTree = "<group>"; };
 		40435AAC1D7025FC00E6A87C /* XFSearchActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSearchActivity.h; sourceTree = "<group>"; };
 		40435AAD1D7025FC00E6A87C /* XFSearchActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFSearchActivity.m; sourceTree = "<group>"; };
 		40435AAE1D7025FC00E6A87C /* XFSearchActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFSearchActivity.xib; sourceTree = "<group>"; };
@@ -371,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				40435A3E1D6FF2D600E6A87C /* SearchPicture */,
-				40435A3F1D6FF2D600E6A87C /* SingIn */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -383,223 +345,6 @@
 				40435AA21D70249000E6A87C /* Search */,
 			);
 			path = SearchPicture;
-			sourceTree = "<group>";
-		};
-		40435A3F1D6FF2D600E6A87C /* SingIn */ = {
-			isa = PBXGroup;
-			children = (
-				40435A401D6FF2D600E6A87C /* Login */,
-				40435A5C1D6FF2D600E6A87C /* Main */,
-			);
-			path = SingIn;
-			sourceTree = "<group>";
-		};
-		40435A401D6FF2D600E6A87C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				40435A411D6FF2D600E6A87C /* Application Logic */,
-				40435A4B1D6FF2D600E6A87C /* Module Interface */,
-				40435A501D6FF2D600E6A87C /* User Interface */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		40435A411D6FF2D600E6A87C /* Application Logic */ = {
-			isa = PBXGroup;
-			children = (
-				40435A421D6FF2D600E6A87C /* Interactor */,
-				40435A451D6FF2D600E6A87C /* Provider */,
-				40435A481D6FF2D600E6A87C /* Services */,
-			);
-			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		40435A421D6FF2D600E6A87C /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				40435A431D6FF2D600E6A87C /* XFLoginInteractor.h */,
-				40435A441D6FF2D600E6A87C /* XFLoginInteractor.m */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		40435A451D6FF2D600E6A87C /* Provider */ = {
-			isa = PBXGroup;
-			children = (
-				40435A461D6FF2D600E6A87C /* XFLoginInfoModel.h */,
-				40435A471D6FF2D600E6A87C /* XFLoginInfoModel.m */,
-			);
-			path = Provider;
-			sourceTree = "<group>";
-		};
-		40435A481D6FF2D600E6A87C /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				40435A491D6FF2D600E6A87C /* XFUserService.h */,
-				40435A4A1D6FF2D600E6A87C /* XFUserService.m */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		40435A4B1D6FF2D600E6A87C /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-				40435A4C1D6FF2D600E6A87C /* XFLoginEventInputPort.h */,
-				40435A4D1D6FF2D600E6A87C /* XFLoginInteratorInputPort.h */,
-				40435A4E1D6FF2D600E6A87C /* XFLoginUserInterfacePort.h */,
-				40435A4F1D6FF2D600E6A87C /* XFLoginWireFrameInputPort.h */,
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		40435A501D6FF2D600E6A87C /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				40435A511D6FF2D600E6A87C /* ExpressData */,
-				40435A521D6FF2D600E6A87C /* Presenter */,
-				40435A551D6FF2D600E6A87C /* View */,
-				40435A591D6FF2D600E6A87C /* WireFrame */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		40435A511D6FF2D600E6A87C /* ExpressData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ExpressData;
-			sourceTree = "<group>";
-		};
-		40435A521D6FF2D600E6A87C /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				4016890C1D76BEC500311CD2 /* XFLoginPresenter.h */,
-				4016890D1D76BEC500311CD2 /* XFLoginPresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		40435A551D6FF2D600E6A87C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				40435A561D6FF2D600E6A87C /* XFLoginActivity.h */,
-				40435A571D6FF2D600E6A87C /* XFLoginActivity.m */,
-				40435A581D6FF2D600E6A87C /* XFLoginActivity.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		40435A591D6FF2D600E6A87C /* WireFrame */ = {
-			isa = PBXGroup;
-			children = (
-				40435A5A1D6FF2D600E6A87C /* XFLoginRouting.h */,
-				40435A5B1D6FF2D600E6A87C /* XFLoginRouting.m */,
-			);
-			path = WireFrame;
-			sourceTree = "<group>";
-		};
-		40435A5C1D6FF2D600E6A87C /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				40435A5D1D6FF2D600E6A87C /* Application Logic */,
-				40435A621D6FF2D600E6A87C /* Module Interface */,
-				40435A651D6FF2D600E6A87C /* User Interface */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		40435A5D1D6FF2D600E6A87C /* Application Logic */ = {
-			isa = PBXGroup;
-			children = (
-				40435A5E1D6FF2D600E6A87C /* Interactor */,
-				40435A5F1D6FF2D600E6A87C /* Manager */,
-				40435A601D6FF2D600E6A87C /* Provider */,
-				40435A611D6FF2D600E6A87C /* Services */,
-			);
-			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		40435A5E1D6FF2D600E6A87C /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		40435A5F1D6FF2D600E6A87C /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		40435A601D6FF2D600E6A87C /* Provider */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Provider;
-			sourceTree = "<group>";
-		};
-		40435A611D6FF2D600E6A87C /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		40435A621D6FF2D600E6A87C /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-				40435A631D6FF2D600E6A87C /* XFMainEventInputPort.h */,
-				40435A641D6FF2D600E6A87C /* XFMainWireFrameInputPort.h */,
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		40435A651D6FF2D600E6A87C /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				40435A661D6FF2D600E6A87C /* ExpressData */,
-				40435A671D6FF2D600E6A87C /* Presenter */,
-				40435A6A1D6FF2D600E6A87C /* View */,
-				40435A6E1D6FF2D600E6A87C /* WireFrame */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		40435A661D6FF2D600E6A87C /* ExpressData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ExpressData;
-			sourceTree = "<group>";
-		};
-		40435A671D6FF2D600E6A87C /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				4016890F1D76BF2E00311CD2 /* XFMainPresenter.h */,
-				401689101D76BF2E00311CD2 /* XFMainPresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		40435A6A1D6FF2D600E6A87C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				40435A6B1D6FF2D600E6A87C /* XFMainActivity.h */,
-				40435A6C1D6FF2D600E6A87C /* XFMainActivity.m */,
-				40435A6D1D6FF2D600E6A87C /* XFMainActivity.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		40435A6E1D6FF2D600E6A87C /* WireFrame */ = {
-			isa = PBXGroup;
-			children = (
-				40435A6F1D6FF2D600E6A87C /* XFMainRouting.h */,
-				40435A701D6FF2D600E6A87C /* XFMainRouting.m */,
-			);
-			path = WireFrame;
 			sourceTree = "<group>";
 		};
 		40435A981D70249000E6A87C /* ResultsList */ = {
@@ -1101,8 +846,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				40435B2D1D71DA5A00E6A87C /* XFPictureTableViewCell.xib in Resources */,
-				40435A771D6FF2D600E6A87C /* XFLoginActivity.xib in Resources */,
-				40435A7B1D6FF2D600E6A87C /* XFMainActivity.xib in Resources */,
 				40435AB01D7025FC00E6A87C /* XFSearchActivity.xib in Resources */,
 				4024C3FC1CC48BB5000D8182 /* LaunchScreen.storyboard in Resources */,
 				4024C3F91CC48BB5000D8182 /* Assets.xcassets in Resources */,
@@ -1178,14 +921,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40435A761D6FF2D600E6A87C /* XFLoginActivity.m in Sources */,
 				40435AAF1D7025FC00E6A87C /* XFSearchActivity.m in Sources */,
-				40435A7A1D6FF2D600E6A87C /* XFMainActivity.m in Sources */,
 				401689041D755CCB00311CD2 /* XFViewRender.m in Sources */,
 				40435AB31D70287700E6A87C /* XFSearchRouting.m in Sources */,
-				401689111D76BF2E00311CD2 /* XFMainPresenter.m in Sources */,
 				40435B2C1D71DA5A00E6A87C /* XFPictureTableViewCell.m in Sources */,
-				40435A7C1D6FF2D600E6A87C /* XFMainRouting.m in Sources */,
 				40435AB91D702F5F00E6A87C /* XFSearchPresenter.m in Sources */,
 				40435B221D71D8C600E6A87C /* CETableViewBindingHelper.m in Sources */,
 				40435B4F1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.m in Sources */,
@@ -1197,16 +936,13 @@
 				401689021D755CCB00311CD2 /* XFPresenter.m in Sources */,
 				4024C3F11CC48BB5000D8182 /* AppDelegate.m in Sources */,
 				401689011D755CCB00311CD2 /* XFInteractor.m in Sources */,
-				40435A731D6FF2D600E6A87C /* XFLoginInfoModel.m in Sources */,
 				40435B0F1D71BD2900E6A87C /* XFPictureService.m in Sources */,
 				40435B0E1D71BD2900E6A87C /* XFPictureDataManager.m in Sources */,
 				401688FE1D755CCB00311CD2 /* UIViewController+XFLego.m in Sources */,
-				40435A721D6FF2D600E6A87C /* XFLoginInteractor.m in Sources */,
 				401689001D755CCB00311CD2 /* XFDataManager.m in Sources */,
 				40435B1B1D71C0B400E6A87C /* NSArray+HOM.m in Sources */,
 				40435AC81D70A43A00E6A87C /* XFPictureResultsRouting.m in Sources */,
 				40435B181D71BECE00E6A87C /* XFPictureProvider.m in Sources */,
-				40435A741D6FF2D600E6A87C /* XFUserService.m in Sources */,
 				40435ACE1D70AE9E00E6A87C /* XFPictureResultsPresenter.m in Sources */,
 				40435AEB1D71BA1000E6A87C /* XFPictureItem.m in Sources */,
 				4024C48B1CC4EB9F000D8182 /* XFUITool.m in Sources */,
@@ -1217,8 +953,6 @@
 				40435AE11D71ADFD00E6A87C /* XFPictureResultsInteractor.m in Sources */,
 				4024C4871CC4E607000D8182 /* XFRACHttpTool.m in Sources */,
 				401688FF1D755CCB00311CD2 /* XFActivity.m in Sources */,
-				4016890E1D76BEC500311CD2 /* XFLoginPresenter.m in Sources */,
-				40435A781D6FF2D600E6A87C /* XFLoginRouting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
