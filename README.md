@@ -44,8 +44,9 @@ VIPER 是一个创建 iOS 应用简明构架的程序。VIPER 可以是视图 (V
     <img src="https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg" alt="VIPER 理念图" />
 </p>
 
-##VIPER组成结构图
-![XFLegoVIPER construct](https://www.objc.io/images/issue-13/2014-06-07-viper-wireframe-76305b6d.png)
+
+##XFLegoVIPER框架图
+![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ##XFLegoVIPER使用文档
 ###模块入口类`XFRouting`
