@@ -48,6 +48,17 @@ void didBackButtonPressed(id self, SEL _cmd)
         )
     }
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if (self.eventHandler) {
+        // 如果当前视图被pop或dismiss
+        if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+            [self invokeMethod:@"viewDidUnLoad" param:nil forObject:self.eventHandler];
+        }
+    }
+    
+}
 #pragma clang diagnostic pop
 
 @end

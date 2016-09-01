@@ -16,6 +16,10 @@
 - (void)viewDidLoad
 {
 }
+- (void)viewDidUnLoad
+{
+    NSLog(@"%@被POP",NSStringFromClass(self.class));
+}
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData
 {
     //NSLog(@"%@",self.intentData);
