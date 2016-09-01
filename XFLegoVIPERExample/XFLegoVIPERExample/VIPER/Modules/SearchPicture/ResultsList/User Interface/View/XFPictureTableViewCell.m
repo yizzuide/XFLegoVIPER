@@ -9,6 +9,7 @@
 #import "XFPictureTableViewCell.h"
 #import "XFPictureItem.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIView+XFLego.h"
 
 @interface XFPictureTableViewCell ()
 
@@ -20,6 +21,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
  
     // 解决UITableViewCell选中时使UILabel背景色清空问题
     self.titleLabel.backgroundColor = [UIColor clearColor];
@@ -36,6 +38,7 @@
 
 - (void)setParallax:(CGFloat)value {
     self.pictureImage.transform = CGAffineTransformMakeTranslation(0, value);
+    NSLog(@"当前图片视图Cell绑定了事件处理层：%@",NSStringFromClass([self.eventHandler class]));
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

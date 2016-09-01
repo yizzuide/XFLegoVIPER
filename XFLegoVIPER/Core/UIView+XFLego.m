@@ -24,7 +24,9 @@ static void * xfViewRender_eventHandler_porpertyKey = (void *)@"xfViewRender_eve
 
 - (void)awakeFromNib
 {
-    [self xfLogo_bindEventHandler];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.151 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self xfLogo_bindEventHandler];
+    });
 }
 
 - (void)xfLogo_bindEventHandler {
@@ -36,15 +38,15 @@ static void * xfViewRender_eventHandler_porpertyKey = (void *)@"xfViewRender_eve
     }
 }
 
--(UIViewController *)xfLogo_getCurrentViewController{
-    UIResponder *next = [self nextResponder];
-    do {
-        if ([next isKindOfClass:[UIViewController class]]) {
-            return (UIViewController *)next;
-        }
-        next = [next nextResponder];
-    } while (next != nil);
-    return nil;
+- (id)xfLogo_getCurrentViewController {
+    id nextResponder = [self nextResponder];
+    if ([nextResponder isKindOfClass:[UIViewController class]]) {
+        return nextResponder;
+    } else if ([nextResponder isKindOfClass:[UIView class]]) {
+        return [nextResponder xfLogo_getCurrentViewController];
+    } else {
+        return nil;
+    }
 }
 
 
