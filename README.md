@@ -2,7 +2,7 @@
     <img src="./ScreenShot/logo.jpg" alt="logo" />
 </p>
 <p align="center">
-  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.0.3-brightgreen.svg" alt="cocoapods" /></a>
+  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.1.0-brightgreen.svg" alt="cocoapods" /></a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
@@ -28,7 +28,7 @@
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.0.3'
+> pod 'XFLegoVIPER','1.1.0'
 
 2、使用手动添加
 
@@ -238,6 +238,59 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
         return [XFPictureListModel mj_objectWithKeyValues:tuple.first];
     }];
 }
+```
+
+###当前模块`Activity`子视图获得`Presenter`事件层
+1、继承方式
+如果一个View没有继承其它的类，就可以使用这种方式
+```objc
+#import "XFViewRender.h"
+@interface SomeView : XFViewRender
+
+@end
+
+// 调用
+self.eventHandler
+```
+2、分类方式
+这个分类，只会处理从xib中加载出来时自行绑定事件处理者，如果纯代码布局界面请继承`XFViewRender`类
+如果又无法继承，就导入这个分类再自行在初始化方法里调用`xfLogo_bindEventHandler`方法。
+```objc
+#import "UIView+XFLego.h"
+
+@interface SomeView : UIView
+
+@end
+
+// 调用
+self.eventHandler
+```
+
+###模块间事件通信
+通信的发起者和接收者都是`Presenter`,因为它是处事件层，管理一切事件有关的东西。
+```objc
+
+// 一个模块的Presenter发起事件
+@implementation XFPictureResultsPresenter
+
+- (void)viewDidLoad
+{
+    // 模拟模块间消息通信
+    // sendEventName: 事件名
+    // intentData：意图数据
+    // forMoudleName: 业务模块名（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+}
+@end
+
+// 另一个模块的Presenter接收事件
+@implementation XFSearchPresenter
+
+- (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
+{
+    NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+}
+@end
 ```
 
 
