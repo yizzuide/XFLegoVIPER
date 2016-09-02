@@ -33,6 +33,13 @@
  */
 - (void)viewWillResignFocus;
 
+/**
+ *  接收到其它模块的消息事件
+ *
+ *  @param eventName  消息名
+ *  @param intentData 消息数据
+ */
+- (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData;
 @end
 
 

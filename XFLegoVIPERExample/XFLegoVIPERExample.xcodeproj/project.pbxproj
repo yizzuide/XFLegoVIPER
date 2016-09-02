@@ -46,6 +46,7 @@
 		40435B2D1D71DA5A00E6A87C /* XFPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40435B2B1D71DA5A00E6A87C /* XFPictureTableViewCell.xib */; };
 		40435B4C1D728FD100E6A87C /* UINavigationController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435B421D728FD100E6A87C /* UINavigationController+BackButtonHandler.m */; };
 		40435B4F1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 40435B4E1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.m */; };
+		40B2059D1D79209400A79925 /* XFRoutingLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2059C1D79209400A79925 /* XFRoutingLinkManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,8 @@
 		40435B431D728FD100E6A87C /* XFLegoMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLegoMarco.h; sourceTree = "<group>"; };
 		40435B4D1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XFLegoInvokeMethod.h"; sourceTree = "<group>"; };
 		40435B4E1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XFLegoInvokeMethod.m"; sourceTree = "<group>"; };
+		40B2059B1D79209400A79925 /* XFRoutingLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRoutingLinkManager.h; sourceTree = "<group>"; };
+		40B2059C1D79209400A79925 /* XFRoutingLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRoutingLinkManager.m; sourceTree = "<group>"; };
 		40F042691D6D8EE7008FCD43 /* XFDataManagerPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFDataManagerPort.h; sourceTree = "<group>"; };
 		8D4E773821678ACAAE259056 /* Pods-XFLegoVIPERExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XFLegoVIPERExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-XFLegoVIPERExample/Pods-XFLegoVIPERExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -726,6 +729,8 @@
 				40435B4D1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.h */,
 				40435B4E1D72909200E6A87C /* NSObject+XFLegoInvokeMethod.m */,
 				40435B431D728FD100E6A87C /* XFLegoMarco.h */,
+				40B2059B1D79209400A79925 /* XFRoutingLinkManager.h */,
+				40B2059C1D79209400A79925 /* XFRoutingLinkManager.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				4024C48B1CC4EB9F000D8182 /* XFUITool.m in Sources */,
 				4024C3EE1CC48BB5000D8182 /* main.m in Sources */,
 				401688FD1D755CCB00311CD2 /* UIView+XFLego.m in Sources */,
+				40B2059D1D79209400A79925 /* XFRoutingLinkManager.m in Sources */,
 				40435AE81D71B99600E6A87C /* XFPictureExpressData.m in Sources */,
 				40435B141D71BDD600E6A87C /* XFPictureListModel.m in Sources */,
 				40435AE11D71ADFD00E6A87C /* XFPictureResultsInteractor.m in Sources */,

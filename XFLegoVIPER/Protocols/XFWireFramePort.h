@@ -23,6 +23,15 @@
  */
 - (void)pop;
 
+/**
+ *  发送消息事件到一个模块
+ *
+ *  @param name       事件名
+ *  @param intentData 消息数据
+ *  @param moudleName 业务模块名
+ */
+- (void)sendEventName:(NSString *)name intentData:(id)intentData forMoudleName:(NSString *)moudleName;
+
 @end
 
 #endif /* XFWireframe_h */

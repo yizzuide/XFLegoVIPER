@@ -15,10 +15,13 @@
 
 - (void)viewDidLoad
 {
+    // 模拟模块间消息通信
+    [XFConvertRoutingToType(id<XFWireFramePort>) sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
 }
 - (void)viewDidUnLoad
 {
     NSLog(@"%@被POP",NSStringFromClass(self.class));
+    
 }
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData
 {

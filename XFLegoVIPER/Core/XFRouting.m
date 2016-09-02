@@ -12,6 +12,7 @@
 #import "XFInteractor.h"
 #import "XFDataManager.h"
 #import "XFLegoMarco.h"
+#import "XFRoutingLinkManager.h"
 
 @interface XFRouting ()
 /**
@@ -90,6 +91,8 @@
     // 解除关系链
     self.previousRouting.nextRouting = nil;
     self.previousRouting = nil;
+    // 从路由管理中心移除
+    [XFRoutingLinkManager removeRouting:self];
 }
 
 - (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData {
@@ -109,7 +112,11 @@
 #pragma mark - 绑定模块
 + (instancetype)routing
 {
-    return [[self alloc] init];
+    XFRouting *instance = [[self alloc] init];
+    // 添加到路由管理中心
+    [XFRoutingLinkManager addRouting:instance];
+    //[XFRoutingLinkManager log];
+    return instance;
 }
 
 - (void)flowToNextRouting:(XFRouting *)nextRouting
@@ -159,6 +166,15 @@
         
     }
     return self;
+}
+
+#pragma mark - 模块通信
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudleName:(NSString *)moudleName
+{
+    // 找到对应模块
+    XFRouting *routing = [XFRoutingLinkManager findRoutingForMoudleName:moudleName];
+    // 发送数据到模块事件处理层
+    [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
 }
 
 #pragma mark - 获取当前视图

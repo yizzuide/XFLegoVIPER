@@ -54,4 +54,8 @@
     }];
 }
 
+- (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
+{
+    NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+}
 @end

@@ -22,6 +22,8 @@
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
 - (void)viewWillResignFocus{}
 
+- (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData{}
+
 
 - (void)render
 {
