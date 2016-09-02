@@ -16,7 +16,7 @@
 - (void)viewDidLoad
 {
     // 模拟模块间消息通信
-    [XFConvertRoutingToType(id<XFWireFramePort>) sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
 }
 - (void)viewDidUnLoad
 {
