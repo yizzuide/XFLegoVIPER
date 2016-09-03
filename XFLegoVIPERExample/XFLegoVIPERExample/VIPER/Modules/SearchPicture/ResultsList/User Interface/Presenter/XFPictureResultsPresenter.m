@@ -16,7 +16,7 @@
 - (void)viewDidLoad
 {
     // 模拟模块间消息通信
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
 }
 - (void)viewDidUnLoad
 {

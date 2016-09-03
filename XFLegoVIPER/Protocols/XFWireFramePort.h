@@ -30,7 +30,7 @@
  *  @param intentData 消息数据
  *  @param moudleName 业务模块名
  */
-- (void)sendEventName:(NSString *)name intentData:(id)intentData forMoudleName:(NSString *)moudleName;
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName;
 
 @end
 

@@ -169,12 +169,14 @@
 }
 
 #pragma mark - 模块通信
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudleName:(NSString *)moudleName
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName
 {
-    // 找到对应模块
-    XFRouting *routing = [XFRoutingLinkManager findRoutingForMoudleName:moudleName];
-    // 发送数据到模块事件处理层
-    [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
+    for (NSString *moudleName in moudlesName) {
+        // 找到对应模块路由
+        XFRouting *routing = [XFRoutingLinkManager findRoutingForMoudleName:moudleName];
+        // 发送数据到模块事件处理层
+        [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
+    }
 }
 
 #pragma mark - 获取当前视图
