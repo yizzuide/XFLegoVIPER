@@ -8,13 +8,13 @@
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
 </p>
 
-一个以VIPER架构理念的项目驱动引擎，提倡使用模块化编程，适用于大型项目和业务逻辑复杂的项目。
+一个基于VIPER架构理念的轻量级框架，使用模块化编程，目标是构建可维护的大型项目和业务逻辑复杂的项目。
 <p align="center">
     <img src="./ScreenShot/usage.gif" alt="usage" />
 </p>
 
 ##XFLegoVIPER特点
-1、快速建立模块与模块之间的关联，提供简化路由API在界面与界面间跳转。
+1、快速建立模块与模块之间的关联，实现了模块间事件通信。
 
 2、视图自动绑定事件处理者，无需再手动绑定。
 
@@ -25,6 +25,8 @@
 5、方便编写单元测试代码，让应用程序更健壮。
 
 6、可以与旧项目MVC、MVP、MVVM架构并存，并快速从这些架构过渡到VIPER架构代码。
+
+7、小型项目可以使用简化版`XFLegoVIPER`,模块拼装时仅使用`Activity`+`Presenter`+ `Routing`即可。
 
 ##安装
 1、使用Cocoapods
@@ -82,6 +84,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)transitionToShowResultsMoudle {
     XFPictureResultsRouting *routing = [XFPictureResultsRouting routing];
     // 使用intentData传递意图数据
+    // self.uiOperator：相对当前Routing的事件处理层Presenter
     [self pushRouting:routing intent:self.uiOperator.intentData];
 }
 ```
