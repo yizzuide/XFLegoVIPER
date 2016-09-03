@@ -2,13 +2,13 @@
     <img src="./ScreenShot/logo.jpg" alt="logo" />
 </p>
 <p align="center">
-  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.1.0-brightgreen.svg" alt="cocoapods" /></a>
+  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.1.2-brightgreen.svg" alt="cocoapods" /></a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
 </p>
 
-一个基于VIPER架构理念的轻量级框架，使用模块化编程，目标是构建可维护的大型项目和业务逻辑复杂的项目。
+一个基于VIPER架构理念的轻量级框架，使用模块化编程，目标是构建健壮可维护的大型项目和业务逻辑复杂的项目。
 <p align="center">
     <img src="./ScreenShot/usage.gif" alt="usage" />
 </p>
@@ -30,7 +30,7 @@
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.1.0'
+> pod 'XFLegoVIPER','1.1.2'
 
 2、使用手动添加
 
@@ -281,8 +281,8 @@ self.eventHandler
     // 模拟模块间消息通信
     // sendEventName: 事件名
     // intentData：意图数据
-    // forMoudleName: 业务模块名（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    // forMoudlesName: 业务模块名数组（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
 }
 @end
 
