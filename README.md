@@ -281,8 +281,8 @@ self.eventHandler
     // 模拟模块间消息通信
     // sendEventName: 事件名
     // intentData：意图数据
-    // forMoudleName: 业务模块名（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    // forMoudlesName: 业务模块名数组（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
 }
 @end
 
