@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./ScreenShot/logo.jpg" alt="logo" />
+    <img src="./ScreenShot/logo.png" alt="logo" width="406"/>
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.1.2-brightgreen.svg" alt="cocoapods" /></a>
