@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.1.2-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.2.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -32,7 +32,7 @@
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.1.2'
+> pod 'XFLegoVIPER','1.2.0'
 
 2、使用手动添加
 
@@ -94,23 +94,12 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###显示视图层`XFActivity`
 在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPresenter`,这个在后面会讲到。 
 
-####1、把一个`UIViewController`转为VIPER里的View的两种方式：
-
-第一种，导入分类`UIViewController+XFLego.h`头文件（推荐使用这种）：
+####1、把一个`UIViewController`转为VIPER里的视图层：
 ```objc
 #import <UIKit/UIKit.h>
-#import "UIViewController+XFLego.h"
+#import "XFLegoVIPER.h" // 导入主头文件`XFLegoVIPER.h`头文件
 
 @interface XFSearchActivity : UIViewController
-
-@end
-```
-第二种，继承自类`XFActivity`（不推荐）：
-```objc
-#import <UIKit/UIKit.h>
-#import "XFActivity"
-
-@interface XFSearchActivity : XFActivity
 
 @end
 ```
@@ -246,30 +235,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 ###当前模块`Activity`子视图获得`Presenter`事件层
-####1、继承方式
-如果一个View没有继承其它的类，就可以使用这种方式
-```objc
-#import "XFViewRender.h"
-@interface SomeView : XFViewRender
 
-@end
-
-@implementation SomeView
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // 调用
-        self.eventHandler
-    }
-    return self;
-}
-@end
-
-```
-####2、分类方式
-* 这个分类，只会处理从xib中加载出来时自行绑定事件处理者，如果纯代码布局界面请继承`XFViewRender`类。
-* 如果纯代码布局又无法继承`XFViewRender`类，就导入这个分类再自行在初始化方法`initWithFrame:`里手动调用`xfLogo_bindEventHandler`方法。
 ```objc
 #import "UIView+XFLego.h"
 @interface SomeView : UIView
@@ -277,12 +243,12 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 
 @implementation SomeView
-- (void)awakeFromNib
+
+- (void)buttonAction:(id)target
 {
-	// 必须调用父类实现，否则无法自动绑定
-    [super awakeFromNib];
-    // 调用
-    self.eventHandler
+	// 调用事件处理层
+	// 注意：只有在当前视图添加到父视图后才能获取
+	self.eventHandler
 }
 @end
 ```
