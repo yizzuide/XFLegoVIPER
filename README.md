@@ -54,7 +54,7 @@ VIPER不属于MV*架构系列，但它是所有这些架构中单一责任分得
 ###模块入口类`XFRouting`
 Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块与模块之间的跳转（相当于界面之跳转），它初化始当前模块的的所有层级关系链，也保存着上一个和下一个模块的引用关系链，是整个架构的关键层。
 
-1、初始化一个模块，建立一个`XFSearchRouting`并继承自`XFRouting`,在.m文件里覆盖`+ (instancetype)routing`方法（使用`Activity`而不使用`UIViewController`是为了和旧项目MVC等架构区别开来）：
+####1、初始化一个模块，建立一个`XFSearchRouting`并继承自`XFRouting`,在.m文件里覆盖`+ (instancetype)routing`方法（使用`Activity`而不使用`UIViewController`是为了和旧项目MVC等架构区别开来）：
 ```objc
 + (instancetype)routing
 {
@@ -69,7 +69,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
                                                  dataManagerClass:[XFPictureDataManager class]];
 }
 ```
-2、在`UIWindow`上显示：
+####2、在`UIWindow`上显示：
 ```objc
     XFSearchRouting *searchRouting = [XFSearchRouting routing];
     // 获得导航栏
@@ -79,7 +79,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // 调用显示方法，之后不用再写[self.window makeKeyAndVisible];
     [searchRouting showRootActivityOnWindow:self.window isNavigationControllor:YES];
 ```
-3、模块之间的跳转,这个方法是`XFSearchPresenter`发起对`XFSearchRouting`的请求：
+####3、模块之间的跳转,这个方法是`XFSearchPresenter`发起对`XFSearchRouting`的请求：
 ```objc
 - (void)transitionToShowResultsMoudle {
     XFPictureResultsRouting *routing = [XFPictureResultsRouting routing];
@@ -92,7 +92,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###显示视图层`XFActivity`
 在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPresenter`,这个在后面会讲到。 
 
-1、把一个`UIViewController`转为VIPER里的View的两种方式：
+####1、把一个`UIViewController`转为VIPER里的View的两种方式：
 
 第一种，导入分类`UIViewController+XFLego.h`头文件（推荐使用这种）：
 ```objc
@@ -113,7 +113,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 ```
 
-2、请求事件处理
+####2、请求事件处理
 
 上面的操作会自动绑定在`XFSearchRouting`设置的事件处理者`XFSearchPresenter`,请求事件处理者可以使用：
 ```objc
@@ -136,7 +136,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###事件处理层`XFPresenter`
 事件处理层负责界面上的按钮点击事件、页面数据推送填充，而不能对View的渲染、布局直接操作，只针对View行为做出响应。Presenter持有对内容提供者Provider转换过来的界面显示数据`***ExpressData`类的强引用，这个类与模型不同，它拥有界面所需显示的所有对象数据。另外View和Presenter是不能直接引用到模型数据的。
 
-1、界面显示移除回调方法
+####1、界面显示移除回调方法
 ```objc
 // 视图的显示完成回调方法
 - (void)viewDidLoad{} 
@@ -144,7 +144,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)viewDidUnLoad{} 
 ```
 
-2、界面切换回调方法
+####2、界面切换回调方法
 ```objc
 // 当前界面将获得焦点时（将要显示）
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
@@ -152,7 +152,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)viewWillResignFocus{}
 ```
 
-3、常用属性与方法
+####3、常用属性与方法
 ```objc
 /**
  * 视图填充数据
@@ -171,7 +171,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)requirePopModule;
 ```
 
-4、请求业务数据和界面切换
+####4、请求业务数据和界面切换
 ```objc
 // 按钮响应信号方法
 - (RACSignal *)executeSearchSignal {
@@ -189,7 +189,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###业务层`XFInteractor`
 业务层负责当前模块的核心业务处理与数据转换工作，它完全不关心界面UI与响应事件如果处理，它对原始模型类`***Model`有强引用 ，管理最基层的数据交换。
 
-1、响应事件处理层的业务数据请求
+####1、响应事件处理层的业务数据请求
 ```objc
 - (RACSignal *)fetchPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
@@ -197,7 +197,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 }
 ```
 
-2、模型数据与界面显示数据的转换
+####2、模型数据与界面显示数据的转换
 ```objc
 - (RACSignal *)deconstructPreLoadData:(id)preLoadData {
     self.pictureListModel = preLoadData;
@@ -214,7 +214,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###数据层`***DataManager`和服务层`***Service`
 这两层是VIPER架构的补充，它们分别充当数据搬运管理者和本地/远程数据访问服务，这两层的特殊地方是可以在任意模块中使用，所以是无关于模块的，数据层和服务层也是可以分散使用。数据层会对所需的用服务对象`***Service`有强引用，它会调用相关服务对象获得所需的数据，服务层除了对本地/远程数据获取，还会进行必要的模型转换工作。
 
-1、数据层整理返回给业务层数据
+####1、数据层整理返回给业务层数据
 ```objc
 - (RACSignal *)grabPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
@@ -222,7 +222,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 }
 ```
 
-2、服务层获得远程数据和模型转换
+####2、服务层获得远程数据和模型转换
 ```objc
 - (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
@@ -244,7 +244,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 ###当前模块`Activity`子视图获得`Presenter`事件层
-1、继承方式
+####1、继承方式
 如果一个View没有继承其它的类，就可以使用这种方式
 ```objc
 #import "XFViewRender.h"
@@ -252,21 +252,37 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 @end
 
-// 调用
-self.eventHandler
+@implementation SomeView
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // 调用
+	self.eventHandler
+    }
+    return self;
+}
+@end
+
 ```
-2、分类方式
+####2、分类方式
 这个分类，只会处理从xib中加载出来时自行绑定事件处理者，如果纯代码布局界面请继承`XFViewRender`类
 如果又无法继承，就导入这个分类再自行在初始化方法里调用`xfLogo_bindEventHandler`方法。
 ```objc
 #import "UIView+XFLego.h"
-
 @interface SomeView : UIView
 
 @end
 
-// 调用
-self.eventHandler
+@implementation SomeView
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    // 调用
+    self.eventHandler
+}
+@end
+
 ```
 
 ###模块间事件通信
