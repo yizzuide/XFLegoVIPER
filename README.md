@@ -237,7 +237,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ###当前模块`Activity`子视图获得`Presenter`事件层
 
 ```objc
-#import "UIView+XFLego.h"
+#import "XFLegoVIPER.h"
 @interface SomeView : UIView
 
 @end
