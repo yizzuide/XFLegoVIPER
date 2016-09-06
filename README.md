@@ -2,7 +2,9 @@
     <img src="./ScreenShot/logo.png" alt="logo" width="499"/>
 </p>
 <p align="center">
-  <a href="http://cocoadocs.org/docsets/XFLegoVIPER"><img src="https://img.shields.io/badge/cocoapods-v1.1.2-brightgreen.svg" alt="cocoapods" /></a>
+  <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
+  	<img src="https://img.shields.io/badge/cocoapods-v1.1.2-brightgreen.svg" alt="cocoapods" />
+  </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
@@ -258,7 +260,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     self = [super initWithFrame:frame];
     if (self) {
         // 调用
-	self.eventHandler
+        self.eventHandler
     }
     return self;
 }
@@ -266,8 +268,8 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 ```
 ####2、分类方式
-这个分类，只会处理从xib中加载出来时自行绑定事件处理者，如果纯代码布局界面请继承`XFViewRender`类
-如果又无法继承，就导入这个分类再自行在初始化方法里调用`xfLogo_bindEventHandler`方法。
+* 这个分类，只会处理从xib中加载出来时自行绑定事件处理者，如果纯代码布局界面请继承`XFViewRender`类。
+* 如果纯代码布局又无法继承`XFViewRender`类，就导入这个分类再自行在初始化方法`initWithFrame:`里手动调用`xfLogo_bindEventHandler`方法。
 ```objc
 #import "UIView+XFLego.h"
 @interface SomeView : UIView
@@ -277,12 +279,12 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @implementation SomeView
 - (void)awakeFromNib
 {
+	// 必须调用父类实现，否则无法自动绑定
     [super awakeFromNib];
     // 调用
     self.eventHandler
 }
 @end
-
 ```
 
 ###模块间事件通信
