@@ -9,9 +9,10 @@
 #ifndef XFLegoVIPER_h
 #define XFLegoVIPER_h
 
+#import "UIView+XFLego.h"
+#import "UIViewController+XFLego.h"
 #import "XFUserInterfacePort.h"
 #import "XFActivity.h"
-#import "XFViewRender.h"
 #import "XFEventHandlerPort.h"
 #import "XFUIOperatorPort.h"
 #import "XFPresenter.h"
@@ -21,6 +22,8 @@
 #import "XFInteractor.h"
 #import "XFDataManagerPort.h"
 #import "XFDataManager.h"
+
+
 
 
 

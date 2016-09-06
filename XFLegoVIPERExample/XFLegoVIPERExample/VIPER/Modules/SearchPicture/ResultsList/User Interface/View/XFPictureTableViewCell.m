@@ -9,7 +9,8 @@
 #import "XFPictureTableViewCell.h"
 #import "XFPictureItem.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "UIView+XFLego.h"
+#import "XFLegoVIPER.h"
+
 
 @interface XFPictureTableViewCell ()
 

@@ -22,11 +22,10 @@ static void * xfViewRender_eventHandler_porpertyKey = (void *)@"xfViewRender_eve
     return objc_getAssociatedObject(self, &xfViewRender_eventHandler_porpertyKey);
 }
 
-- (void)awakeFromNib
+// 自动绑定事件处理层，只有在视图添加到一个父视图中时有效
+- (void)didMoveToSuperview
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.151 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self xfLogo_bindEventHandler];
-    });
+    [self xfLogo_bindEventHandler];
 }
 
 - (void)xfLogo_bindEventHandler {

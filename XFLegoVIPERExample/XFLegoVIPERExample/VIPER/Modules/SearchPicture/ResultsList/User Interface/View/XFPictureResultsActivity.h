@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+XFLego.h"
+#import "XFLegoVIPER.h"
 
 @interface XFPictureResultsActivity : UIViewController
 

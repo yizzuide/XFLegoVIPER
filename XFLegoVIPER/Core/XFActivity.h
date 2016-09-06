@@ -7,14 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XFUserInterfacePort.h"
-#import "XFEventHandlerPort.h"
-#import "XFLegoMarco.h"
-#import "UINavigationController+BackButtonHandler.h"
+#import "UIViewController+XFLego.h"
 
-#define XFConvertPresenterToType(type) LEGORealPort(type, self.eventHandler)
+@interface XFActivity : UIViewController
 
-@interface XFActivity : UIViewController <XFUserInterfacePort,UINavigationControllerBackButtonDelegate>
-
-@property (nonatomic, strong) id<XFEventHandlerPort> eventHandler;
 @end

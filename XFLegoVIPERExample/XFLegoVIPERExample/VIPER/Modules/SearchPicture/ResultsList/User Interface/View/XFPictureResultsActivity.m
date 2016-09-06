@@ -8,7 +8,6 @@
 
 #import "XFPictureResultsActivity.h"
 #import "CETableViewBindingHelper.h"
-#import "XFEventHandlerPort.h"
 #import "XFPictureTableViewCell.h"
 
 @interface XFPictureResultsActivity () <UITableViewDelegate>

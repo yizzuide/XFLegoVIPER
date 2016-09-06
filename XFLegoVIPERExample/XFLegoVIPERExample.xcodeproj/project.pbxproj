@@ -15,7 +15,6 @@
 		401689011D755CCB00311CD2 /* XFInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688F51D755CCB00311CD2 /* XFInteractor.m */; };
 		401689021D755CCB00311CD2 /* XFPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688F81D755CCB00311CD2 /* XFPresenter.m */; };
 		401689031D755CCB00311CD2 /* XFRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688FA1D755CCB00311CD2 /* XFRouting.m */; };
-		401689041D755CCB00311CD2 /* XFViewRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 401688FC1D755CCB00311CD2 /* XFViewRender.m */; };
 		4024C3EE1CC48BB5000D8182 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C3ED1CC48BB5000D8182 /* main.m */; };
 		4024C3F11CC48BB5000D8182 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C3F01CC48BB5000D8182 /* AppDelegate.m */; };
 		4024C3F91CC48BB5000D8182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4024C3F81CC48BB5000D8182 /* Assets.xcassets */; };
@@ -84,8 +83,6 @@
 		401688F81D755CCB00311CD2 /* XFPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFPresenter.m; sourceTree = "<group>"; };
 		401688F91D755CCB00311CD2 /* XFRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRouting.h; sourceTree = "<group>"; };
 		401688FA1D755CCB00311CD2 /* XFRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRouting.m; sourceTree = "<group>"; };
-		401688FB1D755CCB00311CD2 /* XFViewRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFViewRender.h; sourceTree = "<group>"; };
-		401688FC1D755CCB00311CD2 /* XFViewRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFViewRender.m; sourceTree = "<group>"; };
 		401689081D75706400311CD2 /* XFSearchEventHandlerPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSearchEventHandlerPort.h; sourceTree = "<group>"; };
 		401689091D7576BA00311CD2 /* XFSearchWireFramePort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSearchWireFramePort.h; sourceTree = "<group>"; };
 		4016890A1D75874300311CD2 /* XFSearchInteractorPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFSearchInteractorPort.h; sourceTree = "<group>"; };
@@ -203,8 +200,6 @@
 				401688ED1D755CCB00311CD2 /* UIView+XFLego.m */,
 				401688EE1D755CCB00311CD2 /* UIViewController+XFLego.h */,
 				401688EF1D755CCB00311CD2 /* UIViewController+XFLego.m */,
-				401688FB1D755CCB00311CD2 /* XFViewRender.h */,
-				401688FC1D755CCB00311CD2 /* XFViewRender.m */,
 				401688F01D755CCB00311CD2 /* XFActivity.h */,
 				401688F11D755CCB00311CD2 /* XFActivity.m */,
 				401688F71D755CCB00311CD2 /* XFPresenter.h */,
@@ -927,7 +922,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				40435AAF1D7025FC00E6A87C /* XFSearchActivity.m in Sources */,
-				401689041D755CCB00311CD2 /* XFViewRender.m in Sources */,
 				40435AB31D70287700E6A87C /* XFSearchRouting.m in Sources */,
 				40435B2C1D71DA5A00E6A87C /* XFPictureTableViewCell.m in Sources */,
 				40435AB91D702F5F00E6A87C /* XFSearchPresenter.m in Sources */,
