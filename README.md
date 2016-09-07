@@ -266,7 +266,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // 发送单模块消息事件
     // sendEventName: 事件名
     // intentData：意图数据
-    // forMoudlesName: 业务模块名数组（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
+    // forMoudleName: 业务模块名（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
     [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
     // 发送多模块消息事件
     //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
