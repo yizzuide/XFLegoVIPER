@@ -10,19 +10,30 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "XFPictureExpressData.h"
 #import "XFPictureResultsInteractorPort.h"
+#import "XFRoutingLinkManager.h"
 
 @implementation XFPictureResultsPresenter
 
 - (void)viewDidLoad
 {
-    // 模拟模块间消息通信
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    // 发送单模块消息事件
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    // 发送多模块消息事件
+    //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    
+    // 在MV*架构中使用下面方法对VIPER架构中模块发事件数据
+    //[XFRoutingLinkManager sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    
+    // 在VIPER架构中对MV*架构模块发通知
+    //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
 }
+
 - (void)viewDidUnLoad
 {
     NSLog(@"%@被POP",NSStringFromClass(self.class));
     
 }
+
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData
 {
     //NSLog(@"%@",self.intentData);

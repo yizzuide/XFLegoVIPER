@@ -21,14 +21,15 @@
  *  @param routing 路由
  */
 + (void)removeRouting:(id)routing;
+
 /**
- *  根据模块业务名查找一个路由
+ *  对VIPER架构模块发送事件数据
  *
- *  @param moudleName 模块业务名
- *
- *  @return 路由
+ *  @param eventName  事件名
+ *  @param intentData 消息数据
+ *  @param moudlesName 模块名数组
  */
-+ (id)findRoutingForMoudleName:(NSString *)moudleName;
++ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName;
 /**
  *  打印log
  */

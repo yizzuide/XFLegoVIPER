@@ -13,7 +13,7 @@
  * Indicates that the back button was pressed.
  * If this message is implemented the pop logic must be manually handled.
  */
-- (void)backButtonPressed;
+- (void)xfLogo_backButtonPressed;
 @end
 
 @interface UINavigationController (BackButtonHandler)

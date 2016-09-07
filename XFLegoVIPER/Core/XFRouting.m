@@ -169,14 +169,21 @@
 }
 
 #pragma mark - 模块通信
+// VIPER架构里对单个模块间通信
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudleName:(NSString *)moudleName
+{
+    [XFRoutingLinkManager sendEventName:eventName intentData:intentData forMoudlesName:@[moudleName]];
+}
+// VIPER架构里对多模块间通信
 - (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName
 {
-    for (NSString *moudleName in moudlesName) {
-        // 找到对应模块路由
-        XFRouting *routing = [XFRoutingLinkManager findRoutingForMoudleName:moudleName];
-        // 发送数据到模块事件处理层
-        [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
-    }
+    [XFRoutingLinkManager sendEventName:eventName intentData:intentData forMoudlesName:moudlesName];
+}
+
+// VIPER架构模块对MV*模块发送通知
+- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:nil userInfo:intentData];
 }
 
 #pragma mark - 获取当前视图

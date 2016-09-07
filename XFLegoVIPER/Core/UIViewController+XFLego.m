@@ -24,7 +24,7 @@ static void * xfActivity_eventHandler_porpertyKey = (void *)@"xfActivity_eventHa
 }
 
 // 处理pop返回事件
-void didBackButtonPressed(id self, SEL _cmd)
+void xfLogo_didBackButtonPressed(id self, SEL _cmd)
 {
     [[self eventHandler] requirePopModule];
 }
@@ -44,7 +44,7 @@ void didBackButtonPressed(id self, SEL _cmd)
         // 添加拦截导航栏点击Item的pop返回事件方法，`backButtonPressed`用于自定义处理返回
         SUPPRESS_UNDECLARED_SELECTOR_LEAK_WARNING(
                 // "v@:@",解释v-返回值void类型,@-self指针id类型,:-SEL指针SEL类型,,@-函数第一个参数为id类型
-            class_addMethod([self class], @selector(backButtonPressed), (IMP)didBackButtonPressed, "v@:")
+            class_addMethod([self class], @selector(xfLogo_backButtonPressed), (IMP)xfLogo_didBackButtonPressed, "v@:")
         )
     }
 }

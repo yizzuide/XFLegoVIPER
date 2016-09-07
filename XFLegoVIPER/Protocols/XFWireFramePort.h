@@ -24,13 +24,30 @@
 - (void)pop;
 
 /**
- *  发送消息事件到一个模块
+ *  VIPER架构里对单个模块间通信
  *
- *  @param name       事件名
+ *  @param eventName  事件名
  *  @param intentData 消息数据
  *  @param moudleName 业务模块名
  */
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudleName:(NSString *)moudleName;
+
+/**
+ *  VIPER架构里对多模块间通信
+ *
+ *  @param name       事件名
+ *  @param intentData 消息数据
+ *  @param moudlesName 业务模块名数组
+ */
 - (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName;
+
+/**
+ *  VIPER架构模块对MV*模块发送通知
+ *
+ *  @param notiName   通知名
+ *  @param intentData 消息数据
+ */
+- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData;
 
 @end
 

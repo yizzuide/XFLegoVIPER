@@ -7,6 +7,7 @@
 //
 
 #import "XFRoutingLinkManager.h"
+#import "XFRouting.h"
 
 @implementation XFRoutingLinkManager
 
@@ -35,6 +36,16 @@ static NSMapTable *_mapTable;
         }
     }
     return nil;
+}
+
++ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName
+{
+    for (NSString *moudleName in moudlesName) {
+        // 找到对应模块路由
+        XFRouting *routing = [self findRoutingForMoudleName:moudleName];
+        // 发送数据到模块事件处理层
+        [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
+    }
 }
 
 + (void)log {

@@ -15,16 +15,13 @@
 {
     UIViewController *topViewController = self.topViewController;
     BOOL wasBackButtonClicked = topViewController.navigationItem == item;
-    SEL backButtonPressedSel = @selector(backButtonPressed);
+    SEL backButtonPressedSel = @selector(xfLogo_backButtonPressed);
     if (wasBackButtonClicked && [topViewController respondsToSelector:backButtonPressedSel]) {
         SuppressPerformSelectorLeakWarning(
             [topViewController performSelector:backButtonPressedSel];
         )
         return NO;
     }
-    else {
-        [self popViewControllerAnimated:YES];
-        return YES;
-    }
+    return YES;
 }
 @end
