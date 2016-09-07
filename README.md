@@ -3,14 +3,15 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.2.0-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.2.3-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
 </p>
 
-一个基于VIPER架构理念的轻量级框架，使用模块化编程，目标是构建健壮可维护的大型项目和业务逻辑复杂的项目。
+A lightweight framework base on VIPER idea that build robust and maintained large scale projects and business logic complex projects. 
+一个基于VIPER架构理念的轻量级框架，旨在打造IOS领域的建筑学，目标是构建健壮可维护的大型项目和业务逻辑复杂的项目
 <p align="center">
     <img src="./ScreenShot/usage.gif" alt="usage" />
 </p>
@@ -32,7 +33,7 @@
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.2.0'
+> pod 'XFLegoVIPER','1.2.3'
 
 2、使用手动添加
 
@@ -262,11 +263,19 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 - (void)viewDidLoad
 {
-    // 模拟模块间消息通信
+    // 发送单模块消息事件
     // sendEventName: 事件名
     // intentData：意图数据
     // forMoudlesName: 业务模块名数组（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    // 发送多模块消息事件
+    //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    
+    // 在MV*架构中使用下面方法对VIPER架构中模块发事件数据
+    //[XFRoutingLinkManager sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    
+    // 在VIPER架构中对MV*架构模块发通知
+    //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
 }
 @end
 
