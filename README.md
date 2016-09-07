@@ -138,9 +138,9 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 ####2、界面切换回调方法
 ```objc
-// 当前界面将获得焦点时（将要显示）
+// 当前界面将获得焦点时
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
-// 当前界面将失去焦点时（将要被隐藏<push或present行为>或消失<pop行为>）
+// 当前界面将失去焦点时
 - (void)viewWillResignFocus{}
 ```
 
