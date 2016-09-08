@@ -132,7 +132,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```objc
 // 视图的显示完成回调方法
 - (void)viewDidLoad{} 
-// 视图被移除的回调方法(这个回调在使用分类`UIViewController+XFLego.h`方式无效)
+// 视图被移除的回调方法
 - (void)viewDidUnLoad{} 
 ```
 
