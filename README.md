@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/platform-ios6%2B-green.svg" alt="version" />
 </p>
 
-A lightweight framework base on VIPER idea that build robust and maintained large scale projects and business logic complex projects. 
+A lightweight framework base on VIPER architecture that build robust and maintained large scale projects and business logic complex projects. 
 一个基于VIPER架构理念的轻量级框架，旨在打造IOS领域的建筑学，目标是构建健壮可维护的大型项目和业务逻辑复杂的项目
 <p align="center">
     <img src="./ScreenShot/usage.gif" alt="usage" />
