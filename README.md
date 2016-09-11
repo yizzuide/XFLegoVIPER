@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.2.3-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.2.5-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -33,7 +33,7 @@ A lightweight framework base on VIPER architecture for IOS that build robust and
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.2.3'
+> pod 'XFLegoVIPER','1.2.5'
 
 2、使用手动添加
 
@@ -158,9 +158,9 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @property (nonatomic, copy) NSString *errorMessage;
 
 /**
- *  pop当前视图
+ *  返回按钮被点击的处理方法（子类可以覆盖这个方法实现自己的逻辑）
  */
-- (void)requirePopModule;
+- (void)xfLego_onBackItemTouch;
 ```
 
 ####4、请求业务数据和界面切换
@@ -204,7 +204,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 ###数据层`***DataManager`和服务层`***Service`
-这两层是VIPER架构的补充，它们分别充当数据搬运管理者和本地/远程数据访问服务，这两层的特殊地方是可以在任意模块中使用，所以是无关于模块的，数据层和服务层也是可以分散使用。数据层会对所需的用服务对象`***Service`有强引用，它会调用相关服务对象获得所需的数据，服务层除了对本地/远程数据获取，还会进行必要的模型转换工作。
+这两层是VIPER架构的补充，它们分别充当数据搬运管理者和本地/远程数据访问服务，这两层的特殊地方是可以在任意模块中使用，所以是无关于模块的，数据层和服务层也是可以分散使用。数据层会对所需的用服务对象`***Service`有强引用，它会调用相关服务对象获得所需的数据，服务层负责本地/远程数据获取。
 
 ####1、数据层整理返回给业务层数据
 ```objc
@@ -214,7 +214,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 }
 ```
 
-####2、服务层获得远程数据和模型转换
+####2、服务层获得远程数据
 ```objc
 - (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
@@ -254,8 +254,11 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 ```
 
-###模块间事件通信
-通信的发起者和接收者都是`Presenter`,因为它是处事件层，管理一切事件有关的东西。
+###各种构架模块间事件通信
+本框架实现了不同构架间的模块通信机制：
+* 在VIPER架构中，模块通信的发起者和接收者都是`Presenter`,因为它是处事件层，管理一切事件有关的东西。
+* 如果从VIPER架构往MVx（MVC、MVP、MVVM）构架发事件通知就在`Presenter`层调用路由层提供的`sendNotificationForMVxWithName:intentData:`方法。
+* 如果从MVx构架往VIPER架构发事件就MVx构架的控制器里调用`[XFRoutingLinkManager sendEventName:intentData:forMoudlesName:]`方法。
 ```objc
 
 // 一个模块的Presenter发起事件
