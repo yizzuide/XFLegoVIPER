@@ -259,6 +259,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 * 在VIPER架构中，模块通信的发起者和接收者都是`Presenter`,因为它是处事件层，管理一切事件有关的东西。
 * 如果从VIPER架构往MVx（MVC、MVP、MVVM）构架发事件通知就在`Presenter`层调用路由层提供的`sendNotificationForMVxWithName:intentData:`方法。
 * 如果从MVx构架往VIPER架构发事件就MVx构架的控制器里调用`[XFRoutingLinkManager sendEventName:intentData:forMoudlesName:]`方法。
+* 在VIPER架构中接收MVx里的原生通知时使用`registerForMVxNotificationsWithNameArray:`方法。
 ```objc
 
 // 一个模块的Presenter发起事件
@@ -267,18 +268,23 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)viewDidLoad
 {
     // 发送单模块消息事件
-    // sendEventName: 事件名
-    // intentData：意图数据
-    // forMoudleName: 业务模块名（不含前辍和层名,如XFSearchPresenter的业务模块名为Search）
     [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
     // 发送多模块消息事件
     //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    // 在VIPER架构中对MVx架构模块发通知
+    [self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
     
-    // 在MV*架构中使用下面方法对VIPER架构中模块发事件数据
+    
+    
+    // 在MVx架构中使用下面方法对VIPER架构中模块发事件数据
     //[XFRoutingLinkManager sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
     
-    // 在VIPER架构中对MV*架构模块发通知
-    //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
+    // 模拟在MVx架构测试发通知
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
+    });
+    // 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveOtherMoudleEventName:intentData:`接收
+    [self.routing registerForMVxNotificationsWithNameArray:@[@"StartSearchNotification"]];
 }
 @end
 
