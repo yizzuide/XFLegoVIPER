@@ -272,7 +272,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // 发送多模块消息事件
     //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
     // 在VIPER架构中对MVx架构模块发通知
-    [self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
+    //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
     
     
     
