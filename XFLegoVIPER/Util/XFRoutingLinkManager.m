@@ -7,7 +7,7 @@
 //
 
 #import "XFRoutingLinkManager.h"
-#import "XFRouting.h"
+#import "XFLegoMarco.h"
 
 @implementation XFRoutingLinkManager
 
@@ -42,9 +42,11 @@ static NSMapTable *_mapTable;
 {
     for (NSString *moudleName in moudlesName) {
         // 找到对应模块路由
-        XFRouting *routing = [self findRoutingForMoudleName:moudleName];
-        // 发送数据到模块事件处理层
-        [routing.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
+        id routing = [self findRoutingForMoudleName:moudleName];
+        // 通知路由发送事件
+        SuppressPerformSelectorLeakWarning (
+          [routing performSelector:NSSelectorFromString(@"_sendEventName:intentData:") withObject:eventName withObject:intentData];
+        )
     }
 }
 

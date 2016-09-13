@@ -11,14 +11,6 @@
 
 @protocol XFUserInterfacePort <NSObject>
 
-@optional
-/**
- *  视图加载后要填充的数据
- *
- *  @param data 数据
- */
-- (void)fillData:(id)data;
-
 @end
 
 

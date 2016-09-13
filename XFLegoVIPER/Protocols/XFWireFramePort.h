@@ -49,6 +49,12 @@
  */
 - (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData;
 
+/**
+ *  注册MVx架构中发出的通知
+ *
+ *  @param notiNames 通知名数组
+ */
+- (void)registerForMVxNotificationsWithNameArray:(NSArray<NSString *> *)notiNames;
 @end
 
 #endif /* XFWireframe_h */

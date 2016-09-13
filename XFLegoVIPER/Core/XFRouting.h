@@ -14,24 +14,24 @@
 @interface XFRouting : NSObject <XFWireFramePort>
 
 /**
- *  上一个关联的模块切换管理者
+ *  上一个关联的模块路由
  */
 @property (nonatomic, weak) XFRouting *previousRouting;
 /**
- *  下一个关联的模块切换管理者
+ *  下一个关联的模块路由
  */
 @property (nonatomic, weak) XFRouting *nextRouting;
 
 /**
- *  获得UI交互者
+ *  获得UI事件处理层（Presenter）
  */
 @property (nonatomic, weak) id<XFUIOperatorPort> uiOperator;
 
 
 /**
- *  组装当前探路者
+ *  组装当前路由
  *
- *  @return 探路者
+ *  @return 路由
  */
 + (instancetype)routing;
 
@@ -71,7 +71,7 @@
  */
 - (id<XFUserInterfacePort>)realInterface;
 /**
- *  获得包装视图的导航
+ *  获得包装当前视图的导航
  *
  *  @return 导航
  */
@@ -87,7 +87,7 @@
 
 
 /**
- *  推入一个新视图
+ *  推入一个新的路由界面
  *
  *  @param nextRouting  下一个路由
  *  @param intentData   意图数据
@@ -95,7 +95,7 @@
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData;
 
 /**
- *  modal一个新视图
+ *  Modal一个新的路由界面
  *
  *  @param nextRouting  下一个路由
  *  @param intentData   意图数据
@@ -103,9 +103,9 @@
 - (void)presentRouting:(XFRouting *)nextRouting intent:(id)intentData;
 
 /**
- *  自定义推入视图切换
+ *  自定义推入路由界面切换
  *
- *  @param nextRouting    下一个Routing
+ *  @param nextRouting    下一个路由
  *  @param trasitionBlock 视图切换代码
  *  @param intentData     意图数据
  */
@@ -113,7 +113,7 @@
 
 
 /**
- *  自定义移除视图切换
+ *  自定义移除路由界面
  *
  *  @param trasitionBlock 视图切换代码
  */

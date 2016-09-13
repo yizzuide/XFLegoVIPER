@@ -24,7 +24,7 @@
  */
 @property (nonatomic, weak) id<XFUserInterfacePort> userInterface;
 /**
- *  界面跳转和模块切换管理
+ *  当前路由，负责界面跳转和模块切换管理
  */
 @property (nonatomic, strong) id<XFWireFramePort> routing;
 /**
@@ -50,25 +50,12 @@
 
 
 /**
- *  绑定视图完成(架构方法，用于子类覆盖，不要直接调用！）
+ *  绑定视图完成(框架方法，用于子类覆盖，不要直接调用！）
  */
 - (void)viewDidLoad;
 
 /**
- *  视图解绑(架构方法，用于子类覆盖，不要直接调用！）
+ *  视图解绑(框架方法，用于子类覆盖，不要直接调用！）
  */
 - (void)viewDidUnLoad;
-
-/**
- *  发起从后台抓起数据后渲染视图
- *
- */
-- (void)render;
-
-/**
- *  格式化数据的数据
- *
- *  @param data 原数据
- */
-- (id)filterWithData:(id)data;
 @end

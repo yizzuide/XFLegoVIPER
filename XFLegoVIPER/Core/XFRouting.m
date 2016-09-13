@@ -14,12 +14,19 @@
 #import "XFLegoMarco.h"
 #import "XFRoutingLinkManager.h"
 
+#define WS(weakSelf) __weak typeof(self) weakSelf = self;
+
 @interface XFRouting ()
 /**
  *  当前视图
  */
 @property (nonatomic, strong) id<XFUserInterfacePort> currentUserInterface;
 @property (nonatomic, strong) UINavigationController *currentNavigator;
+
+/**
+ *  所有用侦听通知的对象
+ */
+@property (nonatomic, strong) NSMutableArray *observers;
 @end
 
 @implementation XFRouting
@@ -36,20 +43,20 @@
 #pragma mark - Modal方式
 - (void)presentRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf)
     [self addRouting:nextRouting withTrasitionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [LEGORealInterface([weakSelf realInterface]) presentViewController:LEGORealInterface(nextRouting.realInterface) animated:YES completion:nil];
+            [LEGORealInterface(weakSelf.realInterface) presentViewController:LEGORealInterface(nextRouting.realInterface) animated:YES completion:nil];
         });
     } intent:intentData];
 }
 
 - (void)dismiss
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf)
     [self removeRoutingWithTrasitionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [LEGORealInterface([weakSelf realInterface]) dismissViewControllerAnimated:YES completion:nil];
+            [LEGORealInterface(weakSelf.realInterface) dismissViewControllerAnimated:YES completion:nil];
         });
     }];
 }
@@ -57,10 +64,10 @@
 #pragma mark - PUSH方式
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf)
     [self addRouting:nextRouting withTrasitionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[LEGORealInterface([weakSelf realInterface]) navigationController] pushViewController:LEGORealInterface(nextRouting.realInterface) animated:YES];
+            [[LEGORealInterface(weakSelf.realInterface) navigationController] pushViewController:LEGORealInterface(nextRouting.realInterface) animated:YES];
         });
         
     } intent:intentData];
@@ -68,10 +75,10 @@
 
 - (void)pop
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf)
     [self removeRoutingWithTrasitionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[LEGORealInterface([weakSelf realInterface]) navigationController] popViewControllerAnimated:YES];
+            [[LEGORealInterface(weakSelf.realInterface) navigationController] popViewControllerAnimated:YES];
         });
         
     }];
@@ -179,11 +186,34 @@
 {
     [XFRoutingLinkManager sendEventName:eventName intentData:intentData forMoudlesName:moudlesName];
 }
+// 路由管理中心通知当前路由发送事件
+- (void)_sendEventName:(NSString *)eventName intentData:(id)intentData
+{
+    [self.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
+}
 
 // VIPER架构模块对MV*模块发送通知
 - (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:nil userInfo:intentData];
+}
+
+// 注册从MVx架构中发出的通知
+- (void)registerForMVxNotificationsWithNameArray:(NSArray<NSString *> *)notiNames {
+    WS(weakSelf)
+    for (NSString *notiName in notiNames) {
+        // 侦听通知
+        id<NSObject> observer=
+        [[NSNotificationCenter defaultCenter] addObserverForName:notiName
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification * _Nonnull note) {
+                                                            // 通知事件处理层接收事件
+                                                          [weakSelf.uiOperator receiveOtherMoudleEventName:note.name intentData:note.userInfo];
+                                                                             }];
+        // 添加到侦听数组
+        [self.observers addObject:observer];
+    }
 }
 
 #pragma mark - 获取当前视图
@@ -209,5 +239,20 @@
     });
 }
 
+- (void)dealloc
+{
+    // 删除所有侦听
+    for (id<NSObject> observer in self.observers) {
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    }
+    self.observers = nil;
+}
 
+- (NSMutableArray *)observers
+{
+    if (_observers == nil) {
+        _observers = [NSMutableArray array];
+    }
+    return _observers;
+}
 @end

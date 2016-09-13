@@ -10,6 +10,4 @@
 
 @implementation XFInteractor
 
-- (void)fetchRenderDataWithBlock:(CallBackWithObject)callback{}
-
 @end

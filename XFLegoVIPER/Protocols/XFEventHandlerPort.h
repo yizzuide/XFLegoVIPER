@@ -23,9 +23,9 @@
 @property (nonatomic, copy) NSString *errorMessage;
 
 /**
- *  pop当前视图
+ *  返回按钮被点击的处理方法（子类可以覆盖这个方法实现自己的逻辑）
  */
-- (void)requirePopModule;
+- (void)xfLego_onBackItemTouch;
 @end
 
 

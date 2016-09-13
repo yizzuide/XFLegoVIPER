@@ -23,17 +23,17 @@ static void * xfActivity_eventHandler_porpertyKey = (void *)@"xfActivity_eventHa
     return objc_getAssociatedObject(self, &xfActivity_eventHandler_porpertyKey);
 }
 
-// 处理pop返回事件
+// 通知事件处理层返回按钮被点击
 void xfLogo_didBackButtonPressed(id self, SEL _cmd)
 {
-    [[self eventHandler] requirePopModule];
+    [[self eventHandler] xfLego_onBackItemTouch];
 }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (void)viewDidLoad
 {
-    // 如果当前控制器是在当前架构
+    // 如果当前控制器是在当前框架
     if (self.eventHandler) {
         // 绑定当前视图引用到事件处理
         [self invokeMethod:@"bindView:" param:self forObject:self.eventHandler];

@@ -24,27 +24,9 @@
 
 - (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData{}
 
-
-- (void)render
-{
-    __weak typeof(self) weakSelf = self;
-    [self.interactor fetchRenderDataWithBlock:^(id obj) {
-        weakSelf.expressData = [weakSelf filterWithData:obj];
-        // 如果有接受者采用直接推送
-        if ([weakSelf.userInterface respondsToSelector:@selector(fillData:)]) {
-            [weakSelf.userInterface fillData:weakSelf.expressData];
-        }
-    }];
-    
-}
-
-- (id)filterWithData:(id)data
-{
-    return data;
-}
-
-- (void)requirePopModule
+- (void)xfLego_onBackItemTouch
 {
     [self.routing pop];
 }
+
 @end

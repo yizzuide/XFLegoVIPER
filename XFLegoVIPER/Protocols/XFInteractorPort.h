@@ -9,16 +9,8 @@
 #ifndef XFInteractorPort_h
 #define XFInteractorPort_h
 
-typedef void(^CallBackWithObject)(id obj);
-
 @protocol XFInteractorPort <NSObject>
 
-/**
- *  向服务抓起一条数据
- *
- *  @param callback 数据回调
- */
-- (void)fetchRenderDataWithBlock:(CallBackWithObject)callback;
 @end
 
 
