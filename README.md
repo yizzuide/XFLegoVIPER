@@ -298,6 +298,16 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 ```
 
+##已知问题
+###1、MVx架构里自定义导航控制器有时无法使用pop方法返回，就在自定义导航里加入下面代码：
+```objc
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+{
+    [self popViewControllerAnimated:YES];
+    return YES;
+}
+```
+
 
 ##相关文章
 [iOS Architecture Patterns](http://www.tuicool.com/articles/rI7ZNn)
