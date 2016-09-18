@@ -308,6 +308,11 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 }
 ```
 
+##注意事项
+* 在UIViewController中，覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`。
+* 在UIView中，覆盖`-didMoveToSuperview`生命周期方法，要先调用`[super didMoveToSuperview]`。
+
+
 
 ##相关文章
 [iOS Architecture Patterns](http://www.tuicool.com/articles/rI7ZNn)
