@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.2.5-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.3.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -33,7 +33,7 @@ A lightweight framework base on VIPER architecture for IOS that build robust and
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.2.5'
+> pod 'XFLegoVIPER','1.3.0'
 
 2、使用手动添加
 
@@ -62,6 +62,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 + (instancetype)routing
 {
     /**
+     *  代码方式加载 
      *  如果没有UINavigationController这个嵌套，可以传nil，或使用不带navigatorClass参数的方法
      *  除了ActivityClass必传外，其它都可以传空，这种情况适用于对MVC等其它架构的过渡
      */
@@ -70,6 +71,12 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
                                                    presenterClass:[XFSearchPresenter class]
                                                   interactorClass:[XFSearchInteractor class]
                                                  dataManagerClass:[XFPictureDataManager class]];
+                                                 
+   // xib方式加载(格式: x-xibFileName)
+    //return [[super routing] buildModulesAssemblyWithIB:@"x-XFDetailsActivity" presenterClass:[XFDetailsPresenter class] interactorClass:nil dataManagerClass:nil];
+    
+    // storyboard方式(格式: s-storyboardFileName-controllerIdentifier)
+    //return [[super routing] buildModulesAssemblyWithIB:@"s-XFDetails-XFDetailsID" presenterClass:[XFDetailsPresenter class] interactorClass:nil dataManagerClass:nil];
 }
 ```
 ####2、在`UIWindow`上显示：
@@ -80,7 +87,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // TODO: 配置导航栏
     // ...
     // 调用显示方法，之后不用再写[self.window makeKeyAndVisible];
-    [searchRouting showRootActivityOnWindow:self.window isNavigationControllor:YES];
+    [searchRouting showRootActivityOnWindow:self.window];
 ```
 ####3、模块之间的跳转,这个方法是`XFSearchPresenter`发起对`XFSearchRouting`的请求：
 ```objc
@@ -90,6 +97,12 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
     // self.uiOperator：相对当前Routing的事件处理层Presenter
     [self pushRouting:routing intent:self.uiOperator.intentData];
 }
+```
+
+####4、使用路由管理器跟踪打印模块导航信息：
+```objc
+// 在AppDelegate.m的didFinishLaunchingWithOptions:
+[XFRoutingLinkManager enableLog];
 ```
 
 ###显示视图层`XFActivity`
@@ -249,7 +262,7 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 {
 	// 调用事件处理层
 	// 注意：只有在当前视图添加到父视图后才能获取
-	[self.eventHandler requirePopModule];
+	[self.eventHandler xfLego_onBackItemTouch];
 }
 @end
 ```
@@ -298,18 +311,8 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 ```
 
-##已知问题
-###1、MVx架构里自定义导航控制器有时无法使用pop方法返回，就在自定义导航里加入下面代码：
-```objc
-- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
-{
-    [self popViewControllerAnimated:YES];
-    return YES;
-}
-```
-
 ##注意事项
-* 在UIViewController中，覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`。
+* 在UIViewController/Activity中，覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`。
 * 在UIView中，覆盖`-didMoveToSuperview`生命周期方法，要先调用`[super didMoveToSuperview]`。
 
 
