@@ -31,7 +31,11 @@
  */
 + (void)sendEventName:(NSString *)eventName intentData:(id)intentData forMoudlesName:(NSArray<NSString *> *)moudlesName;
 /**
- *  打印log
+ *  允许打印log
+ */
++ (void)enableLog;
+/**
+ *  打印当前所有路由信息
  */
 + (void)log;
 @end

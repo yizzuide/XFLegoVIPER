@@ -17,11 +17,11 @@
     
     if (param) {
         SuppressPerformSelectorLeakWarning(
-           [object performSelector:bindMethod withObject:param]
+            [object performSelector:bindMethod withObject:param];
            )
     }else{
         SuppressPerformSelectorLeakWarning(
-           [object performSelector:bindMethod]
+            [object performSelector:bindMethod];
            )
     }
     

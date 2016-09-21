@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "XFSearchRouting.h"
 #import <SDWebImage/SDWebImageDownloader.h>
+#import "XFRoutingLinkManager.h"
 
 
 @interface AppDelegate ()
@@ -22,15 +23,19 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
+    [XFRoutingLinkManager enableLog];
+    
     XFSearchRouting *searchRouting = [XFSearchRouting routing];
     // 配置导航栏
     UINavigationController *navigation = searchRouting.realNavigator;
     navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
     [navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
-    [searchRouting showRootActivityOnWindow:self.window isNavigationControllor:YES];
+    [searchRouting showRootActivityOnWindow:self.window];
     
     [self setWebImageUserAgent];
+    
+    
     return YES;
 }
 

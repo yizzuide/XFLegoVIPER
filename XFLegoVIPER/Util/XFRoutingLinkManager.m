@@ -45,13 +45,42 @@ static NSMapTable *_mapTable;
         id routing = [self findRoutingForMoudleName:moudleName];
         // 通知路由发送事件
         SuppressPerformSelectorLeakWarning (
-          [routing performSelector:NSSelectorFromString(@"_sendEventName:intentData:") withObject:eventName withObject:intentData];
+            [routing performSelector:NSSelectorFromString(@"_sendEventName:intentData:") withObject:eventName withObject:intentData];
         )
     }
 }
 
-+ (void)log {
-	NSLog(@"current routing count: %zd",_mapTable.count);
+static BOOL _enableLog = NO;
++ (void)enableLog {
+    _enableLog = YES;
 }
+
++ (void)log {
+    if (_enableLog) {
+        NSLog(@"current routing count: %zd",_mapTable.count);
+        
+        NSLog(@"Routing link:");
+        id routing = [_mapTable objectEnumerator].allObjects[0];
+        
+        NSMutableString *mStr = [NSMutableString string];
+        [mStr appendString:[NSString stringWithFormat:@"(\n\t%@",NSStringFromClass([routing class])]];
+        
+        id nextRouting = routing;
+        do {
+            SuppressPerformSelectorLeakWarning (
+                nextRouting = [nextRouting performSelector:NSSelectorFromString(@"nextRouting")];
+            )
+            if (nextRouting != nil) {
+                [mStr appendString:[NSString stringWithFormat:@"\n\t->%@",NSStringFromClass([nextRouting class])]];
+                continue;
+            }
+            [mStr appendString:@"\n)"];
+        } while (nextRouting != nil);
+        NSLog(@"%@",mStr);
+    }
+	
+}
+
+
 
 @end

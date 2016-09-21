@@ -7,7 +7,9 @@
 //
 
 #import "XFPresenter.h"
+#import "XFPictureResultsEventHandlerPort.h"
 
-@interface XFPictureResultsPresenter : XFPresenter
+@interface XFPictureResultsPresenter : XFPresenter <XFPictureResultsEventHandlerPort>
 
+@property (nonatomic, strong) RACCommand *cellSelectedCommad;
 @end

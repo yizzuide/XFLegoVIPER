@@ -18,19 +18,24 @@
 #define XFConvertRoutingToType(type) LEGORealPort(type, self.routing)
 #define XFConvertUserInterfaceToType(type) LEGORealPort(type, self.userInterface)
 
+#define IsEventNameEquals(specialName,codeContent) if ([eventName isEqualToString:specialName]) { \
+    codeContent \
+    return; \
+}
+
 @interface XFPresenter : NSObject <XFEventHandlerPort,XFUIOperatorPort>
 /**
  *  显示界面
  */
-@property (nonatomic, weak) id<XFUserInterfacePort> userInterface;
+@property (nonatomic, weak, readonly) id<XFUserInterfacePort> userInterface;
 /**
  *  当前路由，负责界面跳转和模块切换管理
  */
-@property (nonatomic, strong) id<XFWireFramePort> routing;
+@property (nonatomic, strong, readonly) id<XFWireFramePort> routing;
 /**
  *  业务管理者
  */
-@property (nonatomic, strong) id<XFInteractorPort> interactor;
+@property (nonatomic, strong, readonly) id<XFInteractorPort> interactor;
 
 /**
  *  模块之间传递的意图数据

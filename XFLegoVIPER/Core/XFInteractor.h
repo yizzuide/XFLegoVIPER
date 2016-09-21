@@ -15,5 +15,5 @@
 
 @interface XFInteractor : NSObject <XFInteractorPort>
 
-@property (nonatomic, strong) id<XFDataManagerPort> dataManager;
+@property (nonatomic, strong, readonly) id<XFDataManagerPort> dataManager;
 @end

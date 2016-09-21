@@ -23,12 +23,6 @@ static void * xfActivity_eventHandler_porpertyKey = (void *)@"xfActivity_eventHa
     return objc_getAssociatedObject(self, &xfActivity_eventHandler_porpertyKey);
 }
 
-// 通知事件处理层返回按钮被点击
-void xfLogo_didBackButtonPressed(id self, SEL _cmd)
-{
-    [[self eventHandler] xfLego_onBackItemTouch];
-}
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (void)viewDidLoad
@@ -36,16 +30,8 @@ void xfLogo_didBackButtonPressed(id self, SEL _cmd)
     // 如果当前控制器是在当前框架
     if (self.eventHandler) {
         // 绑定当前视图引用到事件处理
-        [self invokeMethod:@"bindView:" param:self forObject:self.eventHandler];
+        [self invokeMethod:@"xfLego_bindView:" param:self forObject:self.eventHandler];
         
-        // 绑定成功调用初始化完成方法
-        [self invokeMethod:@"viewDidLoad" param:nil forObject:self.eventHandler];
-        
-        // 添加拦截导航栏点击Item的pop返回事件方法，`backButtonPressed`用于自定义处理返回
-        SUPPRESS_UNDECLARED_SELECTOR_LEAK_WARNING(
-                // "v@:@",解释v-返回值void类型,@-self指针id类型,:-SEL指针SEL类型,,@-函数第一个参数为id类型
-            class_addMethod([self class], @selector(xfLogo_backButtonPressed), (IMP)xfLogo_didBackButtonPressed, "v@:")
-        )
     }
 }
 
@@ -54,7 +40,8 @@ void xfLogo_didBackButtonPressed(id self, SEL _cmd)
     if (self.eventHandler) {
         // 如果当前视图被pop或dismiss
         if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-            [self invokeMethod:@"viewDidUnLoad" param:nil forObject:self.eventHandler];
+            // 通知事件层当前视图将消失
+            [self invokeMethod:@"xfLego_viewWillDisappear" param:nil forObject:self.eventHandler];
         }
     }
     

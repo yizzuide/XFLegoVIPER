@@ -16,7 +16,7 @@
 /**
  *  当前UI交互者的视图给Routing的接口
  */
-@property (nonatomic, weak) id<XFUserInterfacePort> userInterface;
+@property (nonatomic, weak, readonly) id<XFUserInterfacePort> userInterface;
 
 /**
  *  传回的意图数据

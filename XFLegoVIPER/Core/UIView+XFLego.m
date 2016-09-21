@@ -30,11 +30,7 @@ static void * xfViewRender_eventHandler_porpertyKey = (void *)@"xfViewRender_eve
 
 - (void)xfLogo_bindEventHandler {
     UIViewController *activity = [self xfLogo_getCurrentViewController];
-    
-    id<XFEventHandlerPort> presenter = [activity performSelector:@selector(eventHandler)];
-    if(presenter){
-        self.eventHandler = presenter;
-    }
+    self.eventHandler = [activity performSelector:@selector(eventHandler)];
 }
 
 - (id)xfLogo_getCurrentViewController {

@@ -9,6 +9,7 @@
 #import "XFPictureResultsActivity.h"
 #import "CETableViewBindingHelper.h"
 #import "XFPictureTableViewCell.h"
+#import "XFPictureResultsEventHandlerPort.h"
 
 @interface XFPictureResultsActivity () <UITableViewDelegate>
 
@@ -47,7 +48,7 @@
     self.bindingHelper =
     [CETableViewBindingHelper bindingHelperForTableView:self.tableView
                                            sourceSignal:RACObserve(self.eventHandler, expressData)
-                                       selectionCommand:nil
+                                       selectionCommand:XFConvertPresenterToType(id<XFPictureResultsEventHandlerPort>).cellSelectedCommad
                                            templateCell:nib];
     self.bindingHelper.delegate = self;
 }

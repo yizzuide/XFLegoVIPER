@@ -24,7 +24,7 @@ _Pragma("clang diagnostic pop")                                         \
 do { \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
-Stuff; \
+Stuff \
 _Pragma("clang diagnostic pop") \
 } while (0);
 

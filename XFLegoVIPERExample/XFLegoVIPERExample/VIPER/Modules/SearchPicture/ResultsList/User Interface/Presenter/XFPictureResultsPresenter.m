@@ -11,6 +11,7 @@
 #import "XFPictureExpressData.h"
 #import "XFPictureResultsInteractorPort.h"
 #import "XFRoutingLinkManager.h"
+#import "XFPictureResultWireframePort.h"
 
 @implementation XFPictureResultsPresenter
 
@@ -27,19 +28,31 @@
     // 在VIPER架构中对MVx架构模块发通知
     //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
     
-    // 模拟在MVx架构测试发通知
+    // 模拟在MVx架构发通知
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
     });
     // 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveOtherMoudleEventName:intentData:`接收
     [self.routing registerForMVxNotificationsWithNameArray:@[@"StartSearchNotification"]];
+    
+    @weakify(self)
+    self.cellSelectedCommad = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        return [self executeCellSelectedSignal];
+    }];
 }
 
-- (void)viewDidUnLoad
+- (RACSignal *)executeCellSelectedSignal
 {
-    [super viewDidUnLoad];
-    NSLog(@"%@被POP",NSStringFromClass(self.class));
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [XFConvertRoutingToType(id<XFPictureResultWireframePort>) transitionToDetailsMoudle];
+        [subscriber sendCompleted];
+        return [RACDisposable disposableWithBlock:^{
+        }];
+    }];
 }
+
+
 
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData
 {
@@ -56,14 +69,16 @@
 
 - (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
 {
-    NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+    //NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+    IsEventNameEquals(@"StartSearchNotification",
+    {
+        NSLog(@"receive Mvx notification: %@",@"StartSearchNotification");
+        NSLog(@"接收到Mvx架构的通知: %@",@"StartSearchNotification");
+    })
 }
 
-// 自定义Back返回事件
-- (void)xfLego_onBackItemTouch
+- (void)dealloc
 {
-    NSLog(@"%@将要被POP",NSStringFromClass(self.class));
-    // 调用父类默认实现
-    [super xfLego_onBackItemTouch];
+    NSLog(@"%s",__func__);
 }
 @end

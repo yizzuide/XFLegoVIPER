@@ -17,6 +17,6 @@
 /**
  *  事件处理者
  */
-@property (nonatomic, weak) id<XFEventHandlerPort> eventHandler;
+@property (nonatomic, weak, readonly) id<XFEventHandlerPort> eventHandler;
 
 @end

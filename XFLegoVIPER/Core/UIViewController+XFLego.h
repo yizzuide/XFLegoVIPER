@@ -18,5 +18,5 @@
  */
 @interface UIViewController (XFLego) <XFUserInterfacePort>
 
-@property (nonatomic, strong) id<XFEventHandlerPort> eventHandler;
+@property (nonatomic, strong, readonly) id<XFEventHandlerPort> eventHandler;
 @end

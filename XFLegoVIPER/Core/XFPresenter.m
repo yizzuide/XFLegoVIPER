@@ -7,14 +7,9 @@
 //
 
 #import "XFPresenter.h"
+#import "NSObject+XFLegoInvokeMethod.h"
 
 @implementation XFPresenter
-
-// 绑定一个视图
-- (void)bindView:(id)view
-{
-    self.userInterface = view;
-}
 
 - (void)viewDidLoad{}
 - (void)viewDidUnLoad{}
@@ -27,6 +22,20 @@
 - (void)xfLego_onBackItemTouch
 {
     [self.routing pop];
+}
+
+#pragma mark - 私有方法
+// 绑定一个视图
+- (void)xfLego_bindView:(id)view
+{
+    [self setValue:view forKey:@"userInterface"];
+    [self viewDidLoad];
+}
+
+- (void)xfLego_viewWillDisappear
+{
+    [self invokeMethod:@"xfLego_removeRouting" param:nil forObject:self.routing];
+    [self viewDidUnLoad];
 }
 
 @end

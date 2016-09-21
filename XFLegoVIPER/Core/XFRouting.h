@@ -14,21 +14,6 @@
 @interface XFRouting : NSObject <XFWireFramePort>
 
 /**
- *  上一个关联的模块路由
- */
-@property (nonatomic, weak) XFRouting *previousRouting;
-/**
- *  下一个关联的模块路由
- */
-@property (nonatomic, weak) XFRouting *nextRouting;
-
-/**
- *  获得UI事件处理层（Presenter）
- */
-@property (nonatomic, weak) id<XFUIOperatorPort> uiOperator;
-
-
-/**
  *  组装当前路由
  *
  *  @return 路由
@@ -49,6 +34,21 @@
                                        presenterClass:(Class)perstentClass
                                       interactorClass:(Class)interactorClass
                                      dataManagerClass:(Class)dataManagerClass;
+
+/**
+ *  构建关系层(视图从xib或storyboard中加载)
+ *
+ *  @param ibSymbol         使用字符串符号加载视图（xib:x-xibName,Storyboard:s-storyboardName-controllerIdentifier）
+ *  @param perstentClass    交互层
+ *  @param interactorClass  业务层
+ *  @param dataManagerClass 数据层
+ *
+ *  @return Routing
+ */
+- (instancetype)buildModulesAssemblyWithIB:(NSString *)ibSymbol
+                                       presenterClass:(Class)perstentClass
+                                      interactorClass:(Class)interactorClass
+                                     dataManagerClass:(Class)dataManagerClass;
 /**
  *  构建关系层
  *
@@ -64,6 +64,12 @@
                                        presenterClass:(Class)perstentClass
                                       interactorClass:(Class)interactorClass
                                      dataManagerClass:(Class)dataManagerClass;
+
+/**
+ *  获得UI事件处理层（Presenter）
+ */
+@property (nonatomic, weak, readonly) id<XFUIOperatorPort> uiOperator;
+
 /**
  *  获得当前真实存在的视图
  *
@@ -81,16 +87,15 @@
  *  在主窗口显示第一个视图
  *
  *  @param mainWindow             主窗口
- *  @param isNavigationControllor 是否是导航控制器
  */
-- (void)showRootActivityOnWindow:(UIWindow *)mainWindow isNavigationControllor:(BOOL)isNavigationControllor;
+- (void)showRootActivityOnWindow:(UIWindow *)mainWindow;
 
 
 /**
  *  推入一个新的路由界面
  *
  *  @param nextRouting  下一个路由
- *  @param intentData   意图数据
+ *  @param intentData   意图数据（没有可以传nil）
  */
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData;
 
@@ -98,7 +103,7 @@
  *  Modal一个新的路由界面
  *
  *  @param nextRouting  下一个路由
- *  @param intentData   意图数据
+ *  @param intentData   意图数据（没有可以传nil）
  */
 - (void)presentRouting:(XFRouting *)nextRouting intent:(id)intentData;
 
@@ -107,16 +112,9 @@
  *
  *  @param nextRouting    下一个路由
  *  @param trasitionBlock 视图切换代码
- *  @param intentData     意图数据
+ *  @param intentData     意图数据（没有可以传nil）
  */
 - (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData;
 
-
-/**
- *  自定义移除路由界面
- *
- *  @param trasitionBlock 视图切换代码
- */
-- (void)removeRoutingWithTrasitionBlock:(void(^)())trasitionBlock;
 
 @end

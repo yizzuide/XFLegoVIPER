@@ -39,7 +39,7 @@
 
 - (void)setParallax:(CGFloat)value {
     self.pictureImage.transform = CGAffineTransformMakeTranslation(0, value);
-    NSLog(@"当前图片视图Cell绑定了事件处理层：%@",NSStringFromClass([self.eventHandler class]));
+    //NSLog(@"当前图片视图Cell绑定了事件处理层：%@",NSStringFromClass([self.eventHandler class]));
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -10,6 +10,7 @@
 #import "XFPictureResultsActivity.h"
 #import "XFPictureResultsPresenter.h"
 #import "XFPictureResultsInteractor.h"
+#import "XFDetailsRouting.h"
 
 @implementation XFPictureResultsRouting
 
@@ -20,6 +21,14 @@
                                                   interactorClass:[XFPictureResultsInteractor class]
                                                  dataManagerClass:nil];
 }
+
+- (void)transitionToDetailsMoudle
+{
+    XFDetailsRouting *routing = [XFDetailsRouting routing];
+    [self pushRouting:routing intent:nil];
+}
+
+
 - (void)dealloc
 {
     NSLog(@"%s",__func__);

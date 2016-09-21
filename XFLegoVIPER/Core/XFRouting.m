@@ -17,10 +17,23 @@
 #define WS(weakSelf) __weak typeof(self) weakSelf = self;
 
 @interface XFRouting ()
+
+/**
+ *  上一个关联的模块路由
+ */
+@property (nonatomic, weak) XFRouting *previousRouting;
+/**
+ *  下一个关联的模块路由
+ */
+@property (nonatomic, weak) XFRouting *nextRouting;
+
 /**
  *  当前视图
  */
 @property (nonatomic, strong) id<XFUserInterfacePort> currentUserInterface;
+/**
+ *  当前导航
+ */
 @property (nonatomic, strong) UINavigationController *currentNavigator;
 
 /**
@@ -31,16 +44,18 @@
 
 @implementation XFRouting
 
-- (void)showRootActivityOnWindow:(UIWindow *)mainWindow isNavigationControllor:(BOOL)isNavigationControllor{
-    if (isNavigationControllor) {
-        mainWindow.rootViewController = LEGORealInterface([self realNavigator]);
+- (void)showRootActivityOnWindow:(UIWindow *)mainWindow{
+    id navigator = [self realNavigator];
+    if (navigator) {
+        mainWindow.rootViewController = LEGORealInterface(navigator);
     }else{
         mainWindow.rootViewController = LEGORealInterface([self realInterface]);
     }
     [mainWindow makeKeyAndVisible];
 }
 
-#pragma mark - Modal方式
+#pragma mark - 路由切换
+// Modal方式
 - (void)presentRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
     WS(weakSelf)
@@ -50,7 +65,6 @@
         });
     } intent:intentData];
 }
-
 - (void)dismiss
 {
     WS(weakSelf)
@@ -61,7 +75,7 @@
     }];
 }
 
-#pragma mark - PUSH方式
+// PUSH方式
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
     WS(weakSelf)
@@ -72,7 +86,6 @@
         
     } intent:intentData];
 }
-
 - (void)pop
 {
     WS(weakSelf)
@@ -80,39 +93,56 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[LEGORealInterface(weakSelf.realInterface) navigationController] popViewControllerAnimated:YES];
         });
-        
     }];
 }
 
-#pragma mark - 自定义切换
+// 自定义切换
+- (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData {
+    // 绑定关系
+    [self _flowToNextRouting:nextRouting];
+    // 移除当前视图焦点
+    [self.uiOperator viewWillResignFocus];
+    // 执行切换界面
+    if (trasitionBlock) {
+        trasitionBlock();
+    }
+    // 下一个视图获得焦点，并传送意图数据
+    if (self.nextRouting) {
+        [self.nextRouting.uiOperator viewWillBecomeFocusWithIntentData:intentData];
+    }
+}
+
+
+// 移除当前Routing
 - (void)removeRoutingWithTrasitionBlock:(void(^)())trasitionBlock
 {
     // 移除当前视图焦点
     [self.uiOperator viewWillResignFocus];
-    // 执行切换代码
-    trasitionBlock();
+    // 执行切换界面
+    if (trasitionBlock) {
+        trasitionBlock();
+    }
     // 上一个视图获得焦点，并传送意图数据
     if (self.previousRouting) {
-            [self.previousRouting.uiOperator viewWillBecomeFocusWithIntentData:[self.uiOperator intentData]];
+        [self.previousRouting.uiOperator viewWillBecomeFocusWithIntentData:[self.uiOperator intentData]];
     }
+}
+
+// 释放当前Routing关系链
+- (void)xfLego_removeRouting
+{
     // 解除关系链
     self.previousRouting.nextRouting = nil;
     self.previousRouting = nil;
     // 从路由管理中心移除
     [XFRoutingLinkManager removeRouting:self];
-}
-
-- (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData {
-    // 绑定关系
-    [self flowToNextRouting:nextRouting];
-    // 移除当前视图焦点
-    [self.uiOperator viewWillResignFocus];
-    // 执行切换界面
-    trasitionBlock();
-    // 下一个视图获得焦点，并传送意图数据
-    if (self.nextRouting) {
-        [self.nextRouting.uiOperator viewWillBecomeFocusWithIntentData:intentData];
+    [XFRoutingLinkManager log];
+    
+    // 删除所有侦听
+    for (id<NSObject> observer in self.observers) {
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
     }
+    self.observers = nil;
 }
 
 
@@ -122,32 +152,58 @@
     XFRouting *instance = [[self alloc] init];
     // 添加到路由管理中心
     [XFRoutingLinkManager addRouting:instance];
-    //[XFRoutingLinkManager log];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.00151 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [XFRoutingLinkManager log];
+    });
     return instance;
-}
-
-- (void)flowToNextRouting:(XFRouting *)nextRouting
-{
-    self.nextRouting = nextRouting;
-    nextRouting.previousRouting = self;
 }
 
 - (instancetype)buildModulesAssemblyWithActivityClass:(Class)activityClass
                                        presenterClass:(Class)perstentClass
                                       interactorClass:(Class)interactorClass
                                      dataManagerClass:(Class)dataManagerClass
- {
-     return [self _bulildMoudlesRelationWithActivityClass:activityClass navigatorClass:nil presenterClass:perstentClass interactorClass:interactorClass dataManagerClass:dataManagerClass];
+{
+    return [self _bulildMoudlesAssemblyWithInterface:NSStringFromClass(activityClass) navigatorClass:nil presenterClass:perstentClass interactorClass:interactorClass dataManagerClass:dataManagerClass];
 }
 
 - (instancetype)buildModulesAssemblyWithActivityClass:(Class)activityClass navigatorClass:(Class)navigatorClass presenterClass:(Class)perstentClass interactorClass:(Class)interactorClass dataManagerClass:(Class)dataManagerClass
 {
-    return [self _bulildMoudlesRelationWithActivityClass:activityClass navigatorClass:navigatorClass presenterClass:perstentClass interactorClass:interactorClass dataManagerClass:dataManagerClass];
+    return [self _bulildMoudlesAssemblyWithInterface:NSStringFromClass(activityClass) navigatorClass:navigatorClass presenterClass:perstentClass interactorClass:interactorClass dataManagerClass:dataManagerClass];
 }
 
-- (id)_bulildMoudlesRelationWithActivityClass:(Class)activityClass navigatorClass:(Class)navigatorClass  presenterClass:(Class)perstentClass interactorClass:(Class)interactorClass dataManagerClass:(Class)dataManagerClass
+- (instancetype)buildModulesAssemblyWithIB:(NSString *)ibSymbol
+                            presenterClass:(Class)perstentClass
+                           interactorClass:(Class)interactorClass
+                          dataManagerClass:(Class)dataManagerClass
 {
-    XFActivity *activity = [[activityClass alloc] init];
+    return [self _bulildMoudlesAssemblyWithInterface:ibSymbol navigatorClass:nil presenterClass:perstentClass interactorClass:interactorClass dataManagerClass:dataManagerClass];
+}
+
+- (id)_bulildMoudlesAssemblyWithInterface:(NSString *)interface navigatorClass:(Class)navigatorClass  presenterClass:(Class)perstentClass interactorClass:(Class)interactorClass dataManagerClass:(Class)dataManagerClass
+{
+    XFActivity *activity;
+    Class clazz = NSClassFromString(interface);
+    // 如果是Class
+    if (clazz) {
+        activity = [[NSClassFromString(interface) alloc] init];
+    }else{
+        NSArray<NSString *> *comps = [interface componentsSeparatedByString:@"-"];
+        // 如果是xib
+        if (comps.count == 2 && [comps[0] containsString:@"x"]) {
+            activity = [[XFActivity alloc] initWithNibName:comps[1] bundle:nil];
+            
+            // 如果是从storyboard中加载
+        }else if(comps.count == 3 && [comps[0] containsString:@"s"]){
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:comps[1] bundle:nil];
+            activity = [storyboard instantiateViewControllerWithIdentifier:comps[2]];
+        }else{
+            NSLog(@"********************从xib或storyboard加载视图错误!!!***********************");
+            NSLog(@"请检查字符串标识：\n\nxib方式:x-xibName\nstoryboard方式:s-storyboardName-controllerIdentifier\n\n");
+            NSLog(@"************************************************************************");
+            return nil;
+        }
+    }
+    
     self.currentUserInterface = activity;
     
     if (navigatorClass) {
@@ -157,22 +213,28 @@
     
     if (perstentClass) {
         XFPresenter *presenter = [[perstentClass alloc] init];
-        activity.eventHandler = presenter;
-        presenter.routing = self;
-        self.uiOperator = presenter;
+        [activity setValue:presenter forKey:@"eventHandler"];
+        [presenter setValue:self forKey:@"routing"];
+        [self setValue:presenter forKey:@"uiOperator"];
         // other...
         if (interactorClass) {
             XFInteractor *interactor = [[interactorClass alloc] init];
-            presenter.interactor = interactor;
+            [presenter setValue:interactor forKey:@"interactor"];
             
             if(dataManagerClass){
                 XFDataManager *dataManager = [[dataManagerClass alloc] init];
-                interactor.dataManager = dataManager;
+                [interactor setValue:dataManager forKey:@"dataManager"];
             }
         }
         
     }
     return self;
+}
+
+- (void)_flowToNextRouting:(XFRouting *)nextRouting
+{
+    self.nextRouting = nextRouting;
+    nextRouting.previousRouting = self;
 }
 
 #pragma mark - 模块通信
@@ -208,9 +270,9 @@
                                                           object:nil
                                                            queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification * _Nonnull note) {
-                                                            // 通知事件处理层接收事件
+                                                          // 通知事件处理层接收事件
                                                           [weakSelf.uiOperator receiveOtherMoudleEventName:note.name intentData:note.userInfo];
-                                                                             }];
+                                                      }];
         // 添加到侦听数组
         [self.observers addObject:observer];
     }
@@ -224,11 +286,7 @@
 
 - (UINavigationController *)realNavigator {
     [self _delayDestoryInterfaceRef];
-    // 移除当前类对之的强引用
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.currentNavigator = nil;
-    });
-    return self.currentNavigator;
+    return self.currentNavigator ? self.currentNavigator : [LEGORealInterface([self.uiOperator userInterface]) navigationController];
 }
 
 // 移除当前类对之的强引用
@@ -236,18 +294,11 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.currentUserInterface = nil;
+        self.currentNavigator = nil;
     });
 }
 
-- (void)dealloc
-{
-    // 删除所有侦听
-    for (id<NSObject> observer in self.observers) {
-        [[NSNotificationCenter defaultCenter] removeObserver:observer];
-    }
-    self.observers = nil;
-}
-
+#pragma mark - 懒加载
 - (NSMutableArray *)observers
 {
     if (_observers == nil) {

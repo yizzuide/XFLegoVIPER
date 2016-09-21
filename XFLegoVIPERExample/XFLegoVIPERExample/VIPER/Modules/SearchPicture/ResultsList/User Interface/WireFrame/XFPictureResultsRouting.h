@@ -7,7 +7,8 @@
 //
 
 #import "XFRouting.h"
+#import "XFPictureResultWireframePort.h"
 
-@interface XFPictureResultsRouting : XFRouting
+@interface XFPictureResultsRouting : XFRouting <XFPictureResultWireframePort>
 
 @end
