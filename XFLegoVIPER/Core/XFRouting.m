@@ -44,7 +44,8 @@
 
 @implementation XFRouting
 
-- (void)showRootActivityOnWindow:(UIWindow *)mainWindow{
+- (void)showRootActivityOnWindow:(UIWindow *)mainWindow
+{
     id navigator = [self realNavigator];
     if (navigator) {
         mainWindow.rootViewController = LEGORealInterface(navigator);
@@ -52,6 +53,23 @@
         mainWindow.rootViewController = LEGORealInterface([self realInterface]);
     }
     [mainWindow makeKeyAndVisible];
+}
+
+#pragma mark - MVx控制器切换
+- (void)pushMVxViewController:(UIViewController *)viewController
+{
+    WS(weakSelf)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[LEGORealInterface(weakSelf.realInterface) navigationController] pushViewController:viewController animated:YES];
+    });
+}
+
+- (void)presentMVxViewContrller:(UIViewController *)viewController
+{
+    WS(weakSelf)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [LEGORealInterface(weakSelf.realInterface) presentViewController:viewController animated:YES completion:nil];
+    });
 }
 
 #pragma mark - 路由切换
@@ -128,16 +146,20 @@
     }
 }
 
-// 释放当前Routing关系链
+// 释放当前Routing资源
 - (void)xfLego_removeRouting
 {
-    // 解除关系链
-    self.previousRouting.nextRouting = nil;
-    self.previousRouting = nil;
+    // 解除上一个路由关系链
+    if(self.previousRouting) {
+        self.previousRouting.nextRouting = nil;
+        self.previousRouting = nil;
+    }
+    
     // 从路由管理中心移除
     [XFRoutingLinkManager removeRouting:self];
     [XFRoutingLinkManager log];
     
+    if (!self.observers) return;
     // 删除所有侦听
     for (id<NSObject> observer in self.observers) {
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
@@ -149,13 +171,7 @@
 #pragma mark - 绑定模块
 + (instancetype)routing
 {
-    XFRouting *instance = [[self alloc] init];
-    // 添加到路由管理中心
-    [XFRoutingLinkManager addRouting:instance];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.00151 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [XFRoutingLinkManager log];
-    });
-    return instance;
+    return [[self alloc] init];
 }
 
 - (instancetype)buildModulesAssemblyWithActivityClass:(Class)activityClass
@@ -228,6 +244,16 @@
         }
         
     }
+    
+    // 如果有事件处理层
+    if (self.uiOperator) {
+        // 添加到路由管理中心
+        [XFRoutingLinkManager addRouting:self];
+        // 打印当前路由
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LEGONextStep * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [XFRoutingLinkManager log];
+        });
+    }
     return self;
 }
 
@@ -248,7 +274,7 @@
 {
     [XFRoutingLinkManager sendEventName:eventName intentData:intentData forMoudlesName:moudlesName];
 }
-// 路由管理中心通知当前路由发送事件
+// 私有方法：路由管理中心通知当前路由发送事件
 - (void)_sendEventName:(NSString *)eventName intentData:(id)intentData
 {
     [self.uiOperator receiveOtherMoudleEventName:eventName intentData:intentData];
@@ -279,12 +305,12 @@
 }
 
 #pragma mark - 获取当前视图
-- (id<XFUserInterfacePort>)realInterface {
+- (__kindof id<XFUserInterfacePort>)realInterface {
     [self _delayDestoryInterfaceRef];
     return self.currentUserInterface ? self.currentUserInterface : [self.uiOperator userInterface];
 }
 
-- (UINavigationController *)realNavigator {
+- (__kindof UINavigationController *)realNavigator {
     [self _delayDestoryInterfaceRef];
     return self.currentNavigator ? self.currentNavigator : [LEGORealInterface([self.uiOperator userInterface]) navigationController];
 }

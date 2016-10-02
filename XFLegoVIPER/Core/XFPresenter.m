@@ -12,6 +12,7 @@
 @implementation XFPresenter
 
 - (void)viewDidLoad{}
+- (void)initRenderView{}
 - (void)viewDidUnLoad{}
 
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData{}

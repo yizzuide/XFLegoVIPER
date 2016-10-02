@@ -32,6 +32,9 @@ static void * xfActivity_eventHandler_porpertyKey = (void *)@"xfActivity_eventHa
         // 绑定当前视图引用到事件处理
         [self invokeMethod:@"xfLego_bindView:" param:self forObject:self.eventHandler];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LEGONextStep * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self invokeMethod:@"initRenderView" param:nil forObject:self.eventHandler];
+        });
     }
 }
 

@@ -10,7 +10,6 @@
 #import "XFWireFramePort.h"
 #import "XFUIOperatorPort.h"
 
-
 @interface XFRouting : NSObject <XFWireFramePort>
 
 /**
@@ -75,13 +74,13 @@
  *
  *  @return 视图
  */
-- (id<XFUserInterfacePort>)realInterface;
+- (__kindof id<XFUserInterfacePort>)realInterface;
 /**
  *  获得包装当前视图的导航
  *
  *  @return 导航
  */
-- (UINavigationController *)realNavigator;
+- (__kindof UINavigationController *)realNavigator;
 
 /**
  *  在主窗口显示第一个视图
@@ -92,7 +91,7 @@
 
 
 /**
- *  推入一个新的路由界面
+ *  推入一个新的路由
  *
  *  @param nextRouting  下一个路由
  *  @param intentData   意图数据（没有可以传nil）
@@ -100,7 +99,7 @@
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData;
 
 /**
- *  Modal一个新的路由界面
+ *  Modal一个新的路由
  *
  *  @param nextRouting  下一个路由
  *  @param intentData   意图数据（没有可以传nil）
@@ -116,5 +115,14 @@
  */
 - (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData;
 
-
+/**
+ *  push一个MVx架构里的控制器（注意：它不会被VIPER路由器管理，所以不能对之发VIPER事件通信）
+ *
+ */
+- (void)pushMVxViewController:(UIViewController *)viewController;
+/**
+ *  present一个MVx架构里的控制器（注意：它不会被VIPER路由器管理，所以不能对之发VIPER事件通信）
+ *
+ */
+- (void)presentMVxViewContrller:(UIViewController *)viewController;
 @end

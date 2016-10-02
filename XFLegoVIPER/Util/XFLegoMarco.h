@@ -14,6 +14,8 @@
 // 转到新的子接口类型或子对象
 #define LEGORealPort(nowPort,oldPort) ((nowPort)(oldPort))
 
+#define LEGONextStep 0.0151
+
 #define SUPPRESS_UNDECLARED_SELECTOR_LEAK_WARNING(code)                        \
 _Pragma("clang diagnostic push")                                        \
 _Pragma("clang diagnostic ignored \"-Wundeclared-selector\"")     \

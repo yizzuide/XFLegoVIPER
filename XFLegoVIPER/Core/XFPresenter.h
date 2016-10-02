@@ -18,8 +18,8 @@
 #define XFConvertRoutingToType(type) LEGORealPort(type, self.routing)
 #define XFConvertUserInterfaceToType(type) LEGORealPort(type, self.userInterface)
 
-#define IsEventNameEquals(specialName,codeContent) if ([eventName isEqualToString:specialName]) { \
-    codeContent \
+#define XF_EventIs_(EventName,ExecuteCode) if ([eventName isEqualToString:EventName]) { \
+    ExecuteCode \
     return; \
 }
 
@@ -58,6 +58,11 @@
  *  绑定视图完成(框架方法，用于子类覆盖，不要直接调用！）
  */
 - (void)viewDidLoad;
+
+/**
+ *  初始化渲染视图数据(框架方法，用于子类覆盖，不要直接调用！）
+ */
+- (void)initRenderView;
 
 /**
  *  视图解绑(框架方法，用于子类覆盖，不要直接调用！）
