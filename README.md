@@ -40,7 +40,7 @@ VIPER不属于MV*架构系列，但它是所有这些架构中单一责任分得
 
 ##XFLegoVIPER框架说明
 这个框架包括搭建VIPER架构核心思想代码，扩展支持不同架构模块的事件/通知转发与接收、不同构架的融合处理，而不整合进来一些UI控件、常用工具类等，以使框架足够的轻量，目前github有相关的VIPER框架如下：
-* [ViperMcFlurry](https://github.com/rambler-ios/ViperMcFlurry)：国外人气框架，但提供的输入输出接口和层之间关联属性不明确，自行声明并组装VIPER各层之间的关系，界面跳要写多层Block，核心代码以Storyboard为中心，这个框架还没法用纯代码写UI。。
+* [ViperMcFlurry](https://github.com/rambler-digital-solutions/ViperMcFlurry)：国外人气框架，但提供的输入输出接口和层之间关联属性不明确，自行声明并组装VIPER各层之间的关系，界面跳要写多层Block，核心代码以Storyboard为中心，这个框架还没法用纯代码写UI。。
 * [VISPER](https://github.com/barteljan/VISPER)：一个德国人写的，没有英文文档，依赖JLRoutes、VISPER-CommandBus库，API错综复杂，这个框架在VIPER之上又封装了Feature模块特征层、各层Event事件、命令总线CommandBus，每一个模块都要组装这些东西。。
 * [Cascavel](https://github.com/orafaelreis/Cascavel)：这是什么gui？提供了一些数据获取与视图展示的不通用方法，没有什么实际用处。。
 
