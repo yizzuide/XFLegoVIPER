@@ -23,8 +23,8 @@
     return self->_pictureService;
 }
 
-- (RACSignal *)grabPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
+- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory startIndex:(NSUInteger)startIndex
 {
-    return [self.pictureService pullPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
+    return [self.pictureService pullPictureDataWithMainCategory:mainCategory secondCategory:secondCategory startIndex:startIndex];
 }
 @end

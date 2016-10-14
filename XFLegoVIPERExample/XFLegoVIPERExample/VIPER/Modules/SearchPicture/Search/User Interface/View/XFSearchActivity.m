@@ -24,22 +24,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self bindViewValue];
+    [self bindViewDriven];
 }
 
-- (void)bindViewValue
+- (void)bindViewDriven
 {
     id<XFSearchEventHandlerPort> presenter = XFConvertPresenterToType(id<XFSearchEventHandlerPort>);
     RAC(self,title) = RACObserve(presenter, navigationTitle);
     RAC(presenter, mainCategory) = self.mainCategoryTextField.rac_textSignal;
     RAC(presenter, secondCategory) = self.secondCategoryTextFiled.rac_textSignal;
     // 绑定命令
-    self.searchButton.rac_command = presenter.executeSearch;
+    XF_C_(self.searchButton, presenter, executeSearch)
 
     // 绑定信号执行状态: 命令执行状态信号，初始时有一个非执行状态信号，执行命令后又有执行状态信号 -> 非执行状态信号
     RAC([UIApplication sharedApplication],networkActivityIndicatorVisible) = presenter.executeSearch.executing;
     
-    // 如果信号开始执行
+    // 订阅开始搜索信号
     [presenter.executeSearch.executionSignals subscribeNext:^(RACSignal *signal) {
         [self.mainCategoryTextField resignFirstResponder];
         [self.secondCategoryTextFiled resignFirstResponder];

@@ -19,31 +19,37 @@
 
 - (void)initialize {
     self.navigationTitle = @"开始搜索";
+}
+
+- (void)initCommand
+{
     // 使用合并信号
     RACSignal *fieldsSignal = [[[RACSignal combineLatest:@[ RACObserve(self, mainCategory), RACObserve(self, secondCategory)]]
-     map:^id(RACTuple *tuple) {
-         // 设置验证通过的规则
-         NSString *mainText = tuple.first;
-         NSString *secondText = tuple.second;
-         return @(mainText.length > 0 && secondText.length > 0);
-    }] distinctUntilChanged]; // distinctUntilChanged表示只有状态不同才发出信号
+                                map:^id(RACTuple *tuple) {
+                                    // 设置验证通过的规则
+                                    NSString *mainText = tuple.first;
+                                    NSString *secondText = tuple.second;
+                                    return @(mainText.length > 0 && secondText.length > 0);
+                                }] distinctUntilChanged]; // distinctUntilChanged表示只有状态不同才发出信号
     
     [fieldsSignal subscribeNext:^(id valid) {
         NSLog(@"text is valid %@", valid);
     }];
     
-    self.executeSearch = [[RACCommand alloc] initWithEnabled:fieldsSignal signalBlock:^RACSignal *(id input) {
-        return  [self executeSearchSignal];
-    }];
+    XF_CEXE_Begin
+    XF_CEXE_Enable_(self.executeSearch, fieldsSignal, {
+        return [self executeSearchSignal];
+    })
     
     // 连接错误信号
     self.connectionErrors = self.executeSearch.errors;
 }
 
 // 按钮响应信号方法
-- (RACSignal *)executeSearchSignal {
+- (RACSignal *)executeSearchSignal
+{
     // 预加载数据
-	return [[[XFConvertInteractorToType(id<XFSearchInteractorPort>) fetchPictureDataWithMainCategory:self.mainCategory secondCategory:self.secondCategory] doNext:^(id x) {
+    return [[[XFConvertInteractorToType(id<XFSearchInteractorPort>) fetchPictureDataWithMainCategory:self.mainCategory secondCategory:self.secondCategory] doNext:^(id x) {
         //NSLog(@"%@",x);
         // 设置意图数据
         self.intentData = x;
@@ -56,6 +62,8 @@
 
 - (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
 {
-    NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+    XF_EventIs_(@"loadData", {
+        NSLog(@"接收到模块加载数据事件: %@",eventName);
+    })
 }
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'XFLegoVIPER'
-s.version = '1.3.1'
+s.version = '1.5.0'
 s.license = 'MIT'
 s.summary = 'A VIPER project engine.'
 s.homepage = 'https://github.com/yizzuide/XFLegoVIPER'

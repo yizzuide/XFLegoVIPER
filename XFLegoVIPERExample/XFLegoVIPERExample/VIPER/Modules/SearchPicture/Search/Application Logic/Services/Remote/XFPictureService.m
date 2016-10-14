@@ -15,7 +15,7 @@
 
 @implementation XFPictureService
 
-- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
+- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory startIndex:(NSUInteger)startIndex
 {
     // http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word=beyond&step_word=beyond&pn=90&rn=30
     return [[XFRACHttpTool getWithURL:@"http://image.baidu.com/search/acjson"
@@ -24,7 +24,7 @@
                                 @"ipn": @"rj",
                                 @"word":mainCategory,
                                 @"step_word":secondCategory,
-                                @"pn": @1, // 第几条开始
+                                @"pn": @(startIndex), // 第几条开始
                                 @"rn": @5, // 返回多少条
                                 }]
             map:^id(RACTuple *tuple) {

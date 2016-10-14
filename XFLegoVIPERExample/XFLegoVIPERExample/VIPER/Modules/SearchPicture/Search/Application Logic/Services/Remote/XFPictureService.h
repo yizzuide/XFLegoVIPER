@@ -11,5 +11,5 @@
 @class RACSignal;
 @interface XFPictureService : NSObject
 
-- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory;
+- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory startIndex:(NSUInteger)startIndex;
 @end

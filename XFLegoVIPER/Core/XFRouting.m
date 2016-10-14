@@ -13,6 +13,7 @@
 #import "XFDataManager.h"
 #import "XFLegoMarco.h"
 #import "XFRoutingLinkManager.h"
+#import "NSObject+XFLegoInvokeMethod.h"
 
 #define WS(weakSelf) __weak typeof(self) weakSelf = self;
 
@@ -21,11 +22,21 @@
 /**
  *  上一个关联的模块路由
  */
-@property (nonatomic, weak) XFRouting *previousRouting;
+@property (nonatomic, weak, readwrite) XFRouting *previousRouting;
 /**
  *  下一个关联的模块路由
  */
-@property (nonatomic, weak) XFRouting *nextRouting;
+@property (nonatomic, weak, readwrite) XFRouting *nextRouting;
+
+/**
+ *  父路由
+ */
+@property (nonatomic, weak, readwrite) XFRouting *parentRouting;
+
+/**
+ *  子路由
+ */
+@property (nonatomic, strong, readwrite) NSMutableArray<XFRouting *> *subRoutes;
 
 /**
  *  当前视图
@@ -37,9 +48,18 @@
 @property (nonatomic, strong) UINavigationController *currentNavigator;
 
 /**
+ *  事件层
+ */
+@property (nonatomic, weak, readwrite) id<XFUIOperatorPort> uiOperator;
+
+/**
  *  所有用侦听通知的对象
  */
 @property (nonatomic, strong) NSMutableArray *observers;
+/**
+ *  标识当前路由是否被释放过资源
+ */
+@property (nonatomic, assign, getter=hadReleaseStuff) BOOL releaseStuff;
 @end
 
 @implementation XFRouting
@@ -50,7 +70,7 @@
     if (navigator) {
         mainWindow.rootViewController = LEGORealInterface(navigator);
     }else{
-        mainWindow.rootViewController = LEGORealInterface([self realInterface]);
+        mainWindow.rootViewController = MainActivity;
     }
     [mainWindow makeKeyAndVisible];
 }
@@ -58,17 +78,15 @@
 #pragma mark - MVx控制器切换
 - (void)pushMVxViewController:(UIViewController *)viewController
 {
-    WS(weakSelf)
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[LEGORealInterface(weakSelf.realInterface) navigationController] pushViewController:viewController animated:YES];
+        [[MainActivity navigationController] pushViewController:viewController animated:YES];
     });
 }
 
-- (void)presentMVxViewContrller:(UIViewController *)viewController
+- (void)presentMVxViewController:(UIViewController *)viewController
 {
-    WS(weakSelf)
     dispatch_async(dispatch_get_main_queue(), ^{
-        [LEGORealInterface(weakSelf.realInterface) presentViewController:viewController animated:YES completion:nil];
+        [MainActivity presentViewController:viewController animated:YES completion:nil];
     });
 }
 
@@ -76,53 +94,44 @@
 // Modal方式
 - (void)presentRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
-    WS(weakSelf)
-    [self addRouting:nextRouting withTrasitionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [LEGORealInterface(weakSelf.realInterface) presentViewController:LEGORealInterface(nextRouting.realInterface) animated:YES completion:nil];
-        });
+    [self putRouting:nextRouting withTrasitionBlock:^(XFActivity *thisInterface, XFActivity *nextInterface) {
+        [thisInterface presentViewController:nextInterface animated:YES completion:nil];
     } intent:intentData];
 }
+
 - (void)dismiss
 {
-    WS(weakSelf)
-    [self removeRoutingWithTrasitionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [LEGORealInterface(weakSelf.realInterface) dismissViewControllerAnimated:YES completion:nil];
-        });
+    [self removeRoutingWithTrasitionBlock:^(XFActivity *thisInterface, XFActivity *nextInterface) {
+        [thisInterface dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
 // PUSH方式
 - (void)pushRouting:(XFRouting *)nextRouting intent:(id)intentData
 {
-    WS(weakSelf)
-    [self addRouting:nextRouting withTrasitionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[LEGORealInterface(weakSelf.realInterface) navigationController] pushViewController:LEGORealInterface(nextRouting.realInterface) animated:YES];
-        });
-        
+    [self putRouting:nextRouting withTrasitionBlock:^(XFActivity *thisInterface, XFActivity *nextInterface) {
+        [thisInterface.navigationController pushViewController:nextInterface animated:YES];
     } intent:intentData];
 }
+
 - (void)pop
 {
-    WS(weakSelf)
-    [self removeRoutingWithTrasitionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[LEGORealInterface(weakSelf.realInterface) navigationController] popViewControllerAnimated:YES];
-        });
+    [self removeRoutingWithTrasitionBlock:^(XFActivity *thisInterface, XFActivity *nextInterface) {
+        [thisInterface.navigationController popViewControllerAnimated:YES];
     }];
 }
 
 // 自定义切换
-- (void)addRouting:(XFRouting *)nextRouting withTrasitionBlock:(void(^)())trasitionBlock intent:(id)intentData {
+- (void)putRouting:(XFRouting *)nextRouting withTrasitionBlock:(TrasitionBlock)trasitionBlock intent:(id)intentData {
     // 绑定关系
     [self _flowToNextRouting:nextRouting];
     // 移除当前视图焦点
     [self.uiOperator viewWillResignFocus];
     // 执行切换界面
     if (trasitionBlock) {
-        trasitionBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            trasitionBlock(MainActivity,LEGORealInterface(nextRouting.realInterface));
+        });
     }
     // 下一个视图获得焦点，并传送意图数据
     if (self.nextRouting) {
@@ -131,40 +140,105 @@
 }
 
 
+#pragma mark - 路由管理
+// 添加子路由
+- (__kindof id<XFUserInterfacePort>)addSubRouting:(XFRouting *)subRouting asChildInterface:(BOOL)asChildInterface
+{
+    subRouting.subRoute = YES;
+    XFActivity *subInterface = LEGORealInterface(subRouting.realInterface);
+    if (asChildInterface) {
+        [MainActivity addChildViewController:subInterface];
+    }
+    [self.subRoutes addObject:subRouting];
+    subRouting.parentRouting = self;
+    return subInterface;
+}
+
+
 // 移除当前Routing
-- (void)removeRoutingWithTrasitionBlock:(void(^)())trasitionBlock
+- (void)removeRoutingWithTrasitionBlock:(TrasitionBlock)trasitionBlock
+{
+    // 标识为程序移除
+    [self invokeMethod:@"setPoppingProgrammatically:" param:[NSNumber numberWithBool:YES] forObject:MainActivity];
+    // 开始移除当前路由并切换
+    [self _startRemoveRoutingWithTrasitionBlock:trasitionBlock];
+}
+
+// 视图层willDisappear时，判断是否能释放当前Routing资源
+- (void)xfLego_removeRouting
+{
+    // 如果当前是子路由(作为VIPER框架模块的子模块或MVx架构的子控制器)
+    // 或者如果当前路由的父路由存在，过滤掉受管理的子视图移除显示的情况，路由资源的释放由父路由管理
+    if (self.isSubRoute || self.parentRouting) {
+        return;
+    }
+    // 开始移除当前路由
+    [self _startRemoveRoutingWithTrasitionBlock:nil];
+}
+
+- (void)_startRemoveRoutingWithTrasitionBlock:(TrasitionBlock)trasitionBlock
 {
     // 移除当前视图焦点
     [self.uiOperator viewWillResignFocus];
+    
     // 执行切换界面
     if (trasitionBlock) {
-        trasitionBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            trasitionBlock(MainActivity,nil);
+        });
     }
+    
     // 上一个视图获得焦点，并传送意图数据
     if (self.previousRouting) {
         [self.previousRouting.uiOperator viewWillBecomeFocusWithIntentData:[self.uiOperator intentData]];
     }
+    
+    // 释放路由
+    [self _releaseRouting:self];
+    // 打印路由关系链
+    [XFRoutingLinkManager log];
 }
 
-// 释放当前Routing资源
-- (void)xfLego_removeRouting
+// 递归释放路由方法
+- (void)_releaseRouting:(XFRouting *)routing
 {
     // 解除上一个路由关系链
-    if(self.previousRouting) {
-        self.previousRouting.nextRouting = nil;
-        self.previousRouting = nil;
+    if(routing.previousRouting) {
+        routing.previousRouting.nextRouting = nil;
+        routing.previousRouting = nil;
+    }
+    
+    // 删除所有侦听
+    if (routing->_observers) {
+        for (id<NSObject> observer in routing->_observers) {
+            [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        }
+        routing->_observers = nil;
+    }
+    
+    // 释放子路由
+    if (routing->_subRoutes) {
+        for (XFRouting *subRoute in routing->_subRoutes) {
+            [self _releaseRouting:subRoute];
+        }
+        // 删除所有子路由
+        [routing->_subRoutes removeAllObjects];
+        routing->_subRoutes = nil;
     }
     
     // 从路由管理中心移除
-    [XFRoutingLinkManager removeRouting:self];
-    [XFRoutingLinkManager log];
+    [XFRoutingLinkManager removeRouting:routing];
     
-    if (!self.observers) return;
-    // 删除所有侦听
-    for (id<NSObject> observer in self.observers) {
-        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    // 标识释放过当前路由
+    routing.releaseStuff = YES;
+}
+
+- (void)dealloc
+{
+    // 如果当前模块为MVx父控制器的子模块，且没有释放过
+    if (!self.hadReleaseStuff) {
+        [self _startRemoveRoutingWithTrasitionBlock:nil];
     }
-    self.observers = nil;
 }
 
 
@@ -205,16 +279,31 @@
     }else{
         NSArray<NSString *> *comps = [interface componentsSeparatedByString:@"-"];
         // 如果是xib
-        if (comps.count == 2 && [comps[0] containsString:@"x"]) {
-            activity = [[XFActivity alloc] initWithNibName:comps[1] bundle:nil];
+        if ([comps[XF_Index_First] containsString:@"x"]) {
+            if (comps.count == XF_Index_Third) {
+                 Class activityClass = NSClassFromString(comps[XF_Index_Second]);
+                if (activityClass) { // 如果第二个参数就是Activity类
+                     activity = [[activityClass alloc] initWithNibName:comps[XF_Index_Second] bundle:nil];
+                }else{ // 使用XFActivity类
+                    activity = [[XFActivity alloc] initWithNibName:comps[XF_Index_Second] bundle:nil];
+                }
+            }else if(comps.count == XF_Index_Fourth){ // 如果有指定Activity类型
+                Class activityClass = NSClassFromString(comps[XF_Index_Third]);
+                if (activityClass) {
+                    activity = [[activityClass alloc] initWithNibName:comps[XF_Index_Second] bundle:nil];
+                }else{
+                    NSLog(@"********************ActivityClass加载错误!!!***********************");
+                    return nil;
+                }
+            }
             
             // 如果是从storyboard中加载
-        }else if(comps.count == 3 && [comps[0] containsString:@"s"]){
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:comps[1] bundle:nil];
-            activity = [storyboard instantiateViewControllerWithIdentifier:comps[2]];
+        }else if(comps.count == XF_Index_Fourth && [comps[XF_Index_First] containsString:@"s"]){
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:comps[XF_Index_Second] bundle:nil];
+            activity = [storyboard instantiateViewControllerWithIdentifier:comps[XF_Index_Third]];
         }else{
             NSLog(@"********************从xib或storyboard加载视图错误!!!***********************");
-            NSLog(@"请检查字符串标识：\n\nxib方式:x-xibName\nstoryboard方式:s-storyboardName-controllerIdentifier\n\n");
+            NSLog(@"请检查字符串标识：\n\nxib方式:x-xibName[-activityClass]\nstoryboard方式:s-storyboardName-controllerIdentifier\n\n");
             NSLog(@"************************************************************************");
             return nil;
         }
@@ -315,13 +404,21 @@
     return self.currentNavigator ? self.currentNavigator : [LEGORealInterface([self.uiOperator userInterface]) navigationController];
 }
 
-// 移除当前类对之的强引用
+// 移除当前路由对视图层的强引用
 - (void)_delayDestoryInterfaceRef
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.currentUserInterface = nil;
-        self.currentNavigator = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while (true) {
+            // 当事件层能拿到视图时，立即释放对它的强引用
+            if ([self.uiOperator userInterface]) {
+                self.currentUserInterface = nil;
+                self.currentNavigator = nil;
+                break;
+            }
+            sleep(1);
+        }
     });
+    
 }
 
 #pragma mark - 懒加载
@@ -331,5 +428,13 @@
         _observers = [NSMutableArray array];
     }
     return _observers;
+}
+
+- (NSMutableArray<XFRouting *> *)subRoutes
+{
+    if (_subRoutes == nil) {
+        _subRoutes = [NSMutableArray array];
+    }
+    return _subRoutes;
 }
 @end

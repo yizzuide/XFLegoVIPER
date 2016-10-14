@@ -8,7 +8,8 @@
 
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
-#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate>
 
@@ -81,7 +82,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
   // execute the command
-  [_selection execute:_data[indexPath.row]];
+  [_selection execute:RACTuplePack(indexPath,_data[indexPath.row])];
   
   // forward the delegate method
   if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {

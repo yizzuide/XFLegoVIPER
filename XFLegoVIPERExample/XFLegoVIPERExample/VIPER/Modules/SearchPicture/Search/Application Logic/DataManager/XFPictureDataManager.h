@@ -11,5 +11,5 @@
 @class RACSignal;
 @interface XFPictureDataManager : XFDataManager
 
-- (RACSignal *)grabPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory;
+- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory startIndex:(NSUInteger)startIndex;
 @end

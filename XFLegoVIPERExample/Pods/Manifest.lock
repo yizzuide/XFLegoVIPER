@@ -25,6 +25,7 @@ PODS:
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.10)
+  - MJRefresh (3.1.12)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - AFNetworking-RACExtensions
   - MBProgressHUD (~> 0.9.1)
   - MJExtension
+  - MJRefresh
   - ReactiveCocoa
   - SDWebImage
 
@@ -49,9 +51,10 @@ SPEC CHECKSUMS:
   AFNetworking-RACExtensions: a043c6b492fa892395ceb9d20bc4c94e96e08a57
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 9745accbb69623d18fe31b7e0bbe34fa3264eb0d
+PODFILE CHECKSUM: 36b467bd3a3469c265d830374153d706259775ae
 
 COCOAPODS: 1.0.1

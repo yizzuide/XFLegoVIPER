@@ -13,6 +13,10 @@
 
 - (RACSignal *)fetchPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
-     return [XFConvertDataManagerToType(XFPictureDataManager *) grabPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
+    // 存储搜索内容
+    [[NSUserDefaults standardUserDefaults] setObject:mainCategory forKey:@"mainCategory"];
+    [[NSUserDefaults standardUserDefaults] setObject:secondCategory forKey:@"secondCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+     return [XFConvertDataManagerToType(XFPictureDataManager *) pullPictureDataWithMainCategory:mainCategory secondCategory:secondCategory startIndex:0];
 }
 @end

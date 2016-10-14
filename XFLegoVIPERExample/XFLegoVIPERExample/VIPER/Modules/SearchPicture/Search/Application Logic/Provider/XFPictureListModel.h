@@ -15,5 +15,5 @@
 @property (nonatomic, copy) NSString *queryExt;
 @property (nonatomic, assign) NSUInteger listNum;
 @property (nonatomic, assign) NSUInteger displayNum;
-@property (nonatomic, strong) NSArray<XFPictureModel *> *data;
+@property (nonatomic, strong) NSMutableArray<XFPictureModel *> *data;
 @end

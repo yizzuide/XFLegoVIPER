@@ -12,8 +12,13 @@
 @implementation XFPresenter
 
 - (void)viewDidLoad{}
+- (void)initCommand{}
+- (void)registerMVxNotifactions{}
 - (void)initRenderView{}
-- (void)viewDidUnLoad{}
+- (void)viewWillAppear{}
+- (void)viewDidAppear{}
+- (void)viewWillDisappear{}
+- (void)viewDidDisappear{}
 
 - (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
 - (void)viewWillResignFocus{}
@@ -31,12 +36,19 @@
 {
     [self setValue:view forKey:@"userInterface"];
     [self viewDidLoad];
+    [self initCommand];
+    [self registerMVxNotifactions];
+    [self initRenderView];
+}
+
+- (void)xfLego_viewWillAppear
+{
+    [self viewWillAppear];
 }
 
 - (void)xfLego_viewWillDisappear
 {
     [self invokeMethod:@"xfLego_removeRouting" param:nil forObject:self.routing];
-    [self viewDidUnLoad];
 }
 
 @end

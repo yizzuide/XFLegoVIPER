@@ -16,6 +16,15 @@
 
 #define LEGONextStep 0.0151
 
+#define XF_Index_First  0
+#define XF_Index_Second 1
+#define XF_Index_Third  2
+#define XF_Index_Fourth 3
+#define XF_Index_Fifth  5
+#define XF_Index_Sixth  6
+
+#define XF_Debug_M(); NSLog(@"%s",__func__);
+
 #define SUPPRESS_UNDECLARED_SELECTOR_LEAK_WARNING(code)                        \
 _Pragma("clang diagnostic push")                                        \
 _Pragma("clang diagnostic ignored \"-Wundeclared-selector\"")     \
