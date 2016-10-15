@@ -336,7 +336,7 @@ XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], n
 @end
 ```
 
-3、MVx控制器添加VIPER子路由视图作为子控制器
+####3、MVx控制器添加VIPER子路由视图作为子控制器
 ```objc
 #import "XFInterfaceFactory.h" // 导入头文件
 
