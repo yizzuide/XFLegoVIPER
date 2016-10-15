@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.3.1-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.5.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -49,7 +49,7 @@ VIPER不属于MV*架构系列，但它是所有这些架构中单一责任分得
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.3.1'
+> pod 'XFLegoVIPER','1.5.0'
 
 2、使用手动添加
 
@@ -64,61 +64,82 @@ VIPER不属于MV*架构系列，但它是所有这些架构中单一责任分得
 ###一、模块入口类`XFRouting`
 Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块与模块之间的跳转（相当于界面之跳转），它初化始当前模块的的所有层级关系链，也保存着上一个和下一个模块的引用关系链，是整个架构的关键层。
 
-####1、初始化一个模块，建立一个`XFSearchRouting`并继承自`XFRouting`,在.m文件里覆盖`+ (instancetype)routing`方法（使用`Activity`而不使用`UIViewController`是为了和旧项目MVC等架构区别开来）：
+####1、初始化一个模块，建立一个`XFSearchRouting`并继承自`XFRouting`,在.m文件中（使用`Activity`而不使用`UIViewController`是为了和旧项目MVC等架构区别开来）：
 ```objc
-+ (instancetype)routing
-{
-    /**
-     *  代码方式加载 
-     *  如果没有UINavigationController这个嵌套，可以传nil，或使用不带navigatorClass参数的方法
-     *  除了ActivityClass必传外，其它都可以传空，这种情况适用于对MVC等其它架构的过渡
-     */
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFSearchActivity class]
-                                                   navigatorClass:[UINavigationController class]
-                                                   presenterClass:[XFSearchPresenter class]
-                                                  interactorClass:[XFSearchInteractor class]
-                                                 dataManagerClass:[XFPictureDataManager class]];
-                                                 
-   // xib方式加载(格式: x-xibFileName)
-    //return [[super routing] buildModulesAssemblyWithIB:@"x-XFDetailsActivity" presenterClass:[XFDetailsPresenter class] interactorClass:nil dataManagerClass:nil];
-    
-    // storyboard方式(格式: s-storyboardFileName-controllerIdentifier)
-    //return [[super routing] buildModulesAssemblyWithIB:@"s-XFDetails-XFDetailsID" presenterClass:[XFDetailsPresenter class] interactorClass:nil dataManagerClass:nil];
-}
+@implementation XFSomeRouting
+
+/* 有UINavigationController的情况*/
+XF_InjectMoudleWith_Nav([UINavigationController class],
+                        [XFSearchActivity class],
+                        [XFSearchPresenter class],
+                        [XFSearchInteractor class],
+                        [XFPictureDataManager class])
+			
+/* 无UINavigationController的情况*/
+XF_InjectMoudleWith_Act(XF_Class_(XFPictureResultsActivity),
+                        XF_Class_(XFPictureResultsPresenter),
+                        XF_Class_(XFPictureResultsInteractor),
+                        XF_Class_(XFPictureDataManager))
+/* xib方式加载*/
+XF_InjectMoudleWith_IB(@"x-XFDetailsActivity", [XFDetailsPresenter class], nil, nil)
+
+/* storyboard方式*/
+XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], nil, nil)
+
+@end
 ```
+
 ####2、在`UIWindow`上显示：
 ```objc
-    XFSearchRouting *searchRouting = [XFSearchRouting routing];
-    // 获得导航栏
-    UINavigationController *navigation = searchRouting.realNavigator;
-    // TODO: 配置导航栏
-    // ...
-    // 调用显示方法，之后不用再写[self.window makeKeyAndVisible];
-    [searchRouting showRootActivityOnWindow:self.window];
+    XF_ShowRootRouting2Window_(XFSearchRouting, {
+        // 配置导航栏
+        UINavigationController *navigation = routing.realNavigator;
+        navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
+        [navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    })
 ```
 ####3、模块之间的跳转,这个方法是`XFSearchPresenter`发起对`XFSearchRouting`的请求：
 ```objc
 - (void)transitionToShowResultsMoudle {
-    XFPictureResultsRouting *routing = [XFPictureResultsRouting routing];
-    // 使用intentData传递意图数据
-    // self.uiOperator：相对当前Routing的事件处理层Presenter
-    [self pushRouting:routing intent:self.uiOperator.intentData];
+    XF_PUSH_Routing_(XFPictureResultsRouting, {
+        // 自定义切换动画
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.5;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeOut"];
+        //animation.type = kCATransitionPush;
+        //animation.subtype = kCATransitionFromBottom;
+        /*
+         animation.type = @"cube";//立方体效果
+         animation.type = @"suckEffect";//收缩效果
+         animation.type = @"oglFlip";//上下翻转效果
+         animation.type = @"rippleEffect";//滴水效果
+         animation.type = @"pageCurl";//向上翻一页效果
+         animation.type = @"pageUnCurl";//向下翻一页效果
+         */
+        animation.type = @"rippleEffect";
+        [[self.realInterface navigationController].view.layer addAnimation:animation forKey:@"animation"];
+    })
 }
 ```
 
-####4、使用路由管理器跟踪打印模块导航信息：
+####4、配置路由管理器：
 ```objc
-// 在AppDelegate.m的didFinishLaunchingWithOptions:
-[XFRoutingLinkManager enableLog];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// 允许跟踪打印模块导航信息
+	[XFRoutingLinkManager enableLog];
+	// 设置通用模块前辍,用于MVx架构里的控制器加载VIPER视图作为子控制器，并能提高模块通信时匹配精准度
+	[XFRoutingLinkManager setMoudlePrefix:@"XF"];
+
+}
 ```
 
 ###二、显示视图层`XFActivity`
-在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。那么谁来充当控制器呢？那就是`XFPresenter`,这个在后面会讲到。 
+在MVP、MVVM、VIPER架构中`UIViewController`和`UIView`一样是View，所以不能再当控制器来使用，而只能做UI的渲染、布局、动画的工作，这也是用`Activity`来替换`ViewController`命名的原因之一。 
 
 ####1、把一个`UIViewController`转为VIPER里的视图层：
 ```objc
 #import <UIKit/UIKit.h>
-#import "XFLegoVIPER.h" // 导入主头文件`XFLegoVIPER.h`头文件
+#import "UIViewController+XFLego.h" // 导入头文件
 
 @interface XFSearchActivity : UIViewController
 
@@ -150,10 +171,27 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 ####1、界面显示移除回调方法
 ```objc
-// 视图的显示完成回调方法
-- (void)viewDidLoad{} 
-// 视图被移除的回调方法
-- (void)viewDidUnLoad{} 
+/**
+ *  初始化命令（绑定视图层的事件动作<Action>）
+ */
+- (void)initCommand;
+
+/**
+ *  注册MVx架构通知 (不用手动移除通知，内部会进行管理)
+ */
+- (void)registerMVxNotifactions;
+
+/**
+ *  初始化渲染视图数据,在viewDidLoad之后，viewWillAppear之前调用
+ */
+- (void)initRenderView;
+
+// 同步视图生命周期(框架方法，用于子类覆盖，不要直接调用！）
+- (void)viewDidLoad;
+- (void)viewWillAppear;
+- (void)viewDidAppear;
+- (void)viewWillDisappear;
+- (void)viewDidDisappear;
 ```
 
 ####2、界面切换回调方法
@@ -256,10 +294,10 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 ```
 
 ###六、扩展功能
-####1、当前模块`Activity`子视图获得`Presenter`事件层
+####1、当前模块`Activity`子View获得`Presenter`事件层
 
 ```objc
-#import "XFLegoVIPER.h"
+#import "UIView+XFLego.h" // 导入头文件
 @interface SomeView : UIView
 
 @end
@@ -275,12 +313,50 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @end
 ```
 
-####2、不同构架模块间事件通信
+####2、VIPER模块视图层`Activity`添加子路由视图
+```objc
+@implementation XFPageControlActivity
+
+- (void)initSubView {
+    self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
+    // 添加模块子视图，当前Activity就为父模块视图
+    XFActivity *movieActivity = XF_SubUInterface_(@"Movie");
+    XFActivity *musicActivity = XF_SubUInterface_(@"Music");
+    XFActivity *bookActivity = XF_SubUInterface_(@"Book");
+    self.subActivitys = @[movieActivity,musicActivity,bookActivity];
+    self.movieActivity = movieActivity;
+    self.musicActivity = musicActivity;
+    self.bookActivity = bookActivity;
+    
+    // 设置每一个显示视图
+    [self.pageViewController setViewControllers:@[self.movieActivity] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+}
+@end
+```
+
+3、MVx控制器添加VIPER子路由视图作为子控制器
+```objc
+#import "XFInterfaceFactory.h" // 导入头文件
+
+@implementation  XFSourceViewController
+- (void)initSubView {
+	// Idea为模块名（注意：使用XF_SubUInterfaceForMVx_AddChild_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
+ 	XFActivity *ideaActivity = XF_SubUInterfaceForMVx_AddChild_Fast(@"Idea");
+	[self addChildViewController:ideaActivity];
+	[self.view addSubview:ideaActivity.view];
+}
+
+@end
+```
+
+####4、不同构架模块间事件通信
 本框架实现了不同构架间的模块通信机制：
-* 在VIPER架构中，模块通信的发起者和接收者都是事件层`Presenter`。
-* 如果从VIPER架构往MVx（MVC、MVP、MVVM）构架发事件通知就在`Presenter`层调用路由层提供的`sendNotificationForMVxWithName:intentData:`方法。
-* 如果从MVx构架往VIPER架构发事件就MVx构架的控制器里调用`[XFRoutingLinkManager sendEventName:intentData:forMoudlesName:]`方法。
-* 在VIPER架构中接收MVx里的原生通知时使用注册通知`registerForMVxNotificationsWithNameArray:`方法。
+* 在VIPER架构中，模块与模块之间事件通信。
+* 从VIPER架构往MVx（MVC、MVP、MVVM）构架发通知。
+* 从MVx构架往VIPER架构发事件。
+* 在VIPER架构中接收MVx里发出的通知。
 ```objc
 
 // 一个模块的Presenter发起事件
@@ -289,23 +365,26 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 - (void)viewDidLoad
 {
     // 发送单模块消息事件
-    [self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudleName:@"Search"];
+    XF_SendEventForMoudle_(@"Search", @"loadData", @"SomeData")
     // 发送多模块消息事件
-    //[self.routing sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
+    XF_SendEventForMoudles_(@[@"Search"], @"loadData", @"SomeData")
+    
+    // 在MVx架构中使用下面方法对VIPER架构中模块发事件数据（须导入XFRoutingLinkManager.h头文件）
+    XF_SendEventFormMVxForVIPERMoudles_(@[@"Search"], @"loadData", @"SomeData");
+    
     // 在VIPER架构中对MVx架构模块发通知
-    //[self.routing sendNotificationForMVxWithName:@"XFReloadDataNotification" intentData:nil];
-    
-    
-    
-    // 在MVx架构中使用下面方法对VIPER架构中模块发事件数据
-    //[XFRoutingLinkManager sendEventName:@"loadData" intentData:@"SomeData" forMoudlesName:@[@"Search"]];
-    
-    // 模拟在MVx架构测试发通知
+    XF_SendMVxNoti_(@"XFReloadDataNotification", nil);
+}
+
+- (void)registerMVxNotifactions
+{
+    // 模拟在MVx架构里发通知
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
     });
+    
     // 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveOtherMoudleEventName:intentData:`接收
-    [self.routing registerForMVxNotificationsWithNameArray:@[@"StartSearchNotification"]];
+    XF_RegisterMVxNotis_(@[@"StartSearchNotification"])
 }
 @end
 
@@ -314,52 +393,56 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 
 - (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
 {
-    NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
+    XF_EventIs_(@"StartSearchNotification", {
+        NSLog(@"接收到Mvx架构的通知: %@",eventName);
+    })
 }
 @end
 ```
 
-####3、不同架构间的融合
-#####3.1、从MVx架构的界面跳转到VIPER架构的界面
+####5、不同架构间的融合
+#####5.1、从MVx架构的界面跳转到VIPER架构的界面
 ```objc
-	XFNoticeRouting *routing = [XFNoticeRouting routing];
-	XFNoticeActivity *activity = routing.realInterface;
-	activity.hidesBottomBarWhenPushed = YES;
-	[self.navigationController pushViewController:activity animated:YES];
+#import "XFInterfaceFactory.h" // 导入头文件
+
+@implementation XFUserViewController
+
+- (void)pushToNext
+{
+	// Notice为模块名（注意：使用XF_UInterfaceForMVx_Show_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
+	XFActivity *noticeActivity = XF_UInterfaceForMVx_Show_Fast(@"Notice");
+	noticeActivity.hidesBottomBarWhenPushed = YES;
+	[self.navigationController pushViewController:noticeActivity animated:YES];
+}
+
+@end
 ```
 
-#####3.2、从VIPER架构的界面跳转到MVx架构的界面
+#####5.2、从VIPER架构的界面跳转到MVx架构的界面
 ```objc
 @implementation XFUserRouting
 
 // 使用当前模块的Presenter层调用这个切换界面的方法
 - (void)transition2Agreement
 {
-    // MVx里的界面
-    ProvisionViewController *vc = [[ProvisionViewController alloc] init];
-    vc.title = @"用户使用协议";
-    // 使用当前路由的切换MVx界面方法
-    [self pushMVxViewController:vc];
+	XF_PUSH_VCForMVx_(ProvisionViewController,{
+		viewController.title = @"用户使用协议";
+	})
 }
 @end
 ```
 
-#####3.3、把MVx架构代码转为VIPER架构
+#####5.3、把MVx架构代码转为VIPER架构
 ```objc
-// 1、先新建一个Routing,把MVx里的ViewController组装进来。
 @implementation XFIndexRouting
 
-+ (instancetype)routing
-{
-    return [[super routing] buildModulesAssemblyWithActivityClass:[XFIndexViewController class] presenterClass:nil interactorClass:nil dataManagerClass:nil];
-}
-@end
+XF_InjectMoudleWith_Act([XFIndexViewController class],[XFIndexPresenter class],nil,nil)
 
-// 2、再一步步简化掉MVx架构里的ViewController的代码到当前模块的事件层`XFIndexPresenter`,并添加到当前路由组装方法。
+@end
 ```
 
 ##注意事项
-* 在UIViewController/Activity中，覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`。
+* 在UIViewController/Activity中，任何生命周期方法要先调用父类实现（如：覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`）。
 * 在UIView中，覆盖`-didMoveToSuperview`生命周期方法，要先调用`[super didMoveToSuperview]`。
 
 
