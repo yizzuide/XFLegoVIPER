@@ -11,5 +11,5 @@
 
 @implementation XFMusicRouting
 
-XF_JnjectMoudleWith_IB(@"s-PageControl-MusicActivityID", [XFMusicPresenter class], nil, nil);
+XF_InjectMoudleWith_IB(@"s-PageControl-MusicActivityID", [XFMusicPresenter class], nil, nil);
 @end

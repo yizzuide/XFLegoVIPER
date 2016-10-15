@@ -34,8 +34,7 @@
 {
     NSString *mainCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"mainCategory"];
     NSString *secondCategory = [[NSUserDefaults standardUserDefaults] objectForKey:@"secondCategory"];
-    NSUInteger index = self.pictureListModel.data.count % 5 + 1;
-    NSLog(@"正在加载第%zd页！",index);
+    NSUInteger index = self.pictureListModel.data.count / 5 * 5;
     return [[XFConvertDataManagerToType(XFPictureDataManager *)
              pullPictureDataWithMainCategory:mainCategory
              secondCategory:secondCategory

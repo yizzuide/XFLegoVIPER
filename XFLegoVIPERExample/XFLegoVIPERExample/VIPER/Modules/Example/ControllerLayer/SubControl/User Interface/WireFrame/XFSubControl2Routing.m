@@ -18,7 +18,7 @@
 
 @implementation XFSubControl2Routing
 
-XF_JnjectMoudleWith_IB(@"x-XFSubControl2Activity", [XFSubControl2Presenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"x-XFSubControl2Activity", [XFSubControl2Presenter class], nil, nil)
 
 - (__kindof id<XFUserInterfacePort>)_collectInterfaceFromLoadSubRoutes
 {

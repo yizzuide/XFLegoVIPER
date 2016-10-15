@@ -18,7 +18,7 @@
 
 @implementation XFPictureResultsRouting
 
-XF_JnjectMoudleWith_Act(XF_Class_(XFPictureResultsActivity),
+XF_InjectMoudleWith_Act(XF_Class_(XFPictureResultsActivity),
                         XF_Class_(XFPictureResultsPresenter),
                         XF_Class_(XFPictureResultsInteractor),
                         XF_Class_(XFPictureDataManager))

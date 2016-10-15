@@ -11,5 +11,5 @@
 
 @implementation XFWorksRouting
 
-XF_JnjectMoudleWith_IB(@"x-XFWorksActivity", [XFWorksPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"x-XFWorksActivity", [XFWorksPresenter class], nil, nil)
 @end

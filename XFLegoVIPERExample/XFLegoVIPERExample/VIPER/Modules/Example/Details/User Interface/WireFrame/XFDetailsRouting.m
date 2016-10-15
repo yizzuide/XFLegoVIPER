@@ -12,10 +12,10 @@
 @implementation XFDetailsRouting
 
 /* xib方式加载*/
-//XF_JnjectMoudleWith_IB(@"x-XFDetailsActivity", [XFDetailsPresenter class], nil, nil)
+//XF_InjectMoudleWith_IB(@"x-XFDetailsActivity", [XFDetailsPresenter class], nil, nil)
 
 /* storyboard方式*/
-XF_JnjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], nil, nil)
 
 
 @end

@@ -13,7 +13,7 @@
 
 @implementation XFSubControlRouting
 
-XF_JnjectMoudleWith_IB(@"x-XFSubControlActivity", [XFSubControlPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"x-XFSubControlActivity", [XFSubControlPresenter class], nil, nil)
 
 - (UIView *)fluctuate2CollectSubRoutes
 {

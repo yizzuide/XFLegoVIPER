@@ -11,5 +11,5 @@
 
 @implementation XFBookRouting
 
-XF_JnjectMoudleWith_IB(@"s-PageControl-BookActivityID", [XFBookPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"s-PageControl-BookActivityID", [XFBookPresenter class], nil, nil)
 @end

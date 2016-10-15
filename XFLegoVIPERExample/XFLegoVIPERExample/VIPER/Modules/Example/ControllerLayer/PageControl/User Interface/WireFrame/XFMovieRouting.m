@@ -11,5 +11,5 @@
 
 @implementation XFMovieRouting
 
-XF_JnjectMoudleWith_IB(@"s-PageControl-MovieActivityID", [XFMoviePresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"s-PageControl-MovieActivityID", [XFMoviePresenter class], nil, nil)
 @end

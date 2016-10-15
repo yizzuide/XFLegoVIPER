@@ -18,7 +18,7 @@
 #define XF_Class_(Class) [Class class]
 
 // 快速注入模块成分-导航方式
-#define XF_JnjectMoudleWith_Nav(_NavigatorClass_,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
+#define XF_InjectMoudleWith_Nav(_NavigatorClass_,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
 + (instancetype)routing \
 { \
     return [[super routing] buildModulesAssemblyWithActivityClass:_ActivityClass_ \
@@ -28,10 +28,10 @@
                                                  dataManagerClass:_DataManagerClass_]; \
 }
 // 快速注入模块成分-子界面方式
-#define XF_JnjectMoudleWith_Act(_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
-XF_JnjectMoudleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_)
+#define XF_InjectMoudleWith_Act(_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
+XF_InjectMoudleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_)
 // 快速注入模块成分-ib方式
-#define XF_JnjectMoudleWith_IB(ibSymbol,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
+#define XF_InjectMoudleWith_IB(ibSymbol,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
 + (instancetype)routing \
 { \
     return [[super routing] buildModulesAssemblyWithIB:ibSymbol presenterClass:_PresenterClass_ interactorClass:_InteractorClass_ dataManagerClass:_DataManagerClass_]; \

@@ -17,7 +17,11 @@
 
 /* 如果没有UINavigationController这个嵌套，可以传nil，或使用不带navigatorClass参数的方法，
  除了ActivityClass必传外，其它都可以传空，这种情况适用于对MVC等其它架构的过渡*/
-XF_JnjectMoudleWith_Nav([UINavigationController class], [XFSearchActivity class], [XFSearchPresenter class], [XFSearchInteractor class], [XFPictureDataManager class])
+XF_InjectMoudleWith_Nav([UINavigationController class],
+                        [XFSearchActivity class],
+                        [XFSearchPresenter class],
+                        [XFSearchInteractor class],
+                        [XFPictureDataManager class])
 
 
 - (void)transitionToShowResultsMoudle {

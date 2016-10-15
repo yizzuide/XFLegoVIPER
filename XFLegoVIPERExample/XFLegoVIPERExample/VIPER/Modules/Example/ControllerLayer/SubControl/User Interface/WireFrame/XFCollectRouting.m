@@ -11,6 +11,6 @@
 
 @implementation XFCollectRouting
 
-XF_JnjectMoudleWith_IB(@"x-XFCollectActivity", [XFCollectPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"x-XFCollectActivity", [XFCollectPresenter class], nil, nil)
 
 @end

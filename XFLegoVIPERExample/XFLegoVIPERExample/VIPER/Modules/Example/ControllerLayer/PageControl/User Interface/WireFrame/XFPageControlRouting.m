@@ -11,5 +11,5 @@
 
 @implementation XFPageControlRouting
 
-XF_JnjectMoudleWith_IB(@"s-PageControl-PageControlActivityID", [XFPageControlPresenter class], nil, nil)
+XF_InjectMoudleWith_IB(@"s-PageControl-PageControlActivityID", [XFPageControlPresenter class], nil, nil)
 @end
