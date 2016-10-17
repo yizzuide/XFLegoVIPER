@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.5.1-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v1.5.2-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -49,7 +49,7 @@ VIPER不属于MV*架构系列，但它是所有这些架构中单一责任分得
 
 ##安装
 1、使用Cocoapods
-> pod 'XFLegoVIPER','1.5.1'
+> pod 'XFLegoVIPER','1.5.2'
 
 2、使用手动添加
 
@@ -122,7 +122,7 @@ XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], n
 }
 ```
 
-####4、配置路由管理器：
+####4、配置路由管理器(注意：使一个模块自动加入到路由管理时，一定要有事件层`Presenter`)：
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// 允许跟踪打印模块导航信息
