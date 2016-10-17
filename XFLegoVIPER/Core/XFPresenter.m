@@ -41,11 +41,6 @@
     [self initRenderView];
 }
 
-- (void)xfLego_viewWillAppear
-{
-    [self viewWillAppear];
-}
-
 - (void)xfLego_viewWillDisappear
 {
     [self invokeMethod:@"xfLego_removeRouting" param:nil forObject:self.routing];

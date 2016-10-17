@@ -68,7 +68,7 @@ XF_Present_Routing_(RoutingClass,{})
 #define XF_PUSH_VCForMVx_(UIViewControllerClass,customCode) \
 UIViewControllerClass *viewController = [[UIViewControllerClass alloc] init]; \
 customCode \
-[self presentMVxViewController:viewController];
+[self pushMVxViewController:viewController];
 // 快速PUSH一个MVx构架控制器
 #define XF_PUSH_VCForMVx_Fast(UIViewControllerClass) \
 XF_PUSH_VCForMVx_(UIViewControllerClass,{})

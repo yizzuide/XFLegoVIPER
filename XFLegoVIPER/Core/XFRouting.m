@@ -123,8 +123,11 @@
 
 // 自定义切换
 - (void)putRouting:(XFRouting *)nextRouting withTrasitionBlock:(TrasitionBlock)trasitionBlock intent:(id)intentData {
-    // 绑定关系
-    [self _flowToNextRouting:nextRouting];
+    // 如果有事件处理层
+    if (nextRouting.uiOperator) {
+        // 绑定关系
+        [self _flowToNextRouting:nextRouting];
+    }
     // 移除当前视图焦点
     [self.uiOperator viewWillResignFocus];
     // 执行切换界面

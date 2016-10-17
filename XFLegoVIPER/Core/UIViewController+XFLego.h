@@ -20,6 +20,7 @@
 
 // 基于ReactiveCocoa的双向数据绑定
 #define XF_$_(UIControl, VProp, EventHandler, VDProp) \
+UIControl.VProp = EventHandler.VDProp; \
 RAC(EventHandler, VDProp) = [RACObserve(UIControl, VProp) distinctUntilChanged]; \
 [RACObserve(EventHandler, VDProp) subscribe:RACChannelTo(UIControl, VProp)]; \
 

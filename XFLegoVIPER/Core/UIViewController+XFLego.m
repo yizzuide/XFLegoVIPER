@@ -51,7 +51,7 @@ static void * xfActivity_poppingProgrammatically_porpertyKey = (void *)@"xfActiv
 - (void)viewWillAppear:(BOOL)animated
 {
     if (self.eventHandler) {
-        [self invokeMethod:@"xfLego_viewWillAppear" param:nil forObject:self.eventHandler];
+        [self invokeMethod:@"viewWillAppear" param:nil forObject:self.eventHandler];
     }
 }
 
@@ -66,7 +66,7 @@ static void * xfActivity_poppingProgrammatically_porpertyKey = (void *)@"xfActiv
 {
     if (self.eventHandler) {
         [self invokeMethod:@"viewWillDisappear" param:nil forObject:self.eventHandler];
-        // 如果当前视图被pop或dismiss
+        // 如果当前视图被pop或dismiss，且不是通过框架方法
         if ((self.isMovingFromParentViewController || self.isBeingDismissed)
             && !self.isPoppingProgrammatically) {
             // 通知事件层当前视图将消失

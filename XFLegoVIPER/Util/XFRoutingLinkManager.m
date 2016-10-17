@@ -115,33 +115,60 @@ static BOOL _enableLog = NO;
     if (_enableLog) {
         NSLog(@"current routing count: %zd",_mapTable.count);
         NSLog(@"Routing link:");
-        XFRouting *routing = [_mapTable objectForKey:_keyArr[XF_Index_First]];
         
-        NSMutableString *mStr = [NSMutableString string];
-        [mStr appendString:[NSString stringWithFormat:@"(\n\t%@",NSStringFromClass([routing class])]];
-        
-        XFRouting *nextRouting = routing;
-        do {
-            NSArray<XFRouting *> *subRoutes = nextRouting.subRoutes;
-            if (subRoutes.count) {
-                [mStr appendString:@"\n\t("];
-                for (XFRouting *subRoute in subRoutes) {
-                    [mStr appendString:[NSString stringWithFormat:@"\n\t\t-> %@",NSStringFromClass([subRoute class])]];
+        NSMutableString *logStrM = [NSMutableString string];
+        NSUInteger count = _keyArr.count;
+        NSUInteger routingDepthCount = 0;
+        for (int i = 0; i < count; i++) {
+            XFRouting *routing = [_mapTable objectForKey:_keyArr[i]];
+            if (routing.previousRouting) {
+                break;
+            }
+            NSString *firstFix = [NSString stringWithFormat:@"\nRoot Routing(%zd): (\n\t%@",routingDepthCount,NSStringFromClass([routing class])];
+            if (routing.parentRouting.subRoute) {
+                firstFix = [NSString stringWithFormat:@"\nSub Root from %@(%zd): (\n\t%@",NSStringFromClass([routing.parentRouting class]),routingDepthCount,NSStringFromClass([routing class])];
+            }
+            [logStrM appendString:firstFix];
+            routingDepthCount++;
+            
+            XFRouting *nextRouting = routing;
+            NSUInteger subRoutingDepthCount = 1;
+            do {
+                // 打印子路由
+                NSArray<XFRouting *> *subRoutes = nextRouting.subRoutes;
+                if (subRoutes.count) {
+                    [logStrM appendString:@"\n"];
+                    for (NSUInteger t = 0; t < subRoutingDepthCount; t++) {
+                        [logStrM appendString:@"\t"];
+                    }
+                    [logStrM appendString:@"Sub Routing: ("];
+                    for (XFRouting *subRoute in subRoutes) {
+                        [logStrM appendString:@"\n"];
+                        for (NSUInteger t = 0; t < subRoutingDepthCount * 2; t++) {
+                            [logStrM appendString:@"\t"];
+                        }
+                        [logStrM appendString:[NSString stringWithFormat:@"%@",NSStringFromClass([subRoute class])]];
+                    }
+                    [logStrM appendString:@"\n"];
+                    for (NSUInteger t = 0; t < subRoutingDepthCount; t++) {
+                        [logStrM appendString:@"\t"];
+                    }
+                    [logStrM appendString:@")"];
+                    
+                    subRoutingDepthCount++;
                 }
-                [mStr appendString:@"\n\t)"];
-            }
-            
-            nextRouting = nextRouting.nextRouting;
-            
-            if (nextRouting != nil) {
-                [mStr appendString:[NSString stringWithFormat:@"\n\t-> %@",NSStringFromClass([nextRouting class])]];
-                continue;
-            }
-            [mStr appendString:@"\n)"];
-        } while (nextRouting != nil);
-        NSLog(@"%@",mStr);
+                
+                // 打印下一个关连的路由
+                nextRouting = nextRouting.nextRouting;
+                if (nextRouting != nil) {
+                    [logStrM appendString:[NSString stringWithFormat:@"\n\t-> %@",NSStringFromClass([nextRouting class])]];
+                    continue;
+                }
+                [logStrM appendString:@"\n)"];
+            } while (nextRouting != nil);
+        }
+        NSLog(@"%@",logStrM);
     }
-	
 }
 
 @end
