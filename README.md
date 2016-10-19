@@ -444,6 +444,7 @@ XF_InjectMoudleWith_Act([XFIndexViewController class],[XFIndexPresenter class],n
 ##注意事项
 * 在UIViewController/Activity中，任何生命周期方法要先调用父类实现（如：覆盖`-viewDidLoad`生命周期方法，要先调用`[super viewDidLoad]`）。
 * 在UIView中，覆盖`-didMoveToSuperview`生命周期方法，要先调用`[super didMoveToSuperview]`。
+* 一个模块就是一个路由，模块名由路由业务名决定（如：路由XFIndexRouting的模块名是Index），注意模块名不要重复，否由会影响路由管理器对事件的分发。
 
 
 
