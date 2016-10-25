@@ -16,6 +16,10 @@ A lightweight framework base on VIPER architecture for IOS that build robust and
     <img src="./ScreenShot/usage.gif" alt="usage" />
 </p>
 
+##视频介绍
+* [公司内部培训视频之XFLegoVIPER框架介绍](https://pan.baidu.com/s/1mhZHRQC)
+
+
 ##什么是VIPER？
 VIPER 是一个创建 iOS 应用简明构架的程序。VIPER 可以是视图 (View)，交互器 (Interactor)，展示器 (Presenter)，实体 (Entity) 以及路由 (Routing) 的首字母缩写。简明架构将一个应用程序的逻辑结构划分为不同的责任层。这使得它更容易隔离依赖项 (如数据库)，也更容易测试各层间的边界处的交互。
 
