@@ -9,12 +9,26 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (XFLegoInvokeMethod)
+
 /**
- *  向对象发消息
+ *  调用当前对象发送消息,无参数
+ *
+ *  @param selector 消息方法
+ */
+- (void)invokeMethod:(NSString *)selector;
+/**
+ *  调用当前对象发送消息，并传递一个参数
  *
  *  @param selector 消息方法
  *  @param param    参数
- *  @param object   目标对象
  */
-- (void)invokeMethod:(NSString *)selector param:(id)param forObject:(id)object;
+- (void)invokeMethod:(NSString *)selector param:(id)param;
+/**
+ *  调用当前对象发送消息，并传递一个参数
+ *
+ *  @param selector 消息方法
+ *  @param param1   参数1
+ *  @param param2   参数2
+ */
+- (void)invokeMethod:(NSString *)selector param1:(id)param1 param2:(id)param2;
 @end

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XFSubControl2Activity">
+            <connections>
+                <outlet property="collectBtn" destination="aMe-dd-x2n" id="dfC-C2-5H0"/>
+                <outlet property="containerView" destination="efm-5f-gkC" id="E4D-pF-cNL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="worksBtn" destination="fGX-H7-Wzd" id="kWC-5X-aCA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGX-H7-Wzd">
+                    <state key="normal" title="我的作品">
+                        <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="worksBtnAction" destination="-1" eventType="touchUpInside" id="aup-yM-9Xh"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efm-5f-gkC">
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-dd-x2n">
+                    <state key="normal" title="我的收藏">
+                        <color key="titleColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="collectBtnAction" destination="-1" eventType="touchUpInside" id="tn4-Ww-Y4d"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="efm-5f-gkC" secondAttribute="trailing" constant="8" id="1fH-R8-xEC"/>
+                <constraint firstItem="aMe-dd-x2n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="KDZ-4U-2K5"/>
+                <constraint firstItem="aMe-dd-x2n" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PKl-Pb-opp"/>
+                <constraint firstItem="fGX-H7-Wzd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QLq-IN-9ZA"/>
+                <constraint firstItem="efm-5f-gkC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TpY-fG-Evz"/>
+                <constraint firstItem="fGX-H7-Wzd" firstAttribute="top" secondItem="aMe-dd-x2n" secondAttribute="bottom" constant="22" id="UgY-VD-W8A"/>
+                <constraint firstItem="efm-5f-gkC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="VtD-oU-AYs"/>
+                <constraint firstItem="efm-5f-gkC" firstAttribute="top" secondItem="fGX-H7-Wzd" secondAttribute="bottom" constant="22" id="soi-xl-VSg"/>
+                <constraint firstAttribute="bottom" secondItem="efm-5f-gkC" secondAttribute="bottom" constant="8" id="yGB-mK-lsf"/>
+            </constraints>
+            <point key="canvasLocation" x="204" y="304"/>
+        </view>
+    </objects>
+</document>
