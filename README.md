@@ -11,7 +11,7 @@
 </p>
 
 ## Note
-A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
+🚀A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
 
 🍺Thanks VIPER!
 <p align="center">
@@ -45,7 +45,7 @@ Copy all files under `~/XFLegoVIPER` folder  to your project.
 ## Feture
 * Assemble a module as fast so far, only need one line code.
 * Build-In powerful module event communication.
-* Real-Time track Rouing link.
+* Real-Time track Rouing link💫.
 * Can combine popular `ReactiveCocoa` library work together seamless.
 * Consider module and controller as component, using the same transition API.
 * Compatible with old project that build of MVx pattern, and help transition to VIPER pattern.
