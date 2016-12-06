@@ -14,15 +14,12 @@
 🚀A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
 
 🍺Thanks VIPER!
-<p align="center">
-	<img src="https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg" alt="VIPER Blueprint" />
-</p>
+
+![VIPER Design Pattern](https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg)
 
 ## Example
 ### Demo
-<p align="center">
-    <img src="./ScreenShot/usage.gif" alt="usage" />
-</p>
+![Demo](./ScreenShot/usage.gif)
 
 ### Complete project
 > come soon:)
