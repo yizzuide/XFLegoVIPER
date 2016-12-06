@@ -55,12 +55,12 @@ Copy all files under `~/XFLegoVIPER` folder  to your project.
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
-[1.5.x(中文)](./README1_5_x.md) | 2.x
+[1.5.x(Chinese)](./README1_5_x.md) | 2.x
 
 ## Reference
-[iOS Architecture Patterns](http://www.tuicool.com/articles/rI7ZNn)
+iOS Architecture Patterns [English](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52#.6tpii2lax) | [Chinese](http://www.cocoachina.com/ios/20160108/14916.html?utm_source=tuicool&utm_medium=referral)
 
-[Architecting iOS Apps with VIPER](https://objccn.io/issue-13-5/)
+Architecting iOS Apps with VIPER [English](https://www.objc.io/issues/13-architecture/viper/) | [Chinese](https://objccn.io/issue-13-5/)
 
 ## Author
 yizzuide, fu837014586@163.com
