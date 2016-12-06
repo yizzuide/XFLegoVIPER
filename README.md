@@ -39,6 +39,31 @@
 ### Manual
 Copy all files under `~/XFLegoVIPER` folder  to your project.
 
+## ❤Using Template❤
+Now you can use template file to create a module which make of stuff class with interface as fast as possible.
+### 1.Find Template file 
+find Template file in `~/Template/Architecture/XFLegoVIPER.xctemplate`
+
+### 2.Copy to Xcode path
+1. open path `/Applications/Xcode-unsigned.app/Contents/Developer/Library/Xcode/Templates/File Templates`
+2. create new folder named `Architecture`
+3. drag the template file to `Architecture` folder
+
+### 3.Using xcode create module files
+1. Quit Xcode and open again
+2. Right click a group,select `New File...`
+3. Scrolling to Architecture Section, double click `XFLegoVIPER` item
+4. Input module name (you need add class prefix), and next, final click create action
+
+### 4.Fix blue folder ref
+we have blue folder under select group, that's wrong! Let's fix this:
+
+1. Right click blue folder, select `Show in Finder`
+2. Back to Xcode, right click blue folder again, select `Delete`->`Remove References`
+3. Back to opened Finder, drag new-folder to Xcode under a group
+
+OK! It Work!
+
 ## Feture
 * Assemble a module as fast so far, only need one line code.
 * Build-In powerful module event communication.
