@@ -13,6 +13,11 @@
 ## Note
 A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
 
+🍺Thanks VIPER!
+<p align="center">
+	<img src="https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg" alt="VIPER Blueprint" />
+</p>
+
 ## Example
 ### Demo
 <p align="center">
@@ -47,9 +52,7 @@ Copy all files under `~/XFLegoVIPER` folder  to your project.
 * Make project more clearly, testable, maintainable, reconfigurable.
 
 ## Blueprint
-<p align="center">
-	<img src="https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg" alt="VIPER Blueprint" />
-</p>
+![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
 [1.5.x(中文)](./README1_5_x.md) | 2.x
