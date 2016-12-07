@@ -75,7 +75,7 @@ OK! It Work!
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
-[1.5.x(Chinese)](./README1_5_x.md) | 2.x
+[1.5.x(Chinese)](./README1_5_x.md) | [2.x](https://github.com/yizzuide/XFLegoVIPER/wiki)
 
 ## Change log
 see [change log](./RELEASE.md)
