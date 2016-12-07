@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v1.5.2-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v2.0.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -12,6 +12,13 @@
 
 ## Note
 🚀A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
+* Assemble a module as fast so far, only need one line code.
+* Build-In powerful module event communication.
+* Real-Time track Rouing link💫.
+* Can combine popular `ReactiveCocoa` library work together seamless.
+* Consider module and controller as component, using the same transition API.
+* Compatible with old project that build of MVx pattern, and help transition to VIPER pattern.
+* Make project more clearly, testable, maintainable, reconfigurable.
 
 🍺Thanks VIPER!
 
@@ -56,7 +63,7 @@ find Template file in `~/Template/Architecture/XFLegoVIPER.xctemplate`
 4. Input module name (you need add class prefix), and next, final click create action
 
 ### 4.Fix blue folder ref
-we have blue folder under select group, that's wrong! Let's fix this:
+we have blue folder under select group, what's wrong? Let's fix it:
 
 1. Right click blue folder, select `Show in Finder`
 2. Back to Xcode, right click blue folder again, select `Delete`->`Remove References`
@@ -64,20 +71,14 @@ we have blue folder under select group, that's wrong! Let's fix this:
 
 OK! It Work!
 
-## Feture
-* Assemble a module as fast so far, only need one line code.
-* Build-In powerful module event communication.
-* Real-Time track Rouing link💫.
-* Can combine popular `ReactiveCocoa` library work together seamless.
-* Consider module and controller as component, using the same transition API.
-* Compatible with old project that build of MVx pattern, and help transition to VIPER pattern.
-* Make project more clearly, testable, maintainable, reconfigurable.
-
 ## Blueprint
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
 [1.5.x(Chinese)](./README1_5_x.md) | 2.x
+
+## Change log
+see [change log](./RELEASE.md)
 
 ## Reference
 iOS Architecture Patterns [English](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52#.6tpii2lax) | [Chinese](http://www.cocoachina.com/ios/20160108/14916.html?utm_source=tuicool&utm_medium=referral)
