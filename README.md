@@ -40,7 +40,7 @@
 * IOS 6.0+
 
 ## 2.0 Release
-XFLegoVIPER `2.0` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki) in the docs.
+XFLegoVIPER `2.0` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started) in the docs.
 
 Migration info from `1.x` can be found in the [2.0 release notes](./RELEASE.md)
 
@@ -82,7 +82,7 @@ OK! It Work!
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
-[1.5.x(Chinese)](./README1_5_x.md) | [2.x](https://github.com/yizzuide/XFLegoVIPER/wiki)
+[1.5.x(Chinese)](./README1_5_x.md) | [2.x](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
 
 ## Change log
 see [change log](./RELEASE.md)
