@@ -22,12 +22,13 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.6484375" green="0.82697173810000002" blue="0.35572917269999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="oub-Ko-8bf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DLg-zu-NnX"/>
                 <constraint firstItem="oub-Ko-8bf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WVV-Ri-HVf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="72" y="-12"/>
         </view>
     </objects>
 </document>

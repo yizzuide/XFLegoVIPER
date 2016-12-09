@@ -24,6 +24,8 @@
     if ([self.window respondsToSelector:@selector(setTintColor:)])
         self.window.tintColor = [UIColor whiteColor];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     [XFRoutingLinkManager enableLog];
     
     // 注册URL
