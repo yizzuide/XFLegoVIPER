@@ -29,7 +29,7 @@
 ![Demo](./ScreenShot/usage.gif)
 
 ### Complete project
-> come soon:)
+see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 
 ## Video
 * [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
@@ -82,7 +82,7 @@ OK! It Work!
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Document
-[1.5.x(Chinese)](./README1_5_x.md) | [2.x](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
+[1.5.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
 
 ## Change log
 see [change log](./RELEASE.md)
