@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"所有图片";
+    self.title = @"Results";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self bindViewData];

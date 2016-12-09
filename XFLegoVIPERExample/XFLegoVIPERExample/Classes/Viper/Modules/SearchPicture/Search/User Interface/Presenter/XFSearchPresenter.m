@@ -18,7 +18,7 @@
 }
 
 - (void)initialize {
-    self.navigationTitle = @"开始搜索";
+    self.navigationTitle = @"Search";
 }
 
 - (void)initCommand

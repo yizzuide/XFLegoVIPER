@@ -53,8 +53,8 @@
     
     [presenter.connectionErrors subscribeNext:^(NSError *error) {
         UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"连接错误"
-                                   message:@"搜索图片时出错。"
+        [[UIAlertView alloc] initWithTitle:@"Connect Error!"
+                                   message:@"network disconnected."
                                   delegate:nil
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil];
