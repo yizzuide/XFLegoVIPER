@@ -47,7 +47,7 @@ Migration info from `1.x` can be found in the [2.0 release notes](./RELEASE.md)
 ## Installation
 ### CocoaPods
 ```ruby
-pod 'XFLegoVIPER'
+pod 'XFLegoVIPER', '~> 2.0'
 ```
 
 ### Manual
