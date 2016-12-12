@@ -11,33 +11,22 @@ Routing<或称为WireFrame>是一个模块开始的入口，也是管理模块�
 @implementation XFSomeRouting
 
 /* 有UINavigationController的情况*/
-
 XF_InjectMoudleWith_Nav([UINavigationController class],
-
-[XFSearchActivity class],
-
-[XFSearchPresenter class],
-
-[XFSearchInteractor class],
-
-[XFPictureDataManager class])
+                        [XFSearchActivity class],
+                        [XFSearchPresenter class],
+                        [XFSearchInteractor class],
+                        [XFPictureDataManager class])
 
 /* 无UINavigationController的情况*/
-
 XF_InjectMoudleWith_Act(XF_Class_(XFPictureResultsActivity),
-
-XF_Class_(XFPictureResultsPresenter),
-
-XF_Class_(XFPictureResultsInteractor),
-
-XF_Class_(XFPictureDataManager))
+                        XF_Class_(XFPictureResultsPresenter),
+                        XF_Class_(XFPictureResultsInteractor),
+                        XF_Class_(XFPictureDataManager))
 
 /* xib方式加载*/
-
 XF_InjectMoudleWith_IB(@"x-XFDetailsActivity", [XFDetailsPresenter class], nil, nil)
 
 /* storyboard方式*/
-
 XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], nil, nil)
 
 @end
@@ -50,13 +39,12 @@ XF_InjectMoudleWith_IB(@"s-XFDetails-XFDetailsID", [XFDetailsPresenter class], n
 
 XF_ShowRootRouting2Window_(XFSearchRouting, {
 
-// 配置导航栏
+    // 配置导航栏
+    UINavigationController *navigation = routing.realNavigator;
 
-UINavigationController *navigation = routing.realNavigator;
+    navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
 
-navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
-
-[navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 
 })
 
@@ -66,43 +54,40 @@ navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:10
 
 ```objc
 
-(void)transitionToShowResultsMoudle {
+- (void)transitionToShowResultsMoudle {
 
-XF_PUSH_Routing_(XFPictureResultsRouting, {
+    XF_PUSH_Routing_(XFPictureResultsRouting, {
+        // 自定义切换动画
+        CATransition *animation = [CATransition animation];
 
-// 自定义切换动画
+        animation.duration = 0.5;
 
-CATransition *animation = [CATransition animation];
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeOut"];
 
-animation.duration = 0.5;
+        //animation.type = kCATransitionPush;
 
-animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeOut"];
+        //animation.subtype = kCATransitionFromBottom;
 
-//animation.type = kCATransitionPush;
+        /*
 
-//animation.subtype = kCATransitionFromBottom;
+        animation.type = @"cube";//立方体效果
 
-/*
+        animation.type = @"suckEffect";//收缩效果
 
-animation.type = @"cube";//立方体效果
+        animation.type = @"oglFlip";//上下翻转效果
 
-animation.type = @"suckEffect";//收缩效果
+        animation.type = @"rippleEffect";//滴水效果
 
-animation.type = @"oglFlip";//上下翻转效果
+        animation.type = @"pageCurl";//向上翻一页效果
 
-animation.type = @"rippleEffect";//滴水效果
+        animation.type = @"pageUnCurl";//向下翻一页效果
 
-animation.type = @"pageCurl";//向上翻一页效果
+        */
 
-animation.type = @"pageUnCurl";//向下翻一页效果
+        animation.type = @"rippleEffect";
 
-*/
-
-animation.type = @"rippleEffect";
-
-[[self.realInterface navigationController].view.layer addAnimation:animation forKey:@"animation"];
-
-})
+        [[self.realInterface navigationController].view.layer addAnimation:animation forKey:@"animation"];
+    })
 
 }
 
@@ -112,15 +97,15 @@ animation.type = @"rippleEffect";
 
 ```objc
 
-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-// 允许跟踪打印模块导航信息
+    // 允许跟踪打印模块导航信息
 
-[XFRoutingLinkManager enableLog];
+    [XFRoutingLinkManager enableLog];
 
-// 设置通用模块前辍,用于MVx架构里的控制器加载VIPER视图作为子控制器，并能提高模块通信时匹配精准度
+    // 设置通用模块前辍,用于MVx架构里的控制器加载VIPER视图作为子控制器，并能提高模块通信时匹配精准度
 
-[XFRoutingLinkManager setMoudlePrefix:@"XF"];
+    [XFRoutingLinkManager setMoudlePrefix:@"XF"];
 
 }
 
@@ -192,7 +177,7 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 */
 
-(void)initCommand;
+- (void)initCommand;
 
 /**
 
@@ -200,7 +185,7 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 */
 
-(void)registerMVxNotifactions;
+- (void)registerMVxNotifactions;
 
 /**
 
@@ -208,19 +193,19 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 */
 
-(void)initRenderView;
+- (void)initRenderView;
 
 // 同步视图生命周期(框架方法，用于子类覆盖，不要直接调用！）
 
-(void)viewDidLoad;
+- (void)viewDidLoad;
 
-(void)viewWillAppear;
+- (void)viewWillAppear;
 
-(void)viewDidAppear;
+- (void)viewDidAppear;
 
-(void)viewWillDisappear;
+- (void)viewWillDisappear;
 
-(void)viewDidDisappear;
+- (void)viewDidDisappear;
 
 ```
 
@@ -230,11 +215,11 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 // 当前界面将获得焦点时
 
-(void)viewWillBecomeFocusWithIntentData:(id)intentData{}
+- (void)viewWillBecomeFocusWithIntentData:(id)intentData{}
 
 // 当前界面将失去焦点时
 
-(void)viewWillResignFocus{}
+- (void)viewWillResignFocus{}
 
 ```
 
@@ -266,7 +251,7 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 */
 
-(void)xfLego_onBackItemTouch;
+- (void)xfLego_onBackItemTouch;
 
 ```
 
@@ -276,25 +261,25 @@ self.searchButton.rac_command = presenter.executeSearch;
 
 // 按钮响应信号方法
 
-(RACSignal *)executeSearchSignal {
+- (RACSignal *)executeSearchSignal {
 
-// 预加载数据
+    // 预加载数据
 
-return [[[XFConvertInteractorToType(id<XFSearchInteractorPort>) fetchPictureDataWithMainCategory:self.mainCategory secondCategory:self.secondCategory] doNext:^(id x) {
+    return [[[XFConvertInteractorToType(id<XFSearchInteractorPort>) fetchPictureDataWithMainCategory:self.mainCategory secondCategory:self.secondCategory] doNext:^(id x) {
 
-// 设置意图数据
+    // 设置意图数据
 
-self.intentData = x;
+    self.intentData = x;
 
-// 请求Routing切换界面
+    // 请求Routing切换界面
 
-[XFConvertRoutingToType(id<XFSearchWireFramePort>) transitionToShowResultsMoudle];
+    [XFConvertRoutingToType(id<XFSearchWireFramePort>) transitionToShowResultsMoudle];
 
-}] doError:^(NSError *error) {
+    }] doError:^(NSError *error) {
 
-NSLog(@"error %@",error);
+        NSLog(@"error %@",error);
 
-}];
+    }];
 
 }
 
@@ -308,11 +293,11 @@ NSLog(@"error %@",error);
 
 ```objc
 
-(RACSignal *)fetchPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
+- (RACSignal *)fetchPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 
 {
 
-return [XFConvertDataManagerToType(XFPictureDataManager *) grabPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
+    return [XFConvertDataManagerToType(XFPictureDataManager *) grabPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
 
 }
 
@@ -322,23 +307,23 @@ return [XFConvertDataManagerToType(XFPictureDataManager *) grabPictureDataWithMa
 
 ```objc
 
-(RACSignal *)deconstructPreLoadData:(id)preLoadData {
+- (RACSignal *)deconstructPreLoadData:(id)preLoadData {
 
-self.pictureListModel = preLoadData;
+    self.pictureListModel = preLoadData;
 
-return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 
-XFPictureProvider *provider = [XFPictureProvider provider];
+        XFPictureProvider *provider = [XFPictureProvider provider];
 
-[subscriber sendNext:[provider collectedPictureExpressDataFrom:preLoadData]];
+        [subscriber sendNext:[provider collectedPictureExpressDataFrom:preLoadData]];
 
-[subscriber sendCompleted];
+        [subscriber sendCompleted];
 
-return [RACDisposable disposableWithBlock:^{
+        return [RACDisposable disposableWithBlock:^{
 
-}];
+        }];
 
-}];
+    }];
 
 }
 
@@ -352,11 +337,11 @@ return [RACDisposable disposableWithBlock:^{
 
 ```objc
 
-(RACSignal *)grabPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
+- (RACSignal *)grabPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 
 {
 
-return [self.pictureService pullPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
+    return [self.pictureService pullPictureDataWithMainCategory:mainCategory secondCategory:secondCategory];
 
 }
 
@@ -366,37 +351,33 @@ return [self.pictureService pullPictureDataWithMainCategory:mainCategory secondC
 
 ```objc
 
-(RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
-
+- (RACSignal *)pullPictureDataWithMainCategory:(NSString *)mainCategory secondCategory:(NSString *)secondCategory
 {
 
-// 从服务器获取数据
+    // 从服务器获取数据
 
-return [[XFRACHttpTool getWithURL:@"http://image.baidu.com/search/acjson"
+    return [[XFRACHttpTool getWithURL:@"http://image.baidu.com/search/acjson"
+                                params:@{
+                                          @"tn": @"resultjson_com",
 
-params:@{
+                                          @"ipn": @"rj",
 
-@"tn": @"resultjson_com",
+                                          @"word":mainCategory,
 
-@"ipn": @"rj",
+                                          @"step_word":secondCategory,
 
-@"word":mainCategory,
+                                          @"pn": @1, // 第几条开始
 
-@"step_word":secondCategory,
+                                          @"rn": @5, // 返回多少条
 
-@"pn": @1, // 第几条开始
+                                          }]
+                                map:^id(RACTuple *tuple) {
 
-@"rn": @5, // 返回多少条
+                                    // 模型转换
 
-}]
+                                    return [XFPictureListModel mj_objectWithKeyValues:tuple.first];
 
-map:^id(RACTuple *tuple) {
-
-// 模型转换
-
-return [XFPictureListModel mj_objectWithKeyValues:tuple.first];
-
-}];
+                                }];
 
 }
 
@@ -416,15 +397,15 @@ return [XFPictureListModel mj_objectWithKeyValues:tuple.first];
 
 @implementation SomeView
 
-(void)buttonAction:(id)target
+- (void)buttonAction:(id)target
 
 {
 
-// 调用事件处理层
+    // 调用事件处理层
 
-// 注意：只有在当前视图添加到父视图后才能获取
+    // 注意：只有在当前视图添加到父视图后才能获取
 
-[self.eventHandler xfLego_onBackItemTouch];
+    [self.eventHandler xfLego_onBackItemTouch];
 
 }
 
@@ -438,31 +419,31 @@ return [XFPictureListModel mj_objectWithKeyValues:tuple.first];
 
 @implementation XFPageControlActivity
 
-(void)initSubView {
+- (void)initSubView {
 
-self.pageViewController.dataSource = self;
+    self.pageViewController.dataSource = self;
 
-self.pageViewController.delegate = self;
+    self.pageViewController.delegate = self;
 
-// 添加模块子视图，当前Activity就为父模块视图
+    // 添加模块子视图，当前Activity就为父模块视图
 
-XFActivity *movieActivity = XF_SubUInterface_(@"Movie");
+    XFActivity *movieActivity = XF_SubUInterface_(@"Movie");
 
-XFActivity *musicActivity = XF_SubUInterface_(@"Music");
+    XFActivity *musicActivity = XF_SubUInterface_(@"Music");
 
-XFActivity *bookActivity = XF_SubUInterface_(@"Book");
+    XFActivity *bookActivity = XF_SubUInterface_(@"Book");
 
-self.subActivitys = @[movieActivity,musicActivity,bookActivity];
+    self.subActivitys = @[movieActivity,musicActivity,bookActivity];
 
-self.movieActivity = movieActivity;
+    self.movieActivity = movieActivity;
 
-self.musicActivity = musicActivity;
+    self.musicActivity = musicActivity;
 
-self.bookActivity = bookActivity;
+    self.bookActivity = bookActivity;
 
-// 设置每一个显示视图
+    // 设置每一个显示视图
 
-[self.pageViewController setViewControllers:@[self.movieActivity] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.pageViewController setViewControllers:@[self.movieActivity] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
 }
 
@@ -478,15 +459,15 @@ self.bookActivity = bookActivity;
 
 @implementation XFSourceViewController
 
-(void)initSubView {
+- (void)initSubView {
 
-// Idea为模块名（注意：使用XF_SubUInterfaceForMVx_AddChild_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
+    // Idea为模块名（注意：使用XF_SubUInterfaceForMVx_AddChild_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
 
-XFActivity *ideaActivity = XF_SubUInterfaceForMVx_AddChild_Fast(@"Idea");
+    XFActivity *ideaActivity = XF_SubUInterfaceForMVx_AddChild_Fast(@"Idea");
 
-[self addChildViewController:ideaActivity];
+    [self addChildViewController:ideaActivity];
 
-[self.view addSubview:ideaActivity.view];
+    [self.view addSubview:ideaActivity.view];
 
 }
 
@@ -512,43 +493,41 @@ XFActivity *ideaActivity = XF_SubUInterfaceForMVx_AddChild_Fast(@"Idea");
 
 @implementation XFPictureResultsPresenter
 
-(void)viewDidLoad
-
+- (void)viewDidLoad
 {
 
-// 发送单模块消息事件
+    // 发送单模块消息事件
 
-XF_SendEventForMoudle_(@"Search", @"loadData", @"SomeData")
+    XF_SendEventForMoudle_(@"Search", @"loadData", @"SomeData")
 
-// 发送多模块消息事件
+    // 发送多模块消息事件
 
-XF_SendEventForMoudles_(@[@"Search"], @"loadData", @"SomeData")
+    XF_SendEventForMoudles_(@[@"Search"], @"loadData", @"SomeData")
 
-// 在MVx架构中使用下面方法对VIPER架构中模块发事件数据（须导入XFRoutingLinkManager.h头文件）
+    // 在MVx架构中使用下面方法对VIPER架构中模块发事件数据（须导入XFRoutingLinkManager.h头文件）
 
-XF_SendEventFormMVxForVIPERMoudles_(@[@"Search"], @"loadData", @"SomeData");
+    XF_SendEventFormMVxForVIPERMoudles_(@[@"Search"], @"loadData", @"SomeData");
 
-// 在VIPER架构中对MVx架构模块发通知
+    // 在VIPER架构中对MVx架构模块发通知
 
-XF_SendMVxNoti_(@"XFReloadDataNotification", nil);
+    XF_SendMVxNoti_(@"XFReloadDataNotification", nil);
 
 }
 
-(void)registerMVxNotifactions
-
+- (void)registerMVxNotifactions
 {
 
-// 模拟在MVx架构里发通知
+    // 模拟在MVx架构里发通知
 
-dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-[[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
 
-});
+    });
 
-// 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveOtherMoudleEventName:intentData:`接收
+    // 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveOtherMoudleEventName:intentData:`接收
 
-XF_RegisterMVxNotis_(@[@"StartSearchNotification"])
+    XF_RegisterMVxNotis_(@[@"StartSearchNotification"])
 
 }
 
@@ -558,15 +537,15 @@ XF_RegisterMVxNotis_(@[@"StartSearchNotification"])
 
 @implementation XFSearchPresenter
 
-(void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
+- (void)receiveOtherMoudleEventName:(NSString *)eventName intentData:(id)intentData
 
 {
 
-XF_EventIs_(@"StartSearchNotification", {
+    XF_EventIs_(@"StartSearchNotification", {
 
-NSLog(@"接收到Mvx架构的通知: %@",eventName);
+        NSLog(@"接收到Mvx架构的通知: %@",eventName);
 
-})
+    })
 
 }
 
@@ -584,17 +563,17 @@ NSLog(@"接收到Mvx架构的通知: %@",eventName);
 
 @implementation XFUserViewController
 
-(void)pushToNext
+- (void)pushToNext
 
 {
 
-// Notice为模块名（注意：使用XF_UInterfaceForMVx_Show_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
+    // Notice为模块名（注意：使用XF_UInterfaceForMVx_Show_Fast前使用[XFRoutingLinkManager setMoudlePrefix:@"XX"]配置路由管理器的通用模块名）
 
-XFActivity *noticeActivity = XF_UInterfaceForMVx_Show_Fast(@"Notice");
+    XFActivity *noticeActivity = XF_UInterfaceForMVx_Show_Fast(@"Notice");
 
-noticeActivity.hidesBottomBarWhenPushed = YES;
+    noticeActivity.hidesBottomBarWhenPushed = YES;
 
-[self.navigationController pushViewController:noticeActivity animated:YES];
+    [self.navigationController pushViewController:noticeActivity animated:YES];
 
 }
 
@@ -610,15 +589,15 @@ noticeActivity.hidesBottomBarWhenPushed = YES;
 
 // 使用当前模块的Presenter层调用这个切换界面的方法
 
-(void)transition2Agreement
+- (void)transition2Agreement
 
 {
 
-XF_PUSH_VCForMVx_(ProvisionViewController,{
+    XF_PUSH_VCForMVx_(ProvisionViewController,{
 
-viewController.title = @"用户使用协议";
+        viewController.title = @"用户使用协议";
 
-})
+    })
 
 }
 
