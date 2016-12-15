@@ -54,20 +54,20 @@ pod 'XFLegoVIPER', '~> 2.0'
 Copy all files under `~/XFLegoVIPER` folder  to your project.
 
 ## ❤Using Template❤
-Now you can use template file to create a module which make of stuff class with interface as fast as possible.
+Now you can use template file to create a module which make of stuff class as fast as possible.
 ### 1.Find Template file 
-find Template file in `~/Template/Architecture/XFLegoVIPER.xctemplate`
+find Template file  `~/Template/Architecture/XFLegoVIPER.xctemplate`
 
 ### 2.Copy to Xcode path
-1. open path `/Applications/Xcode-unsigned.app/Contents/Developer/Library/Xcode/Templates/File Templates`
+1. open path `/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates`
 2. create new folder named `Architecture`
 3. drag the template file to `Architecture` folder
 
 ### 3.Using xcode create module files
 1. Quit Xcode and open again
-2. Right click a group,select `New File...`
+2. Right click a group, select `New File...`
 3. Scrolling to Architecture Section, double click `XFLegoVIPER` item
-4. Input module name (you need add class prefix), and next, final click create action
+4. Input module name (you need add class prefix), and next, final click `create` action
 
 ### 4.Fix blue folder ref
 we have blue folder under select group, what's wrong? Let's fix it:
