@@ -81,8 +81,8 @@ OK! It Work!
 ## Blueprint
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
-## Document
-[1.5.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
+## Documentation
+[1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
 
 ## Change log
 see [change log](./RELEASE.md)
