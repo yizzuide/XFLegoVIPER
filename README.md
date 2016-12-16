@@ -11,7 +11,7 @@
 </p>
 
 ## Note
-🚀A lightweight framework base on VIPER architecture for IOS, to build robust and maintained large scale project.
+🚀A lightweight framework base on VIPER architecture for iOS, to build robust and maintained large scale project.
 * Assemble a module as fast so far, only need one line code.
 * Build-In powerful module event communication.
 * Real-Time track Rouing link💫.
@@ -39,10 +39,10 @@ see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 * Xcode 7.0+
 * IOS 6.0+
 
-## 2.0 Release
-XFLegoVIPER `2.0` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started) in the docs.
+## 2.x Release
+XFLegoVIPER `2.x` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started) in the docs.
 
-Migration info from `1.x` can be found in the [2.0 release notes](./RELEASE.md)
+Migration info from `1.x` can be found in the [2.x release notes](./RELEASE.md)
 
 ## Installation
 ### CocoaPods
