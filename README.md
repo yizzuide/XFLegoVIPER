@@ -40,7 +40,7 @@ see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 * IOS 6.0+
 
 ## 2.x Release
-XFLegoVIPER `2.x` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started) in the docs.
+XFLegoVIPER `2.x` is now available (December 2016). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)) in the docs.
 
 Migration info from `1.x` can be found in the [2.x release notes](./RELEASE.md)
 
@@ -82,7 +82,7 @@ OK! It Work!
 ![XFLegoVIPER construct](./ScreenShot/framework.png)
 
 ## Documentation
-[1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/Getting-Started)
+[1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B))
 
 ## Change log
 see [change log](./RELEASE.md)
