@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v2.0.0-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v2.5.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -11,12 +11,12 @@
 </p>
 
 ## Note
-🚀A lightweight framework base on VIPER architecture for iOS, to build robust and maintained large scale project.
+🚀 A lightweight framework base on VIPER architecture for iOS, to build robust and maintained large scale project.
 * Assemble a module as fast so far, only need one line code.
-* Build-In powerful module event communication.
-* Real-Time track Rouing link💫.
+* Build-In powerful component event communication.
+* Real-Time track Component link💫.
 * Can combine popular `ReactiveCocoa` library work together seamless.
-* Consider module and controller as component, using the same transition API.
+* Consider module and controller as component, using the same transition and event API.
 * Compatible with old project that build of MVx pattern, and help transition to VIPER pattern.
 * Make project more clearly, testable, maintainable, reconfigurable.
 
