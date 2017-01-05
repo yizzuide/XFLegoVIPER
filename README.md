@@ -24,6 +24,9 @@
 
 ![VIPER Design Pattern](https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg)
 
+## Component Architecture
+![Component Architecture](./ScreenShot/construct.png)
+
 ## Example
 ### Demo
 ![Demo](./ScreenShot/usage.gif)
