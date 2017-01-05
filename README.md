@@ -78,8 +78,8 @@ we have blue folder under select group, what's wrong? Let's fix it:
 
 OK! It Work!
 
-## Blueprint
-![XFLegoVIPER construct](./ScreenShot/framework.png)
+## VIPER Module
+![XFLegoVIPER Module Layer](./ScreenShot/framework.png)
 
 ## Documentation
 [1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B))
