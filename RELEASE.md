@@ -1,3 +1,12 @@
+# V2.5.0
+- 乐高框架内部重组目录结构，使代码结构更清晰明了
+- 增强对控制器组件的支持，使普通控制器可以通过`XF_EXPORT_COMPONENT`导出为组件
+- 统一模块组件和控制器组件的UI总线(现可设置HTTTP处理组件)、事件总线(内部改为可对组件发事件消息)、组件数据传递API
+- 增加Real-Time组件链跟踪功能
+- 乐高替换内部控制器分类方法覆盖为swizzle方法，提升代码安全性
+- 框架修改意图回传方法名为`-onNewIntent:`，和接收事件方法统一名称
+
+
 # V2.0.0
 - Remove macro of using `Routing` class to transition between modules (移除直接通过Routing类来做模块跳转,升级要谨慎！)
 - change named `moudle` to `module` (全局修正API模块名‘moudle’->‘module’,升级要谨慎！)
