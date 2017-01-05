@@ -8,7 +8,7 @@
 		<string>public.objective-c-plus-plus-source</string>
 	</array>
 	<key>Description</key>
-	<string>Create VIPER module base on XFLegoVIPER framework.</string>
+	<string>创建基于XFLegoVIPER框架的模块.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -17,11 +17,11 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>Create a module</string>
+			<string>创建模块名</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Module Name</string>
+			<string>模块名</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -35,6 +35,6 @@
 		<string>com.apple.platform.iphoneos</string>
 	</array>
 	<key>Summary</key>
-	<string>Create VIPER module base on XFLegoVIPER framework.</string>
+	<string>XFLegoVIPER框架模块</string>
 </dict>
 </plist>

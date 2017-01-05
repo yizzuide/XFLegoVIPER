@@ -48,8 +48,8 @@
     })*/
 }
 
-// 接收到模块意图对象
-- (void)viewWillBecomeFocusWithIntentData:(id)intentData
+// 接收到组件返回数据
+- (void)onNewComponentData:(id)componentData
 {
     
 }
