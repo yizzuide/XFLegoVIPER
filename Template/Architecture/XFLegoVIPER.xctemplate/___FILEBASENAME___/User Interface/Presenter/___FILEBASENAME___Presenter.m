@@ -49,7 +49,7 @@
 }
 
 // 接收到组件返回数据
-- (void)onNewComponentData:(id)componentData
+- (void)onNewIntent:(id)intentData
 {
     
 }
