@@ -1,6 +1,6 @@
 //
 //  NSObject+XFLegoCopy.h
-//  XFLegoVIPERExample
+//  XFLegoVIPER
 //
 //  Created by 付星 on 2016/10/26.
 //  Copyright © 2016年 yizzuide. All rights reserved.

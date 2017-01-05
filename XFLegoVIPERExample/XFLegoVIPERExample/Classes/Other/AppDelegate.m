@@ -26,7 +26,10 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    [XFRoutingLinkManager enableLog];
+    // VIPER模块跟踪
+//    [XFRoutingLinkManager enableLog];
+    // 组件跟踪
+    [XFComponentManager enableLog];
     
     // 注册URL
     [XFAppURLRegister registerURLs];
