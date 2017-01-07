@@ -35,7 +35,9 @@
 see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 
 ## Video
-* [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
+- [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
+- How to code with XFLegoVIPER
+    * Why XFLegoVIPER?
 
 
 ## Requirements
