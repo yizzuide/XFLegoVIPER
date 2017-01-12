@@ -24,6 +24,9 @@
 
 ![VIPER Design Pattern](https://www.objc.io/images/issue-13/2014-06-07-viper-intro-0a53d9f8.jpg)
 
+## Component Architecture
+![Component Architecture](./ScreenShot/construct.png)
+
 ## Example
 ### Demo
 ![Demo](./ScreenShot/usage.gif)
@@ -32,7 +35,8 @@
 see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 
 ## Video
-* [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
+- [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
+- [How to code with XFLegoVIPER](https://pan.baidu.com/s/1o8yeyN4)
 
 
 ## Requirements
