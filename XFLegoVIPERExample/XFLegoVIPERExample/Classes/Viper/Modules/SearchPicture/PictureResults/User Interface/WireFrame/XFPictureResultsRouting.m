@@ -20,31 +20,26 @@ XF_AutoAssemblyModule_Fast
 
 - (void)transitionToDetailsModule
 {
-//    XF_PUSH_Routing_Fast(@"Details")
     XF_PUSH_URLComponent_Fast(@"xf://search/pictureResults/details?usrid=123")
 }
 
 - (void)transitionToSubControlModule
 {
-//    XF_PUSH_Routing_Fast(@"SubControl")
     XF_PUSH_URLComponent_Fast(@"xf://search/pictureResults/subControl")
 }
 
 - (void)transitionToSubControl2Module
 {
-//    XF_PUSH_Routing_Fast(@"SubControl2")
     XF_PUSH_URLComponent_Fast(@"xf://search/pictureResults/subControl2")
 }
 
 - (void)transitionToPageControlModule
 {
-//    XF_PUSH_Routing_Fast(@"PageControl")
     XF_PUSH_URLComponent_Fast(@"xf://search/pictureResults/pageControl")
 }
 
 - (void)transitionToWeiboModule
 {
-//    XF_PUSH_Routing_Fast(@"Weibo")
     XF_PUSH_URLComponent_Fast(@"xf://search/pictureResults/weibo")
 }
 

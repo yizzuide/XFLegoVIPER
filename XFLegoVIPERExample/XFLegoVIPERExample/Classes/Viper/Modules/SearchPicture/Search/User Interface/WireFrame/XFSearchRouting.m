@@ -22,23 +22,6 @@
 XF_AutoAssemblyModuleWithNav_ShareDM(@"UI", @"PictureResults")
 
 - (void)transitionToShowResultsModule {
-    /*XF_PUSH_Routing_(@"PictureResults", {
-        // 自定义切换动画
-        CATransition *animation = [CATransition animation];
-        animation.duration = 0.5;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeOut"];
-        //animation.type = kCATransitionPush;
-        //animation.subtype = kCATransitionFromBottom;
-        
-//        animation.type = @"cube";//立方体效果
-//        animation.type = @"suckEffect";//收缩效果
-//        animation.type = @"oglFlip";//上下翻转效果
-        animation.type = @"rippleEffect";//滴水效果
-//        animation.type = @"pageCurl";//向上翻一页效果
-//        animation.type = @"pageUnCurl";//向下翻一页效果
-     
-        [routing.realNavigator.view.layer addAnimation:animation forKey:@"animation"];
-    })*/
     XF_PUSH_URLComponent_(@"xf://search/pictureResults", {
         // 自定义切换动画
         CATransition *animation = [CATransition animation];

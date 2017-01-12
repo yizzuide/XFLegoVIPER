@@ -13,7 +13,6 @@
 
 /* xib方式加载*/
 //XF_InjectModuleWith_IB(@"x-XFDetailsActivity", [XFDetailsPresenter class], nil, nil)
-//XF_AutoAssemblyModule_FastIB(@"x-XFDetailsActivity")
 
 /* storyboard方式*/
 XF_AutoAssemblyModuleFromIB(@"s-XFDetails-XFDetailsID")
