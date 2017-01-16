@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -11,6 +11,7 @@
                 <outlet property="mainCategoryTextField" destination="5ty-UF-KbT" id="yZE-ob-kPT"/>
                 <outlet property="searchButton" destination="1dQ-Ve-LNq" id="sso-bb-EUb"/>
                 <outlet property="secondCategoryTextFiled" destination="usQ-X8-3QD" id="aWy-fY-hnB"/>
+                <outlet property="showMessageButton" destination="f22-dF-wu4" id="5Qg-8Y-Hyr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,7 +53,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNK-kh-xTV">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNK-kh-xTV" userLabel="Nav">
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s63-cB-s1G">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,28 +68,43 @@
                         <constraint firstItem="s63-cB-s1G" firstAttribute="centerX" secondItem="dNK-kh-xTV" secondAttribute="centerX" id="ryo-zK-iT0"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbK-Bv-AxZ" userLabel="Line">
+                    <color key="backgroundColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="MpQ-vC-rNg"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f22-dF-wu4">
+                    <color key="tintColor" red="0.85098039215686272" green="0.42352941176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Present Controller Compoent"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="trailing" secondItem="5ty-UF-KbT" secondAttribute="trailing" id="0fN-Rb-gRY"/>
                 <constraint firstItem="dNK-kh-xTV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7Uk-cZ-KhK"/>
+                <constraint firstItem="f22-dF-wu4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8pt-HR-hOa"/>
                 <constraint firstItem="5ty-UF-KbT" firstAttribute="leading" secondItem="vQi-X0-xX1" secondAttribute="trailing" constant="1" id="DTs-9v-M9Z"/>
                 <constraint firstItem="vQi-X0-xX1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="KCU-6g-NFF"/>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="centerY" secondItem="upa-Ve-qp7" secondAttribute="centerY" id="NZY-G1-h1m"/>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="top" secondItem="5ty-UF-KbT" secondAttribute="bottom" constant="22" id="PIo-K3-s7w"/>
+                <constraint firstItem="pbK-Bv-AxZ" firstAttribute="top" secondItem="1dQ-Ve-LNq" secondAttribute="bottom" constant="30" id="Q0V-H9-qFx"/>
                 <constraint firstItem="vQi-X0-xX1" firstAttribute="centerY" secondItem="5ty-UF-KbT" secondAttribute="centerY" id="R4H-q6-to7"/>
+                <constraint firstAttribute="trailing" secondItem="pbK-Bv-AxZ" secondAttribute="trailing" id="WMu-tf-XQ0"/>
                 <constraint firstItem="5ty-UF-KbT" firstAttribute="top" secondItem="dNK-kh-xTV" secondAttribute="bottom" constant="59" id="Wm8-LQ-yJI"/>
                 <constraint firstItem="upa-Ve-qp7" firstAttribute="trailing" secondItem="vQi-X0-xX1" secondAttribute="trailing" id="Yon-Mt-78c"/>
                 <constraint firstItem="1dQ-Ve-LNq" firstAttribute="top" secondItem="usQ-X8-3QD" secondAttribute="bottom" constant="29" id="bXm-mT-2H1"/>
+                <constraint firstItem="f22-dF-wu4" firstAttribute="top" secondItem="pbK-Bv-AxZ" secondAttribute="bottom" constant="20" id="fEI-DE-2q8"/>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="leading" secondItem="5ty-UF-KbT" secondAttribute="leading" id="fft-RW-eib"/>
                 <constraint firstItem="dNK-kh-xTV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="it7-46-wTn"/>
                 <constraint firstAttribute="trailing" secondItem="dNK-kh-xTV" secondAttribute="trailing" id="m97-Us-U0v"/>
+                <constraint firstItem="pbK-Bv-AxZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oQH-OE-wO1"/>
                 <constraint firstItem="1dQ-Ve-LNq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oaW-so-g2R"/>
                 <constraint firstAttribute="trailing" secondItem="5ty-UF-KbT" secondAttribute="trailing" constant="35" id="onu-Ss-1pJ"/>
                 <constraint firstItem="upa-Ve-qp7" firstAttribute="leading" secondItem="vQi-X0-xX1" secondAttribute="leading" id="zcj-lW-Uxg"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
-            <point key="canvasLocation" x="-103" y="149"/>
+            <point key="canvasLocation" x="-104" y="148"/>
         </view>
     </objects>
 </document>

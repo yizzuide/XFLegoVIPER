@@ -30,6 +30,11 @@
  */
 @property (nonatomic, weak) __kindof id<XFComponentRoutable> componentRoutable;
 
+/**
+ *   针对控制器组件导航控制器引用
+ */
+@property (nonatomic, strong) UINavigationController *controllerComponentNavigator;
+
 @end
 
 @implementation XFUIBus
@@ -53,7 +58,7 @@
 - (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock
 {
     [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
-        [self showComponent:componentName onWindow:mainWindow customCode:customCodeBlock];
+        [self showComponent:componentName onWindow:mainWindow params:params customCode:customCodeBlock];
     }];
 }
 
@@ -61,7 +66,7 @@
 - (void)openURLForPush:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
 {
     [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
-        [self pushComponent:componentName intent: params.count ? params : [self _intentData] customCode:customCodeBlock];
+        [self pushComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
 }
 
@@ -69,7 +74,7 @@
 - (void)openURLForPresent:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
 {
     [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
-        [self presentComponent:componentName intent: params.count ? params : [self _intentData] customCode:customCodeBlock];
+        [self presentComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
 }
 
@@ -77,12 +82,12 @@
 - (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(CustomCodeBlock)customCodeBlock
 {
     [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
-        [self putComponent:componentName withTransitionBlock:transitionBlock intent:params.count ? params : [self _intentData] customCode:customCodeBlock];
+        [self putComponent:componentName withTransitionBlock:transitionBlock params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
 }
 
 #pragma mark - 组件名切换方式
-- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock
+- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock
 {
     id<XFComponentRoutable> component;
     // 是否是控制器组件
@@ -97,6 +102,9 @@
     }
     // 视图
     UIViewController *interface = [XFComponentReflect interfaceForComponent:component];
+    // 传递URL参数
+    [self _transmitURLParams:params nextInterface:interface nextComponent:component];
+    
     if (customCodeBlock) {
         customCodeBlock(interface);
     }
@@ -109,7 +117,7 @@
 }
 
 // Modal方式
-- (void)presentComponent:(NSString *)componentName intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
+- (void)presentComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
 {
     [self putComponent:componentName withTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
         // 是否有导航控制器
@@ -129,7 +137,7 @@
         }
         [thisInterface presentViewController:nextNewInterface animated:YES completion:nil];
         completionBlock();
-    } intent:intentData customCode:customCodeBlock];
+    } params:(NSDictionary *)params intent:intentData customCode:customCodeBlock];
 }
 
 - (void)dismissComponent
@@ -140,12 +148,12 @@
 }
 
 // PUSH方式
-- (void)pushComponent:(NSString *)componentName intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
+- (void)pushComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
 {
     [self putComponent:componentName withTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
         [thisInterface.navigationController pushViewController:nextInterface animated:YES];
         completionBlock();
-    } intent:intentData customCode:customCodeBlock];
+    } params:(NSDictionary *)params intent:intentData customCode:customCodeBlock];
 }
 
 - (void)popComponent
@@ -159,7 +167,7 @@
 }
 
 #pragma mark - 自定义组件切换
-- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock {
+- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock {
     // 下一个组件
     id<XFComponentRoutable> nextComponent;
     // 是否是控制器组件
@@ -182,20 +190,18 @@
         }
         nextComponent = nextRouting.uiOperator;
     }
+    // 获得当前组件的界面层
     UIViewController *nextInterface = [XFComponentReflect interfaceForComponent:nextComponent];
     
     // 绑定组件关系
     [self _flowToNextComponent:nextComponent];
     
-    // 传递组件参数
-    if (intentData) {
-        if ([intentData isKindOfClass:[NSDictionary class]] &&
-            [nextComponent respondsToSelector:@selector(setURLParams:)]) {
-            [nextComponent setURLParams:intentData];
-        } else if ([nextComponent respondsToSelector:@selector(setComponentData:)]) {
-            // 传递组件对象
-            [nextComponent setComponentData:intentData];
-        }
+    // 传递URL参数
+    [self _transmitURLParams:params nextInterface:nextInterface nextComponent:nextComponent];
+    
+    // 传递组件意图对象
+    if (intentData && [nextComponent respondsToSelector:@selector(setComponentData:)]) {
+        [nextComponent setComponentData:intentData];
     }
     
     // 移除当前组件焦点
@@ -269,6 +275,32 @@
 }
 
 #pragma mark - 私有方法
+// 处理URL参数
+- (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(id<XFComponentRoutable>)nextComponent
+{
+    if (!params.count) return;
+    // 检测是否要装配导航控制器，使用保留行为关键字"nav"
+    NSString *navName = params[@"nav"];
+    if (navName.length) {
+        UINavigationController *nav = [XFControllerFactory navigationControllerFromPrefixName:navName withRootController:nextInterface];
+        // 如果模块组件，交给它自己处理
+        if ([XFComponentReflect isModuleComponent:nextComponent]) {
+            [Routing setValue:nav forKey:@"currentNavigator"];
+        } else { // 如果是控制器组件
+            self.controllerComponentNavigator = nav;
+        }
+        
+        // 移除行为参数
+        NSMutableDictionary *mParams = [params mutableCopy];
+        [mParams removeObjectForKey:@"nav"];
+        params = mParams;
+    }
+    
+    if (params.count && [nextComponent respondsToSelector:@selector(setURLParams:)]) {
+        [nextComponent setURLParams:params];
+    }
+}
+
 // 能否返回组件意图数据
 - (BOOL)_canBackDataWithComponent:(id<XFComponentRoutable>)componentRoutable
 {
@@ -301,5 +333,11 @@
      [self.componentRoutable setValue:nextComponent forKey:@"nextComponentRoutable"];
     // 关联上一个组件
     [nextComponent setValue:self.componentRoutable forKey:@"fromComponentRoutable"];
+}
+
+// 移除对导航控制器的引用
+- (void)xfLego_destoryNavigatorRef
+{
+    self.controllerComponentNavigator = nil;
 }
 @end

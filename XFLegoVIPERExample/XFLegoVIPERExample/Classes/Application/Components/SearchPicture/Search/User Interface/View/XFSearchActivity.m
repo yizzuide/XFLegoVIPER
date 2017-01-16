@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *mainCategoryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *secondCategoryTextFiled;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UIButton *showMessageButton;
+
 
 @end
 
@@ -41,6 +43,8 @@
     RAC(presenter, secondCategory) = self.secondCategoryTextFiled.rac_textSignal;
     // 绑定命令
     XF_C_(self.searchButton, presenter, executeSearch)
+    XF_C_(self.showMessageButton, presenter, showMessageCommand)
+    
 
     // 绑定信号执行状态: 命令执行状态信号，初始时有一个非执行状态信号，执行命令后又有执行状态信号 -> 非执行状态信号
     RAC([UIApplication sharedApplication],networkActivityIndicatorVisible) = presenter.executeSearch.executing;

@@ -10,7 +10,7 @@
 #import "___FILEBASENAME___WireframePort.h"
 #import "___FILEBASENAME___UserInterfacePort.h"
 #import "___FILEBASENAME___InteractorPort.h"
-#import "ReactiveCocoa.h"
+//#import "ReactiveCocoa.h"
 
 
 #define Interactor XFConvertInteractorToType(id<___FILEBASENAMEASIDENTIFIER___InteractorPort>)

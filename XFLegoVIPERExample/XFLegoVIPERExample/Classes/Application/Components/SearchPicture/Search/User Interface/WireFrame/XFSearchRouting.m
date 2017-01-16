@@ -19,9 +19,10 @@
                         [XFSearchInteractor class],
                         [XFPictureDataManager class])*/
 // 自动组装方式
-XF_AutoAssemblyModuleWithNav_ShareDM(@"UI", @"PictureResults")
+//XF_AutoAssemblyModuleWithNav_ShareDM(@"UI", @"PictureResults") // 这里的组装导航器已移入URL参数
+XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方式
 
-- (void)transitionToShowResultsModule {
+- (void)transition2PictureResults {
     XF_PUSH_URLComponent_(@"xf://search/pictureResults", {
         // 自定义切换动画
         CATransition *animation = [CATransition animation];
@@ -39,5 +40,14 @@ XF_AutoAssemblyModuleWithNav_ShareDM(@"UI", @"PictureResults")
         
         [self.realNavigator.view.layer addAnimation:animation forKey:@"animation"];
     })
+}
+
+- (void)transition2Message
+{
+    // 使用保留行为参数字段"nav",可以指定要装配的导航控制器，值为类前缀且一定是全大写
+    // UI为UINavigationController
+//    XF_Present_URLComponent_Fast(@"xf://search/message?nav=UI");
+    // 使用自定义导航控制器类型（XFNavigationController）
+    XF_Present_URLComponent_Fast(@"xf://search/message?nav=XF");
 }
 @end

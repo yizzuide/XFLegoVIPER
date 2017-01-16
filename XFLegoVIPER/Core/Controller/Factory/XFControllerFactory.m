@@ -16,4 +16,17 @@
     NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",[XFRoutingLinkManager modulePrefix],componentName,@"ViewController"];
     return [[NSClassFromString(clazzName) alloc] init];
 }
+
++ (UINavigationController *)navigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController {
+    UINavigationController *nav;
+    // 默认导航控制器
+    if ([prefixName isEqualToString:@"UI"]) {
+         nav = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    } else { // 自定义导航控制器
+        NSString *className = [NSString stringWithFormat:@"%@NavigationController",prefixName];
+        nav = [[NSClassFromString(className) alloc] initWithRootViewController:rootViewController];
+    }
+    
+    return nav;
+}
 @end

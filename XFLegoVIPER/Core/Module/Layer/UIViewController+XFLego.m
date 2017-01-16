@@ -91,7 +91,10 @@
     if (self.eventHandler) {
         [self.eventHandler invokeMethod:@"viewWillDisappear"];
         // 如果当前视图被pop或dismiss
-        if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+        if (self.isMovingFromParentViewController ||
+            self.isBeingDismissed ||
+            self.navigationController.isMovingToParentViewController ||
+            self.navigationController.isBeingDismissed) {
             // 调用视图层，视图将被移除方法
             [self _xfLego_viewWillPopOrDismiss];
             // 如果不是通过框架方法

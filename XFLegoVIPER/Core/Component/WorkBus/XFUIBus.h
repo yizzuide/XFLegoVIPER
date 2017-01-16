@@ -119,18 +119,20 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *
  *  @param componentName        组件名
  *  @param mainWindow           窗口
+ *  @param params               URL参数
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock;
+- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock;
 
 /**
  *  推入一个模块
  *
  *  @param componentName        组件名
+ *  @param params               URL参数
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)pushComponent:(NSString *)componentName intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)pushComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
 
 /**
  *  推出当前视图(注意：返回到上一个界面的意图数据在需要当前模块的Presenter里设置intentData属性）
@@ -141,10 +143,11 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  Modal一个组件
  *
  *  @param componentName        组件名
+ *  @param params               URL参数
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)presentComponent:(NSString *)componentName intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)presentComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
 
 /**
  *  dismiss当前视图(注意：返回到上一个界面的意图数据需要在当前模块的Presenter里设置intentData属性）
@@ -155,11 +158,12 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  自定义展示一个界面
  *
  *  @param componentName        下一个路由
- *  @param transitionBlock       视图切换代码
+ *  @param transitionBlock      视图切换代码
+ *  @param params               URL参数
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
 
 /**
  *  自定义移除一个界面

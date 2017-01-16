@@ -10,6 +10,8 @@
 #import "XFSearchWireFramePort.h"
 #import "XFSearchInteractorPort.h"
 
+#define Routing XFConvertRoutingToType(id<XFSearchWireFramePort>)
+
 @implementation XFSearchPresenter
 
 - (void)viewDidLoad
@@ -41,6 +43,10 @@
         return [self executeSearchSignal];
     })
     
+    XF_CEXE_(self.showMessageCommand, {
+        [Routing transition2Message];
+    })
+    
     // 连接错误信号
     self.connectionErrors = self.executeSearch.errors;
 }
@@ -54,7 +60,7 @@
         // 设置组件传递数据
         self.intentData = x;
         // 请求Routing切换界面
-        [XFConvertRoutingToType(id<XFSearchWireFramePort>) transitionToShowResultsModule];
+        [Routing transition2PictureResults];
     }] doError:^(NSError *error) {
         NSLog(@"error %@",error);
     }];

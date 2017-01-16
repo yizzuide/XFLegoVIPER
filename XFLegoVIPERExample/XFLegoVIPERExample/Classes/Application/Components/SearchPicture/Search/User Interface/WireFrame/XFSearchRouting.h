@@ -9,7 +9,7 @@
 #import "XFRouting.h"
 #import "XFSearchWireFramePort.h"
 
-@interface XFSearchRouting : XFRouting
+@interface XFSearchRouting : XFRouting <XFSearchWireFramePort>
 
 
 @end

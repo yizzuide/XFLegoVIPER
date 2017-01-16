@@ -12,7 +12,9 @@
 /**
  *  跳转到结果界面
  */
-- (void)transitionToShowResultsModule;
+- (void)transition2PictureResults;
+
+- (void)transition2Message;
 @end
 
 

@@ -17,4 +17,13 @@
  *
  */
 + (UIViewController *)controllerFromComponentName:(NSString *)componentName;
+
+/**
+ *  根据前辍名创建一个导航控制器
+ *
+ *  @param name 前缀名
+ *
+ *  @return 导航控制器
+ */
++ (UINavigationController *)navigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController;
 @end
