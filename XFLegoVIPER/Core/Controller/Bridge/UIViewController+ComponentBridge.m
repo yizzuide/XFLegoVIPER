@@ -10,7 +10,6 @@
 #import <objc/runtime.h>
 #import "NSObject+XFLegoInvokeMethod.h"
 #import "NSObject+XFLegoSwizzle.h"
-#import "XFComponentReflect.h"
 #import "XFEventBus.h"
 
 @implementation UIViewController (ComponentBridge)
@@ -59,7 +58,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self xfLego_swizzleMethod:@selector(viewWillDisappear:) withMethod:@selector(componentBridge_viewWillDisappear:)];
-        [self xfLego_swizzleMethod:@selector(viewDidDisappear:) withMethod:@selector(componentBridge_viewDidDisappear:)];
+        [self xfLego_swizzleMethod:@selector(viewDidLoad) withMethod:@selector(componentBridge_viewDidLoad)];
     });
 }
 
@@ -84,20 +83,13 @@
 }
 
 
-- (void)componentBridge_viewDidDisappear:(BOOL)animated
+- (void)componentBridge_viewDidLoad
 {
-    [self componentBridge_viewDidDisappear:animated];
-    // 使用组件类获得当前组件对象
-    __kindof id<XFComponentRoutable> component = [XFComponentReflect componentForInterface:self];
-    id uiBus;
-    if ([XFComponentReflect isModuleComponent:component]) {
-        uiBus = [[component valueForKey:@"routing"] valueForKey:@"uiBus"];
-    } else {
-        uiBus = [component valueForKey:@"uiBus"];
+    [self componentBridge_viewDidLoad];
+    if (self.uiBus) {
+        // 销毁当前组件界面导航对象强引用
+        [self.uiBus invokeMethod:@"xfLego_destoryNavigatorRef"];
     }
-    // 销毁对下一个组件界面导航对象强引用
-    [uiBus invokeMethod:@"xfLego_destoryNavigatorRef"];
-    
 }
 
 @end

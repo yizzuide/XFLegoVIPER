@@ -33,7 +33,7 @@
 /**
  *   针对控制器组件导航控制器引用
  */
-@property (nonatomic, strong) UINavigationController *controllerComponentNavigator;
+@property (nonatomic, strong) UINavigationController *currentNavigator;
 
 @end
 
@@ -276,18 +276,19 @@
 
 #pragma mark - 私有方法
 // 处理URL参数
-- (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(id<XFComponentRoutable>)nextComponent
+- (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(__kindof id<XFComponentRoutable>)nextComponent
 {
     if (!params.count) return;
     // 检测是否要装配导航控制器，使用保留行为关键字"nav"
     NSString *navName = params[@"nav"];
     if (navName.length) {
         UINavigationController *nav = [XFControllerFactory navigationControllerFromPrefixName:navName withRootController:nextInterface];
-        // 如果模块组件，交给它自己处理
+        // 如果下一个组件模块组件，交给它自己处理
         if ([XFComponentReflect isModuleComponent:nextComponent]) {
-            [Routing setValue:nav forKey:@"currentNavigator"];
+            [[nextComponent routing] setValue:nav forKey:@"currentNavigator"];
         } else { // 如果是控制器组件
-            self.controllerComponentNavigator = nav;
+            // 用下一个组件UI总线引用导航对象
+            [[nextComponent uiBus] setValue:nav forKey:@"currentNavigator"];
         }
         
         // 移除行为参数
@@ -338,6 +339,6 @@
 // 移除对导航控制器的引用
 - (void)xfLego_destoryNavigatorRef
 {
-    self.controllerComponentNavigator = nil;
+    self.currentNavigator = nil;
 }
 @end
