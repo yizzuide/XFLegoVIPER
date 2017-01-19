@@ -59,6 +59,9 @@ Copy all files under `~/XFLegoVIPER` folder  to your project.
 
 ## ❤Using Template❤
 Now you can use template file to create a module which make of stuff class as fast as possible.
+
+Too complicated? [See Video](https://pan.baidu.com/play/video#video/path=%2FIOS%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF%2F2.%E4%BD%BF%E7%94%A8XFLegoVIPER%E6%A8%A1%E6%9D%BF%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97.mp4&t=-1)
+
 ### 1.Find Template file 
 find Template file  `~/Template/Architecture/XFLegoVIPER.xctemplate`
 
