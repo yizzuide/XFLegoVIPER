@@ -87,7 +87,7 @@ OK! It Work!
 ![XFLegoVIPER Module Layer](./ScreenShot/framework.png)
 
 ## Documentation
-[1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)]() | [3.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B))
+[1.x(Chinese)](./README1_5_x.md) | [2.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/blob/master/README2_5_x.md) | [3.x(Chinese)](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B))
 
 ## Change log
 see [change log](./RELEASE.md)
