@@ -47,6 +47,10 @@
         [Routing transition2Message];
     })
     
+    XF_CEXE_(self.showSettingCommand, {
+        [Routing transition2Setting];
+    })
+    
     // 连接错误信号
     self.connectionErrors = self.executeSearch.errors;
 }

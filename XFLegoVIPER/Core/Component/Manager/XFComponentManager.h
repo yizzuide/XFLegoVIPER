@@ -15,8 +15,9 @@
  *  添加组件
  *
  *  @param component 组件
+ *  @param enableLog 允许组件跟踪打印
  */
-+ (void)addComponent:(id<XFComponentRoutable>)component;
++ (void)addComponent:(id<XFComponentRoutable>)component enableLog:(BOOL)enableLog;
 /**
  *  删除组件
  *
@@ -41,11 +42,7 @@
  *
  *  @param eventName      事件名
  *  @param intentData     消息意图数据
- *  @param componentNames 组件名数组
+ *  @param componentName  组件名
  */
-+ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames;
-/**
- *  开启组件跟踪log
- */
-+ (void)enableLog;
++ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponent:(NSString *)componentName;
 @end

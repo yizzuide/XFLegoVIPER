@@ -15,6 +15,7 @@
 - (void)transition2PictureResults;
 
 - (void)transition2Message;
+- (void)transition2Setting;
 @end
 
 

@@ -8,27 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-// 发送组件消息（推荐，包括模块可运行组件、控制器可运行组件）
-#define XF_SendEventForComponent_(componentName,eventName,sendData) \
-[self.eventBus sendEventName:eventName intentData:sendData forComponentName:componentName];
-#define XF_SendEventForComponents_(componentNames,eventName,sendData) \
-[self.eventBus sendEventName:eventName intentData:sendData forComponentNames:componentNames];
-
-// 发送模块组件事件消息（过时）
-#define XF_SendEventForModule_(moduleName,eventName,sendData) \
-XF_SendEventForComponent_(moduleName,eventName,sendData)
-#define XF_SendEventForModules_(moduleNames,eventName,sendData) \
-XF_SendEventForComponents_(moduleNames,eventName,sendData)
-
+// 发送组件消息（参数依次为：事件名，消息数据对象，多个组件多变参数)
+#define XF_SendEventForComponents_(eventName, sendData, ...) \
+[self.eventBus sendEventName:eventName intentData:sendData,##__VA_ARGS__,nil];
 
 // 发通知
 #define XF_SendMVxNoti_(notiName,sendData) \
 [self.eventBus sendNotificationForMVxWithName:notiName intentData:sendData];
-// 注册通知
-#define XF_RegisterMVxNotis_(notisName) \
-[self.eventBus registerForMVxNotificationsWithNameArray:notisName];
+// 注册通知（参数为多个通知名，使用,分开）
+#define XF_RegisterMVxNotis_(...) \
+[self.eventBus registerMVxNotificationsForTarget:self,##__VA_ARGS__,nil];
 
-// 快速事件类型检测执行的宏
+// 快速事件类型匹配的宏
 #define XF_EventIs_(EventName,ExecuteCode) \
 if ([eventName isEqualToString:EventName]) { \
     ExecuteCode \
@@ -48,22 +39,13 @@ if ([eventName isEqualToString:EventName]) { \
 - (instancetype)initWithComponentRoutable:(__kindof id<XFComponentRoutable>)componentRoutable NS_DESIGNATED_INITIALIZER;
 
 /**
- *  对单个组件发送事件消息
- *
- *  @param eventName        事件名
- *  @param intentData       消息数据
- *  @param componentName    组件名
- */
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponentName:(NSString *)componentName;
-
-/**
  *  对多个组件组件发送事件消息
  *
  *  @param eventName        事件名
  *  @param intentData       消息数据
- *  @param componentNames   组件名数组
+ *  @param ...              多个组件名
  */
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponentNames:(NSArray<NSString *> *)componentNames;
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData,...;
 
 /**
  *  发送全局通知
@@ -76,8 +58,9 @@ if ([eventName isEqualToString:EventName]) { \
 /**
  *  注册通知
  *
- *  @param notiNames 通知名数组
+ *  @param target 通知侦听目标
+ *  @param ...    多个通知名
  */
-- (void)registerForMVxNotificationsWithNameArray:(NSArray<NSString *> *)notiNames;
+- (void)registerMVxNotificationsForTarget:(id)target,...;
 
 @end

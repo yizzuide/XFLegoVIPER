@@ -26,7 +26,7 @@ XF_AutoAssemblyModule_Fast
     [self addSubRouting:collectRouting asChildViewController:YES];
     XFWorksRouting *worksRouting = [XFWorksRouting assembleRouting];
     [self addSubRouting:worksRouting asChildViewController:YES];
-    return [collectRouting.realInterface view];
+    return [collectRouting.realUInterface view];
 }
 
 - (void)switch2CollectSubRoute

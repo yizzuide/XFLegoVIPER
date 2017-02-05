@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     // 解构URL参数
-//    NSInteger userID = self.params[@"id"];
+//    NSInteger userID = self.URLParams[@"id"];
 }
 
 // 初始化视图数据
@@ -58,7 +58,7 @@
 - (void)registerMVxNotifactions
 {
     // 注册MVx构架通知
-//    XF_RegisterMVxNotis_(@[XFUserDidLoginNotifaction])
+//    XF_RegisterMVxNotis_(XFUserDidLoginNotifaction)
 }
 
 

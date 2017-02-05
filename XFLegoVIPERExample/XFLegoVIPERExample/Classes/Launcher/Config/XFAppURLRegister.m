@@ -20,12 +20,16 @@
                                    */
                                   @"xf://search",
                                   @"xf://search/message",
+                                  @"xf://search/setting",
                                   @"xf://search/pictureResults",
                                   @"xf://search/pictureResults/details",
                                   @"xf://search/pictureResults/subControl",
                                   @"xf://search/pictureResults/subControl2",
                                   @"xf://search/pictureResults/pageControl",
-                                  @"xf://search/pictureResults/weibo",      
+                                  @"xf://search/pictureResults/pageControl/movie",
+                                  @"xf://search/pictureResults/pageControl/Music",
+                                  @"xf://search/pictureResults/pageControl/Book",
+                                  @"xf://search/pictureResults/weibo",
                                   ]];
 }
 @end

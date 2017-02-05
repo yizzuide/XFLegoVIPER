@@ -10,9 +10,24 @@
 
 #define IS_Module(component) [component respondsToSelector:@selector(routing)]
 
-@protocol XFComponentRoutable;
+@protocol XFComponentRoutable,XFComponentHandlerPlug;
 @interface XFComponentReflect : NSObject
 
+/**
+ *  根据组件返回组件处理器
+ *
+ *  @param component 组件名或组件对象
+ *
+ *  @return 组件处理器类
+ */
++ (Class<XFComponentHandlerPlug>)componentHandlerForComponent:(id)component;
+/**
+ *  根据组件名，验证一个组件是否存在
+ *
+ *  @param componentName 组件名
+ *
+ */
++ (BOOL)existComponent:(NSString *)componentName;
 /**
  *  返回组件名
  *
@@ -22,19 +37,12 @@
  */
 + (NSString *)componentNameForComponent:(id<XFComponentRoutable>)component;
 /**
- *  是否是一个组件
- *
- *  @param name 组件名
- *
- */
-+ (BOOL)isComponentForName:(NSString *)name;
-/**
  *  是否是模块组件
  *
  *  @param component 组件对象或组件名
  *
  */
-+ (BOOL)isModuleComponent:(id)component;
++ (BOOL)isVIPERModuleComponent:(id)component;
 /**
  *  是否是控制器组件
  *
@@ -49,22 +57,14 @@
  *
  *  @return 视图
  */
-+ (UIViewController *)interfaceForComponent:(__kindof id<XFComponentRoutable>)component;
++ (UIViewController *)uInterfaceForComponent:(__kindof id<XFComponentRoutable>)component;
 
-/**
- *  从视图返回组件名
- *
- *  @param interface 视图
- *
- *  @return 组件名
- */
-+ (NSString *)componentNameForInterface:(UIViewController *)interface;
 /**
  *  从视图返回组件
  *
- *  @param interface 视图
+ *  @param uInterface 视图
  *
  *  @return 组件
  */
-+ (id<XFComponentRoutable>)componentForInterface:(UIViewController *)interface;
++ (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface;
 @end

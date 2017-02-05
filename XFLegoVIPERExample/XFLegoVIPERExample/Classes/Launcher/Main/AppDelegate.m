@@ -10,6 +10,7 @@
 #import <SDWebImage/SDWebImageDownloader.h>
 #import "XFLegoVIPER.h"
 #import "XFAppURLRegister.h"
+#import "LEMVVMModuleHandler.h"
 
 @interface AppDelegate ()
 
@@ -26,10 +27,8 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    // VIPER模块跟踪
-//    [XFRoutingLinkManager enableLog];
-    // 组件跟踪
-    [XFComponentManager enableLog];
+    // 配置乐高框架
+    [[[XFLegoConfig defaultConfig] enableLog] addComponentHanderPlug:[LEMVVMModuleHandler class]];
     
     // 注册URL
     [XFAppURLRegister registerURLs];

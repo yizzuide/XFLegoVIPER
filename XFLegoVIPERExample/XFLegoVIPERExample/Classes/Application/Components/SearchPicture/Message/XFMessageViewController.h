@@ -10,7 +10,7 @@
 #import "XFLegoVIPER.h"
 
 // 实现XFControllerComponentRunnable接口，使当前控制器成为组件
-@interface XFMessageViewController : UIViewController <XFControllerComponentRunnable>
+@interface XFMessageViewController : UIViewController <XFControllerRunnable>
 
 // 可接收URL参数
 @property (nonatomic, copy) NSDictionary *URLParams;

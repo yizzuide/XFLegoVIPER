@@ -12,6 +12,7 @@
                 <outlet property="searchButton" destination="1dQ-Ve-LNq" id="sso-bb-EUb"/>
                 <outlet property="secondCategoryTextFiled" destination="usQ-X8-3QD" id="aWy-fY-hnB"/>
                 <outlet property="showMessageButton" destination="f22-dF-wu4" id="5Qg-8Y-Hyr"/>
+                <outlet property="showSettingButton" destination="MvQ-iD-NTk" id="z2I-zN-3jI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -78,12 +79,17 @@
                     <color key="tintColor" red="0.85098039215686272" green="0.42352941176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Present Controller Compoent"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvQ-iD-NTk">
+                    <color key="tintColor" red="0.85098039219999999" green="0.42352941179999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Present MVVM Compoent"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="trailing" secondItem="5ty-UF-KbT" secondAttribute="trailing" id="0fN-Rb-gRY"/>
                 <constraint firstItem="dNK-kh-xTV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7Uk-cZ-KhK"/>
                 <constraint firstItem="f22-dF-wu4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8pt-HR-hOa"/>
+                <constraint firstItem="MvQ-iD-NTk" firstAttribute="top" secondItem="f22-dF-wu4" secondAttribute="bottom" constant="8" id="DPr-js-Lq6"/>
                 <constraint firstItem="5ty-UF-KbT" firstAttribute="leading" secondItem="vQi-X0-xX1" secondAttribute="trailing" constant="1" id="DTs-9v-M9Z"/>
                 <constraint firstItem="vQi-X0-xX1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="KCU-6g-NFF"/>
                 <constraint firstItem="usQ-X8-3QD" firstAttribute="centerY" secondItem="upa-Ve-qp7" secondAttribute="centerY" id="NZY-G1-h1m"/>
@@ -101,10 +107,11 @@
                 <constraint firstItem="pbK-Bv-AxZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oQH-OE-wO1"/>
                 <constraint firstItem="1dQ-Ve-LNq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oaW-so-g2R"/>
                 <constraint firstAttribute="trailing" secondItem="5ty-UF-KbT" secondAttribute="trailing" constant="35" id="onu-Ss-1pJ"/>
+                <constraint firstItem="MvQ-iD-NTk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="r5i-Yc-VdT"/>
                 <constraint firstItem="upa-Ve-qp7" firstAttribute="leading" secondItem="vQi-X0-xX1" secondAttribute="leading" id="zcj-lW-Uxg"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
-            <point key="canvasLocation" x="-104" y="148"/>
+            <point key="canvasLocation" x="-89" y="149"/>
         </view>
     </objects>
 </document>

@@ -7,72 +7,50 @@
 //
 
 #import "XFComponentReflect.h"
-#import "XFRouting.h"
-#import "XFRoutingReflect.h"
-#import "XFControllerReflect.h"
-#import "XFComponentManager.h"
-#import "XFRoutingLinkManager.h"
+#import "XFComponentHandlerMatcher.h"
+#import "XFComponentHandlerPlug.h"
+#import "XFVIPERModuleHandler.h"
+#import "XFControllerHandler.h"
+
+#define MatchedComponentHandler Class<XFComponentHandlerPlug> matchedComponentHandler = [self componentHandlerForComponent:(id)component];
 
 @implementation XFComponentReflect
 
-
-+ (NSString *)componentNameForComponent:(id<XFComponentRoutable>)component {
-    if ([self isModuleComponent:component]) {
-        return [XFRoutingReflect moduleNameForComponentObject:component];
-    }
-    return [XFControllerReflect controllerNameForComponent:component];
-}
-
-+ (BOOL)isComponentForName:(NSString *)name
++ (Class<XFComponentHandlerPlug>)componentHandlerForComponent:(id)component
 {
-    if ([XFRoutingReflect verifyModule:name]) {
-        return YES;
-    }
-    if ([XFControllerReflect verifyController:name]) {
-        return YES;
-    }
-    return NO;
+    return [XFComponentHandlerMatcher matchComponent:component];
 }
 
-+ (BOOL)isModuleComponent:(id)component {
-    if ([component isKindOfClass:[NSString class]]) {
-        return [XFRoutingReflect verifyModule:component];
-    }
-    return IS_Module(component);
++ (BOOL)existComponent:(NSString *)componentName
+{
+    return [self componentHandlerForComponent:componentName];
+}
+
++ (BOOL)isVIPERModuleComponent:(id)component {
+    MatchedComponentHandler
+    return matchedComponentHandler == [XFVIPERModuleHandler class];
 }
 
 + (BOOL)isControllerComponent:(id)component {
-    if ([component isKindOfClass:[NSString class]]) {
-        return [XFControllerReflect verifyController:component];
-    }
-    return !IS_Module(component);
+    MatchedComponentHandler
+    return matchedComponentHandler == [XFControllerHandler class];
 }
 
-+ (UIViewController *)interfaceForComponent:(__kindof id<XFComponentRoutable>)component {
-    UIViewController *currentInterface;
-    if ([XFComponentReflect isModuleComponent:component]) { // 模块组件
-        XFRouting *routing = [component valueForKeyPath:@"routing"];
-        currentInterface = routing.realInterface;
-    }else{ // 控制器组件
-        UIViewController<XFComponentRoutable> *viewController = component;
-        currentInterface = viewController;
-    }
-    return currentInterface;
++ (NSString *)componentNameForComponent:(id<XFComponentRoutable>)component {
+    
+    MatchedComponentHandler
+    return [matchedComponentHandler componentNameFromComponent:component];
 }
 
-+ (NSString *)componentNameForInterface:(UIViewController *)interface
++ (UIViewController *)uInterfaceForComponent:(__kindof id<XFComponentRoutable>)component {
+    MatchedComponentHandler
+    return [matchedComponentHandler uInterfaceForComponent:component];
+}
+
++ (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface
 {
-    if ([interface valueForKeyPath:@"eventHandler"]) { // 模块组件
-        return [XFRoutingReflect moduleNameForComponentObject:interface];
-    }
-    return [XFControllerReflect controllerNameForComponent:(id)interface];
-}
-
-+ (id<XFComponentRoutable>)componentForInterface:(UIViewController *)interface
-{
-    if ([interface valueForKeyPath:@"eventHandler"]) { // 模块组件
-        return [interface valueForKeyPath:@"eventHandler"];
-    }
-    return (id)interface;
+     Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentHandlerMatcher matchUInterface:uInterface];
+    id<XFComponentRoutable> component = [matchedComponentHandler componentForUInterface:uInterface];
+    return component;
 }
 @end

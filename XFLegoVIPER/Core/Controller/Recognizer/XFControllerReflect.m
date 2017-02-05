@@ -7,14 +7,13 @@
 //
 
 #import "XFControllerReflect.h"
-#import "XFRoutingLinkManager.h"
 #import "XFLegoMarco.h"
 
 @implementation XFControllerReflect
 
 + (BOOL)verifyController:(NSString *)controllerName
 {
-    NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",[XFRoutingLinkManager modulePrefix],controllerName,@"ViewController"];
+    NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,controllerName,@"ViewController"];
     if (NSClassFromString(clazzName)) {
         return YES;
     }
@@ -34,9 +33,9 @@
         suffixRange = [clazzName rangeOfString:simpleSuffix[index++]];
     } while (suffixRange.location <= XF_Index_First);
     
-    NSInteger len = [XFRoutingLinkManager modulePrefix].length;
-    NSRange moduleRange = NSMakeRange(len, suffixRange.location - len);
-    NSString *moduleName = [clazzName substringWithRange:moduleRange];
-    return moduleName;
+    NSInteger len = XF_Class_Prefix.length;
+    NSRange controllerNameRange = NSMakeRange(len, suffixRange.location - len);
+    NSString *controllerName = [clazzName substringWithRange:controllerNameRange];
+    return controllerName;
 }
 @end

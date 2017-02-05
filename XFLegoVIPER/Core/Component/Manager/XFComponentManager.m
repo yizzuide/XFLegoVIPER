@@ -12,6 +12,7 @@
 #import "XFRoutingLinkManager.h"
 #import "XFRouting.h"
 #import "XFLegoMarco.h"
+#import "XFLegoConfig.h"
 
 @implementation XFComponentManager
 
@@ -32,23 +33,31 @@ static NSMutableArray *componentKeyArr_;
     }
 }
 
-+ (void)addComponent:(id<XFComponentRoutable>)component
++ (void)addComponent:(id<XFComponentRoutable>)component enableLog:(BOOL)enableLog
 {
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
     [componentTable_ setObject:component forKey:componentName];
     [componentKeyArr_ addObject:componentName];
-    if (enablecomponentLog_) {
-        [self _log];
-    }
+    if (enableLog) [self _log];
 }
 
 + (void)removeComponent:(id<XFComponentRoutable>)component
 {
+    if (!component) return;
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
     [componentTable_ removeObjectForKey:componentName];
     [componentKeyArr_ removeObject:componentName];
-    if (enablecomponentLog_) {
-        [self _log];
+    [self _clearZombieComponent];
+    [self _log];
+}
+
++ (void)_clearZombieComponent
+{
+    NSEnumerator *keys = componentTable_.keyEnumerator;
+    for (NSString *key in keys) {
+        if ([componentTable_ objectForKey:key]) continue;
+        [componentTable_ removeObjectForKey:key];
+        [componentKeyArr_ removeObject:key];
     }
 }
 
@@ -68,35 +77,26 @@ static NSMutableArray *componentKeyArr_;
     return nil;
 }
 
-+ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames
++ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponent:(NSString *)componentName
 {
-    for (NSString *componentName in componentNames) {
-        // 优先处理模块组件
-        if([XFComponentReflect isModuleComponent:componentName]) {
-            [XFRoutingLinkManager sendEventName:eventName intentData:intentData forModulesName:@[componentName]];
-            continue;
-        }
-        // 控制器组件
-        id<XFComponentRoutable> component = [self findComponentForName:componentName];
-        if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
-            [component receiveComponentEventName:eventName intentData:intentData];
-        }
+    // 优先处理模块组件
+    if([XFComponentReflect isVIPERModuleComponent:componentName]) {
+        [XFRoutingLinkManager sendEventName:eventName intentData:intentData forModuleName:componentName];
+        return;
+    }
+    // 控制器组件
+    id<XFComponentRoutable> component = [self findComponentForName:componentName];
+    if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
+        [component receiveComponentEventName:eventName intentData:intentData];
     }
 }
 
 #pragma mark - log
-// log权限
-BOOL enablecomponentLog_;
-+ (void)enableLog
-{
-    enablecomponentLog_ = YES;
-}
-
 // 组件树枝深度
 static int treeDeepCount_;
 + (void)_log {
 #ifdef DEBUG
-    if (enablecomponentLog_) {
+    if (LEGO_DEBUG) {
 #ifdef LogDebug
         LogDebug(@"Component trace log:");
 #elif (defined DEBUG)
@@ -163,7 +163,7 @@ static int treeDeepCount_;
 // 构建组件枝丫
 + (void)_printSubComponentTree:(id<XFComponentRoutable>)component logStr:(NSMutableString *)logStrM
 {
-    UIViewController *currentInterface = [XFComponentReflect interfaceForComponent:component];
+    UIViewController *currentInterface = [XFComponentReflect uInterfaceForComponent:component];
     NSArray *childInterfaces = currentInterface.childViewControllers;
     NSInteger childCount = childInterfaces.count;
     
@@ -178,7 +178,7 @@ static int treeDeepCount_;
                 childInterface = ((UINavigationController *)childInterface).childViewControllers[0];
             }
             [self _printTabForAppenedString:logStrM deep:treeDeepCount_ + 1];
-            id<XFComponentRoutable> subComponent = [XFComponentReflect componentForInterface:childInterface];
+            id<XFComponentRoutable> subComponent = [XFComponentReflect componentForUInterface:childInterface];
             // 构建子树
             [self _printComponentTree:subComponent logStr:logStrM];
         }

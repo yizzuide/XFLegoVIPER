@@ -1,5 +1,5 @@
 //
-//  XFFluctuator.h
+//  XFUIBus.h
 //  XFLegoVIPER
 //
 //  Created by 付星 on 2016/11/2.
@@ -63,14 +63,17 @@ XF_PUT_URLComponent_(openURLForPush,urlString,ExecuteCode)
 XF_PUT_URLComponent_(openURLForPresent,urlString,ExecuteCode)
 #define XF_Present_URLComponent_Fast(urlString) XF_Present_URLComponent_(urlString,{})
 
-@protocol XFComponentRoutable;
-
 typedef void(^TransitionCompletionBlock)();
 typedef void(^TransitionBlock)(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock);
 typedef void(^CustomCodeBlock) (Activity *nextInterface);
 
-
+@protocol XFComponentRoutable,XFURLRoutePlug,XFComponentHandlerPlug;
 @interface XFUIBus : NSObject
+
+/**
+ *  可运行组件
+ */
+@property (nonatomic, weak, readonly) __kindof id<XFComponentRoutable> componentRoutable;
 
 /**
  *  初始化方法
@@ -112,6 +115,15 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param customCodeBlock 自定义配制代码Block
  */
 - (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(CustomCodeBlock)customCodeBlock;
+
+/**
+ *  通过URL获取一个组件
+ *
+ *  @param url URL
+ *
+ *  @return 组件
+ */
++ (id<XFComponentRoutable>)openURLForGetComponent:(NSString *)url;
 
 
 /**
@@ -171,5 +183,31 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param transitionBlock 自定义切换代码
  */
 - (void)removeComponentWithTransitionBlock:(TransitionBlock)transitionBlock;
+/**
+ *  用于框架扩展模块组件调用的隐式移除组件
+ *
+ *  @param transitionBlock 自定义切换代码
+ */
+- (void)xfLego_implicitRemoveComponentWithTransitionBlock:(TransitionBlock)transitionBlock;
 
+/**
+ *  设置视图
+ *
+ *  @param uInterface 视图
+ */
+- (void)setUInterface:(UIViewController *)uInterface;
+/**
+ *  设置导航
+ *
+ *  @param navigator 导航
+ */
+- (void)setNavigator:(UINavigationController *)navigator;
+/**
+ *  返回当前视图
+ */
+- (UIViewController *)uInterface;
+/**
+ *  销毁当前组件UI总线对视图的强引用
+ */
+- (void)xfLego_destoryUInterfaceRef;
 @end

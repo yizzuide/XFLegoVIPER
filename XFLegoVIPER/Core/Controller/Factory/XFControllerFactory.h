@@ -16,14 +16,14 @@
  *  @param componentName 组件名
  *
  */
-+ (UIViewController *)controllerFromComponentName:(NSString *)componentName;
++ (UIViewController *)createControllerFromComponentName:(NSString *)componentName;
 
 /**
  *  根据前辍名创建一个导航控制器
  *
- *  @param name 前缀名
+ *  @param prefixName 前缀名
  *
  *  @return 导航控制器
  */
-+ (UINavigationController *)navigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController;
++ (UINavigationController *)createNavigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController;
 @end

@@ -1,5 +1,5 @@
 //
-//  XFFluctuator.m
+//  XFUIBus.m
 //  XFLegoVIPER
 //
 //  Created by 付星 on 2016/11/2.
@@ -7,34 +7,38 @@
 //
 
 #import "XFUIBus.h"
-#import "NSObject+XFLegoInvokeMethod.h"
-#import "XFRouting.h"
-#import "XFRoutingFactory.h"
-#import "XFURLRoute.h"
 #import "XFControllerFactory.h"
 #import "XFComponentRoutable.h"
-#import "XFRoutingLinkManager.h"
 #import "UIViewController+XFLego.h"
-#import "XFComponentReflect.h"
 #import "XFComponentManager.h"
+#import "NSObject+XFLegoInvokeMethod.h"
+#import "XFURLRoutePlug.h"
+#import "XFComponentHandlerMatcher.h"
+#import "UIViewController+ComponentBridge.h"
+#import "XFComponentReflect.h"
 
-// 获取模块组件路由
-#define Routing ((XFRouting *)[self.componentRoutable routing])
-// 当前组件界面
-#define ThisInterface (Activity *)(IS_Module(self.componentRoutable) ? Routing.realInterface: self.componentRoutable)
+// 快速匹配组件处理器宏
+#define MatchedComponentHandler(_component) Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentReflect componentHandlerForComponent:(id)_component];
 
 @interface XFUIBus ()
 
 /**
  *  可运行组件
  */
-@property (nonatomic, weak) __kindof id<XFComponentRoutable> componentRoutable;
+@property (nonatomic, weak, readwrite) __kindof id<XFComponentRoutable> componentRoutable;
 
 /**
- *   针对控制器组件导航控制器引用
+ *  视图
+ */
+@property (nonatomic, strong) UIViewController *currentUInterface;
+/**
+ *   导航
  */
 @property (nonatomic, strong) UINavigationController *currentNavigator;
-
+/**
+ *  当前组件匹配的组件处理器
+ */
+@property (nonatomic, assign) Class<XFComponentHandlerPlug> matchedComponentHandler;
 @end
 
 @implementation XFUIBus
@@ -48,16 +52,23 @@
 {
     self = [super init];
     if (self) {
-        _componentRoutable = componentRoutable;
+        if (componentRoutable) self.componentRoutable = componentRoutable;
     }
     return self;
 }
 
+- (void)setComponentRoutable:(__kindof id<XFComponentRoutable>)componentRoutable
+{
+    _componentRoutable = componentRoutable;
+    // 缓存组件处理器
+    MatchedComponentHandler(componentRoutable)
+    self.matchedComponentHandler = matchedComponentHandler;
+}
 
 #pragma mark - URL组件方式
 - (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock
 {
-    [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
+    [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self showComponent:componentName onWindow:mainWindow params:params customCode:customCodeBlock];
     }];
 }
@@ -65,7 +76,7 @@
 // 以URL组件式PUSH
 - (void)openURLForPush:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
 {
-    [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
+    [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self pushComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
 }
@@ -73,7 +84,7 @@
 // 以URL组件式Present
 - (void)openURLForPresent:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
 {
-    [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
+    [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self presentComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
 }
@@ -81,39 +92,50 @@
 // 自定义打开一个URL组件
 - (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(CustomCodeBlock)customCodeBlock
 {
-    [XFURLRoute open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
+    [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self putComponent:componentName withTransitionBlock:transitionBlock params:params intent:[self _intentData] customCode:customCodeBlock];
     }];
+}
+
+// 通过URL返回组件
++ (id<XFComponentRoutable>)openURLForGetComponent:(NSString *)url
+{
+    __block id<XFComponentRoutable> subComponent;
+    [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
+        MatchedComponentHandler(componentName)
+        id<XFComponentRoutable> component = [matchedComponentHandler createComponentFromName:componentName];
+        UIViewController *nextInterface = [matchedComponentHandler uInterfaceForComponent:component];
+        [XFUIBus _transmitURLParams:params nextInterface:nextInterface nextComponent:component];
+        subComponent = component;
+    }];
+    // 添加子组件到容器，为了不妨碍父组件的跟踪功能，使用延后处理
+    LEGORunAfter0_015({
+        [XFComponentManager addComponent:subComponent enableLog:NO];
+    })
+    return subComponent;
 }
 
 #pragma mark - 组件名切换方式
 - (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock
 {
-    id<XFComponentRoutable> component;
-    // 是否是控制器组件
-    if ([XFComponentReflect isControllerComponent:componentName]) {
-        UIViewController<XFComponentRoutable> *viewController = (id)[XFControllerFactory controllerFromComponentName:componentName];
-        component = viewController;
-    } else {
-        // 否则是VIPER模块组件
-        XFRouting *rootRouting = [XFRoutingFactory createRoutingFastFromModuleName:componentName];
-        NSAssert(rootRouting, @"模块创建失败！请检测模块名是否正确！(注意：使用帕斯卡命名法<首字母大写>）");
-        component = rootRouting.uiOperator;
-    }
+    MatchedComponentHandler(componentName)
+    // 下一组件
+    id<XFComponentRoutable> nextComponent = [matchedComponentHandler component:self.componentRoutable createNextComponentFromName:componentName];
     // 视图
-    UIViewController *interface = [XFComponentReflect interfaceForComponent:component];
+    UIViewController *nextUInterface = [matchedComponentHandler uInterfaceForComponent:nextComponent];
+    NSAssert(nextComponent, @"找不到当前组件名的处理组件！");
     // 传递URL参数
-    [self _transmitURLParams:params nextInterface:interface nextComponent:component];
+    [XFUIBus _transmitURLParams:params nextInterface:nextUInterface nextComponent:nextComponent];
     
     if (customCodeBlock) {
-        customCodeBlock(interface);
+        customCodeBlock(nextUInterface);
     }
     // 显示根组件
-    mainWindow.rootViewController = interface.navigationController ?: interface;
+    mainWindow.rootViewController = nextUInterface.navigationController ?: nextUInterface;
     [mainWindow makeKeyAndVisible];
     
     // 添加组件到容器
-    [XFComponentManager addComponent:component];
+    [XFComponentManager addComponent:nextComponent enableLog:YES];
 }
 
 // Modal方式
@@ -168,36 +190,18 @@
 
 #pragma mark - 自定义组件切换
 - (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock {
-    // 下一个组件
-    id<XFComponentRoutable> nextComponent;
-    // 是否是控制器组件
-    if ([XFComponentReflect isControllerComponent:componentName]) {
-        UIViewController<XFComponentRoutable> *viewController = (id)[XFControllerFactory controllerFromComponentName:componentName];
-        nextComponent = viewController;
-    } else {
-        // 初始化一个Routing
-        XFRouting *nextRouting = [XFRoutingFactory createRoutingFastFromModuleName:componentName];
-        NSAssert(nextRouting, @"模块创建失败！请检测模块名是否正确！(注意：使用帕斯卡命名法<首字母大写>）");
-        
-        if ([XFComponentReflect isModuleComponent:self.componentRoutable]) { // 当前是模块组件
-            // 如果有事件处理层
-            if (nextRouting.uiOperator) {
-                // 绑定模块关系
-                [self _flowToNextRouting:nextRouting];
-            }
-            // 跟踪当前要跳转的路由,用于对共享的路由URL匹配
-            [XFRoutingLinkManager setCurrentActionRounting:Routing];
-        }
-        nextComponent = nextRouting.uiOperator;
-    }
-    // 获得当前组件的界面层
-    UIViewController *nextInterface = [XFComponentReflect interfaceForComponent:nextComponent];
+    MatchedComponentHandler(componentName)
+    // 下一组件
+    id<XFComponentRoutable> nextComponent = [matchedComponentHandler component:self.componentRoutable createNextComponentFromName:componentName];
+    // 视图
+    UIViewController *nextUInterface = [matchedComponentHandler uInterfaceForComponent:nextComponent];
+    NSAssert(nextComponent, @"找不到当前组件名的处理组件！");
     
     // 绑定组件关系
     [self _flowToNextComponent:nextComponent];
     
     // 传递URL参数
-    [self _transmitURLParams:params nextInterface:nextInterface nextComponent:nextComponent];
+    [XFUIBus _transmitURLParams:params nextInterface:nextUInterface nextComponent:nextComponent];
     
     // 传递组件意图对象
     if (intentData && [nextComponent respondsToSelector:@selector(setComponentData:)]) {
@@ -213,89 +217,90 @@
     if ([self.componentRoutable respondsToSelector:@selector(intentData)]) {
         self.componentRoutable.intentData = nil;
     }
-    
     //  调用自定义代码
     if (customCodeBlock) {
-        customCodeBlock(nextInterface);
+        customCodeBlock(nextUInterface);
     }
-    // 执行切换组件
-    if (transitionBlock) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            transitionBlock(ThisInterface, nextInterface, ^{
-                // 下一个组件获得焦点
-                if ([nextComponent respondsToSelector:@selector(componentWillBecomeFocus)]) {
-                    [nextComponent componentWillBecomeFocus];
-                }
-            });
+    if (!transitionBlock) return;
+    Activity *thisInterface = [self.matchedComponentHandler uInterfaceForComponent:self.componentRoutable];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // 执行切换组件
+        transitionBlock(thisInterface, nextUInterface, ^{
+            // 下一个组件获得焦点
+            if ([nextComponent respondsToSelector:@selector(componentWillBecomeFocus)]) {
+                [nextComponent componentWillBecomeFocus];
+            }
         });
-    }
-    [XFComponentManager addComponent:nextComponent];
+    });
+    // 添加组件
+    [XFComponentManager addComponent:nextComponent enableLog:YES];
 }
 
 // 移除当前Routing
 - (void)removeComponentWithTransitionBlock:(TransitionBlock)transitionBlock
 {
-    // 如果是模块组件
-    if ([XFComponentReflect isModuleComponent:self.componentRoutable]) {
-        // 标识为程序移除
-        [Routing.realInterface invokeMethod:@"setPoppingProgrammatically:" param:[NSNumber numberWithBool:YES]];
-    } else {
-        [self.componentRoutable invokeMethod:@"setPoppingProgrammatically:" param:[NSNumber numberWithBool:YES]];
-    }
-    
+    // 设置为手动代码移除方式
+    UIViewController *uInterface = [self.matchedComponentHandler uInterfaceForComponent:self.componentRoutable];
+    [uInterface invokeMethod:@"setPoppingProgrammatically:" param:[NSNumber numberWithBool:YES]];
     // 开始移除当前路由并切换
-    [self xfLego_startRemoveComponentWithTransitionBlock:transitionBlock];
+    [self xfLego_implicitRemoveComponentWithTransitionBlock:transitionBlock];
 }
 
-- (void)xfLego_startRemoveComponentWithTransitionBlock:(TransitionBlock)transitionBlock
+- (void)xfLego_implicitRemoveComponentWithTransitionBlock:(TransitionBlock)transitionBlock
 {
+    if (!self.componentRoutable) return;
+    // 调用组件处理器的开始移除组件方法
+    [self.matchedComponentHandler willRemoveComponent:self.componentRoutable];
+    
     if ([self.componentRoutable respondsToSelector:@selector(componentWillResignFocus)]) {
         [self.componentRoutable componentWillResignFocus];
     }
-    transitionBlock(ThisInterface,nil,^{
+    if (!transitionBlock) return;
+    Activity *thisInterface = [self.matchedComponentHandler uInterfaceForComponent:self.componentRoutable];
+    transitionBlock(thisInterface,nil,^{
         // 上一个组件获得焦点
         if ([self.componentRoutable.fromComponentRoutable respondsToSelector:@selector(componentWillBecomeFocus)]) {
             [self.componentRoutable.fromComponentRoutable componentWillBecomeFocus];
         }
         // 如果组件符合回传数据的条件
-        if ([self _canBackDataWithComponent:self.componentRoutable]) {
+        if ([XFUIBus _canBackDataWithComponent:self.componentRoutable]) {
             [self.componentRoutable.fromComponentRoutable onNewIntent:self.componentRoutable.intentData];
         }
-        // 如果模块组件
-        if ([XFComponentReflect isModuleComponent:self.componentRoutable]) {
-            // 释放路由
-            [Routing invokeMethod:@"xfLego_releaseRouting:" param:Routing];
-        }
+        // 调用组件处理器的释放组件方法
+        [self.matchedComponentHandler willReleaseComponent:self.componentRoutable];
         // 解除组件关系链
         [self.componentRoutable.fromComponentRoutable setValue:nil forKey:@"nextComponentRoutable"];
         [self.componentRoutable setValue:nil forKey:@"fromComponentRoutable"];
-        // 从容器里移除
+        // 从组件容器里移除
         [XFComponentManager removeComponent:self.componentRoutable];
     });
 }
 
-#pragma mark - 私有方法
 // 处理URL参数
-- (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(__kindof id<XFComponentRoutable>)nextComponent
++ (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(__kindof id<XFComponentRoutable>)nextComponent
 {
     if (!params.count) return;
     // 检测是否要装配导航控制器，使用保留行为关键字"nav"
     NSString *navName = params[@"nav"];
     if (navName.length) {
-        UINavigationController *nav = [XFControllerFactory navigationControllerFromPrefixName:navName withRootController:nextInterface];
-        // 如果下一个组件模块组件，交给它自己处理
-        if ([XFComponentReflect isModuleComponent:nextComponent]) {
-            [[nextComponent routing] setValue:nav forKey:@"currentNavigator"];
-        } else { // 如果是控制器组件
-            // 用下一个组件UI总线引用导航对象
-            [[nextComponent uiBus] setValue:nav forKey:@"currentNavigator"];
+        UINavigationController *nav = [XFControllerFactory createNavigationControllerFromPrefixName:navName withRootController:nextInterface];
+        // 设置导航引用
+        if ([XFComponentReflect isVIPERModuleComponent:nextComponent]) { // 如果是VIPER模块组件
+            [[[nextComponent valueForKey:@"routing"] uiBus] setNavigator:nav];
+        } else { // 其它组件
+            [[nextComponent uiBus] setNavigator:nav];
         }
-        
-        // 移除行为参数
-        NSMutableDictionary *mParams = [params mutableCopy];
-        [mParams removeObjectForKey:@"nav"];
-        params = mParams;
     }
+    
+    // 移除行为参数
+    NSArray<NSString *> *behaviorParams = @[@"nav"];
+    NSMutableDictionary *mParams = [params mutableCopy];
+    for (NSString *behaviorParam in behaviorParams) {
+        if ([mParams objectForKey:behaviorParam]) {
+            [mParams removeObjectForKey:@"nav"];
+        }
+    }
+    params = mParams;
     
     if (params.count && [nextComponent respondsToSelector:@selector(setURLParams:)]) {
         [nextComponent setURLParams:params];
@@ -303,13 +308,14 @@
 }
 
 // 能否返回组件意图数据
-- (BOOL)_canBackDataWithComponent:(id<XFComponentRoutable>)componentRoutable
++ (BOOL)_canBackDataWithComponent:(id<XFComponentRoutable>)componentRoutable
 {
     return [componentRoutable respondsToSelector:@selector(intentData)] &&
     componentRoutable.intentData &&
     componentRoutable.fromComponentRoutable &&
     [componentRoutable.fromComponentRoutable respondsToSelector:@selector(onNewIntent:)];
 }
+
 // 获取组件意图数据
 - (id)_intentData
 {
@@ -318,13 +324,6 @@
         intentData = self.componentRoutable.intentData;
     }
     return intentData;
-}
-
-// 绑定模块组件关系链
-- (void)_flowToNextRouting:(XFRouting *)nextRouting
-{
-    [Routing setValue:nextRouting forKey:@"nextRouting"];
-    [nextRouting setValue:Routing forKey:@"previousRouting"];
 }
 
 // 绑定组件关系
@@ -336,9 +335,24 @@
     [nextComponent setValue:self.componentRoutable forKey:@"fromComponentRoutable"];
 }
 
-// 移除对导航控制器的引用
-- (void)xfLego_destoryNavigatorRef
+- (void)setUInterface:(UIViewController *)uInterface {
+    self.currentUInterface = uInterface;
+}
+
+- (void)setNavigator:(UINavigationController *)navigator
 {
+    self.currentNavigator = navigator;
+}
+
+- (UIViewController *)uInterface
+{
+    return self.currentUInterface;
+}
+
+// 移除对视图的引用
+- (void)xfLego_destoryUInterfaceRef
+{
+    self.currentUInterface = nil;
     self.currentNavigator = nil;
 }
 @end

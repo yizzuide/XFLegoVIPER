@@ -38,7 +38,7 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
 //         animation.type = @"pageCurl";//向上翻一页效果
 //         animation.type = @"pageUnCurl";//向下翻一页效果
         
-        [self.realNavigator.view.layer addAnimation:animation forKey:@"animation"];
+        [self.realUInterface.navigationController.view.layer addAnimation:animation forKey:@"animation"];
     })
 }
 
@@ -46,8 +46,13 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
 {
     // 使用保留行为参数字段"nav",可以指定要装配的导航控制器，值为类前缀且一定是全大写
     // UI为UINavigationController
-//    XF_Present_URLComponent_Fast(@"xf://search/message?nav=UI");
+//    XF_Present_URLComponent_Fast(@"xf://search/message?nav=UI")
     // 使用自定义导航控制器类型（XFNavigationController）
-    XF_Present_URLComponent_Fast(@"xf://search/message?nav=XF");
+    XF_Present_URLComponent_Fast(@"xf://search/message?nav=XF")
+}
+
+- (void)transition2Setting
+{
+    XF_Present_URLComponent_Fast(@"xf://search/setting?nav=XF")
 }
 @end

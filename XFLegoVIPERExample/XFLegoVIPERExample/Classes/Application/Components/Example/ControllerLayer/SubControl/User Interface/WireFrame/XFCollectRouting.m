@@ -13,4 +13,9 @@
 
 
 XF_AutoAssemblyModuleFromIB(@"x-XFCollectActivity")
+
+- (void)dealloc
+{
+    XF_Debug_M();
+}
 @end

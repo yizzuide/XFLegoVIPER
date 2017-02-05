@@ -7,17 +7,22 @@
 //
 
 #import "XFControllerFactory.h"
-#import "XFRoutingLinkManager.h"
+#import "XFComponentManager.h"
+#import "XFLegoMarco.h"
 
 @implementation XFControllerFactory
 
-+ (UIViewController *)controllerFromComponentName:(NSString *)componentName
++ (UIViewController *)createControllerFromComponentName:(NSString *)componentName
 {
-    NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",[XFRoutingLinkManager modulePrefix],componentName,@"ViewController"];
+    id<XFComponentRoutable> controller = [XFComponentManager findComponentForName:componentName];
+    if (controller) {
+        return (id)controller;
+    }
+    NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,componentName,@"ViewController"];
     return [[NSClassFromString(clazzName) alloc] init];
 }
 
-+ (UINavigationController *)navigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController {
++ (UINavigationController *)createNavigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController {
     UINavigationController *nav;
     // 默认导航控制器
     if ([prefixName isEqualToString:@"UI"]) {

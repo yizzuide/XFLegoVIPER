@@ -10,7 +10,7 @@
 #define XFLegoMarco_h
 
 // 转到视图类型类型
-#define LEGORealInterface(interface) (__kindof UIViewController *)(interface)
+#define LEGORealUInterface(interface) (__kindof UIViewController *)(interface)
 // 转到新的子接口类型或子对象
 #define LEGORealPort(nowPort,oldPort) ((nowPort)(oldPort))
 
@@ -40,8 +40,14 @@ __weak __typeof__ (self) self_weak_ = self;
 #define XF_Define_Strong \
 __strong __typeof__(self) self = self_weak_;
 
-// 模块反射类
-#import "XFRoutingReflect.h"
+// 配置类
+#import "XFLegoConfig.h"
+#define LEGOConfig [XFLegoConfig shareInstance]
+// 类前辍
+#define XF_Class_Prefix [LEGOConfig classPrefix]
+// 调试LOG
+#define LEGO_DEBUG [LEGOConfig canDebugLog]
+
 
 #define SUPPRESS_UNDECLARED_SELECTOR_LEAK_WARNING(code)                        \
 _Pragma("clang diagnostic push")                                        \

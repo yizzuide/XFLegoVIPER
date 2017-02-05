@@ -29,7 +29,7 @@ XF_AutoAssemblyModule_Fast
     [self addSubRouting:worksRouting asChildViewController:YES];
     XFCollectRouting *collectRouting = [XFCollectRouting assembleRouting];
     [self addSubRouting:collectRouting asChildViewController:YES];
-    return collectRouting.realInterface;
+    return collectRouting.realUInterface;
 }
 
 - (void)fluctuate2CollectSubRouteWithHostView:(UIView *)hostView

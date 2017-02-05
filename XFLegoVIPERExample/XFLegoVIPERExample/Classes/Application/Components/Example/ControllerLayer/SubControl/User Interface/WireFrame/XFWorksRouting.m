@@ -12,4 +12,9 @@
 @implementation XFWorksRouting
 
 XF_AutoAssemblyModuleFromIB(@"x-XFWorksActivity")
+
+- (void)dealloc
+{
+    XF_Debug_M();
+}
 @end

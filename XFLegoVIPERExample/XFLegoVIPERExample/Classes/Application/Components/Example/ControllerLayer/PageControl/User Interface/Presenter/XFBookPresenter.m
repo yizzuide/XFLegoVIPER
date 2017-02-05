@@ -12,6 +12,6 @@
 
 - (void)viewDidAppear
 {
-    XF_SendEventForModule_(@"PageControl", @"showSubPage", self.userInterface);
+    XF_SendEventForComponents_(@"showSubPage", self.userInterface,@"PageControl")
 }
 @end

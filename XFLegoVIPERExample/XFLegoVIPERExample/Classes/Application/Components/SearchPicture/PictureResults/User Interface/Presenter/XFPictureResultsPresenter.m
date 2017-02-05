@@ -23,13 +23,8 @@
 
 - (void)viewDidLoad
 {
-    // 发送单模块消息事件
-    XF_SendEventForModule_(@"Search", @"loadData", @"SomeData")
-    // 发送多模块消息事件
-//    XF_SendEventForModules_(@[@"Search"], @"loadData", @"SomeData")
-    
-    // 在MVx架构中使用下面方法对VIPER架构中模块发事件数据（须导入XFRoutingLinkManager.h头文件）
-//    XF_SendEventFormMVxForVIPERModules_(@[@"Search"], @"loadData", @"SomeData");
+    // 发送组件消息事件
+    XF_SendEventForComponents_(@"loadData", @"SomeData",@"Search")
     
     // 在VIPER架构中对MVx架构模块发通知
 //    XF_SendMVxNoti_(@"XFReloadDataNotification", nil)
@@ -51,7 +46,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchNotification" object:nil userInfo:@{@"key":@"value"}];
     });
     // 在VIPER架构中注册MVx架构里的原生通知并转为本框架支持的事件，使用`-receiveComponentEventName:intentData:`接收
-    XF_RegisterMVxNotis_(@[@"StartSearchNotification"])
+    XF_RegisterMVxNotis_(@"StartSearchNotification")
 }
 
 - (void)initCommand
@@ -111,7 +106,7 @@
 {
     //NSLog(@"eventName: %@，intentData：%@",eventName,intentData);
     XF_EventIs_(@"StartSearchNotification", {
-        NSLog(@"接收到Mvx架构的通知: %@",eventName);
+        NSLog(@"接收到MVx架构的通知: %@",eventName);
     })
 }
 

@@ -33,14 +33,14 @@
 }
 
 - (void)initSubView {
-    // 添加管理视图
+    // 管理视图
 	self.pageViewController = self.childViewControllers.firstObject;
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
-    // 添加模块子视图，当前Activity就为父模块视图
-    self.movieActivity = XF_SubUInterface_(@"Movie");
-    self.musicActivity = XF_SubUInterface_(@"Music");
-    self.bookActivity = XF_SubUInterface_(@"Book");
+    // 添加子视图
+    self.movieActivity = XF_SubUInterface_URL(@"xf://search/pictureResults/pageControl/movie");
+    self.musicActivity = XF_SubUInterface_URL(@"xf://search/pictureResults/pageControl/Music");
+    self.bookActivity = XF_SubUInterface_URL(@"xf://search/pictureResults/pageControl/Book");
     self.subActivitys = @[self.movieActivity,self.musicActivity,self.bookActivity];
     
     // 设置每一个显示视图
