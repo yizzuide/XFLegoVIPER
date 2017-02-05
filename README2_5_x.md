@@ -679,25 +679,237 @@ XF_AutoAssemblyModule_Fast
 
 #### 在主窗口上显示
 乐高支持在主窗口显示一个根组件，根组件也要提前注册才能使用：
+# 4. Component (组件)
+&emsp;&emsp;使用组件开发已经是软件开发的热门方式，就前端和移动端更以URL路由组件方式更为常见，为了追赶这股技术潮流，乐高在2.0版本开始就开始加入这个概念。但是在乐高中的URL路由组件方式和别的框架有两点不同之处：
+
+* URL路由方式和网址相似（支持网址参数）
+* 以组件名的注册方式
+* 组件打开方来完成下一个组件切换功能
+
+&emsp;&emsp;这样设计是为了完美整合进乐高的模块运行体系，因为乐高1.x版本的模块高度耦合在一在，使用这种简化版的URL路由方式，使模块各自独立，提高了可维护性，注意的是这种设计只为了处理组件（模块组件和控制器组件）切换，不针对URL路由作其它业务处理。简单来说就一句话：功能模块化，界面组件化。
+
+&emsp;&emsp;引入组件开发方式，使VIPER模块与普通控制器统一对待，以组件通用API实现对VIPER模块与普通控制器的双向桥接，分为以下功能：
+
+* 统一的URL路由跳转方法
+* 强大的轻量级组件事件消息通信
+* 内存安全的通知中心注册与接收方式
+
+## 导出组件
+VIPER模块和控制器要成为组件，必需使用导出宏来指定，使框架来识别它们具有这些功能：事件处理机制、URL路由跳转、组件参数传递、统一的组件生命周期等。那么怎样把它们导出为一个组件？
+### 导出模块组件
+VIPER模块各层通过继承框架提供的父类层后，会自动转为一个组件。具体点来说是VIPER模块的事件层 `XFPresenter` 层会充当一个组件类型，因为它实现了 `XFModuleComponentRunnable` 接口，使当前模块成为可运行组件。
+### 导出控制器组件
+框架提供可使普通控制器导出为组件的能力，具有VIPER模块的一些功能。
+
+* 使用继承方式
 
 ```objc
-#import "XFLegoVIPER.h" // 1.导入头文件
+#import "XFLegoVIPER.h"
 
-// 在应用加载完成方法调用：
+// 继承可运行组件控制器XFComponentViewController
+@interface BDJPublishViewController : XFComponentViewController
+
+@end
+```
+
+* 使用分类方式
+
+```objc
+#import "XFLegoVIPER.h"
+
+// 如要当前控制器不是继承的UIViewController类，可实现XFControllerComponentRunnable接口使控制器成为可运行组件
+@interface BDJPostPictureBrowseViewController : UIViewController <XFControllerComponentRunnable>
+
+/* ---------------- 可选实现 ---------------- */
+// 上一个URL组件传递过来的URL参数
+@property (nonatomic, copy) NSDictionary *URLParams;
+
+// 上一个URL组件传递过来的自定义数据对象
+@property (nonatomic, copy) id componentData;
+
+// 预设要传递给其它组件的意图数据
+@property (nonatomic, copy) id intentData;
+@end
+
+@implementation BDJPostPictureBrowseViewController
+
+// 把控制器导出为组件
+XF_EXPORT_COMPONENT
+
+@end
+```
+
+## 组件生命周期
+任何一个可运行组件，都有获取焦点方法和失去焦点方法可以覆盖实现，模块组件可以在事件层`Presenter`，控制器组件在相应控制器中：
+
+```objc
+/**
+ *  组件将获得焦点
+ */
+- (void)componentWillBecomeFocus;
+
+/**
+ *  组件将失去焦点
+ */
+- (void)componentWillResignFocus;
+```
+
+
+## 组件注册
+### 底层方法
+这种方式是：`URL + 组件名`, 即一个组件名对应一个访问的URL。
+
+```objc
+// 注意组件名首字母要大写
+[XFURLRoute register:@"bdj://indexTab" forComponent:@"IndexTab"];
+[XFURLRoute register:@"bdj://indexTab/publish" forComponent:@"Publish"];
+```
+
+### 简单封装的方法
+由于URL路径的最后一个路径就是组件名，所有可以使用快速初始化方式：
+
+```objc
+[XFURLRoute register:@"bdj://indexTab"];
+[XFURLRoute register:@"bdj://indexTab/publish"];
+```
+
+更快的初始化URL列表：
+
+```objc
+
+// 使用自定义类封装起来
+@implementation BDJAppURLRegister
+
++ (void)urlRegister
+{
+    [XFURLRoute initURLGroup:@[
+                                 @"bdj://indexTab", // Tab主UI框架页
+                                 @"bdj://indexTab/publish", // 发布作品
+                                 @"bdj://friendTrends/friendsRecomment", // 推荐朋友
+                                 @"bdj://userCenter/signIn", // 登录
+                                 @"bdj://essence/recommendTag", // 推荐标签
+                                 @"bdj://essence/post/postPictureBrowse", // 浏览大图
+                                 @"bdj://essence/post/postComment", // 帖子评论
+                                 ]];
+}
+@end
+```
+
+## 组件跳转
+### 模块组件跳转
+这种情况适用于乐高模块间的跳转，也适用于模块到控制器的跳转，下面Push方式：
+
+```objc
+@implementation BDJPostRouting
+
+// 组装模块
+XF_AutoAssemblyModule_Fast
+
+// 跳转组件
+- (void)transition2PostComment
+{
+    XF_PUSH_URLComponent_Fast(@"bdj://essence/post/postComment")
+}
+@end
+```
+
+使用Present方式：
+
+```objc
+@implementation BDJPostRouting
+
+// 组装模块
+XF_AutoAssemblyModule_Fast
+
+// 跳转组件
+- (void)transition2PostPictureBrowse
+{
+    XF_Present_URLComponent_Fast(@"bdj://essence/post/postPictureBrowse")
+}
+@end
+```
+
+自定义跳转方式：
+
+```objc
+@implementation BDJIndexTabRouting
+
+// 组装模块
+XF_AutoAssemblyModule_Fast
+
+// 跳转组件
+- (void)transition2Publish
+{
+    // 自定义跳转 （Publish组件为控制器）
+   [self.uiBus openURL:@"bdj://indexTab/publish" withTransitionBlock:^(__kindof UIViewController *thisInterface, __kindof UIViewController *nextInterface, TransitionCompletionBlock completionBlock) {
+       // 使用不带动画的方式
+       [thisInterface presentViewController:nextInterface animated:NO completion:completionBlock];
+   } customCode:nil];
+}
+@end
+```
+
+### 控制器组件跳转
+可用于跳转到模块组件或控制器组件，使用的API宏和模块使用的相同：
+
+```objc
+#import "XFComponentViewController.h" // 导入头文件
+
+// 继承可运行组件控制器XFComponentViewController
+@interface BDJPublishViewController : XFComponentViewController
+
+@end
+
+@implementation BDJPublishViewController
+- (void)doFunAction:(UIButton *)target
+{
+    // 先显示退出动画
+    [self cancelWithCompletionBlock:^{
+        switch (target.tag) {
+            case BDJPublishTypeWords:
+                self.intentData = @"控制器到模块的数据";
+                XF_Present_URLComponent_Fast(@"bdj://indexTab/publish/publishContent")
+                break;
+            default:
+                break;
+        }
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }];
+}
+@end
+```
+
+## URL组件路径跟踪
+乐高可以通过组件跟踪引擎，实时检测每一个打开或闭的组件，标识当前正显示的组件，可通过以下方式打开：
+
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
-	// Other Code
-	// 2.注册组件...
-	
-	// 3.根据URL显示组件在主窗口
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // 开启组件追踪log（可选）
+    [XFComponentManager enableLog];
+    // 注册APP的所有URL组件
+    [BDJAppURLRegister urlRegister];
+    // 根据URL显示组件
     XF_ShowURLComponent2Window_Fast(@"bdj://indexTab")
-	return YES;
+    return YES;
 }
 ```
 
-## 框架详细文档
-[点我查看文档首页](https://github.com/yizzuide/XFLegoVIPER/wiki)
+## URL模块路径检测
+&emsp;&emsp;当项目完全以乐高VIPER方式编写时，可以启用URL路径检测功能，内部会对乐高模块关系路径检测，用于检测路径名的正确性及路径层级的正确性：
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // 可选开启URL路径验证
+    [XFURLRoute enableVerifyURLRoute];
+    // 注册APP的所有URL组件
+    [BDJAppURLRegister urlRegister];
+    // 根据URL显示组件
+    XF_ShowURLComponent2Window_Fast(@"bdj://indexTab")
+    return YES;
+}
+```
 
 # 5. Component Communication (组件通信)
 &emsp;&emsp;由于每一个组件（包括模块组件和控制器组件）之间是独立存在，没有任何的耦合关系，对于组件间的数据传递问题，乐高提供了组件通信机制。下面是使用组件通信的条件：
