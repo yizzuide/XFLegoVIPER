@@ -1,3 +1,32 @@
+# 3.0.0
+重新调整乐高框架目录相结构，重构核心代码，提供新的自定义扩展模块插件、URL路由插件机制，更好用的VIPER模块多例共享方式。
+
+## New Feture：
+1. 添加新方式共享模块宏`XF_AutoAssemblyModuleForShareShell_Fast`，配合在视图层使用宏`XF_SubUInterface_`或`XF_SubUInterface_URL`来动态添加子模块，不用再创建新的子路由类，使共享子模块更简单
+2. 事件总线里统一使用新的宏`XF_SendEventForComponents_`来发送组件事件消息，组件名改为放到参数最后，并且使用的是可变参数
+3. 事件总线里注册通知宏`XF_RegisterMVxNotis_`现已采用可变参数，多个通知名需用逗号分隔，以前接收单个数组方式将变得无效
+4. 增强宏`XF_SubUInterface_`为添加子组件方式（兼容之前版本）
+5. 新增宏`XF_SubUInterface_URL`使用URL组件的添加方式，支持`nav`添加导航的行为参数
+6. 添加`XFLegoConfig`类用于配置框架的启动环境，使用类方法`+defaultConfig`设置默认配置
+7. 新增URL路由插件化接口`XFRoutePlug`，可通过`XFLegoConfig`类的`-setRoutePlug`方法设置自定义URL规则的路由插件
+8. UI总线类`XFUIBus`使用插件方式全面重构，现在可以扩展其它架构模式模块，如：MVVM (框架扩展已提供)、MVP、MVCS等
+9. 框架配置类`XFLegoConfig`加入可添加组件处理器插件方法`-addComponentHanderPlug`
+
+## API Breaking:
+1. 移除事件总线里发送模块事件的旧API宏`XF_SendEventForModule_`、`XF_SendEventForModules_`、`XF_SendEventForComponent_`，统一使用`XF_SendEventForComponents_`
+2. 移除`XFRoutingLinkManager`类的设置模块前辍方法`+setModulePrefix`和 `+modulePrefix`，框架内部实现自动检测类前辍的功能
+3. 移除`XFComponentManager`类的`+enableLog`方法，这个方法移动到`XFLegoConfig`类中
+4. 修改组件可运行接口名`XFControllerComponentRunnable`为`XFControllerRunnable`
+5. 修改视图工厂类名`XFInterfaceFactory`为`XFUInterfaceFactory`
+6. 移除视图工厂类宏`XF_UInterfaceForMVx_Show_Fast`和`XF_SubUInterfaceForMVx_AddChild_Fast`，统一用`XF_SubUInterface_`或`XF_SubUInterface_URL`代替
+7. 修改XFRouting类方法名`-realInterface`为`-realUInterface`
+8. 移除XFRouting类方法`-realNavigator`，使用`routing.realUInterface.navigationController`来获取
+9. 移除VIPER模块有关导航组装宏：XF_AutoAssemblyModuleWithNav_ShareDM、XF_AutoAssemblyModuleWithNav、XF_AutoAssemblyModuleWithNav_Fast，另外XF_AutoAssemblyModule去掉`NavName`参数，使用全新统一的组件URL行为参数`nav=XX`来代替
+
+## Fix bugs:
+1. 修复组件名长度为2时，URL组件匹配失败问题
+2. 修复VIPER模块子路由释放后没有被标识释放成功的问题
+
 # V2.6.1
 - 修复从控制器组件到模块组件情况下的URL行为参数`nav`来装配导航控制器而Crash的问题
 
