@@ -1,5 +1,16 @@
+# V3.1.0
+### 完全向后兼容的更新，使用V3.0.0的开发者可安全升级
+## New Feature:
+1. 模块组件添加针对键盘弹出通知的快速处理宏：注册键盘弹出通知`XF_RegisterKeyboardNotifaction`、处理键盘弹出通知`XF_HandleKeyboardNotifaction`、自动处理通用键盘弹出通知`XF_AutoHandleKeyboardNotifaction`，及组件界面通过`XFComponentUI`接口的`- (void)needUpdateInputUInterfaceY: durationTime:`方法来调整输入界面的Y值移动
+2. 抽取共同模块代码到分类`UIViewController+ComponentUI`和`UIView+ComponentSubView`，用于扩展其它模式的模块组件快速开发，如乐高框架扩展的MVVM模块
+3. 扩展的MVVM模块添加同VIPER模块一样的生命周期方法，如：`-viewWillAppear`、`-viewDidDisappear`、`-initCommand`、`-initRenderView`等等
+4. 扩展的MVVM模块的ViewModel层添加同VIPER模块事件层的快递数据`expressData`属性，视图层可以通过接口`LEDataDriverProtocol`获取
+## Fix bugs:
+1. 修复导航按住向右划返回接着向左推恢复这个过程中，导致组件关联引用和当前组件被提前释放的问题
+
+
 # V3.0.0
-重新调整乐高框架目录相结构，重构核心代码，提供新的自定义扩展模块插件、URL路由插件机制，更好用的VIPER模块多例共享方式。
+### 重新调整乐高框架目录相结构，重构核心代码，提供新的自定义扩展模块插件、URL路由插件机制，更好用的VIPER模块多例共享方式。
 
 ## New Feture：
 1. 添加新方式共享模块宏`XF_AutoAssemblyModuleForShareShell_Fast`，配合在视图层使用宏`XF_SubUInterface_`或`XF_SubUInterface_URL`来动态添加子模块，不用再创建新的子路由类，使共享子模块更简单
