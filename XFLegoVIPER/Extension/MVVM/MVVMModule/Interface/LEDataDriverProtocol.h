@@ -14,6 +14,10 @@
  */
 @protocol LEDataDriverProtocol <NSObject>
 
+/**
+ *  快递数据
+ */
+@property (nonatomic, copy) id expressData;
 @end
 
 #endif /* LEDataDriverProtocol_h */

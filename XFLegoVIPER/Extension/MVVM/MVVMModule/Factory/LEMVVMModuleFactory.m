@@ -8,9 +8,7 @@
 
 #import "LEMVVMModuleFactory.h"
 #import "XFComponentManager.h"
-#import "XFUIBus.h"
 #import "XFLegoMarco.h"
-#import "LEViewProtocol.h"
 
 @implementation LEMVVMModuleFactory
 

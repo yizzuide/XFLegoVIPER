@@ -13,20 +13,38 @@
 // 导出为可运行组件
 XF_EXPORT_COMPONENT
 
-// 视图加载完成
-- (void)viewDidLoad
-{
-}
+#pragma mark - 生命周期
+- (void)viewDidLoad{}
+- (void)initCommand{}
+- (void)initRenderView{}
+- (void)viewWillAppear{}
+- (void)viewDidAppear{}
+- (void)viewWillDisappear{}
+- (void)viewDidDisappear{}
 
+- (void)componentWillBecomeFocus{}
+- (void)componentWillResignFocus{}
+
+#pragma mark - 组件通信
+// 注册通知
+- (void)registerMVxNotifactions{}
+// 接收组件事件数据
+- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData{}
+// 接收组件回传意图数据
+- (void)onNewIntent:(id)intentData{}
 
 #pragma mark - 私有方法
-- (void)le_viewDidLoad
+- (void)xfLego_bindView:(id)view
 {
+    [self setValue:view forKey:@"view"];
     [self.uiBus xfLego_destoryUInterfaceRef];
     [self viewDidLoad];
+    [self initCommand];
+    [self registerMVxNotifactions];
+    [self initRenderView];
 }
 
-- (void)le_viewWillDisappear
+- (void)xfLego_viewWillPopOrDismiss
 {
     // 将组件移除
     [self.uiBus xfLego_implicitRemoveComponentWithTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {

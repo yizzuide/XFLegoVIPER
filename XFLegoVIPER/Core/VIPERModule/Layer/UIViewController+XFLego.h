@@ -12,6 +12,7 @@
 #import "XFLegoMarco.h"
 #import "XFUInterfaceFactory.h"
 #import "XFExpressPack.h"
+#import "UIViewController+ComponentUI.h"
 
 // 转换事件层真实接口
 #define XFConvertPresenterToType(type) LEGORealPort(type, self.eventHandler)
@@ -44,12 +45,4 @@ view.frame = frame;
  */
 @property (nonatomic, strong, readonly) __kindof id<XFEventHandlerPort> eventHandler;
 
-/**
- *  针对TabBarViewController的框架视图加载完成方法
- */
-- (void)xfLego_viewDidLoadForTabBarViewController;
-/**
- *  当前视图将被Pop或Dismiss
- */
-- (void)xfLego_viewWillPopOrDismiss;
 @end

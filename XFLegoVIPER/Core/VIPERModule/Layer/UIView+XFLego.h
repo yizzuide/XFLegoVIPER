@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "XFEventHandlerPort.h"
-#import "XFLegoMarco.h"
 #import "XFExpressPiece.h"
 #import "XFRenderItem.h"
+#import "UIView+ComponentSubView.h"
 
 #define XFConvertPresenterToType(type) LEGORealPort(type, self.eventHandler)
 
@@ -19,11 +19,6 @@
 /**
  *  事件处理器
  */
-@property (nonatomic, weak, readonly) __kindof id<XFEventHandlerPort> eventHandler;
-
-/**
- *  当Activity将被Pop或Dismiss
- */
-- (void)xfLego_viewWillPopOrDismiss;
+- (id<XFEventHandlerPort>)eventHandler;
 
 @end

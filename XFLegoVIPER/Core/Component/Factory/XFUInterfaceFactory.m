@@ -21,7 +21,18 @@
 + (__kindof UIViewController *)createSubUInterfaceFromComponentName:(NSString *)componentName parentUInterface:(__kindof UIViewController *)parentUInterface
 {
     Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentReflect componentHandlerForComponent:componentName];
-    __kindof id<XFComponentRoutable> component = [matchedComponentHandler createComponentFromName:componentName];
+    id<XFComponentRoutable> component = [matchedComponentHandler createComponentFromName:componentName];
+    return [self _subUIterfaceFromSubComponent:component parentUInterface:parentUInterface];
+}
+
++ (__kindof UIViewController *)createSubUInterfaceFromURLComponent:(NSString *)url parentUInterface:(__kindof UIViewController *)parentUInterface
+{
+    id<XFComponentRoutable> component = [XFUIBus openURLForGetComponent:url];
+    return [self _subUIterfaceFromSubComponent:component parentUInterface:parentUInterface];
+}
+
++ (__kindof UIViewController *)_subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
+{
     if ([XFComponentReflect isVIPERModuleComponent:component]) {
         XFRouting *subRouting = [component routing];
         if ([parentUInterface eventHandler]) {
@@ -33,17 +44,6 @@
     return component;
 }
 
-+ (__kindof UIViewController *)createSubUInterfaceFromURLComponent:(NSString *)url parentUInterface:(__kindof UIViewController *)parentUInterface
-{
-    __kindof id<XFComponentRoutable> component = [XFUIBus openURLForGetComponent:url];
-    if ([XFComponentReflect isVIPERModuleComponent:component]) {
-        XFRouting *parentRouting = [[parentUInterface eventHandler] valueForKey:@"_routing"];
-        XFRouting *subRouting = [component routing];
-        [XFRoutingLinkManager setSubRouting:subRouting forParentRouting:parentRouting];
-        return subRouting.realUInterface;
-    }
-    return component;
-}
 
 + (void)resetSubUserInterfaces:(NSArray *)subUserInterfaces forParentActivity:(__kindof UIViewController *)parentUserInterface {
     NSMutableArray *subRoutings = @[].mutableCopy;

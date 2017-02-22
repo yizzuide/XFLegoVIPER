@@ -7,13 +7,10 @@
 //
 
 #import "LEMVVMModuleHandler.h"
-#import "NSObject+XFLegoInvokeMethod.h"
 #import "UIViewController+ComponentBridge.h"
 #import "LEMVVMModuleReflect.h"
 #import "UIViewController+LEView.h"
 #import "LEMVVMModuleFactory.h"
-#import "XFLegoMarco.h"
-#import "LEDataDriverProtocol.h"
 
 
 @implementation LEMVVMModuleHandler

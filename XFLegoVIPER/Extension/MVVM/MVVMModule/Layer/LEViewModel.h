@@ -11,14 +11,20 @@
 #import "LEViewProtocol.h"
 #import "LEDataDriverProtocol.h"
 #import "XFLegoMarco.h"
+#import "XFComponentBindEvent.h"
 
 
-@interface LEViewModel : NSObject <LEDataDriverProtocol, XFControllerRunnable>
+@interface LEViewModel : NSObject <XFComponentBindEvent, LEDataDriverProtocol, XFControllerRunnable>
 
 /**
  *  视图层
  */
 @property (nonatomic, weak, readonly) id<LEViewProtocol> view;
+
+/**
+ *  快递数据
+ */
+@property (nonatomic, copy) id expressData;
 
 /**
  *  UI总线
@@ -55,8 +61,4 @@
  */
 @property (nonatomic, copy) id intentData;
 
-/**
- *  视图加载完成
- */
-- (void)viewDidLoad;
 @end

@@ -8,8 +8,9 @@
 
 #ifndef XFUserInterfacePort_h
 #define XFUserInterfacePort_h
+#import "XFComponentUI.h"
 
-@protocol XFUserInterfacePort <NSObject>
+@protocol XFUserInterfacePort <XFComponentUI>
 
 @end
 

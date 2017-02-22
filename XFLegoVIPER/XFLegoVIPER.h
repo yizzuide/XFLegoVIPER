@@ -11,8 +11,10 @@
 #ifndef XFLegoVIPER_h
 #define XFLegoVIPER_h
 
-#import "UIView+XFLego.h"
+#import "UIViewController+ComponentUI.h"
+#import "UIView+ComponentSubView.h"
 #import "UIViewController+XFLego.h"
+#import "UIView+XFLego.h"
 #import "XFActivity.h"
 #import "XFPresenter.h"
 #import "XFInteractor.h"

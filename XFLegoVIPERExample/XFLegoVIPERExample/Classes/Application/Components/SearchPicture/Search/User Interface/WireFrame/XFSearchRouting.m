@@ -19,7 +19,6 @@
                         [XFSearchInteractor class],
                         [XFPictureDataManager class])*/
 // 自动组装方式
-//XF_AutoAssemblyModuleWithNav_ShareDM(@"UI", @"PictureResults") // 这里的组装导航器已移入URL参数
 XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方式
 
 - (void)transition2PictureResults {

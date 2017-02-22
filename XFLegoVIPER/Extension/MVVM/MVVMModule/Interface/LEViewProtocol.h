@@ -8,11 +8,12 @@
 
 #ifndef LEViewProtocol_h
 #define LEViewProtocol_h
+#import "XFComponentUI.h"
 
 /**
  *  视图接口
  */
-@protocol LEViewProtocol <NSObject>
+@protocol LEViewProtocol <XFComponentUI>
 
 @end
 

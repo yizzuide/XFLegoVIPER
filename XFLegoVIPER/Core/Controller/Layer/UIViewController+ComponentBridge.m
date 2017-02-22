@@ -9,7 +9,6 @@
 #import "UIViewController+ComponentBridge.h"
 #import <objc/runtime.h>
 #import "NSObject+XFLegoSwizzle.h"
-#import "XFEventBus.h"
 
 @implementation UIViewController (ComponentBridge)
 

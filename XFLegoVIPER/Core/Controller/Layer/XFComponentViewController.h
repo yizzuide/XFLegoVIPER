@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "XFControllerRunnable.h"
 
-@interface XFComponentViewController : UIViewController <XFControllerRunnable>
+
+@interface XFComponentViewController : UIViewController <XFControllerRunnable,XFComponentUI>
 
 /**
  *  通过其它URL组件传递过来的参数

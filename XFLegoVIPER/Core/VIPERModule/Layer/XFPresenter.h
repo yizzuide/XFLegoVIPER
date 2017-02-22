@@ -16,6 +16,7 @@
 #import "XFExpressPack.h"
 #import "XFRenderData.h"
 #import "XFVIPERModuleReflect.h"
+#import "XFComponentBindEvent.h"
 
 
 #define XFConvertInteractorToType(type) LEGORealPort(type, self.interactor)
@@ -71,7 +72,7 @@ XF_SetExpressPack_(XFExpressPack,renderData)
 #define XF_ExpressPack_Clean() \
 [self expressPackClean];
 
-@interface XFPresenter : NSObject <XFEventHandlerPort,XFUIOperatorPort>
+@interface XFPresenter : NSObject <XFComponentBindEvent,XFEventHandlerPort,XFUIOperatorPort>
 /**
  *  显示界面
  */
@@ -127,28 +128,6 @@ XF_SetExpressPack_(XFExpressPack,renderData)
  *  错误消息
  */
 @property (nonatomic, copy) NSString *errorMessage;
-
-/**
- *  初始化命令（绑定视图层的事件动作<Action>）
- */
-- (void)initCommand;
-
-/**
- *  注册MVx架构通知 (不用手动移除通知，内部会进行管理)
- */
-- (void)registerMVxNotifactions;
-
-/**
- *  初始化渲染视图数据,在viewDidLoad之后，viewWillAppear之前调用(框架方法，用于子类覆盖，不要直接调用！）
- */
-- (void)initRenderView;
-
-// 同步视图生命周期(框架方法，用于子类覆盖，不要直接调用！）
-- (void)viewDidLoad;
-- (void)viewWillAppear;
-- (void)viewDidAppear;
-- (void)viewWillDisappear;
-- (void)viewDidDisappear;
 
 
 /**

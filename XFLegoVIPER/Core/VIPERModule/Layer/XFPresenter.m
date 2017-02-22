@@ -26,12 +26,13 @@ XF_EXPORT_COMPONENT
 - (void)componentWillBecomeFocus{}
 - (void)componentWillResignFocus{}
 
-- (void)onNewIntent:(id)intentData{}
-
 #pragma mark - 组件通信
+// 注册通知
 - (void)registerMVxNotifactions{}
+// 接收组件事件数据
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData{}
-
+// 接收组件回传意图数据
+- (void)onNewIntent:(id)intentData{}
 
 #pragma mark - UI事件
 - (void)xfLego_onBackItemTouch

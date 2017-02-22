@@ -19,7 +19,7 @@
         [self setValue:[[XFEventBus alloc] initWithComponentRoutable:self] forKeyPath:@"eventBus"]; \
     } \
     return self; \
-}
+} \
 
 @protocol XFVIPERModuleRunnable <XFComponentRoutable>
 

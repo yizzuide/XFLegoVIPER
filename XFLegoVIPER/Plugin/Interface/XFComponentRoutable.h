@@ -6,6 +6,35 @@
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
+#import "XFComponentReflect.h"
+#import "XFComponentUI.h"
+
+// 注册键盘弹出通知
+#define XF_RegisterKeyboardNotifaction \
+XF_RegisterMVxNotis_(UIKeyboardWillChangeFrameNotification)
+
+// 处理键盘弹出通知
+#define XF_HandleKeyboardNotifaction \
+XF_EventIs_(UIKeyboardWillChangeFrameNotification, { \
+    NSDictionary *dict = intentData; \
+    CGFloat y = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue].origin.y; \
+    UIViewController<XFComponentUI> *ui = (id)[XFComponentReflect uInterfaceForComponent:self]; \
+    if ([ui respondsToSelector:@selector(needUpdateInputUInterfaceY:durationTime:)]) { \
+        [ui needUpdateInputUInterfaceY:y durationTime:[dict[UIKeyboardAnimationDurationUserInfoKey] floatValue]]; \
+    } \
+}) \
+
+// 自动处理通用键盘弹出通知
+#define XF_AutoHandleKeyboardNotifaction \
+- (void)registerMVxNotifactions \
+{ \
+    XF_RegisterKeyboardNotifaction \
+} \
+- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData \
+{ \
+    XF_HandleKeyboardNotifaction \
+}
+
 /**
  *  一个组件可运行接口
  */

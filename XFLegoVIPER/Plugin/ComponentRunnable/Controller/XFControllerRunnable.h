@@ -20,7 +20,7 @@
         [self setValue:[[XFEventBus alloc] initWithComponentRoutable:self] forKeyPath:@"eventBus"]; \
     } \
     return self; \
-}
+} \
 
 /**
  *  控制器可进化组件接口

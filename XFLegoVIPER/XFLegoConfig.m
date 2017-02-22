@@ -33,6 +33,20 @@
     return self;
 }
 
++ (instancetype)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance_ = [super allocWithZone:zone];
+    });
+    return instance_;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return instance_;
+}
+
 // 使用共享实例
 static XFLegoConfig *instance_;
 + (instancetype)shareInstance
