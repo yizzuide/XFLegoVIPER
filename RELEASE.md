@@ -5,6 +5,7 @@
 2. 抽取共同模块代码到分类`UIViewController+ComponentUI`和`UIView+ComponentSubView`，用于扩展其它模式的模块组件快速开发，如乐高框架扩展的MVVM模块
 3. 扩展的MVVM模块添加同VIPER模块一样的生命周期方法，如：`-viewWillAppear`、`-viewDidDisappear`、`-initCommand`、`-initRenderView`等等
 4. 扩展的MVVM模块的ViewModel层添加同VIPER模块事件层的快递数据`expressData`属性，视图层可以通过接口`LEDataDriverProtocol`获取
+
 ## Fix bugs:
 1. 修复导航按住向右划返回接着向左推恢复这个过程中，导致组件关联引用和当前组件被提前释放的问题
 
