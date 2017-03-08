@@ -33,12 +33,6 @@
     // 注册URL
     [XFAppURLRegister registerURLs];
     
-    /*XF_ShowRootComponent2Window_(@"Search", {
-        // 配置导航栏
-        UINavigationController *navigation = nextInterface.navigationController;
-        navigation.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
-        [navigation.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    })*/
     XF_ShowURLComponent2Window_(@"xf://search?nav=UI", {
         // 配置导航栏
         UINavigationController *navigation = nextInterface.navigationController;

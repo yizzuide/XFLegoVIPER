@@ -13,7 +13,7 @@
 /* ---------------- 显示根组件 ---------------- */
 // 使用组件名显示根组件
 #define XF_ShowRootComponent2Window_(ComponentName,ExecuteCode) \
-[[[XFUIBus alloc] init] showComponent:ComponentName onWindow:self.window customCode:^(Activity *nextInterface) { \
+[[[XFUIBus alloc] init] showComponent:ComponentName onWindow:self.window params:nil customCode:^(Activity *nextInterface) { \
     ExecuteCode \
 }];
 // 快速显示一个根组件
@@ -34,7 +34,7 @@ XF_ShowURLComponent2Window_(url,{})
 /* --------------------------------- 组件名方式 --------------------------------- */
 // 切换组件（不推荐直接使用）
 #define XF_PUT_Component_(method,ComponentName,ExecuteCode) \
-[self.uiBus method:ComponentName intent:self.uiOperator.intentData customCode:^(Activity *nextInterface) { \
+[self.uiBus method:ComponentName  params:nil intent:self.uiOperator.intentData customCode:^(Activity *nextInterface) { \
     ExecuteCode \
 }];
 // Push一个组件宏
