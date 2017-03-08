@@ -8,7 +8,7 @@
 		<string>public.objective-c-plus-plus-source</string>
 	</array>
 	<key>Description</key>
-	<string>创建基于XFLegoVIPER框架的模块.</string>
+	<string>创建基于乐高框架的MVVM模块组件.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -17,11 +17,11 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>创建模块名</string>
+			<string>创建组件名</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>模块名</string>
+			<string>组件名</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -35,6 +35,6 @@
 		<string>com.apple.platform.iphoneos</string>
 	</array>
 	<key>Summary</key>
-	<string>XFLegoVIPER框架模块</string>
+	<string>乐高框架MVVM模块组件</string>
 </dict>
 </plist>
