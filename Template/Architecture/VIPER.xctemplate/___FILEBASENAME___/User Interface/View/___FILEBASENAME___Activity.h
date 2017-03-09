@@ -12,6 +12,6 @@
 #import "___FILEBASENAME___UserInterfacePort.h"
 
 
-@interface ___FILEBASENAMEASIDENTIFIER___Activity : XFActivity <___FILEBASENAMEASIDENTIFIER___UserInterfacePort>
+@interface ___FILEBASENAMEASIDENTIFIER___Activity : UIViewController <___FILEBASENAMEASIDENTIFIER___UserInterfacePort>
 
 @end

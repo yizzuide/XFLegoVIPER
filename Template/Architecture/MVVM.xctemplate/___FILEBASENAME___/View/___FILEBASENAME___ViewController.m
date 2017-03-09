@@ -11,11 +11,11 @@
 
 #define DataDriver  LEGORealPort(id<___FILEBASENAMEASIDENTIFIER___DataDriverProtocol>, self.dataDriver)
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewControllerViewController ()
+@interface ___FILEBASENAMEASIDENTIFIER___ViewController ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___ViewControllerViewController
+@implementation ___FILEBASENAMEASIDENTIFIER___ViewController
 
 - (void)viewDidLoad
 {

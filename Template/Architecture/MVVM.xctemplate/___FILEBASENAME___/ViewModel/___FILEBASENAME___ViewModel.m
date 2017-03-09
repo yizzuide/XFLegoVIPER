@@ -11,11 +11,11 @@
 
 #define View LEGORealPort(id<___FILEBASENAMEASIDENTIFIER___ViewProtocol>, self.view)
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewModelViewModel ()
+@interface ___FILEBASENAMEASIDENTIFIER___ViewModel ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___ViewModelViewModel
+@implementation ___FILEBASENAMEASIDENTIFIER___ViewModel
 
 #pragma mark - lifeCycle
 // 绑定视图层后调用

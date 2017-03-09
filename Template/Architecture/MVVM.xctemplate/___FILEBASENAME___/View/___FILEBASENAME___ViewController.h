@@ -10,6 +10,6 @@
 #import "LEViewController.h"
 #import "___FILEBASENAME___ViewProtocol.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewControllerViewController : LEViewController <___FILEBASENAMEASIDENTIFIER___ViewProtocol>
+@interface ___FILEBASENAMEASIDENTIFIER___ViewController : UIViewController <___FILEBASENAMEASIDENTIFIER___ViewProtocol>
 
 @end

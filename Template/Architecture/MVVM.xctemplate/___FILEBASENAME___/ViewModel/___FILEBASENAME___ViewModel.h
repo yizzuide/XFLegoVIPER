@@ -9,6 +9,6 @@
 #import "LEViewModel.h"
 #import "___FILEBASENAME___DataDriverProtocol.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewModelViewModel : LEViewModel <___FILEBASENAMEASIDENTIFIER___DataDriverProtocol>
+@interface ___FILEBASENAMEASIDENTIFIER___ViewModel : LEViewModel <___FILEBASENAMEASIDENTIFIER___DataDriverProtocol>
 
 @end
