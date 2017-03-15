@@ -8,16 +8,13 @@
 
 #import "XFControllerReflect.h"
 #import "XFLegoMarco.h"
+#import "XFModuleReflect.h"
 
 @implementation XFControllerReflect
 
 + (BOOL)verifyController:(NSString *)controllerName
 {
-    NSString *clazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,controllerName,@"ViewController"];
-    if (NSClassFromString(clazzName)) {
-        return YES;
-    }
-    return NO;
+    return [XFModuleReflect verifyModule:controllerName stuffixName:@"ViewController"];
 }
 
 + (NSString *)controllerNameForComponent:(__kindof id<XFComponentRoutable>)component {

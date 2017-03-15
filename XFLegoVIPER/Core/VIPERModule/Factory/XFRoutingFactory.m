@@ -9,7 +9,7 @@
 #import "XFRoutingFactory.h"
 #import "XFRoutingLinkManager.h"
 #import "XFRouting.h"
-#import "XFVIPERModuleReflect.h"
+#import "XFModuleReflect.h"
 
 @implementation XFRoutingFactory
 
@@ -27,7 +27,7 @@
     // 查找并实例化
     NSString *prefixName = XF_Class_Prefix;
     if (prefixName == nil) return nil;
-    Class routingClass = [XFVIPERModuleReflect routingClassFromModuleName:moduleName];
+    Class routingClass = [XFModuleReflect createDynamicSubModuleClassFromName:moduleName stuffixName:@"Routing" superModule:nil];
     if (routingClass) {
         return [routingClass assembleRouting];
     }

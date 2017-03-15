@@ -21,9 +21,20 @@
 /**
  *  根据前辍名创建一个导航控制器
  *
- *  @param prefixName 前缀名
+ *  @param prefixName           前缀名
+ *  @param rootViewController   根控制器
  *
  *  @return 导航控制器
  */
 + (UINavigationController *)createNavigationControllerFromPrefixName:(NSString *)prefixName withRootController:(UIViewController *)rootViewController;
+
+/**
+ *  通过类名创建导航控制器
+ *
+ *  @param className          类名
+ *  @param rootViewController 根控制器
+ *
+ *  @return 导航控制器
+ */
++ (UINavigationController *)createNavigationControllerFromClassName:(NSString *)className withRootController:(UIViewController *)rootViewController;
 @end

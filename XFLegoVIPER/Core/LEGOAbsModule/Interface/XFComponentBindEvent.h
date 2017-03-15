@@ -9,6 +9,9 @@
 #ifndef XFComponentBindEvent_h
 #define XFComponentBindEvent_h
 
+/**
+ *  这个协议是框架内部使用，用于事件层同步视图层的生命周期
+ */
 @protocol XFComponentBindEvent <NSObject>
 
 @required

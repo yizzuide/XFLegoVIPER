@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XFURLParse.h"
 
 #define Activity __kindof UIViewController
 
@@ -62,6 +63,11 @@ XF_PUT_URLComponent_(openURLForPush,urlString,ExecuteCode)
 #define XF_Present_URLComponent_(urlString,ExecuteCode) \
 XF_PUT_URLComponent_(openURLForPresent,urlString,ExecuteCode)
 #define XF_Present_URLComponent_Fast(urlString) XF_Present_URLComponent_(urlString,{})
+
+// 从快速@{}字典对象组装URL参数
+#define XF_URL_(urlPath,params) \
+([NSString stringWithFormat:@"%@?%@",urlPath,[XFURLParse stringFromDictionary:params]])
+
 
 typedef void(^TransitionCompletionBlock)();
 typedef void(^TransitionBlock)(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock);

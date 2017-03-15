@@ -20,11 +20,17 @@
 // 渲染数据包
 #define ExpressPack self.eventHandler.expressPack
 
-// 基于ReactiveCocoa的双向数据绑定
+// 基于ReactiveCocoa的任意数据的双向数据绑定
 #define XF_$_(UIControl, VProp, EventHandler, VDProp) \
 UIControl.VProp = EventHandler.VDProp; \
 RAC(EventHandler, VDProp) = [RACObserve(UIControl, VProp) distinctUntilChanged]; \
 [RACObserve(EventHandler, VDProp) subscribe:RACChannelTo(UIControl, VProp)]; \
+
+// 基于ReactiveCocoa的输入控件控件的双向数据绑定
+#define XF_$_Input(UIInputControl, VProp, EventHandler, VDProp) \
+UIInputControl.VProp = EventHandler.VDProp; \
+RAC(EventHandler, VDProp) = [UIInputControl.rac_textSignal distinctUntilChanged]; \
+[RACObserve(EventHandler, VDProp) subscribe:RACChannelTo(UIInputControl, VProp)]; \
 
 // 基于ReactiveCocoa的命令绑定
 #define XF_C_(UIButton,EventHandler,Command) UIButton.rac_command = [EventHandler Command];

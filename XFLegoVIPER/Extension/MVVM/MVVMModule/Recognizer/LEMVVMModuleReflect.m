@@ -8,12 +8,12 @@
 
 #import "LEMVVMModuleReflect.h"
 #import "XFLegoMarco.h"
+#import "XFModuleReflect.h"
 
 @implementation LEMVVMModuleReflect
 
 + (BOOL)verifyModuleName:(NSString *)moduleName {
-    Class vmClass = NSClassFromString([NSString stringWithFormat:@"%@%@ViewModel",XF_Class_Prefix,moduleName]);
-    return vmClass;
+    return [XFModuleReflect verifyModule:moduleName stuffixName:@"ViewModel"];
 }
 
 + (NSString *)moduleNameForViewModel:(LEViewModel<XFComponentRoutable> *)viewModel {

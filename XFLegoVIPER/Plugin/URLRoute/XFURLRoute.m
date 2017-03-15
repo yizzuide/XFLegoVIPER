@@ -88,22 +88,25 @@ static NSMutableDictionary<NSString *,NSString *> *URLHandler_;
     } else {
         params = [XFURLParse paramsForURL:url];
     }
-    // 组件是否存在
+    
+    // 组件名是否存在
     if (!componentName || [componentName isEqualToString:@""]) {
         NSAssert(NO, @"当前URL组件未注册！");
         return NO;
     }
+    
+    // 检测组件是否存在
+    if (![XFComponentReflect existComponent:componentName]) {
+        NSAssert(NO, @"当前URL组件名加载错误，请检查组件名是否正确！");
+        return NO;
+    }
+    
     // 开始切换组件
     if (transitionBlock)
         transitionBlock(componentName,params);
     
     // 如果是控制器组件，直接返回
     if ([XFComponentReflect isControllerComponent:componentName]) return YES;
-    // 检测组件是否存在
-    if (![XFComponentReflect existComponent:componentName]) {
-        NSAssert(NO, @"当前URL组件名加载错误，请检查组件名是否正确！");
-        return NO;
-    }
     
     // 异步检测URL路径的正确性
     if (verifyURLRoute_ && [XFRoutingLinkManager count]) {

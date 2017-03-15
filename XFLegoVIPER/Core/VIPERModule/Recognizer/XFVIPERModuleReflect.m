@@ -12,6 +12,7 @@
 #import "XFControllerReflect.h"
 #import <objc/runtime.h>
 #import "XFLegoConfig.h"
+#import "XFModuleReflect.h"
 
 @implementation XFVIPERModuleReflect
 
@@ -63,43 +64,6 @@
 + (NSString *)moduleNameForModuleLayerClass:(Class)moduleLayerClass
 {
     return [self moduleNameForModuleLayerObject:[[moduleLayerClass alloc] init]];
-}
-
-+ (Class)routingClassFromModuleName:(NSString *)moduleName
-{
-    NSString *prefixName = XF_Class_Prefix;
-    const char * className = [[NSString stringWithFormat:@"%@%@Routing",prefixName,moduleName] cStringUsingEncoding:NSASCIIStringEncoding];
-    Class clazz = objc_getClass(className);
-    // 如果这个类不存在，就是动态创建, 这里用于共享的子模块
-    if (!clazz)
-    {
-        // 获得父模块名
-        NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:moduleName];
-        // 创建父路由类
-        Class superClass = NSClassFromString([NSString stringWithFormat:@"%@%@Routing", prefixName, superModuleName]);
-        NSAssert(superClass, @"不存这个类，请注意加上父模块名");
-        // 创建子类
-        clazz = objc_allocateClassPair(superClass, className, 0);
-    }
-    return clazz;
-}
-
-+ (BOOL)verifyModule:(NSString *)moduleName
-{
-    NSString *modulePrefix = XF_Class_Prefix;
-    Class routingClass = NSClassFromString([NSString stringWithFormat:@"%@%@Routing",modulePrefix,moduleName]);
-    // 如果没有对应路由类
-    if (!routingClass) {
-        // 检测是否有父模块
-        NSString *superModuleName = [XFVIPERModuleReflect inspectSuperModuleNameFromSubModuleName:moduleName];
-        // 如果与自己相同
-        if ([superModuleName isEqualToString:moduleName]) {
-            return NO;
-        }
-        // 是否能加载父路由类
-        return !!NSClassFromString([NSString stringWithFormat:@"%@%@Routing",modulePrefix,superModuleName]);
-    }
-    return YES;
 }
 
 + (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules
@@ -174,27 +138,5 @@
     NSLog(@"inspectModulePrefix: %@",appendString);
 #endif
     [[XFLegoConfig shareInstance] setClassPrefix:appendString];
-}
-
-// 从子模块名检测出父模块名
-+ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName
-{
-    NSUInteger count = subModuleName.length;
-    NSMutableString *appendString = @"".mutableCopy;
-    for (NSUInteger i = 0; i < count; i++) {
-        char c = [subModuleName characterAtIndex:count - (i + 1)];
-        // 添加
-        [appendString appendString:[NSString stringWithFormat:@"%c",c]];
-        // 如果是大写
-        if (c > 64 && c < 91) {
-            // 翻转字符串
-            NSMutableString *result = [NSMutableString string];
-            for (NSUInteger j = appendString.length; j > 0; j--) {
-                [result appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
-            }
-            return result;
-        }
-    }
-    return nil;
 }
 @end

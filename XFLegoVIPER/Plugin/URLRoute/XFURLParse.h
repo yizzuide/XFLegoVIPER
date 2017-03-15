@@ -42,4 +42,12 @@
  *  @return 所有子路径
  */
 + (NSArray<NSString *> *)allComponentsForURL:(NSString *)urlString;
+/**
+ *  从一个字典返回URL参数字符串
+ *
+ *  @param dict 字典
+ *
+ *  @return URL参数字符串
+ */
++ (NSString *)stringFromDictionary:(NSDictionary *)dict;
 @end

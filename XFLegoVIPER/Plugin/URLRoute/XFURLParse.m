@@ -28,9 +28,13 @@
 }
 
 + (NSDictionary *)paramsForURL:(NSString *)urlString {
-    NSURL *url = [NSURL URLWithString:urlString];
     NSMutableDictionary *queryDict = [NSMutableDictionary dictionary];
-    NSArray *keyValuePairs = [url.query componentsSeparatedByString:@"&"];
+    NSRange questionMark = [urlString rangeOfString:@"?"];
+    if (questionMark.length == 0) {
+        return nil;
+    }
+    NSString *paramString = [urlString substringFromIndex:questionMark.location + 1];
+    NSArray *keyValuePairs = [paramString componentsSeparatedByString:@"&"];
     for (NSString *keyValuePair in keyValuePairs) {
         NSArray *element = [keyValuePair componentsSeparatedByString:@"="];
         if (element.count != 2) continue;
@@ -55,5 +59,13 @@
         [components addObject:comp];
     }
     return components;
+}
+
++ (NSString *)stringFromDictionary:(NSDictionary *)dict {
+    NSMutableString *mStr = @"".mutableCopy;
+    for (NSString *key in  dict.allKeys){
+        [mStr appendFormat:@"%@=%@&",key, dict[key]];
+    }
+    return [mStr substringToIndex:mStr.length - 1];
 }
 @end

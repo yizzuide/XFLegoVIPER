@@ -17,6 +17,7 @@
 #import "XFRenderData.h"
 #import "XFVIPERModuleReflect.h"
 #import "XFComponentBindEvent.h"
+#import "XFComponentUIEvent.h"
 
 
 #define XFConvertInteractorToType(type) LEGORealPort(type, self.interactor)
@@ -72,7 +73,7 @@ XF_SetExpressPack_(XFExpressPack,renderData)
 #define XF_ExpressPack_Clean() \
 [self expressPackClean];
 
-@interface XFPresenter : NSObject <XFComponentBindEvent,XFEventHandlerPort,XFUIOperatorPort>
+@interface XFPresenter : NSObject <XFComponentBindEvent,XFComponentUIEvent, XFEventHandlerPort,XFUIOperatorPort>
 /**
  *  显示界面
  */

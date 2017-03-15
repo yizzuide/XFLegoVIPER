@@ -280,28 +280,55 @@
 + (void)_transmitURLParams:(NSDictionary *)params nextInterface:(UIViewController *)nextInterface nextComponent:(__kindof id<XFComponentRoutable>)nextComponent
 {
     if (!params.count) return;
-    // 检测是否要装配导航控制器，使用保留行为关键字"nav"
-    NSString *navName = params[@"nav"];
-    if (navName.length) {
-        UINavigationController *nav = [XFControllerFactory createNavigationControllerFromPrefixName:navName withRootController:nextInterface];
+    
+    NSArray<NSString *> *behaviorParams = @[@"nav",@"navC",@"navTitle"];
+    
+    // 检测是否有行为参数
+    BOOL hasBehaviorParam = NO;
+    for (NSString *key in behaviorParams) {
+        if(params[key]){
+            hasBehaviorParam = YES;
+            break;
+        }
+    }
+    if (hasBehaviorParam) {
+        // 装配导航控制器
+        NSString *navName = params[behaviorParams[XF_Index_First]]; // 使用前缀
+        NSString *navFullClassName = params[behaviorParams[XF_Index_Second]]; // 全类名
+        UINavigationController *nav;
+        if (navName.length) {
+            nav = [XFControllerFactory createNavigationControllerFromPrefixName:navName withRootController:nextInterface];
+        }else if(navFullClassName.length) {
+            nav = [XFControllerFactory createNavigationControllerFromClassName:navFullClassName withRootController:nextInterface];
+        }
+        
         // 设置导航引用
-        if ([XFComponentReflect isVIPERModuleComponent:nextComponent]) { // 如果是VIPER模块组件
-            [[[nextComponent valueForKey:@"routing"] uiBus] setNavigator:nav];
-        } else { // 其它组件
-            [[nextComponent uiBus] setNavigator:nav];
+        if (nav) {
+            if ([XFComponentReflect isVIPERModuleComponent:nextComponent]) { // 如果是VIPER模块组件
+                [[[nextComponent valueForKey:@"routing"] uiBus] setNavigator:nav];
+            } else { // 其它组件
+                [[nextComponent uiBus] setNavigator:nav];
+            }
         }
+        
+        // 导航标题
+        NSString *navTitle = params[behaviorParams[XF_Index_Third]];
+        if (navTitle) {
+            nextInterface.navigationItem.title = navTitle;
+        }
+        
+        
+        // 移除行为参数
+        NSMutableDictionary *mParams = [params mutableCopy];
+        for (NSString *behaviorParam in behaviorParams) {
+            if ([mParams objectForKey:behaviorParam]) {
+                [mParams removeObjectForKey:behaviorParam];
+            }
+        }
+        params = mParams;
     }
     
-    // 移除行为参数
-    NSArray<NSString *> *behaviorParams = @[@"nav"];
-    NSMutableDictionary *mParams = [params mutableCopy];
-    for (NSString *behaviorParam in behaviorParams) {
-        if ([mParams objectForKey:behaviorParam]) {
-            [mParams removeObjectForKey:@"nav"];
-        }
-    }
-    params = mParams;
-    
+    // 判断是否要传递URL参数
     if (params.count && [nextComponent respondsToSelector:@selector(setURLParams:)]) {
         [nextComponent setURLParams:params];
     }

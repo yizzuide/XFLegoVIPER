@@ -43,7 +43,10 @@ XF_EXPORT_COMPONENT
 {
     [self.routing dismissComponent];
 }
-
+- (void)dismissKeyboard
+{
+    [self.userInterface needDismissKeyboard];
+}
 
 #pragma mark - 渲染数据包方法
 - (void)expressPackCreateFromClass:(Class)expressPackClass fillRenderData:(XFRenderData *)renderData

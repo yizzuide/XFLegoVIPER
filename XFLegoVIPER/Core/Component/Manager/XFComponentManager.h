@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+// 给某个组件发事件数据
+#define XF_SendEventForComponent_(eventName, sendData, componentName) \
+[XFComponentManager sendEventName:eventName intentData:sendData forComponent:componentName];
+
 @protocol XFComponentRoutable;
 @interface XFComponentManager : NSObject
 

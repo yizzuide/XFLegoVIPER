@@ -30,8 +30,10 @@
 
 + (id<XFComponentRoutable>)createComponentFromName:(NSString *)componentName
 {
-    LEViewModel<XFComponentRoutable> *viewModel = [LEMVVMModuleFactory createViewModelFromModuleName:componentName];
-    NSString *uInterfaceClazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,componentName,@"ViewController"];
+    // 引用赋值父组件名
+    NSString *superComponentName;
+    LEViewModel<XFComponentRoutable> *viewModel = [LEMVVMModuleFactory createViewModelFromModuleName:componentName superModule:&superComponentName];
+    NSString *uInterfaceClazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,superComponentName?:componentName,@"ViewController"];
     UIViewController<LEViewProtocol> *uInterface = [[NSClassFromString(uInterfaceClazzName) alloc] init];
     [uInterface setValue:viewModel forKeyPath:@"dataDriver"];
     [viewModel.uiBus setUInterface:uInterface];

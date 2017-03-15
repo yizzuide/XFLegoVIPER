@@ -114,6 +114,11 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
 #pragma mark - 子类可覆盖方法
 - (void)xfLego_viewDidLoadForTabBarViewController {}
 - (void)xfLego_viewWillPopOrDismiss {}
+// 实现退出键盘
+- (void)needDismissKeyboard
+{
+    [self.view endEditing:YES];
+}
 
 #pragma mark - 私有方法
 // 通知所有子视图当前Activity将被移除

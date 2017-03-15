@@ -33,6 +33,12 @@ XF_EXPORT_COMPONENT
 // 接收组件回传意图数据
 - (void)onNewIntent:(id)intentData{}
 
+#pragma mark - UI事件
+- (void)dismissKeyboard
+{
+    [self.view needDismissKeyboard];
+}
+
 #pragma mark - 私有方法
 - (void)xfLego_bindView:(id)view
 {

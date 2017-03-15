@@ -57,24 +57,7 @@
  *  @return 模块名
  */
 + (NSString *)moduleNameForModuleLayerClass:(Class)moduleLayerClass;
-/**
- *  根据模块名，获得一个路由类，这个方法两个作用：
- *  1.创建一般模块类：返回工程中存在的模块类
- *  2.创建子模块类：先检测出父模块名，创建出父模块类，再使用OC运行时创建出子模块类
- *
- *  @param moduleName 模块名
- *
- *  @return 路由类
- */
-+ (Class)routingClassFromModuleName:(NSString *)moduleName;
-/**
- *  验证一个模块是否存在
- *
- *  @param moduleName 模块名
- *
- *  @return 模块是否存在
- */
-+ (BOOL)verifyModule:(NSString *)moduleName;
+
 /**
  *  验证模块关系链
  *
@@ -89,12 +72,4 @@
  *  @param clazz 类
  */
 + (void)inspectModulePrefixFromClass:(Class)clazz;
-/**
- *  解析父模块名
- *
- *  @param subModuleName 子模块名
- *
- *  @return 父模块名
- */
-+ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName;
 @end

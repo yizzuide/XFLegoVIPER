@@ -12,6 +12,7 @@
 #import "XFRoutingLinkManager.h"
 #import "NSObject+XFLegoInvokeMethod.h"
 #import "XFVIPERModuleReflect.h"
+#import "XFModuleReflect.h"
 
 #define IS_Module(component) [component respondsToSelector:@selector(routing)]
 #define Routing ((XFRouting *)[component routing])
@@ -21,7 +22,7 @@
 + (BOOL)matchComponent:(id)component
 {
     if ([component isKindOfClass:[NSString class]]) {
-        return [XFVIPERModuleReflect verifyModule:component];
+        return [XFModuleReflect verifyModule:component stuffixName:@"Routing"];
     }
     return IS_Module(component);
 }

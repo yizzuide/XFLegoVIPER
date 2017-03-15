@@ -15,8 +15,9 @@
 /**
  *  创建ViewModel
  *
- *  @param moduleName 模块名
+ *  @param moduleName   模块名
+ *  @param superModule  父模块名，返回给外面的数据
  *
  */
-+ (LEViewModel *)createViewModelFromModuleName:(NSString *)moduleName;
++ (LEViewModel *)createViewModelFromModuleName:(NSString *)moduleName superModule:(NSString **)superModule;
 @end

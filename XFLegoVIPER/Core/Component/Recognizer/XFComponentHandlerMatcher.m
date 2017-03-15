@@ -20,7 +20,7 @@
             return componentHandler;
         }
     }
-    NSAssert(NO, @"找不到该模块组件的组件处理器！");
+    NSAssert(NO, @"找不到这个组件或该模块组件的处理器！");
     return NULL;
 }
 
