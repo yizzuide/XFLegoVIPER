@@ -1,3 +1,19 @@
+# V3.2.0
+### 多实例模式组件，动态URL参数传递，全局事件组件数据发送
+## New Feture:
+1. 添加了`navC`使用导航类名的行为参数,`navTitle`设置导航标题
+2. 添加动态URL参数传递方式，避免硬编码的问题！
+3. 界面层添加了一个双向绑定宏`XF_$_Input`,用于输入框控件类型
+4. 组件管理器添加全局发送事件数据宏`XF_SendEventForComponent_`
+5. 事件层添加键盘退出方法`-dismissKeyboard`
+6. 添加MVC/MVVM模式组件创建多例的功能
+## Fix Bugs:
+1. 修复URL参数无法传中文值的问题
+
+# V3.1.1
+## Fix bugs:
+1. 修复旧宏API`XF_ShowRootComponent2Window_`、`XF_PUSH_Component_`、`XF_Present_Component_`无法使用的问题
+
 # V3.1.0
 ### 完全向后兼容的更新，使用V3.0.0的开发者可安全升级
 ## New Feature:
