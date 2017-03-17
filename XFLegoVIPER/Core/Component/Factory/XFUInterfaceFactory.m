@@ -41,7 +41,7 @@
         }
         return subRouting.realUInterface;
     }
-    return component;
+    return [XFComponentReflect uInterfaceForComponent:component];
 }
 
 

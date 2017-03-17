@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+LEView.h"
+#import "XFUInterfaceFactory.h"
 
 @interface LEViewController : UIViewController
 

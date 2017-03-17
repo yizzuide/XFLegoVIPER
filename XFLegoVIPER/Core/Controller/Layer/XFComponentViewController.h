@@ -10,7 +10,7 @@
 #import "XFControllerRunnable.h"
 #import "XFComponentUIEvent.h"
 #import "XFControllerReflect.h"
-
+#import "XFUInterfaceFactory.h"
 
 @interface XFComponentViewController : UIViewController <XFControllerRunnable,XFComponentUI,XFComponentUIEvent>
 
