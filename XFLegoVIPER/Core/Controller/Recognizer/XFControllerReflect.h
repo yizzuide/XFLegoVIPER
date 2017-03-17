@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+// 获得当前控制器组件模块名
+#undef XF_ModuleName
+#define XF_ModuleName \
+[XFControllerReflect controllerNameForComponent:self]
+
 @protocol XFComponentRoutable;
 @interface XFControllerReflect : NSObject
 

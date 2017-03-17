@@ -9,6 +9,7 @@
 #import "LEMVVMModuleReflect.h"
 #import "XFLegoMarco.h"
 #import "XFModuleReflect.h"
+#import "LEViewModel.h"
 
 @implementation LEMVVMModuleReflect
 

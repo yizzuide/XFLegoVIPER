@@ -48,6 +48,7 @@
 - (__kindof XFRouting *)autoAssemblyModuleFromShareModuleName:(NSString *)moduleName
 {
     self.shareModule = moduleName; // 标识为模块共享
+    NSAssert(![moduleName isEqualToString:@""], @"找不到共享的模块名，没有使用虚拟组件名方式，请使用`XF_AutoAssemblyModule_Fast`方式来组装！");
     return [self _autoAssemblyModuleWithModuleName:moduleName navName:nil ibSymbol:nil shareDataManagerName:nil];
 }
 
@@ -101,6 +102,10 @@
 
 - (__kindof XFRouting *)_bulildModulesAssemblyWithInterface:(NSString *)interface navigatorClass:(Class)navigatorClass  presenterClass:(Class)perstentClass interactorClass:(Class)interactorClass dataManagerClass:(Class)dataManagerClass
 {
+    if (!interface) {
+        NSAssert(NO, @"当前模块名对应的类不存在，是否把模块作为共享的壳用于虚拟组件，如果是请使用`XF_AutoAssemblyModuleForShareShell_Fast`方式组装！");
+        return nil;
+    }
     // 构建视图层
     id activity;
     Class clazz = NSClassFromString(interface);

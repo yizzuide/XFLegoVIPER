@@ -13,7 +13,7 @@
 #import "XFLegoMarco.h"
 #import "XFComponentBindEvent.h"
 #import "XFComponentUIEvent.h"
-
+#import "LEMVVMModuleReflect.h"
 
 @interface LEViewModel : NSObject <XFComponentBindEvent,XFComponentUIEvent, LEDataDriverProtocol,XFControllerRunnable>
 

@@ -26,10 +26,11 @@
  *  解析父模块名
  *
  *  @param subModuleName 子模块名
+ *  @param stuffixName 后辍名
  *
  *  @return 父模块名
  */
-+ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName;
++ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName;
 /**
  *  验证一个模块是否存在
  *

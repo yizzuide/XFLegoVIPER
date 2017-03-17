@@ -19,31 +19,10 @@
 #import "XFComponentBindEvent.h"
 #import "XFComponentUIEvent.h"
 
-
+// 强制转换
 #define XFConvertInteractorToType(type) LEGORealPort(type, self.interactor)
 #define XFConvertRoutingToType(type) LEGORealPort(type, self.routing)
 #define XFConvertUserInterfaceToType(type) LEGORealPort(type, self.userInterface)
-
-
-// 基于ReactiveCocoa的快速命令执行宏
-#define XF_CEXE_Begin XF_Define_Weak
-// 绑定命令与执行代码（默认返回空信号，可手动返回新的信号）
-#define XF_CEXE_(commandRef, ExecuteCode) \
-commandRef = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) { \
-    XF_Define_Strong \
-    [self self]; \
-    ExecuteCode \
-    return [RACSignal empty]; \
-}];
-// 基于enable信号，绑定命令与执行代码（默认返回空信号，可手动返回新的信号）
-#define XF_CEXE_Enable_(commandRef, enableSignal, ExecuteCode)\
-commandRef = [[RACCommand alloc] initWithEnabled:enableSignal signalBlock:^RACSignal *(id input) {\
-    XF_Define_Strong \
-    [self self]; \
-    ExecuteCode \
-    return [RACSignal empty]; \
-}];
-
 
 // 通过渲染数据创建表达对象
 #define XF_SetExpressPack_(ExpressPackClass,renderData) \

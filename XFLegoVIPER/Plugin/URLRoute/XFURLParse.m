@@ -66,6 +66,7 @@
     for (NSString *key in  dict.allKeys){
         [mStr appendFormat:@"%@=%@&",key, dict[key]];
     }
-    return [mStr substringToIndex:mStr.length - 1];
+    NSString *result = [mStr substringToIndex:mStr.length - 1];
+    return result;
 }
 @end

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LEViewModel.h"
 
+// 获得当前MVVM组件模块名
+#define XF_ModuleName \
+[LEMVVMModuleReflect moduleNameForViewModel:self]
+
+@class LEViewModel;
 @interface LEMVVMModuleReflect : NSObject
 /**
  *  验证模块名

@@ -20,7 +20,7 @@
     if (!clazz)
     {
         // 获得父模块名
-        NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:subModuleName];
+        NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:subModuleName stuffixName:stuffixName];
         if (superModule) {
             *superModule = superModuleName;
         }
@@ -34,7 +34,7 @@
 }
 
 // 从子模块名检测出父模块名
-+ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName
++ (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName
 {
     NSUInteger count = subModuleName.length;
     NSMutableString *appendString = @"".mutableCopy;
@@ -45,11 +45,14 @@
         // 如果是大写
         if (c > 64 && c < 91) {
             // 翻转字符串
-            NSMutableString *result = [NSMutableString string];
+            NSMutableString *superModuleName = [NSMutableString string];
             for (NSUInteger j = appendString.length; j > 0; j--) {
-                [result appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
+                [superModuleName appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
             }
-            return result;
+            // 如果有这个父类，直接返回
+            if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,superModuleName,stuffixName])) {
+                return superModuleName;
+            }
         }
     }
     return nil;
@@ -62,13 +65,12 @@
     // 如果没有对应类
     if (!subModuleClass) {
         // 检测是否有父模块
-        NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:moduleName];
+        NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:moduleName stuffixName:stuffixName];
+        if (!superModuleName) return NO;
         // 如果与自己相同
         if ([superModuleName isEqualToString:moduleName]) {
             return NO;
         }
-        // 是否能加载父路由类
-        return !!NSClassFromString([NSString stringWithFormat:@"%@%@%@",modulePrefix,superModuleName,stuffixName]);
     }
     return YES;
 }

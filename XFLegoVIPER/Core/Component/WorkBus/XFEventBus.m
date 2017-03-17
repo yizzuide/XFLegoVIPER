@@ -51,7 +51,7 @@
     {
         // 返回可变参数，va_arg第二个参数为可变参数类型，如果有多个可变参数，依次调用可获取各个参数
         NSString *componentName = va_arg(args, NSString*);
-        if (!componentName) {
+        if (!componentName || ![componentName isKindOfClass:[NSString class]]) {
             break;
         }
         [XFComponentManager sendEventName:eventName intentData:intentData forComponent:componentName];
