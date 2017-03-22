@@ -49,7 +49,10 @@
 
 + (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface
 {
-     Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentHandlerMatcher matchUInterface:uInterface];
+    Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentHandlerMatcher matchUInterface:uInterface];
+    if (!matchedComponentHandler) {
+        return nil;
+    }
     id<XFComponentRoutable> component = [matchedComponentHandler componentForUInterface:uInterface];
     return component;
 }

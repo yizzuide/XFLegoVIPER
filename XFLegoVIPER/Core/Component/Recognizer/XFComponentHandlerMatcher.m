@@ -20,7 +20,6 @@
             return componentHandler;
         }
     }
-    NSAssert(NO, @"找不到这个组件或该模块组件的处理器！");
     return NULL;
 }
 
@@ -31,7 +30,6 @@
             return componentHandler;
         }
     }
-    NSAssert(NO, @"找不到该视图对应的组件处理器！");
     return NULL;
 }
 @end
