@@ -33,7 +33,6 @@
 see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 
 ## Video
-- [XFLegoVIPER Framework Introduce](https://pan.baidu.com/s/1mhZHRQC)
 - [How to code with XFLegoVIPER](https://pan.baidu.com/s/1o8yeyN4)
 
 
