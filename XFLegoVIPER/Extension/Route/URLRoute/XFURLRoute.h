@@ -44,8 +44,4 @@
  */
 + (void)setHTTPHandlerComponent:(NSString *)componentName;
 
-/**
- *  开启URL路径的组件关系链验证功能
- */
-+ (void)enableVerifyURLRoute;
 @end

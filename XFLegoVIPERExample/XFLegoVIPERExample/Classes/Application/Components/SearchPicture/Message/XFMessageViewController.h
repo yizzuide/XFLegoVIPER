@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XFLegoVIPER.h"
+#import "XFControllerRunnable.h"
 
 // 实现XFControllerComponentRunnable接口，使当前控制器成为组件
 @interface XFMessageViewController : UIViewController <XFControllerRunnable>

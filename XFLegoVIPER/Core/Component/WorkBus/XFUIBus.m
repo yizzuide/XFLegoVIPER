@@ -115,6 +115,13 @@
     return subComponent;
 }
 
+// 返回组件视图
++ (__kindof UIViewController *)openURLForGetUInterface:(NSString *)url
+{
+    id<XFComponentRoutable> component = [self openURLForGetComponent:url];
+    return [XFComponentReflect uInterfaceForComponent:component];
+}
+
 #pragma mark - 组件名切换方式
 - (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock
 {
@@ -304,11 +311,8 @@
         
         // 设置导航引用
         if (nav) {
-            if ([XFComponentReflect isVIPERModuleComponent:nextComponent]) { // 如果是VIPER模块组件
-                [[[nextComponent valueForKey:@"routing"] uiBus] setNavigator:nav];
-            } else { // 其它组件
-                [[nextComponent uiBus] setNavigator:nav];
-            }
+            Class<XFComponentHandlerPlug> componentHandler = [XFComponentReflect componentHandlerForComponent:nextComponent];
+            [[componentHandler uiBusForComponent:nextComponent] setNavigator:nav];
         }
         
         // 导航标题

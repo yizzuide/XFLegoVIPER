@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XFLegoVIPER.h"
+#import "XFActivity.h"
 
 @interface XFSearchActivity : UIViewController
 

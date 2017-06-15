@@ -31,12 +31,12 @@
     return (id)[XFControllerFactory createControllerFromComponentName:componentName];
 }
 
-+ (NSString *)componentNameFromComponent:(id<XFComponentRoutable>)component
++ (NSString *)componentNameFromComponent:(__kindof id<XFComponentRoutable>)component
 {
     return [XFControllerReflect controllerNameForComponent:component];
 }
 
-+ (UIViewController *)uInterfaceForComponent:(id<XFComponentRoutable>)component
++ (UIViewController *)uInterfaceForComponent:(__kindof id<XFComponentRoutable>)component
 {
     return (id)component;
 }
@@ -46,9 +46,23 @@
     return (id)uInterface;
 }
 
++ (XFUIBus *)uiBusForComponent:(__kindof id<XFComponentRoutable>)component
+{
+    return [component uiBus];
+}
+
 + (id<XFComponentRoutable>)component:(__kindof id<XFComponentRoutable>)component createNextComponentFromName:(NSString *)componentName
 {
     return [self createComponentFromName:componentName];
+}
+
++ (__kindof UIViewController *)subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
+{
+    return [XFComponentReflect uInterfaceForComponent:component];
+}
+
++ (void)willReBindRelationFromSubUserInterfaces:(NSArray<UIViewController *> *)subUserInterfaces toParentUserInterface:(__kindof UIViewController *)parentUserInterface
+{
 }
 
 + (void)willRemoveComponent:(__kindof id<XFComponentRoutable>)component

@@ -64,6 +64,7 @@ XF_PUT_URLComponent_(openURLForPush,urlString,ExecuteCode)
 XF_PUT_URLComponent_(openURLForPresent,urlString,ExecuteCode)
 #define XF_Present_URLComponent_Fast(urlString) XF_Present_URLComponent_(urlString,{})
 
+
 // 从快速@{}字典对象组装URL参数
 #define XF_URL_(urlPath,params) \
 ([NSString stringWithFormat:@"%@?%@",urlPath,[XFURLParse stringFromDictionary:params]])
@@ -130,6 +131,14 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @return 组件
  */
 + (id<XFComponentRoutable>)openURLForGetComponent:(NSString *)url;
+/**
+ *  通过URL获取一个组件视图
+ *
+ *  @param url URL
+ *
+ *  @return 视图
+ */
++ (__kindof UIViewController *)openURLForGetUInterface:(NSString *)url;
 
 
 /**

@@ -36,20 +36,7 @@
  *  @return 组件名
  */
 + (NSString *)componentNameForComponent:(id<XFComponentRoutable>)component;
-/**
- *  是否是模块组件
- *
- *  @param component 组件对象或组件名
- *
- */
-+ (BOOL)isVIPERModuleComponent:(id)component;
-/**
- *  是否是控制器组件
- *
- *  @param component 组件对象或组件名
- *
- */
-+ (BOOL)isControllerComponent:(id)component;
+
 /**
  *  当前组件界面
  *

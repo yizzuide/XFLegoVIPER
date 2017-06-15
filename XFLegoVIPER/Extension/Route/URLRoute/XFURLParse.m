@@ -40,8 +40,7 @@
         if (element.count != 2) continue;
         NSString *key = element[0], *value = element[1];
         if (key.length == 0) continue;
-        if ([value hasPrefix:@"http%3A%2F%2F"] ||
-            [value hasPrefix:@"https%3A%2F%2F"]) {
+        if ([value hasPrefix:@"http%3A%2F%2F"] || [value hasPrefix:@"https%3A%2F%2F"]) {
             value = [self decodeFromPercentEscapeString:value];
         }
         queryDict[key] = value;
@@ -70,8 +69,7 @@
     for (NSString *key in  dict.allKeys){
         // 判断值是否为Http协议的URL
         NSString *value = dict[key];
-        if ([value hasPrefix:@"http://"] ||
-            [value hasPrefix:@"https://"]) {
+        if ([value isKindOfClass:[NSString class]] && ([value hasPrefix:@"http://"] || [value hasPrefix:@"https://"])) {
             value = [self encodeToPercentEscapeString:value];
             NSString *orignURL = [self decodeFromPercentEscapeString:value];
             NSLog(@"%@",orignURL);

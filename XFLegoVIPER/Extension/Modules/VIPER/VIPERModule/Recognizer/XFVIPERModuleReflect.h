@@ -65,7 +65,7 @@
  *
  *  @return 模块关系链是否正确
  */
-+ (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules;
+//+ (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules;
 /**
  *  解析模块前辍
  *

@@ -24,7 +24,6 @@
  */
 + (__kindof UIViewController *)createSubUInterfaceFromComponentName:(NSString *)componetName parentUInterface:(__kindof UIViewController *)parentUInterface;
 
-
 /**
  *   通过URL创建子组件视图
  *
@@ -35,11 +34,4 @@
  */
 + (__kindof UIViewController *)createSubUInterfaceFromURLComponent:(NSString *)url parentUInterface:(__kindof UIViewController *)parentUInterface;
 
-/**
- *  重新构建父子视图关系链
- *
- *  @param subUserInterfaces   所有子视图
- *  @param parentUserInterface 父视图
- */
-+ (void)resetSubUserInterfaces:(NSArray *)subUserInterfaces forParentActivity:(__kindof UIViewController *)parentUserInterface;
 @end

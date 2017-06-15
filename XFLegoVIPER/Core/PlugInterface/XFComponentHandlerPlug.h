@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XFComponentRoutable.h"
+#import "XFUIBus.h"
 
 /**
  *  组件处理器插件接口
@@ -47,7 +48,7 @@
  *
  *  @return 组件名
  */
-+ (NSString *)componentNameFromComponent:(id<XFComponentRoutable>)component;
++ (NSString *)componentNameFromComponent:(__kindof id<XFComponentRoutable>)component;
 
 /**
  *  根据组件可运行对象返回界面层
@@ -55,7 +56,7 @@
  *  @param component 组件可运行对象
  *
  */
-+ (UIViewController *)uInterfaceForComponent:(id<XFComponentRoutable>)component;
++ (UIViewController *)uInterfaceForComponent:(__kindof id<XFComponentRoutable>)component;
 /**
  *  根据界面层返回组件对象
  *
@@ -63,6 +64,15 @@
  *
  */
 + (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface;
+
+/**
+ *  根据组件可运行对象返回UI主线
+ *
+ *  @param component 组件可运行对象
+ *
+ *  @return UI主线
+ */
++ (XFUIBus *)uiBusForComponent:(__kindof id<XFComponentRoutable>)component;
 
 /**
  *  从起始组件根据组件名返回下一个可运行组件对象
@@ -73,6 +83,24 @@
  *  @return 组件可运行对象
  */
 + (id<XFComponentRoutable>)component:(__kindof id<XFComponentRoutable>)component createNextComponentFromName:(NSString *)componentName;
+
+/**
+ *  从父组件视图创建一个子组件视图
+ *
+ *  @param component        子组件
+ *  @param parentUInterface 父视图
+ *
+ *  @return 子视图
+ */
++ (__kindof UIViewController *)subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface;
+
+/**
+ *  需要重新绑定子视图与父视图的关系
+ *
+ *  @param subUserInterfaces   子视图
+ *  @param parentUserInterface 父视图
+ */
++ (void)willReBindRelationFromSubUserInterfaces:(NSArray<UIViewController *> *)subUserInterfaces toParentUserInterface:(__kindof UIViewController *)parentUserInterface;
 
 /**
  *  UI总线在执行移除组件动画前调用

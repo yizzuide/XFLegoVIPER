@@ -13,6 +13,8 @@
 #import "NSObject+XFLegoInvokeMethod.h"
 #import "XFVIPERModuleReflect.h"
 #import "XFModuleReflect.h"
+#import "UIViewController+XFLego.h"
+#import "XFActivity.h"
 
 #define IS_Module(component) [component respondsToSelector:@selector(routing)]
 #define Routing ((XFRouting *)[component routing])
@@ -38,7 +40,7 @@
     return routing.uiOperator;
 }
 
-+ (NSString *)componentNameFromComponent:(id<XFComponentRoutable>)component
++ (NSString *)componentNameFromComponent:(__kindof id<XFComponentRoutable>)component
 {
     return [XFVIPERModuleReflect moduleNameForModuleLayerObject:component];
 }
@@ -52,6 +54,11 @@
 + (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface
 {
     return [uInterface valueForKeyPath:@"eventHandler"];
+}
+
++ (XFUIBus *)uiBusForComponent:(__kindof id<XFComponentRoutable>)component
+{
+    return [[component valueForKey:@"routing"] uiBus];
 }
 
 + (id<XFComponentRoutable>)component:(__kindof id<XFComponentRoutable>)component createNextComponentFromName:(NSString *)componentName {
@@ -69,6 +76,33 @@
         [XFRoutingLinkManager setCurrentActionRounting:Routing];
     }
     return nextRouting.uiOperator;
+}
+
++ (__kindof UIViewController *)subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
+{
+    XFRouting *subRouting = [component routing];
+    if ([parentUInterface eventHandler]) {
+        XFRouting *parentRouting = [[parentUInterface eventHandler] valueForKey:@"_routing"];
+        [XFRoutingLinkManager setSubRouting:subRouting forParentRouting:parentRouting];
+    }
+    return subRouting.realUInterface;
+}
+
++ (void)willReBindRelationFromSubUserInterfaces:(NSArray<UIViewController *> *)subUserInterfaces toParentUserInterface:(__kindof UIViewController *)parentUserInterface
+{
+    NSMutableArray *subRoutings = @[].mutableCopy;
+    for (__kindof id<XFUserInterfacePort> userInterface in subUserInterfaces) {
+        XFActivity *subActivity = userInterface;
+        // 如果子控制器是导航栏，取出顶部视图
+        if ([userInterface isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *subNav = userInterface;
+            subActivity = (id)subNav.topViewController;
+        }
+        XFRouting *subRouting = [[subActivity eventHandler] valueForKey:@"_routing"];
+        [subRoutings addObject:subRouting];
+    }
+    XFRouting *parentRouting = [[parentUserInterface eventHandler] valueForKey:@"_routing"];
+    [XFRoutingFactory resetSubRoutings:subRoutings forParentRouting:parentRouting];
 }
 
 + (void)willRemoveComponent:(__kindof id<XFComponentRoutable>)component

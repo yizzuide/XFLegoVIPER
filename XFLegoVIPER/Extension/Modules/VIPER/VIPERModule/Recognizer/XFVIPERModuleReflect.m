@@ -9,7 +9,6 @@
 #import "XFVIPERModuleReflect.h"
 #import "XFRouting.h"
 #import "XFRoutingLinkManager.h"
-#import "XFControllerReflect.h"
 #import <objc/runtime.h>
 #import "XFLegoConfig.h"
 #import "XFModuleReflect.h"
@@ -66,7 +65,7 @@
     return [self moduleNameForModuleLayerObject:[[moduleLayerClass alloc] init]];
 }
 
-+ (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules
+/*+ (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules
 {
     // 只有一个路由，直接返回
     if (modules.count == 1) {
@@ -113,7 +112,7 @@
         preRouting = nextRouting;
     }
     return YES;
-}
+}*/
 
 + (void)inspectModulePrefixFromClass:(Class)clazz
 {

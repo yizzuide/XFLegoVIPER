@@ -33,31 +33,8 @@
 
 + (__kindof UIViewController *)_subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
 {
-    if ([XFComponentReflect isVIPERModuleComponent:component]) {
-        XFRouting *subRouting = [component routing];
-        if ([parentUInterface eventHandler]) {
-            XFRouting *parentRouting = [[parentUInterface eventHandler] valueForKey:@"_routing"];
-            [XFRoutingLinkManager setSubRouting:subRouting forParentRouting:parentRouting];
-        }
-        return subRouting.realUInterface;
-    }
-    return [XFComponentReflect uInterfaceForComponent:component];
+    Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentReflect componentHandlerForComponent:component];
+    return [matchedComponentHandler subUIterfaceFromSubComponent:component parentUInterface:parentUInterface];
 }
 
-
-+ (void)resetSubUserInterfaces:(NSArray *)subUserInterfaces forParentActivity:(__kindof UIViewController *)parentUserInterface {
-    NSMutableArray *subRoutings = @[].mutableCopy;
-    for (__kindof id<XFUserInterfacePort> userInterface in subUserInterfaces) {
-        XFActivity *subActivity = userInterface;
-        // 如果子控制器是导航栏，取出顶部视图
-        if ([userInterface isKindOfClass:[UINavigationController class]]) {
-            UINavigationController *subNav = userInterface;
-            subActivity = (id)subNav.topViewController;
-        }
-        XFRouting *subRouting = [[subActivity eventHandler] valueForKey:@"_routing"];
-        [subRoutings addObject:subRouting];
-    }
-    XFRouting *parentRouting = [[parentUserInterface eventHandler] valueForKey:@"_routing"];
-    [XFRoutingFactory resetSubRoutings:subRoutings forParentRouting:parentRouting];
-}
 @end

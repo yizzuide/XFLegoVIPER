@@ -57,11 +57,10 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
             [self _xfLego_initEventHandlerWithAdditionWorkBlock:^{
                 // 调用自定义加载完成方法
                 [self xfLego_viewDidLoadForTabBarViewController];
-                // 单独处理VIPER模块
-                if ([XFComponentReflect isVIPERModuleComponent:[XFComponentReflect componentForUInterface:self]]) {
-                    // 重置父子模块关系
-                    [XFUInterfaceFactory resetSubUserInterfaces:self.childViewControllers forParentActivity:self];
-                }
+                
+                MatchComponent
+                Class<XFComponentHandlerPlug> componentHandler = [XFComponentReflect componentHandlerForComponent:component];
+                [componentHandler willReBindRelationFromSubUserInterfaces:self.childViewControllers toParentUserInterface:self];
             }];
         })
     }

@@ -79,12 +79,6 @@ static NSMutableArray *componentKeyArr_;
 
 + (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponent:(NSString *)componentName
 {
-    // 优先处理模块组件
-    if([XFComponentReflect isVIPERModuleComponent:componentName]) {
-        [XFRoutingLinkManager sendEventName:eventName intentData:intentData forModuleName:componentName];
-        return;
-    }
-    // 控制器组件
     id<XFComponentRoutable> component = [self findComponentForName:componentName];
     if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
         [component receiveComponentEventName:eventName intentData:intentData];

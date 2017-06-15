@@ -8,6 +8,7 @@
 
 #import "XFComponentRoutable.h"
 #import "UIViewController+ComponentBridge.h"
+#import "XFUIBus.h"
 
 // 导出作为可运行组件
 #undef XF_EXPORT_COMPONENT
@@ -26,5 +27,6 @@
  *  控制器可进化组件接口
  */
 @protocol XFControllerRunnable <XFComponentRoutable>
+
 
 @end

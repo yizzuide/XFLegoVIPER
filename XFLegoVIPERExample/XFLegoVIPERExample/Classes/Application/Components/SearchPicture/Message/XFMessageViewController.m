@@ -7,6 +7,7 @@
 //
 
 #import "XFMessageViewController.h"
+#import "XFLegoMarco.h"
 
 @interface XFMessageViewController ()
 

@@ -10,7 +10,6 @@
 #import "XFURLParse.h"
 #import "XFLegoMarco.h"
 #import "XFRoutingLinkManager.h"
-#import "XFVIPERModuleReflect.h"
 #import "XFComponentReflect.h"
 
 @implementation XFURLRoute
@@ -104,30 +103,8 @@ static NSMutableDictionary<NSString *,NSString *> *URLHandler_;
     // 开始切换组件
     if (transitionBlock)
         transitionBlock(componentName,params);
-    
-    // 如果是控制器组件，直接返回
-    if ([XFComponentReflect isControllerComponent:componentName]) return YES;
-    
-    // 异步检测URL路径的正确性
-    if (verifyURLRoute_ && [XFRoutingLinkManager count]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSArray *allComps = [XFURLParse allComponentsForURL:url];
-            NSMutableArray *modules = @[].mutableCopy;
-            for (NSString *comp in allComps) {
-                NSString *moduleName = [NSString stringWithFormat:@"%@%@",[comp substringToIndex:XF_Index_Second].uppercaseString,[comp substringFromIndex:XF_Index_Second]];
-                [modules addObject:moduleName];
-            }
-            BOOL isURLComponentLinkOk = [XFVIPERModuleReflect verifyModuleLinkForList:modules];
-            NSAssert(isURLComponentLinkOk, @"URL子路径关系链错误！");
-        });
-    }
+
     return YES;
 }
 
-
-static BOOL verifyURLRoute_;
-+ (void)enableVerifyURLRoute
-{
-    verifyURLRoute_ = YES;
-}
 @end

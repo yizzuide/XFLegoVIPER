@@ -8,6 +8,7 @@
 
 #import "XFComponentReflect.h"
 #import "XFComponentUI.h"
+#import "XFUIBus.h"
 
 // 注册键盘弹出通知
 #define XF_RegisterKeyboardNotifaction \
@@ -91,4 +92,5 @@ XF_EventIs_(UIKeyboardWillChangeFrameNotification, { \
  *  @param intentData 消息数据
  */
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData;
+
 @end

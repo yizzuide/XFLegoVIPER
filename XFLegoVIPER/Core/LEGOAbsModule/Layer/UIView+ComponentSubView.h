@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "XFLegoMarco.h"
 
+// 设置UIView的Frame
+#define XF_SetFrame_(view,ExecuteCode) \
+CGRect frame = view.frame; \
+ExecuteCode \
+view.frame = frame;
+
 @interface UIView (ComponentSubView)
 
 /**

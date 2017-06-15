@@ -10,6 +10,7 @@
 #import "LEDataDriverProtocol.h"
 #import "LEViewProtocol.h"
 #import "XFLegoMarco.h"
+#import "UIViewController+ComponentUI.h"
 
 @interface UIViewController (LEView) <LEViewProtocol>
 
