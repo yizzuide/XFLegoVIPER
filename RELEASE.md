@@ -1,3 +1,11 @@
+# V3.5.0
+### 插件机制增强，加强核心代码针对插件的抽象化，目录结构调整更简结，可以安全升级，可以安全升级，可以安全升级，重要的事说三遍！！！
+## New Feture:
+1. UI总线类`XFUIBus`添加方法`+openURLForGetUInterface:`,通过URL获得一个组件的视图层
+2. 添加组件URL参数针对https的url值传输的支持
+3. 模块组件视图层添加`XFComponentUI`接口、事件层添加`XFComponentUIEvent`接口，用于处理通用功能
+
+
 # V3.3.0
 ### 子组件的全模式支持
 ## New Feture:
