@@ -59,20 +59,21 @@ Now you can use template file to create a module which make of stuff class as fa
 
 Too complicated? [See Video](https://pan.baidu.com/s/1mihYccw)
 
-### 1.Find Template files
-The template files under  `~/Template/Architecture`
+### 1.Install the templates
+Xcode templates can be found in the repository's `/Template/Architecture` folder. To install them, open your terminal and run:
+```bash
+cd PATH/TO/REPO
+mkdir -p ~/Library/Developer/Xcode/Templates/
+cp -R Template/Architecture ~/Library/Developer/Xcode/Templates/
+```
 
-### 2.Copy to Xcode path
-1. open path `/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates`
-2. copy template files folder `Architecture` in
-
-### 3.Using xcode create module files
+### 2.Using xcode create module files
 1. Quit Xcode and open again
 2. Right click a group, select `New File...`
 3. Scrolling to Architecture Section, double click `VIPER` or `MVVM` item
 4. Input module name (you need add class prefix), and next, final click `create` action
 
-### 4.Fix blue folder ref
+### 3.Fix blue folder issue
 we have blue folder under select group, what's wrong? Let's fix it:
 
 1. Right click blue folder, select `Show in Finder`
