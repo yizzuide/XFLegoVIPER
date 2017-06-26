@@ -99,6 +99,8 @@ Architecting iOS Apps with VIPER [English](https://www.objc.io/issues/13-archite
 ## Author
 yizzuide, fu837014586@163.com
 
+QQ讨论群：450518005
+
 ## License
 XFLegoVIPER is available under the MIT license. See the LICENSE file for more info.
 
