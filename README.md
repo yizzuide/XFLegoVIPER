@@ -54,7 +54,7 @@ XFLegoVIPER `4.x` is now available (July 2017). 🎉 It's now add Swift (all ver
 pod 'XFLegoVIPER', '~> 4.0'
 ```
 
-- Swift
+- Objc & Swift
 
 To integrate XFLegoVIPER into your Xcode project using CocoaPods, specify it in your Podfile:
 ```ruby
