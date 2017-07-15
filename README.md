@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v3.5.0-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v4.0.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -11,7 +11,7 @@
 </p>
 
 ## Note
-🚀 A seamless framework for build app from MVC, MVVM, VIPER (etc.) design pattern in iOS world.
+🚀 A seamless framework for build app from MVC, MVVM, VIPER (etc.) design pattern in iOS world. (OC & Swift)
 * Assemble a VIPER module as fast so far, only need one line code.
 * Build-In powerful component event communication.
 * Real-Time track Component link 💫 .
@@ -43,10 +43,9 @@ see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 * Xcode 7.0+
 * IOS 6.0+
 
-## 3.x Release
-XFLegoVIPER `3.x` is now available (February 2017). Read up on [what's new](https://github.com/yizzuide/XFLegoVIPER/wiki/1.-Getting-Started-(%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)) in the docs.
+## 4.x Release
+XFLegoVIPER `4.x` is now available (July 2017). 🎉 It's now add Swift (all version) language support. 🎉
 
-Migration info from `2.x` can be found in the [3.x release notes](./RELEASE.md)
 
 ## Installation
 ### CocoaPods
