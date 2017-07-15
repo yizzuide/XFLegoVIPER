@@ -29,6 +29,9 @@
 ### Demo
 ![Demo](./ScreenShot/usage.gif)
 
+### Swift Demo
+see [Lego-swift](https://github.com/yizzuide/Lego-swift)
+
 ### Complete project
 see [BDJProjectExample](https://github.com/yizzuide/BDJProjectExample)
 
@@ -47,8 +50,22 @@ Migration info from `2.x` can be found in the [3.x release notes](./RELEASE.md)
 
 ## Installation
 ### CocoaPods
+- Objc
 ```ruby
-pod 'XFLegoVIPER', '~> 3.0'
+pod 'XFLegoVIPER', '~> 4.0'
+```
+
+- Swift
+
+To integrate XFLegoVIPER into your Xcode project using CocoaPods, specify it in your Podfile:
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'XFLegoVIPER', '~> 4.0'
+end
 ```
 
 ### Manual
