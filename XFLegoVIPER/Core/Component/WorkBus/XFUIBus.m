@@ -141,6 +141,10 @@
     mainWindow.rootViewController = nextUInterface.navigationController ?: nextUInterface;
     [mainWindow makeKeyAndVisible];
     
+    if ([nextComponent respondsToSelector:@selector(componentWillBecomeFocus)]) {
+        [nextComponent componentWillBecomeFocus];
+    }
+    
     // 添加组件到容器
     [XFComponentManager addComponent:nextComponent enableLog:YES];
 }
@@ -212,7 +216,7 @@
     
     // 传递组件意图对象
     if (intentData && [nextComponent respondsToSelector:@selector(setComponentData:)]) {
-        [nextComponent setComponentData:intentData];
+        nextComponent.componentData = intentData;
     }
     
     // 移除当前组件焦点
@@ -248,7 +252,7 @@
 {
     // 设置为手动代码移除方式
     UIViewController *uInterface = [self.matchedComponentHandler uInterfaceForComponent:self.componentRoutable];
-    [uInterface invokeMethod:@"setPoppingProgrammatically:" param:[NSNumber numberWithBool:YES]];
+    [uInterface invokeMethod:@"setPoppingProgrammatically:" param:@YES];
     // 开始移除当前路由并切换
     [self xfLego_implicitRemoveComponentWithTransitionBlock:transitionBlock];
 }
@@ -325,7 +329,7 @@
         // 移除行为参数
         NSMutableDictionary *mParams = [params mutableCopy];
         for (NSString *behaviorParam in behaviorParams) {
-            if ([mParams objectForKey:behaviorParam]) {
+            if (mParams[behaviorParam]) {
                 [mParams removeObjectForKey:behaviorParam];
             }
         }
@@ -334,7 +338,7 @@
     
     // 判断是否要传递URL参数
     if (params.count && [nextComponent respondsToSelector:@selector(setURLParams:)]) {
-        [nextComponent setURLParams:params];
+        nextComponent.URLParams = params;
     }
 }
 

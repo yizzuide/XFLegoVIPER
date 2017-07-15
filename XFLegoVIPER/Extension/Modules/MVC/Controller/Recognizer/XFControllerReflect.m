@@ -18,21 +18,14 @@
 }
 
 + (NSString *)controllerNameForComponent:(__kindof id<XFComponentRoutable>)component {
-    NSArray *simpleSuffix = @[@"ViewController"];
-    NSString *clazzName = NSStringFromClass([component class]);
-    
-    NSUInteger index = XF_Index_First;
-    NSRange suffixRange;
-    do {
-        if (index == simpleSuffix.count) {
-            return clazzName;
-        }
-        suffixRange = [clazzName rangeOfString:simpleSuffix[index++]];
-    } while (suffixRange.location <= XF_Index_First);
-    
-    NSInteger len = XF_Class_Prefix.length;
-    NSRange controllerNameRange = NSMakeRange(len, suffixRange.location - len);
-    NSString *controllerName = [clazzName substringWithRange:controllerNameRange];
-    return controllerName;
+    NSString *stuffixName = @"ViewController";
+    NSString *modulePrefix = [XFModuleReflect inspectModulePrefixWithModule:component stuffixName:stuffixName];
+    NSString *clazzName = NSStringFromClass(component.class);
+    if (modulePrefix) {
+        NSString *lastPart = [clazzName componentsSeparatedByString:modulePrefix].lastObject;
+        return [lastPart componentsSeparatedByString:stuffixName].firstObject;
+    } else {
+        return [clazzName componentsSeparatedByString:stuffixName].firstObject;
+    }
 }
 @end

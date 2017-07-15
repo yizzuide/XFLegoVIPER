@@ -9,12 +9,14 @@
 #import "XFModuleReflect.h"
 #import <objc/runtime.h>
 #import "XFLegoMarco.h"
+#import "XFLegoConfig.h"
 
 @implementation XFModuleReflect
 
 + (Class)createDynamicSubModuleClassFromName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName superModule:(NSString **)superModule
 {
-    const char * className = [[NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,subModuleName,stuffixName] cStringUsingEncoding:NSASCIIStringEncoding];
+    NSString *modulePrefix = [self inspectModulePrefixWithModule:(id)subModuleName stuffixName:(NSString *)stuffixName];
+    const char * className = [[NSString stringWithFormat:@"%@%@%@",modulePrefix,subModuleName,stuffixName]cStringUsingEncoding:NSASCIIStringEncoding];
     Class clazz = objc_getClass(className);
     // 如果这个类不存在，就是动态创建, 这里用于共享的子模块
     if (!clazz)
@@ -25,10 +27,11 @@
             *superModule = superModuleName;
         }
         // 创建父模块类
-        Class superClass = NSClassFromString([NSString stringWithFormat:@"%@%@%@", XF_Class_Prefix, superModuleName, stuffixName]);
+        Class superClass = NSClassFromString([NSString stringWithFormat:@"%@%@%@", modulePrefix, superModuleName, stuffixName]);
         NSAssert(superClass, @"动态创建失败！不存这个类，请注意加上父模块名！");
         // 创建子类
-        return objc_allocateClassPair(superClass, className, 0);
+        Class subClazz = objc_allocateClassPair(superClass, className, 0);
+        return subClazz;
     }
     return clazz;
 }
@@ -49,30 +52,60 @@
             for (NSUInteger j = appendString.length; j > 0; j--) {
                 [superModuleName appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
             }
-            // 如果有这个父类，直接返回
-            if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,superModuleName,stuffixName])) {
-                return superModuleName;
-            }
+            return superModuleName;
         }
     }
     return nil;
 }
 
-+ (BOOL)verifyModule:(NSString *)moduleName stuffixName:(NSString *)stuffixName
++ (NSString *)inspectModulePrefixWithModule:(id)module stuffixName:(NSString *)stuffixName
 {
-    NSString *modulePrefix = XF_Class_Prefix;
-    Class subModuleClass = NSClassFromString([NSString stringWithFormat:@"%@%@%@",modulePrefix,moduleName,stuffixName]);
-    // 如果没有对应类
-    if (!subModuleClass) {
-        // 检测是否有父模块
+    NSString *ns = [[XFLegoConfig shareInstance] swiftNamespace];
+    NSString *classPrefix = [[XFLegoConfig shareInstance] classPrefix];
+    
+    if ([module isKindOfClass:[NSString class]]) {
+        NSString *moduleName = module;
+        // 首先判断是否swift模块，因为如果全用swift写是不需要设置前辍的
+        // 是否存在这个swift模块
+        if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",ns,moduleName,stuffixName])) {
+            return ns;
+        }
         NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:moduleName stuffixName:stuffixName];
-        if (!superModuleName) return NO;
-        // 如果与自己相同
-        if ([superModuleName isEqualToString:moduleName]) {
-            return NO;
+        // 是否存在这个swift子模块
+        if (superModuleName &&
+            ![superModuleName isEqualToString:moduleName] &&
+            NSClassFromString([NSString stringWithFormat:@"%@%@%@", ns, superModuleName, stuffixName])) {
+            return ns;
+        }
+        
+        // 判断OC模块，如果没有设置前辍直接返回nil
+        // 是否存在这个OC模块
+        if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",classPrefix,moduleName,stuffixName])) {
+            return classPrefix ?: @"";
+        }
+        // 是否存在这个OC子模块
+        if (superModuleName &&
+            ![superModuleName isEqualToString:moduleName] &&
+            NSClassFromString([NSString stringWithFormat:@"%@%@%@", classPrefix, superModuleName, stuffixName])) {
+            return classPrefix  ?: @"";
+        }
+        return nil;
+    } else {
+        // 如果传过来是一个模块层对象
+        NSString *moduleClazzName = NSStringFromClass([module class]);
+        if ([moduleClazzName containsString:@"."]) { // 是否含有swift命名空间
+            return ns;
+        } else {
+            return classPrefix ?: @"";
         }
     }
-    return YES;
+}
+
+
+
++ (BOOL)verifyModule:(NSString *)moduleName stuffixName:(NSString *)stuffixName
+{
+    return [self inspectModulePrefixWithModule:moduleName stuffixName:stuffixName] != nil;
 }
 
 @end

@@ -39,13 +39,23 @@ if ([eventName isEqualToString:EventName]) { \
 - (instancetype)initWithComponentRoutable:(__kindof id<XFComponentRoutable>)componentRoutable NS_DESIGNATED_INITIALIZER;
 
 /**
- *  对多个组件组件发送事件消息
+ *  对多个组件组件发送事件消息(OC专用，Swift编译器转换不了）
  *
  *  @param eventName        事件名
  *  @param intentData       消息数据
  *  @param ...              多个组件名
  */
 - (void)sendEventName:(NSString *)eventName intentData:(id)intentData,...;
+
+
+/**
+ *  对多个组件组件发送事件消息
+ *
+ *  @param eventName      事件名
+ *  @param intentData     消息数据
+ *  @param componentNames 组件名数组
+ */
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames;
 
 /**
  *  发送全局通知

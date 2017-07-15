@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // 在模块组成类中获得模块名（不支持Interactor、DataManager）
+#undef XF_ModuleName
 #define XF_ModuleName [XFVIPERModuleReflect moduleNameForModuleLayerObject:self]
 // 在子路由类中获得模块名 （只支持在子路由类方法中使用）
 #define XF_ModuleNameForSuperRoutingClass [XFVIPERModuleReflect moduleNameForSuperRoutingClass:self]
@@ -49,14 +50,6 @@
  */
 + (NSString *)moduleNameForModuleLayerObject:(id)moduleLayerObject;
 
-/**
- *  在模块组成类中获得模块名（不支持Interactor、DataManager）
- *
- *  @param moduleLayerClass 模块组成类
- *
- *  @return 模块名
- */
-+ (NSString *)moduleNameForModuleLayerClass:(Class)moduleLayerClass;
 
 /**
  *  验证模块关系链

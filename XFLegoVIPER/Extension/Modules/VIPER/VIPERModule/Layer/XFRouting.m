@@ -63,6 +63,11 @@
     return routing;
 }
 
++ (instancetype)standardRouting
+{
+    return [self routing];
+}
+
 // **子类要自己实现组装当前模块方式**
 + (instancetype)assembleRouting
 {
@@ -95,7 +100,7 @@
 
 #pragma mark - 获取当前视图
 - (__kindof UIViewController<XFUserInterfacePort> *)realUInterface {
-    return (id)self.uiBus.uInterface ?: [self.uiOperator userInterface];
+    return (id)self.uiBus.uInterface ?: (self.uiOperator).userInterface;
 }
 
 #pragma mark - 资源回收

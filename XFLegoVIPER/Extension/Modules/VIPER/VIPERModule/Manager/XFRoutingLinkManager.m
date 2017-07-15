@@ -46,13 +46,13 @@ static NSMapTable *sharedRoutingTable_;
 
 #pragma mark - 模块管理
 + (void)addRouting:(XFRouting *)routing {
-    NSString *key = XF_Class_Prefix ? [XFVIPERModuleReflect moduleNameForRouting:routing] : NSStringFromClass([routing class]);
+    NSString *key = [XFVIPERModuleReflect moduleNameForRouting:routing];
     [linkRoutingTable_ setObject:routing forKey:key];
     [linkRoutingKeyArr_ addObject:key];
 }
 
 + (void)removeRouting:(XFRouting *)routing {
-    NSString *key = XF_Class_Prefix ? [XFVIPERModuleReflect moduleNameForRouting:routing] : NSStringFromClass([routing class]);
+    NSString *key = [XFVIPERModuleReflect moduleNameForRouting:routing];
     [linkRoutingTable_ removeObjectForKey:key];
     [linkRoutingKeyArr_ removeObject:key];
 }
@@ -72,7 +72,7 @@ static NSMapTable *sharedRoutingTable_;
 
 + (XFRouting *)currentActionRouting
 {
-    return [trackActionRoutingTable_ anyObject];
+    return trackActionRoutingTable_.anyObject;
 }
 
 + (void)setSharedRounting:(XFRouting *)routing shareModule:(NSString *)moduleName
@@ -106,7 +106,7 @@ static NSMapTable *sharedRoutingTable_;
 + (XFRouting *)findRoutingForModuleName:(NSString *)moduleName {
     NSEnumerator *keys = linkRoutingTable_.keyEnumerator;
     for (NSString *key in keys) {
-        BOOL condition = XF_Class_Prefix ? [key isEqualToString:moduleName] : [key containsString:moduleName];
+        BOOL condition = [key isEqualToString:moduleName];
         if (condition) {
             return [linkRoutingTable_ objectForKey:key];
         }

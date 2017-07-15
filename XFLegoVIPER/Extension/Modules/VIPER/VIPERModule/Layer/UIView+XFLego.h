@@ -19,6 +19,6 @@
 /**
  *  事件处理器
  */
-- (id<XFEventHandlerPort>)eventHandler;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) id<XFEventHandlerPort> eventHandler;
 
 @end

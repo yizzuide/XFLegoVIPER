@@ -220,7 +220,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
 /**
  *  返回当前视图
  */
-- (UIViewController *)uInterface;
+@property (NS_NONATOMIC_IOSONLY, strong) UIViewController *uInterface;
 /**
  *  销毁当前组件UI总线对视图的强引用
  */

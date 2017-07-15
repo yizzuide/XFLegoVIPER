@@ -17,7 +17,15 @@
 
 + (NSString *)moduleNameForRouting:(XFRouting *)routing
 {
-    return [self moduleNameForRoutingClass:[routing class]];
+    NSString *stuffixName = @"Routing";
+    NSString *modulePrefix = [XFModuleReflect inspectModulePrefixWithModule:routing stuffixName:stuffixName];
+    NSString *clazzName = NSStringFromClass(routing.class);
+    if (modulePrefix) {
+        NSString *lastPart = [clazzName componentsSeparatedByString:modulePrefix].lastObject;
+        return [lastPart componentsSeparatedByString:stuffixName].firstObject;
+    } else {
+        return [clazzName componentsSeparatedByString:stuffixName].firstObject;
+    }
 }
 
 + (NSString *)moduleNameForModuleLayerObject:(id)moduleLayerObject
@@ -34,36 +42,17 @@
     return nil;
 }
 
-+ (NSString *)moduleNameForRoutingClass:(Class)routingClass
-{
-    NSArray *simpleSuffix = @[@"Routing"];
-    
-    NSString *clazzName = NSStringFromClass(routingClass);
-    NSUInteger index = XF_Index_First;
-    NSRange suffixRange;
-    do {
-        if (index == simpleSuffix.count) {
-            return clazzName;
-        }
-        suffixRange = [clazzName rangeOfString:simpleSuffix[index++]];
-    } while (suffixRange.location <= XF_Index_First);
-    
-    NSInteger len = XF_Class_Prefix.length;
-    NSRange moduleRange = NSMakeRange(len, suffixRange.location - len);
-    NSString *moduleName = [clazzName substringWithRange:moduleRange];
-    return moduleName;
-}
-
-
 + (NSString *)moduleNameForSuperRoutingClass:(Class)subRoutingClass
 {
-    return [self moduleNameForRoutingClass:[subRoutingClass superclass]];
+    NSString *superClassName = NSStringFromClass([subRoutingClass superclass]);
+    NSAssert([superClassName containsString:@"Routing"], @"当前路由类的父类不是一个路由类！");
+    return [self moduleNameForRouting:[[[subRoutingClass superclass] alloc] init]];
 }
 
-+ (NSString *)moduleNameForModuleLayerClass:(Class)moduleLayerClass
+/*+ (NSString *)moduleNameForModuleLayerClass:(Class)moduleLayerClass
 {
     return [self moduleNameForModuleLayerObject:[[moduleLayerClass alloc] init]];
-}
+}*/
 
 /*+ (BOOL)verifyModuleLinkForList:(NSArray<NSString *> *)modules
 {

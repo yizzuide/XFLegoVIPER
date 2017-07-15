@@ -31,6 +31,16 @@
  *  @return 父模块名
  */
 + (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName;
+
+/**
+ *  解析模块前辍，用于区分OC模块还是Swift模块
+ *
+ *  @param moduleName  模块名
+ *  @param stuffixName 模块关键层后辍
+ *
+ *  @return 模块前辍
+ */
++ (NSString *)inspectModulePrefixWithModule:(id)module stuffixName:(NSString *)stuffixName;
 /**
  *  验证一个模块是否存在
  *

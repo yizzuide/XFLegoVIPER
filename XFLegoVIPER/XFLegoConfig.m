@@ -86,7 +86,18 @@ static XFLegoConfig *instance_;
 
 - (NSString *)classPrefix
 {
-    return self->_classPrefix;
+    // OC模块组件请设置前辍
+    if (self->_classPrefix) {
+        return self->_classPrefix;
+    }
+    return nil;
+}
+
+- (NSString *)swiftNamespace
+{
+    NSString *appName = [NSBundle mainBundle].infoDictionary[@"CFBundleName"];
+    NSString *namespace = [NSString stringWithFormat:@"%@.",appName];
+    return namespace;
 }
 
 #pragma mark - 插件

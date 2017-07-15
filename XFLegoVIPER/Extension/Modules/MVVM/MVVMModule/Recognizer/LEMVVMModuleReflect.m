@@ -18,22 +18,15 @@
 }
 
 + (NSString *)moduleNameForViewModel:(LEViewModel<XFComponentRoutable> *)viewModel {
-    NSArray *simpleSuffix = @[@"ViewModel"];
-    
+    NSString *stuffixName = @"ViewModel";
+    NSString *modulePrefix = [XFModuleReflect inspectModulePrefixWithModule:viewModel stuffixName:stuffixName];
     NSString *clazzName = NSStringFromClass(viewModel.class);
-    NSUInteger index = XF_Index_First;
-    NSRange suffixRange;
-    do {
-        if (index == simpleSuffix.count) {
-            return clazzName;
-        }
-        suffixRange = [clazzName rangeOfString:simpleSuffix[index++]];
-    } while (suffixRange.location <= XF_Index_First);
-    
-    NSInteger len = XF_Class_Prefix.length;
-    NSRange moduleRange = NSMakeRange(len, suffixRange.location - len);
-    NSString *moduleName = [clazzName substringWithRange:moduleRange];
-    return moduleName;
+    if (modulePrefix) {
+        NSString *lastPart = [clazzName componentsSeparatedByString:modulePrefix].lastObject;
+        return [lastPart componentsSeparatedByString:stuffixName].firstObject;
+    } else {
+        return [clazzName componentsSeparatedByString:stuffixName].firstObject;
+    }
 }
 
 @end

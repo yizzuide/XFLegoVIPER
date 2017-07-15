@@ -25,8 +25,6 @@
 
 + (XFRouting *)createRoutingFastFromModuleName:(NSString *)moduleName {
     // 查找并实例化
-    NSString *prefixName = XF_Class_Prefix;
-    if (prefixName == nil) return nil;
     Class routingClass = [XFModuleReflect createDynamicSubModuleClassFromName:moduleName stuffixName:@"Routing" superModule:nil];
     if (routingClass) {
         return [routingClass assembleRouting];

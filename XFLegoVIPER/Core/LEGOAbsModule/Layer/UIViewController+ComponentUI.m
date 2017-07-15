@@ -27,7 +27,7 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
 - (BOOL)poppingProgrammatically
 {
     NSNumber *popingNumber = objc_getAssociatedObject(self, _cmd);
-    return [popingNumber boolValue];
+    return popingNumber.boolValue;
 }
 
 #pragma mark - 生命周期
@@ -132,7 +132,7 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
 - (void)_xfLego_initEventHandlerWithAdditionWorkBlock:(void(^)())additionWorkBlock
 {
     MatchComponent
-    [self setPoppingProgrammatically:[NSNumber numberWithBool:NO]];
+    [self setPoppingProgrammatically:@NO];
     [component xfLego_bindView:self];
     if (additionWorkBlock) {
         additionWorkBlock();

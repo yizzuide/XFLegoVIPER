@@ -58,7 +58,13 @@
     }
     // 结束可变参数的获取
     va_end(args);
-    
+}
+
+- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames
+{
+    for (NSString *componentName in componentNames) {
+        [XFComponentManager sendEventName:eventName intentData:intentData forComponent:componentName];
+    }
 }
 
 - (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData

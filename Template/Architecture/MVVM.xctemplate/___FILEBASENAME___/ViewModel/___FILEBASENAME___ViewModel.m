@@ -55,7 +55,7 @@
 }
 
 
-// 接受到MVx构架通知或XFLegoVIPER模块的事件
+// 接受到MVx构架通知或组件的事件
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
 {
     // 匹配对应通知

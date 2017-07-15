@@ -57,7 +57,7 @@ static NSMutableDictionary<NSString *,NSString *> *URLHandler_;
 
 + (void)register:(NSString *)url forComponent:(NSString *)componentName
 {
-    [URLRouteTable_ setObject:componentName forKey:url];
+    URLRouteTable_[url] = componentName;
 }
 
 + (void)remove:(NSString *)url
@@ -67,17 +67,17 @@ static NSMutableDictionary<NSString *,NSString *> *URLHandler_;
 
 + (void)setHTTPHandlerComponent:(NSString *)componentName
 {
-    [URLHandler_ setObject:componentName forKey:@"http"];
+    URLHandler_[@"http"] = componentName;
 }
 
 // 打一个URL组件,如：xf://user/register?usrid=123
 + (BOOL)open:(NSString *)url transitionBlock:(void(^)(NSString *componentName,NSDictionary *params))transitionBlock
 {
     NSString *path = [XFURLParse pathForURL:url];
-    NSString *componentName = [URLRouteTable_ objectForKey:path];
+    NSString *componentName = URLRouteTable_[path];
     NSDictionary *params;
     if ([url hasPrefix:@"http"]) {
-        NSString *httpHandlerComponent = [URLHandler_ objectForKey:@"http"];
+        NSString *httpHandlerComponent = URLHandler_[@"http"];
         if (!httpHandlerComponent) {
             NSAssert(NO, @"当前URL没有设置处理HTTP类型的组件！");
             return NO;

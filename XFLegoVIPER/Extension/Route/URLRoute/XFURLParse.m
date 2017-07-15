@@ -99,7 +99,7 @@
     [outputStr replaceOccurrencesOfString:@"+"
                                withString:@""
                                   options:NSLiteralSearch
-                                    range:NSMakeRange(0,[outputStr length])];
+                                    range:NSMakeRange(0,outputStr.length)];
     return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 @end

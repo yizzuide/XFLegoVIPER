@@ -81,8 +81,8 @@
 + (__kindof UIViewController *)subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
 {
     XFRouting *subRouting = [component routing];
-    if ([parentUInterface eventHandler]) {
-        XFRouting *parentRouting = [[parentUInterface eventHandler] valueForKey:@"_routing"];
+    if (parentUInterface.eventHandler) {
+        XFRouting *parentRouting = [parentUInterface.eventHandler valueForKey:@"_routing"];
         [XFRoutingLinkManager setSubRouting:subRouting forParentRouting:parentRouting];
     }
     return subRouting.realUInterface;
@@ -98,10 +98,10 @@
             UINavigationController *subNav = userInterface;
             subActivity = (id)subNav.topViewController;
         }
-        XFRouting *subRouting = [[subActivity eventHandler] valueForKey:@"_routing"];
+        XFRouting *subRouting = [subActivity.eventHandler valueForKey:@"_routing"];
         [subRoutings addObject:subRouting];
     }
-    XFRouting *parentRouting = [[parentUserInterface eventHandler] valueForKey:@"_routing"];
+    XFRouting *parentRouting = [parentUserInterface.eventHandler valueForKey:@"_routing"];
     [XFRoutingFactory resetSubRoutings:subRoutings forParentRouting:parentRouting];
 }
 

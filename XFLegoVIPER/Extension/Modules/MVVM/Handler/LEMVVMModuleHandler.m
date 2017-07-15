@@ -11,6 +11,7 @@
 #import "LEMVVMModuleReflect.h"
 #import "UIViewController+LEView.h"
 #import "LEMVVMModuleFactory.h"
+#import "XFModuleReflect.h"
 
 
 @implementation LEMVVMModuleHandler
@@ -25,7 +26,7 @@
 
 + (BOOL)matchUInterface:(UIViewController *)uInterface
 {
-    return [uInterface dataDriver];
+    return uInterface.dataDriver;
 }
 
 + (id<XFComponentRoutable>)createComponentFromName:(NSString *)componentName
@@ -33,7 +34,8 @@
     // 引用赋值父组件名
     NSString *superComponentName;
     LEViewModel<XFComponentRoutable> *viewModel = [LEMVVMModuleFactory createViewModelFromModuleName:componentName superModule:&superComponentName];
-    NSString *uInterfaceClazzName = [NSString stringWithFormat:@"%@%@%@",XF_Class_Prefix,superComponentName?:componentName,@"ViewController"];
+    NSString *modulePrefix = [XFModuleReflect inspectModulePrefixWithModule:componentName stuffixName:@"ViewModel"];
+    NSString *uInterfaceClazzName = [NSString stringWithFormat:@"%@%@%@",modulePrefix,superComponentName?:componentName,@"ViewController"];
     UIViewController<LEViewProtocol> *uInterface = [[NSClassFromString(uInterfaceClazzName) alloc] init];
     [uInterface setValue:viewModel forKeyPath:@"dataDriver"];
     [viewModel.uiBus setUInterface:uInterface];
@@ -52,7 +54,7 @@
 
 + (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface
 {
-    return [uInterface dataDriver];
+    return uInterface.dataDriver;
 }
 
 + (XFUIBus *)uiBusForComponent:(__kindof id<XFComponentRoutable>)component

@@ -31,7 +31,7 @@
 }
 
 - (id)_xfLogo_getCurrentViewController {
-    id nextResponder = [self nextResponder];
+    id nextResponder = self.nextResponder;
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         return nextResponder;
     } else if ([nextResponder isKindOfClass:[UIView class]]) {

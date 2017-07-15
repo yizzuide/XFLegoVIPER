@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.objective-c-source</string>
+		<string>public.objective-c-plus-plus-source</string>
+	</array>
+	<key>Description</key>
+	<string>创建基于乐高框架的MVC模块组件.</string>
+	<key>Kind</key>
+	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+	<key>MainTemplateFile</key>
+	<string>___FILEBASENAME___.m</string>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>创建组件名</string>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Name</key>
+			<string>组件名</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>text</string>
+		</dict>
+	</array>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
+	<key>Summary</key>
+	<string>乐高框架MVC模块组件</string>
+</dict>
+</plist>

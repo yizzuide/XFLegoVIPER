@@ -23,19 +23,17 @@
 /**
  *  通过Nav或Nib快速组建一个模块
  *
- *  @param navName               导航
  *  @param ibSymbol              ibSymbol
  *  @param shareDataManagerName  数据管理名
  *
  *  @return Routing
  */
-- (__kindof XFRouting *)autoAssemblyModuleWithNav:(NSString *)navName ibSymbol:(NSString *)ibSymbol shareDataManagerName:(NSString *)shareDataManagerName;
+- (__kindof XFRouting *)autoAssemblyModuleWithIbSymbol:(NSString *)ibSymbol shareDataManagerName:(NSString *)shareDataManagerName;
+
 /**
- *  通过自定义项目前辍的Nav名快速组建一个模块
- *
- *  @return Routing
+ *  自动组装当前模块（给swift用的接口）
  */
-- (__kindof XFRouting *)autoAssemblyModuleWithPrefixNav;
+- (void)autoAssemblyModule;
 
 /**
  *  基于其它模块的视图、事件、数据处理、数据管理层类型创建一个模块
@@ -47,17 +45,20 @@
 - (__kindof XFRouting *)autoAssemblyModuleFromShareModuleName:(NSString *)moduleName;
 
 /**
+ *  自动组装共享子模块（给swift用的接口）
+ */
+- (void)autoAssemblyShareModule;
+
+/**
  *  构建关系层
  *
  *  @param activityClass    视图层
- *  @param navigatorClass   导航层
  *  @param perstentClass    交互层
  *  @param interactorClass  业务层
  *
  *  @return Routing
  */
 - (__kindof XFRouting *)buildModulesAssemblyWithActivityClass:(Class)activityClass
-                                       navigatorClass:(Class)navigatorClass
                                        presenterClass:(Class)perstentClass
                                       interactorClass:(Class)interactorClass
                                      dataManagerClass:(Class)dataManagerClass;

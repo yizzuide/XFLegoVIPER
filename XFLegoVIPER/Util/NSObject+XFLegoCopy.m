@@ -13,7 +13,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-designated-initializers"
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     [self xfLego_enumeratePropertyWithValueBlock:^id(NSString *key) {
         return [coder decodeObjectForKey:key];
@@ -67,7 +67,7 @@
         sharedVarCount = bIsSelfClass ? iVarCount : propVarCount;
         for (int i = 0; i < sharedVarCount; i++) {
             const char *varName = bIsSelfClass ? ivar_getName(*(ivarList + i)) : property_getName(*(propList + i));
-            NSString *key = [NSString stringWithUTF8String:varName];
+            NSString *key = @(varName);
             /*valueForKey只能获取本类所有变量以及所有层级父类的属性，不包含任何父类的私有变量(会崩溃)*/
             id varValue = ValueBlock(key);
             NSArray *filters = @[@"superclass", @"description", @"debugDescription", @"hash"];

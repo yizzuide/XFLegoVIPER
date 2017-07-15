@@ -44,14 +44,6 @@ XF_EXPORT_COMPONENT
     
 }
 
-// 注册MVx通知
-- (void)registerMVxNotifactions
-{
-    // 注册MVx构架通知
-    //    XF_RegisterMVxNotis_(XFUserDidLoginNotifaction)
-}
-
-
 // 接受到MVx构架通知或XFLegoVIPER模块的事件
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
 {

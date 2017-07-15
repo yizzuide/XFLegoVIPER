@@ -22,8 +22,9 @@
 
 /* --------------------------------- *模块组装* --------------------------------- */
 /* ------------------------------ 自定义手动组装方式 ------------------------------ */
-// 快速注入模块成分-导航方式
-#define XF_InjectModuleWith_Nav(_NavigatorClass_,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
+
+// 快速注入模块成分-子界面方式（全自定义组装常用方式）
+#define XF_InjectModuleWith_Act(_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
 + (void)load \
 { \
     [XFVIPERModuleReflect inspectModulePrefixFromClass:self]; \
@@ -31,15 +32,10 @@
 + (instancetype)assembleRouting \
 { \
     return [[super routing].assembly buildModulesAssemblyWithActivityClass:_ActivityClass_ \
-                                                   navigatorClass:_NavigatorClass_ \
-                                                   presenterClass:_PresenterClass_ \
-                                                  interactorClass:_InteractorClass_ \
-                                                 dataManagerClass:_DataManagerClass_]; \
+                                        presenterClass:_PresenterClass_ \
+                                        interactorClass:_InteractorClass_ \
+                                        dataManagerClass:_DataManagerClass_]; \
 }
-
-// 快速注入模块成分-子界面方式（全自定义组装常用方式）
-#define XF_InjectModuleWith_Act(_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
-XF_InjectModuleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_DataManagerClass_)
 
 // 快速注入模块成分-ib方式
 #define XF_InjectModuleWith_IB(ibSymbol,_PresenterClass_,_InteractorClass_,_DataManagerClass_) \
@@ -62,7 +58,7 @@ XF_InjectModuleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_
 } \
 + (instancetype)assembleRouting \
 { \
-    return [[super routing].assembly autoAssemblyModuleWithNav:nil ibSymbol:IBSymbol shareDataManagerName:ShareDataManagerName]; \
+    return [[super routing].assembly autoAssemblyModuleWithIbSymbol:IBSymbol shareDataManagerName:ShareDataManagerName]; \
 }
 
 // 有共享其它模块DataManager的
@@ -134,6 +130,12 @@ XF_InjectModuleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_
  *  @return 路由
  */
 + (instancetype)routing;
+/**
+ *  返回初始路由对象（给swift调用的接口，与上面的routing方法功能相同）
+ *
+ *  @return 路由
+ */
++ (instancetype)standardRouting;
 
 /**
  *  从路由组装当前模块各层（这是一个抽象方法，子类必需覆盖实现组装方式）
@@ -156,6 +158,6 @@ XF_InjectModuleWith_Nav(nil,_ActivityClass_,_PresenterClass_,_InteractorClass_,_
  *
  *  @return 视图
  */
-- (__kindof UIViewController<XFUserInterfacePort> *)realUInterface;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) __kindof UIViewController<XFUserInterfacePort> *realUInterface;
 
 @end

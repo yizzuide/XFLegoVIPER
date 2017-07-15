@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // 获得当前MVVM组件模块名
+#undef XF_ModuleName
 #define XF_ModuleName \
 [LEMVVMModuleReflect moduleNameForViewModel:self]
 
