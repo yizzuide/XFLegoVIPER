@@ -77,11 +77,18 @@ static NSMutableArray *componentKeyArr_;
     return nil;
 }
 
-+ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponent:(NSString *)componentName
++ (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponent:(nonnull NSString *)componentName
 {
     id<XFComponentRoutable> component = [self findComponentForName:componentName];
     if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
         [component receiveComponentEventName:eventName intentData:intentData];
+    }
+}
+
++ (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponents:(nonnull NSArray<NSString *> *)componentNames
+{
+    for (NSString *compName in componentNames) {
+        [self sendEventName:eventName intentData:intentData forComponent:compName];
     }
 }
 

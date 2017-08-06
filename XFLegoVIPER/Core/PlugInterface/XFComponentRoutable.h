@@ -39,6 +39,7 @@ XF_EventIs_(UIKeyboardWillChangeFrameNotification, { \
 /**
  *  一个组件可运行接口
  */
+NS_ASSUME_NONNULL_BEGIN
 @protocol XFComponentRoutable <NSObject>
 
 @optional
@@ -56,17 +57,17 @@ XF_EventIs_(UIKeyboardWillChangeFrameNotification, { \
 /**
  *  上一个URL组件传递过来的URL参数
  */
-@property (nonatomic, copy) NSDictionary *URLParams;
+@property (nonatomic, copy, nullable) NSDictionary *URLParams;
 
 /**
  *  上一个URL组件传递过来的自定义数据对象
  */
-@property (nonatomic, copy) id componentData;
+@property (nonatomic, copy, nullable) id componentData;
 
 /**
  *  预设要传递给其它组件的意图数据
  */
-@property (nonatomic, copy) id intentData;
+@property (nonatomic, copy, nullable) id intentData;
 
 /**
  *  接收到上一个组件的回传意图数据
@@ -91,6 +92,7 @@ XF_EventIs_(UIKeyboardWillChangeFrameNotification, { \
  *  @param eventName  消息名
  *  @param intentData 消息数据
  */
-- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData;
+- (void)receiveComponentEventName:(NSString *)eventName intentData:(nullable id)intentData;
 
 @end
+NS_ASSUME_NONNULL_END

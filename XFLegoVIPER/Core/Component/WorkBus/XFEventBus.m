@@ -29,7 +29,12 @@
 
 - (instancetype)init
 {
+    NSAssert(NO, @"请使用-initWithComponentRoutable来初始化！");
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     return [self initWithComponentRoutable:nil];
+#pragma clang diagnostic pop
 }
 
 - (instancetype)initWithComponentRoutable:(__kindof id<XFComponentRoutable>)componentRoutable
@@ -41,7 +46,7 @@
     return self;
 }
 
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData,...
+- (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData,...
 {
     // 指向变参的指针
     va_list args;
@@ -60,14 +65,14 @@
     va_end(args);
 }
 
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames
+- (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponents:(NSArray<NSString *> *)componentNames
 {
     for (NSString *componentName in componentNames) {
         [XFComponentManager sendEventName:eventName intentData:intentData forComponent:componentName];
     }
 }
 
-- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData
+- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(nullable id)intentData
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:nil userInfo:intentData];
 }
@@ -86,22 +91,37 @@
         if (!notiName) {
             break;
         }
-        XF_Define_Weak
-        // 侦听通知
-        id<NSObject> observer=
-        [[NSNotificationCenter defaultCenter]
-         addObserverForName:notiName
-         object:nil
-         queue:[NSOperationQueue mainQueue]
-         usingBlock:^(NSNotification * _Nonnull note) {
-             XF_Define_Strong
-             // 通知组件接收事件
-             [self.componentRoutable receiveComponentEventName:note.name intentData:note.userInfo];
-         }];
-        // 添加到侦听数组
-        [self.observers addObject:observer];
+        [self _innerRegisterNotiName:notiName];
     }
     va_end(args);
+}
+
+- (void)registerMVxNotifications:(NSArray<NSString *> *)notiNames
+{
+    if (notiNames == nil || notiNames.count == 0) {
+        return;
+    }
+    for (NSString *notiName in notiNames) {
+        [self _innerRegisterNotiName:notiName];
+    }
+}
+
+- (void)_innerRegisterNotiName:(NSString *)notiName
+{
+    XF_Define_Weak
+    // 侦听通知
+    id<NSObject> observer=
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:notiName
+     object:nil
+     queue:[NSOperationQueue mainQueue]
+     usingBlock:^(NSNotification * _Nonnull note) {
+         XF_Define_Strong
+         // 通知组件接收事件
+         [self.componentRoutable receiveComponentEventName:note.name intentData:note.userInfo];
+     }];
+    // 添加到侦听数组
+    [self.observers addObject:observer];
 }
 
 - (NSMutableArray *)observers

@@ -56,7 +56,7 @@
 }
 
 
-#pragma mark - Change UI Action
+#pragma mark - Change UI State
 
 
 #pragma mark - UIControlDelegate

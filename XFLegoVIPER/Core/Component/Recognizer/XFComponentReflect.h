@@ -11,6 +11,7 @@
 #define IS_Module(component) [component respondsToSelector:@selector(routing)]
 
 @protocol XFComponentRoutable,XFComponentHandlerPlug;
+NS_ASSUME_NONNULL_BEGIN
 @interface XFComponentReflect : NSObject
 
 /**
@@ -55,3 +56,4 @@
  */
 + (id<XFComponentRoutable>)componentForUInterface:(UIViewController *)uInterface;
 @end
+NS_ASSUME_NONNULL_END

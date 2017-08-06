@@ -70,8 +70,9 @@ XF_PUT_URLComponent_(openURLForPresent,urlString,ExecuteCode)
 ([NSString stringWithFormat:@"%@?%@",urlPath,[XFURLParse stringFromDictionary:params]])
 
 
+NS_ASSUME_NONNULL_BEGIN
 typedef void(^TransitionCompletionBlock)();
-typedef void(^TransitionBlock)(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock);
+typedef void(^TransitionBlock)(Activity *thisInterface,  Activity * _Nullable nextInterface,TransitionCompletionBlock completionBlock);
 typedef void(^CustomCodeBlock) (Activity *nextInterface);
 
 @protocol XFComponentRoutable,XFURLRoutePlug,XFComponentHandlerPlug;
@@ -98,7 +99,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param mainWindow      窗口
  *  @param customCodeBlock 自定义配制代码Block
  */
-- (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock;
+- (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  以URL组件方式Push
@@ -106,14 +107,14 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param url              URL
  *  @param customCodeBlock  自定义配制代码Block
  */
-- (void)openURLForPush:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock;
+- (void)openURLForPush:(NSString *)url customCode:(nullable CustomCodeBlock)customCodeBlock;
 /**
  *  以URL组件方式Present
  *
  *  @param url              URL
  *  @param customCodeBlock  自定义配制代码Block
  */
-- (void)openURLForPresent:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock;
+- (void)openURLForPresent:(NSString *)url customCode:(nullable CustomCodeBlock)customCodeBlock;
 /**
  *  自定义打开一个URL组件
  *
@@ -121,7 +122,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param transitionBlock  视图切换代码
  *  @param customCodeBlock 自定义配制代码Block
  */
-- (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(CustomCodeBlock)customCodeBlock;
+- (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  通过URL获取一个组件
@@ -149,7 +150,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param params               URL参数
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock;
+- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:(nullable NSDictionary *)params customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  推入一个模块
@@ -159,7 +160,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)pushComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)pushComponent:(NSString *)componentName params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  推出当前视图(注意：返回到上一个界面的意图数据在需要当前模块的Presenter里设置intentData属性）
@@ -174,7 +175,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)presentComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)presentComponent:(NSString *)componentName params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  dismiss当前视图(注意：返回到上一个界面的意图数据需要在当前模块的Presenter里设置intentData属性）
@@ -190,7 +191,7 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  *  @param intentData           意图数据（没有可以传nil）
  *  @param customCodeBlock      自定义配制代码Block
  */
-- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock;
+- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock;
 
 /**
  *  自定义移除一个界面
@@ -226,3 +227,4 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
  */
 - (void)xfLego_destoryUInterfaceRef;
 @end
+NS_ASSUME_NONNULL_END

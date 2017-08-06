@@ -80,6 +80,10 @@
     return result;
 }
 
++ (NSString *)urlFromPath:(NSString *)urlPath params:(NSDictionary *)params {
+    return ([NSString stringWithFormat:@"%@?%@",urlPath,[XFURLParse stringFromDictionary:params]]);
+}
+
 + (NSString *)encodeToPercentEscapeString:(NSString *)input
 {
     NSString *outputStr =

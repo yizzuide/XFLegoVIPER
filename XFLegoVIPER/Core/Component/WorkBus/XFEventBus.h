@@ -27,6 +27,7 @@ if ([eventName isEqualToString:EventName]) { \
 }
 
 @protocol XFComponentRoutable;
+NS_ASSUME_NONNULL_BEGIN
 @interface XFEventBus : NSObject
 
 /**
@@ -45,7 +46,7 @@ if ([eventName isEqualToString:EventName]) { \
  *  @param intentData       消息数据
  *  @param ...              多个组件名
  */
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData,...;
+- (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData,...;
 
 
 /**
@@ -55,7 +56,7 @@ if ([eventName isEqualToString:EventName]) { \
  *  @param intentData     消息数据
  *  @param componentNames 组件名数组
  */
-- (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponents:(NSArray<NSString *> *)componentNames;
+- (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponents:(NSArray<NSString *> *)componentNames;
 
 /**
  *  发送全局通知
@@ -63,14 +64,22 @@ if ([eventName isEqualToString:EventName]) { \
  *  @param notiName   通知名
  *  @param intentData 消息数据
  */
-- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(id)intentData;
+- (void)sendNotificationForMVxWithName:(NSString *)notiName intentData:(nullable id)intentData;
 
 /**
- *  注册通知
+ *  注册通知(OC专用，Swift编译器转换不了）
  *
  *  @param target 通知侦听目标
  *  @param ...    多个通知名
  */
 - (void)registerMVxNotificationsForTarget:(id)target,...;
 
+/**
+ *  注册通知
+ *
+ *  @param notiNames 通知名数组
+ */
+- (void)registerMVxNotifications:(NSArray<NSString *> *)notiNames;
+
 @end
+NS_ASSUME_NONNULL_END

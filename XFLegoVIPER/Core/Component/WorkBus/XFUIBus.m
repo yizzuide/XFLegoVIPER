@@ -45,7 +45,10 @@
 
 - (instancetype)init
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     return [self initWithComponentRoutable:nil];
+#pragma clang diagnostic pop
 }
 
 - (instancetype)initWithComponentRoutable:(__kindof id<XFComponentRoutable>)componentRoutable
@@ -66,7 +69,7 @@
 }
 
 #pragma mark - URL组件方式
-- (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(CustomCodeBlock)customCodeBlock
+- (void)openURL:(NSString *)url onWindow:(UIWindow *)mainWindow customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self showComponent:componentName onWindow:mainWindow params:params customCode:customCodeBlock];
@@ -74,7 +77,7 @@
 }
 
 // 以URL组件式PUSH
-- (void)openURLForPush:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
+- (void)openURLForPush:(NSString *)url customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self pushComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
@@ -82,7 +85,7 @@
 }
 
 // 以URL组件式Present
-- (void)openURLForPresent:(NSString *)url customCode:(CustomCodeBlock)customCodeBlock
+- (void)openURLForPresent:(NSString *)url customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self presentComponent:componentName params:params intent:[self _intentData] customCode:customCodeBlock];
@@ -90,7 +93,7 @@
 }
 
 // 自定义打开一个URL组件
-- (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(CustomCodeBlock)customCodeBlock
+- (void)openURL:(NSString *)url withTransitionBlock:(TransitionBlock)transitionBlock customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [[LEGOConfig routePlug] open:url transitionBlock:^(NSString *componentName, NSDictionary *params) {
         [self putComponent:componentName withTransitionBlock:transitionBlock params:params intent:[self _intentData] customCode:customCodeBlock];
@@ -123,7 +126,7 @@
 }
 
 #pragma mark - 组件名切换方式
-- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:params customCode:(CustomCodeBlock)customCodeBlock
+- (void)showComponent:(NSString *)componentName onWindow:(UIWindow *)mainWindow params:(nullable  NSDictionary *)params customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     MatchedComponentHandler(componentName)
     // 下一组件
@@ -150,7 +153,7 @@
 }
 
 // Modal方式
-- (void)presentComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
+- (void)presentComponent:(NSString *)componentName params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [self putComponent:componentName withTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
         // 是否有导航控制器
@@ -181,7 +184,7 @@
 }
 
 // PUSH方式
-- (void)pushComponent:(NSString *)componentName params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock
+- (void)pushComponent:(NSString *)componentName params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock
 {
     [self putComponent:componentName withTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
         [thisInterface.navigationController pushViewController:nextInterface animated:YES];
@@ -200,7 +203,7 @@
 }
 
 #pragma mark - 自定义组件切换
-- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(NSDictionary *)params intent:(id)intentData customCode:(CustomCodeBlock)customCodeBlock {
+- (void)putComponent:(NSString *)componentName withTransitionBlock:(TransitionBlock)transitionBlock params:(nullable NSDictionary *)params intent:(nullable id)intentData customCode:(nullable CustomCodeBlock)customCodeBlock {
     MatchedComponentHandler(componentName)
     // 下一组件
     id<XFComponentRoutable> nextComponent = [matchedComponentHandler component:self.componentRoutable createNextComponentFromName:componentName];

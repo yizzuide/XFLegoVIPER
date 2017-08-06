@@ -12,15 +12,20 @@ import XFLegoVIPER
 private func DataManager(_ interactor: XFInteractor) ->___FILEBASENAMEASIDENTIFIER___DataManagerPort? { return interactor.dataManager as? ___FILEBASENAMEASIDENTIFIER___DataManagerPort }
 
 class ___FILEBASENAMEASIDENTIFIER___Interactor: XFInteractor, ___FILEBASENAMEASIDENTIFIER___InteractorPort {
-
-//MARK:- Request
+    
+    //MARK:- Request
     /*func fetchData() {
         print("___FILEBASENAMEASIDENTIFIER___Interactor -- fetchData")
-    }*/
+     }*/
     
-//MARK:- BusinessReduce
-    
-    
-//MARK:- ConvertData
+}
 
+//MARK:- BusinessReduce
+extension ___FILEBASENAMEASIDENTIFIER___Interactor {
+    
+}
+
+//MARK:- ConvertData
+extension ___FILEBASENAMEASIDENTIFIER___Interactor {
+    
 }

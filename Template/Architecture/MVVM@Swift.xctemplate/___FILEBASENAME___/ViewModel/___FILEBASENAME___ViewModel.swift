@@ -12,14 +12,17 @@ import XFLegoVIPER
 private func View(_ viewModel: LEViewModel) ->___FILEBASENAMEASIDENTIFIER___ViewProtocol? { return viewModel.view as? ___FILEBASENAMEASIDENTIFIER___ViewProtocol }
 
 class ___FILEBASENAMEASIDENTIFIER___ViewModel: LEViewModel, ___FILEBASENAMEASIDENTIFIER___DataDriverProtocol{
-
-//MARK:- Life Cycle
+    
     override func viewDidLoad() {
-//        print("当前组件名: \(LEMVVMModuleReflect.moduleName(for: self))")
-//        print("接收到了意图数据：\(self.componentData!)")
+        //        print("当前组件名: \(XFComponentReflect.componentName(forComponent: self))")
+        //        print("接收到了意图数据：\(self.componentData!)")
         
     }
     
+}
+
+//MARK:- Lego Life Cycle
+extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
     // 初始化视图数据
     override func initRenderView() {
         
@@ -30,30 +33,33 @@ class ___FILEBASENAMEASIDENTIFIER___ViewModel: LEViewModel, ___FILEBASENAMEASIDE
         
     }
     
-    // 接收到组件返回数据
-    override func onNewIntent(_ intentData: Any!) {
-        
-    }
-    
     // 注册通知
     override func registerMVxNotifactions() {
         
     }
     
-    // 接受到MVx构架通知或组件的事件
-    override func receiveComponentEventName(_ eventName: String!, intentData: Any!) {
+    // 接收到组件返回数据
+    override func onNewIntent(_ intentData: Any) {
         
     }
     
-    
-//MARK:- Action
-    
-    
-//MARK:- ValidData
+    // 接受到MVx构架通知或组件的事件
+    override func receiveComponentEventName(_ eventName: String, intentData: Any?) {
+        
+    }
+}
 
+//MARK:- Action
+extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
     
+}
+
+//MARK:- ValidData
+extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
     
+}
+
 //MARK:- FetchData
-    
+extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
     
 }

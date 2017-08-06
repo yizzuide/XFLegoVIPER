@@ -18,14 +18,6 @@
 @interface XFVIPERModuleReflect : NSObject
 
 /**
- *  获得一个路由类的模块名
- *
- *  @param routingClass 路由类
- *
- *  @return 模块名
- */
-+ (NSString *)moduleNameForRoutingClass:(Class)routingClass;
-/**
  *  从一个子路由类获得父路由类的模块名
  *
  *  @param subRoutingClass 子路由类

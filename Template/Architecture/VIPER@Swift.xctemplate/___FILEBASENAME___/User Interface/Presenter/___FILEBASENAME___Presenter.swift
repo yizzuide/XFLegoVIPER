@@ -14,24 +14,23 @@ private func UserInterface(_ presenter: XFPresenter) ->___FILEBASENAMEASIDENTIFI
 private func Routing(_ presenter: XFPresenter) ->___FILEBASENAMEASIDENTIFIER___WireFramePort? { return presenter.routing as? ___FILEBASENAMEASIDENTIFIER___WireFramePort }
 
 class ___FILEBASENAMEASIDENTIFIER___Presenter: XFPresenter, ___FILEBASENAMEASIDENTIFIER___EventHandlerPort {
-
+    
     override func viewDidLoad() {
-//        print("___FILEBASENAMEASIDENTIFIER___Presenter -- 当前组件名: \(XFVIPERModuleReflect.moduleName(forModuleLayerObject: self)))")
-//        print("接收到了意图数据：\(self.componentData!)")
+        //        print("当前组件名: \(XFComponentReflect.componentName(forComponent: self))")
+        //        print("接收到了意图数据：\(self.componentData!)")
     }
     
+}
+
+//MARK:- Lego Life Cycle
+extension ___FILEBASENAMEASIDENTIFIER___Presenter {
+    // 初始化视图数据
     override func initRenderView() {
-        
-//        Interactor(self)?.fetchData()
+        //        Interactor(self)?.fetchData()
     }
     
     // 绑定命令
     override func initCommand() {
-        
-    }
-    
-    // 接收到组件返回数据
-    override func onNewIntent(_ intentData: Any!) {
         
     }
     
@@ -40,14 +39,23 @@ class ___FILEBASENAMEASIDENTIFIER___Presenter: XFPresenter, ___FILEBASENAMEASIDE
         
     }
     
-    // 接受到MVx构架通知或组件的事件
-    override func receiveComponentEventName(_ eventName: String!, intentData: Any!) {
+    // 接收到组件返回数据
+    override func onNewIntent(_ intentData: Any) {
         
     }
     
-//MARK:- Action
+    // 接受到MVx构架通知或组件的事件
+    override func receiveComponentEventName(_ eventName: String, intentData: Any?) {
+        
+    }
+}
 
+//MARK:- Action
+extension ___FILEBASENAMEASIDENTIFIER___Presenter {
+    
+}
 
 //MARK:- ValidData
+extension ___FILEBASENAMEASIDENTIFIER___Presenter {
     
 }

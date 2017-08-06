@@ -39,7 +39,8 @@
 // 从子模块名检测出父模块名
 + (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName
 {
-    NSUInteger count = subModuleName.length;
+    // 从后往前找方案
+    /*NSUInteger count = subModuleName.length;
     NSMutableString *appendString = @"".mutableCopy;
     for (NSUInteger i = 0; i < count; i++) {
         char c = [subModuleName characterAtIndex:count - (i + 1)];
@@ -53,6 +54,16 @@
                 [superModuleName appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
             }
             return superModuleName;
+        }
+    }*/
+    
+    // 从前面往后找
+    NSUInteger count = subModuleName.length;
+    for (NSUInteger i = 1; i < count; i++) {
+        char c = [subModuleName characterAtIndex: i];
+        // 如果是大写
+        if (c > 64 && c < 91) {
+            return [subModuleName substringFromIndex: i];
         }
     }
     return nil;
@@ -78,7 +89,7 @@
             return ns;
         }
         
-        // 判断OC模块，如果没有设置前辍直接返回nil
+        // 判断OC模块
         // 是否存在这个OC模块
         if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",classPrefix,moduleName,stuffixName])) {
             return classPrefix ?: @"";
@@ -89,6 +100,18 @@
             NSClassFromString([NSString stringWithFormat:@"%@%@%@", classPrefix, superModuleName, stuffixName])) {
             return classPrefix  ?: @"";
         }
+        
+        // 判断无类前辍的OC模块
+        // 是否存在这个OC模块
+        if (NSClassFromString([NSString stringWithFormat:@"%@%@",moduleName,stuffixName])) {
+            return @"";
+        }
+        // 是否存在这个OC子模块
+        if (superModuleName &&
+            ![superModuleName isEqualToString:moduleName] &&
+            NSClassFromString([NSString stringWithFormat:@"%@%@", superModuleName, stuffixName])) {
+            return @"";
+        }
         return nil;
     } else {
         // 如果传过来是一个模块层对象
@@ -96,6 +119,13 @@
         if ([moduleClazzName containsString:@"."]) { // 是否含有swift命名空间
             return ns;
         } else {
+            // 是否是无前辍的模块
+            NSUInteger count = moduleClazzName.length;
+            char c = [moduleClazzName characterAtIndex: 1];
+            if (c > 96 && c < 123) { // 如果是小写
+                return @"";
+            }
+            // 有前辍的模块
             return classPrefix ?: @"";
         }
     }

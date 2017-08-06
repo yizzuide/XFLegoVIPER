@@ -9,15 +9,27 @@
 import UIKit
 import XFLegoVIPER
 
-class ___FILEBASENAMEASIDENTIFIER___ViewControllerViewController: XFComponentViewController {
-
-//MARK:- Life Cycle
+class ___FILEBASENAMEASIDENTIFIER___ViewController: XFComponentViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpUI()
+    }
+    
+    
+    //MARK:- Getter
+    
+}
 
-        self.config()
-        self.setUpViews()
-        self.bindViewData()
+
+//MARK:- init UI
+extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+    
+    fileprivate func setUpUI() {
+        config()
+        setUpViews()
+        bindViewData()
     }
     
     private func config() {
@@ -31,25 +43,32 @@ class ___FILEBASENAMEASIDENTIFIER___ViewControllerViewController: XFComponentVie
     private func bindViewData() {
         
     }
-    
-    
-    // 上一个组件可能设置的意图数据
-    override func onNewIntent(_ intentData: Any!) {
-        
-    }
-    
-    // 接收组件事件函数
-    override func receiveComponentEventName(_ eventName: String!, intentData: Any!) {
-        
-    }
+}
 
+
+//MARK:- Lego Life Cycle
+extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+    // 上一个组件可能设置的意图数据
+    override func onNewIntent(_ intentData: Any) {
+        
+    }
+    // 接收组件事件函数
+    override func receiveComponentEventName(_ eventName: String, intentData: Any?) {
+        
+    }
+}
+
+//MARK:- Change UI State
+extension ___FILEBASENAMEASIDENTIFIER___ViewController {
     
+}
+
+//MARK:- DataSource
+extension ___FILEBASENAMEASIDENTIFIER___ViewController {
     
-//MARK:- Change UI Action
-    
-    
+}
+
 //MARK:- UIControlDelegate
+extension ___FILEBASENAMEASIDENTIFIER___ViewController {
     
-    
-//MARK:- Getter
 }

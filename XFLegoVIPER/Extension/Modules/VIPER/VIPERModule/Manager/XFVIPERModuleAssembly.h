@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class XFRouting;
+NS_ASSUME_NONNULL_BEGIN
 @interface XFVIPERModuleAssembly : NSObject
 
 /**
@@ -28,7 +29,7 @@
  *
  *  @return Routing
  */
-- (__kindof XFRouting *)autoAssemblyModuleWithIbSymbol:(NSString *)ibSymbol shareDataManagerName:(NSString *)shareDataManagerName;
+- (__kindof XFRouting *)autoAssemblyModuleWithIbSymbol:(NSString *)ibSymbol shareDataManagerName:(nullable NSString *)shareDataManagerName;
 
 /**
  *  自动组装当前模块（给swift用的接口）
@@ -78,3 +79,4 @@
                           interactorClass:(Class)interactorClass
                          dataManagerClass:(Class)dataManagerClass;
 @end
+NS_ASSUME_NONNULL_END

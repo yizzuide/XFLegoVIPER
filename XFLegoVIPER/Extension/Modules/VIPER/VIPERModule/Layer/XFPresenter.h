@@ -52,6 +52,7 @@ XF_SetExpressPack_(XFExpressPack,renderData)
 #define XF_ExpressPack_Clean() \
 [self expressPackClean];
 
+NS_ASSUME_NONNULL_BEGIN
 @interface XFPresenter : NSObject <XFComponentBindEvent,XFComponentUIEvent, XFEventHandlerPort,XFUIOperatorPort>
 /**
  *  显示界面
@@ -84,30 +85,30 @@ XF_SetExpressPack_(XFExpressPack,renderData)
 /**
  *  通过其它URL组件传递过来的参数
  */
-@property (nonatomic, copy) NSDictionary *URLParams;
+@property (nonatomic, copy, nullable) NSDictionary *URLParams;
 /**
  *  通过其它URL组件传递过来的数据对象
  */
-@property (nonatomic, copy) id componentData;
+@property (nonatomic, copy, nullable) id componentData;
 /**
  *  预设要传递给其它组件的意图数据
  */
-@property (nonatomic, copy) id intentData;
+@property (nonatomic, copy, nullable) id intentData;
 
 /**
  *  快速填充简单数据
  */
-@property (nonatomic, strong) id expressData;
+@property (nonatomic, strong, nullable) id expressData;
 /**
  *  填充列表复杂数据（RenderData渲染数据的包装类）
  *
  */
-@property (nonatomic, strong) __kindof XFExpressPack *expressPack;
+@property (nonatomic, strong, nullable) __kindof XFExpressPack *expressPack;
 
 /**
  *  错误消息
  */
-@property (nonatomic, copy) NSString *errorMessage;
+@property (nonatomic, copy, nullable) NSString *errorMessage;
 
 
 /**
@@ -154,3 +155,4 @@ XF_SetExpressPack_(XFExpressPack,renderData)
  */
 - (NSArray<NSIndexPath *> *)expressPackTransform2IndexPathsFromFirstRenderData:(XFRenderData *)renderData inSection:(NSInteger)section offsetCount:(NSInteger)offset;
 @end
+NS_ASSUME_NONNULL_END

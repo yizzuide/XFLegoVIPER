@@ -13,6 +13,7 @@
 [XFComponentManager sendEventName:eventName intentData:sendData forComponent:componentName];
 
 @protocol XFComponentRoutable;
+NS_ASSUME_NONNULL_BEGIN
 @interface XFComponentManager : NSObject
 
 /**
@@ -48,5 +49,15 @@
  *  @param intentData     消息意图数据
  *  @param componentName  组件名
  */
-+ (void)sendEventName:(NSString *)eventName intentData:(id)intentData forComponent:(NSString *)componentName;
++ (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponent:(NSString *)componentName;
+/**
+ *  发送多个组件事件消息
+ *
+ *  @param eventName      事件名
+ *  @param intentData     消息意图数据
+ *  @param componentNames 组件名数组
+ */
++ (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponents:(NSArray<NSString *> *)componentNames;
+
 @end
+NS_ASSUME_NONNULL_END

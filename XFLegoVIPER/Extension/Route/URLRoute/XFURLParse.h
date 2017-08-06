@@ -50,4 +50,13 @@
  *  @return URL参数字符串
  */
 + (NSString *)stringFromDictionary:(NSDictionary *)dict;
+/**
+ *  通过主路径和参数组装一个url
+ *
+ *  @param urlPath 主路径
+ *  @param params  参数
+ *
+ *  @return url
+ */
++ (NSString *)urlFromPath:(NSString *)urlPath params:(NSDictionary *)params;
 @end

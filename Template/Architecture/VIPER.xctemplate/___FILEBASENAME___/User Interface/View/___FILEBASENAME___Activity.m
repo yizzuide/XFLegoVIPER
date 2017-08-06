@@ -46,17 +46,17 @@
     
     // load or reset expressPack
     /*XF_Define_Weak
-    [RACObserve(self.eventHandler, expressPack) subscribeNext:^(id x) {
-        XF_Define_Strong
-        // 如果有显示数据加载完成
-        if (x) {
-            [self.tableView reloadData];
-        }
-    }];*/
+     [RACObserve(self.eventHandler, expressPack) subscribeNext:^(id x) {
+     XF_Define_Strong
+     // 如果有显示数据加载完成
+     if (x) {
+     [self.tableView reloadData];
+     }
+     }];*/
 }
 
 
-#pragma mark - Change UI Action
+#pragma mark - Change UI State
 
 
 #pragma mark - UIControlDelegate
