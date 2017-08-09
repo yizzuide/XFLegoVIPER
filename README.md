@@ -67,7 +67,7 @@ target '<Your Target Name>' do
 end
 ```
 
-### Manual
+### Manual (Objc)
 Copy all files under `~/XFLegoVIPER` folder  to your project.
 
 ## ❤Using Template❤
