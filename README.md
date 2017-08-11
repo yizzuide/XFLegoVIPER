@@ -60,7 +60,7 @@ end
 ```
 ## Import the XFLegoVIPER.h umbrella header.
 - With `use_frameworks!` in your Podfile
-    * Swift: import XFLegoVIPER
+    * Swift: `import XFLegoVIPER`
     * Objective-C: `#import <XFLegoVIPER/XFLegoVIPER.h>` (or with Modules enabled: `@import XFLegoVIPER;`)
 - Without `use_frameworks!` in your Podfile
     * Swift: Add `#import "XFLegoVIPER.h"` to your bridging header.
