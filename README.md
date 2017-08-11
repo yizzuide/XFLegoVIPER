@@ -58,16 +58,13 @@ target '<Your Target Name>' do
     pod 'XFLegoVIPER', '~> 4.0'
 end
 ```
-### Import the XFLegoVIPER.h umbrella header.
+## Import the XFLegoVIPER.h umbrella header.
 - With `use_frameworks!` in your Podfile
     * Swift: import XFLegoVIPER
     * Objective-C: `#import <XFLegoVIPER/XFLegoVIPER.h>` (or with Modules enabled: `@import XFLegoVIPER;`)
 - Without `use_frameworks!` in your Podfile
     * Swift: Add `#import "XFLegoVIPER.h"` to your bridging header.
     * Objective-C: `#import "XFLegoVIPER.h"`
-
-### Manual (Objc)
-Copy all files under `~/XFLegoVIPER` folder  to your project.
 
 ## ❤Using Template❤
 Now you can use template file to create a module which make of stuff class as fast as possible.
