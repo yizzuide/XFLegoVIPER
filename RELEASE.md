@@ -1,3 +1,9 @@
+# V4.1.1
+## Fix Bugs:
+1. 修复VIPER组装宏`XF_AutoAssemblyModule_Fast`显示的警告问题
+2. 修复MVVM模块expressData属性修饰问题
+
+
 # V4.1.0
 ### 增强对Swift语言可选类型的支持，添加OC模块无前辍功能
 ## New Feture:
