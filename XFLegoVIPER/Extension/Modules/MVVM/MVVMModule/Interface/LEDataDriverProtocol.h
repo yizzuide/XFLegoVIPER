@@ -17,7 +17,7 @@
 /**
  *  快递数据
  */
-@property (nonatomic, copy) id expressData;
+@property (nonatomic, strong) id expressData;
 @end
 
 #endif /* LEDataDriverProtocol_h */

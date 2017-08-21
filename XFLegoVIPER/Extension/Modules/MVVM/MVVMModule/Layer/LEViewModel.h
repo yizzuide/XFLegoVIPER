@@ -25,7 +25,7 @@
 /**
  *  快递数据
  */
-@property (nonatomic, copy) id expressData;
+@property (nonatomic, strong) id expressData;
 
 /**
  *  UI总线

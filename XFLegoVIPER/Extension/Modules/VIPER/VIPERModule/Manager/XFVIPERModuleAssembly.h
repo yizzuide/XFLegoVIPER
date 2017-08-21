@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Routing
  */
-- (__kindof XFRouting *)autoAssemblyModuleWithIbSymbol:(NSString *)ibSymbol shareDataManagerName:(nullable NSString *)shareDataManagerName;
+- (__kindof XFRouting *)autoAssemblyModuleWithIbSymbol:(nullable NSString *)ibSymbol shareDataManagerName:(nullable NSString *)shareDataManagerName;
 
 /**
  *  自动组装当前模块（给swift用的接口）
