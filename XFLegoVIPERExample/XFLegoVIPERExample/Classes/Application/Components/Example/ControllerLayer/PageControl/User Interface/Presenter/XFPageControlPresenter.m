@@ -9,6 +9,7 @@
 #import "XFPageControlPresenter.h"
 #import "ReactiveCocoa.h"
 #import "XFPageControlUserInterfacePort.h"
+#import "XFComponentManager.h"
 
 
 #define UI XFConvertUserInterfaceToType(id<XFPageControlUserInterfacePort>)
@@ -16,9 +17,9 @@
 
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
 {
-    XF_EventIs_(@"showSubPage", {
+    if ([eventName isEqualToString:@"showSubPage"]) {
         [UI switch2SubActivity:intentData];
-    })
+    }
 }
 
 -(void)dealloc

@@ -72,6 +72,9 @@
 
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
 {
+    if ([UIApplicationDidEnterBackgroundNotification isEqualToString:eventName]) {
+        NSLog(@"应用进入后台！");
+    }
     XF_EventIs_(@"loadData", {
         NSLog(@"接收到模块加载数据事件: %@",eventName);
     })

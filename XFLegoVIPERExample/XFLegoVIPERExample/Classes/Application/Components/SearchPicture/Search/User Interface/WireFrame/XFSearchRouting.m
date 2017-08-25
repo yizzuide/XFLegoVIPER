@@ -52,6 +52,11 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
 
 - (void)transition2Setting
 {
-    XF_Present_URLComponent_Fast(@"xf://search/setting?nav=XF")
+//    XF_Present_URLComponent_Fast(@"xf://search/setting?nav=XF")
+    [self.uiBus openURL:@"xf://search/setting?nav=XF" withTransitionBlock:^(__kindof UIViewController * _Nonnull thisInterface, __kindof UIViewController * _Nullable nextInterface, TransitionCompletionBlock  _Nonnull completionBlock) {
+        [thisInterface presentViewController:nextInterface animated:YES completion:^{
+            completionBlock();
+        }];
+    } customCode:nil];
 }
 @end

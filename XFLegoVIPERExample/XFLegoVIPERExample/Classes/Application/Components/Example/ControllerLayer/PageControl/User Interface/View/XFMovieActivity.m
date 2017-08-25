@@ -19,4 +19,8 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)dealloc {
+    XF_Debug_M()
+}
+
 @end

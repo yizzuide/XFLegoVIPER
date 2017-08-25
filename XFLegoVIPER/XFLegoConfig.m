@@ -11,6 +11,7 @@
 #import "XFURLRoute.h"
 #import "XFControllerHandler.h"
 #import "XFVIPERModuleHandler.h"
+#import "XFComponentManager.h"
 
 @implementation XFLegoConfig
 {
@@ -65,6 +66,10 @@ static XFLegoConfig *instance_;
     // 添加组件处理器
     [legoConfig->_componentHanderPlugs addObject:[XFVIPERModuleHandler class]]; // VIPER模块组件处理器
     [legoConfig->_componentHanderPlugs addObject:[XFControllerHandler class]]; // 控制器组件处理器
+    
+    // 注册应用级通知，并转为框架能识别的组件事件
+    [XFComponentManager addApplicationNotification];
+    
     return legoConfig;
 }
 

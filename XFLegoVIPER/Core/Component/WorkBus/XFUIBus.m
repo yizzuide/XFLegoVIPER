@@ -239,7 +239,7 @@
     Activity *thisInterface = [self.matchedComponentHandler uInterfaceForComponent:self.componentRoutable];
     dispatch_async(dispatch_get_main_queue(), ^{
         // 执行切换组件
-        transitionBlock(thisInterface, nextUInterface, ^{
+        transitionBlock(thisInterface, nextUInterface.navigationController?:nextUInterface, ^{
             // 下一个组件获得焦点
             if ([nextComponent respondsToSelector:@selector(componentWillBecomeFocus)]) {
                 [nextComponent componentWillBecomeFocus];

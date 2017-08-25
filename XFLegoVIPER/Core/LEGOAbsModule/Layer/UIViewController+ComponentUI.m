@@ -40,6 +40,7 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
         [self xfLego_swizzleMethod:@selector(viewDidAppear:) withMethod:@selector(xfLego_viewDidAppear:)];
         [self xfLego_swizzleMethod:@selector(viewWillDisappear:) withMethod:@selector(xfLego_viewWillDisappear:)];
         [self xfLego_swizzleMethod:@selector(viewDidDisappear:) withMethod:@selector(xfLego_viewDidDisappear:)];
+//        [self xfLego_swizzleMethod:@selector(didMoveToSuperview) withMethod:@selector(xfLego_didMoveToSuperview)];
     });
 }
 
@@ -109,6 +110,16 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
         [component xfLego_viewWillPopOrDismiss];
     }
 }
+
+/*- (void)xfLego_didMoveToSuperview
+{
+    [self xfLego_didMoveToSuperview];
+    if (self.view.superview){
+        // the view was added as a subview to superview
+    } else {
+        // the view was removed from its superview
+    }
+}*/
 
 #pragma mark - 子类可覆盖方法
 - (void)xfLego_viewDidLoadForTabBarViewController {}

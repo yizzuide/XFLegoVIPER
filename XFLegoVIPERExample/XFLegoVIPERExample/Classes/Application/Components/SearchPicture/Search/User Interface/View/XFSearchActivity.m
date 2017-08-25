@@ -31,6 +31,12 @@
     [self bindViewData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    XF_Debug_M();
+}
+
 - (void)setSubViews
 {
     self.mainCategoryTextField.tintColor = [UIColor orangeColor];
