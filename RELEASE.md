@@ -1,5 +1,5 @@
 # V4.2.0
-### 解决经常要侦听应用通知问题
+### 历害了！框架内置支持系统应用级通知！
 ## New Feture:
 1. 添加应用级别通知到框架，每个组件都可以通过`- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData`来获得转化后的组件事件
 ## Fix Bugs:
