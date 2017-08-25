@@ -1,3 +1,10 @@
+# V4.2.0
+### 解决经常要侦听应用通知问题
+## New Feture:
+1. 添加应用级别通知到框架，每个组件都可以通过`- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData`来获得转化后的组件事件
+## Fix Bugs:
+1. 修复使用OC代码跳转`[self.uiBus openURL:@"xx://xxx/xxx?nav=UI" withTransitionBlock:...`的present自定义跳转方式崩溃的问题
+
 # V4.1.1
 ## Fix Bugs:
 1. 修复VIPER组装宏`XF_AutoAssemblyModule_Fast`显示的警告问题
