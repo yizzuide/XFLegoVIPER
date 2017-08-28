@@ -207,21 +207,15 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
 - (void)xfLego_implicitRemoveComponentWithTransitionBlock:(TransitionBlock)transitionBlock;
 
 /**
- *  设置视图
- *
- *  @param uInterface 视图
- */
-- (void)setUInterface:(UIViewController *)uInterface;
-/**
  *  设置导航
  *
  *  @param navigator 导航
  */
 - (void)setNavigator:(UINavigationController *)navigator;
 /**
- *  返回当前视图
+ *  当前视图
  */
-@property (NS_NONATOMIC_IOSONLY, strong) UIViewController *uInterface;
+@property (NS_NONATOMIC_IOSONLY, strong, nullable) UIViewController *uInterface;
 /**
  *  销毁当前组件UI总线对视图的强引用
  */

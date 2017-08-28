@@ -15,10 +15,13 @@
 
 + (UIViewController *)createControllerFromComponentName:(NSString *)componentName
 {
-    id<XFComponentRoutable> controller = [XFComponentManager findComponentForName:componentName];
-    if (controller) {
-        return (id)controller;
+    __kindof id<XFComponentRoutable> component = [XFComponentManager findComponentForName:componentName];
+    // 清除残留的组件
+    if (component) {
+        [XFComponentManager removeComponent:component];
+        component = nil;
     }
+    
     Class clazz = [XFModuleReflect createDynamicSubModuleClassFromName:componentName stuffixName:@"ViewController" superModule:nil];
     return [[clazz alloc] init];
 }
