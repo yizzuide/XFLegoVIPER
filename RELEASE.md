@@ -1,3 +1,7 @@
+# V4.2.1
+## Fix Bugs:
+1. 修复子组件重复利用问题，`XF_SubUInterface_URL`不再有缓存组件功能，查找组件请使用`[XFComponent findComponentForName:@"xxx"]`方法。
+
 # V4.2.0
 ### 历害了！框架内置支持系统应用级通知！
 ## New Feture:
