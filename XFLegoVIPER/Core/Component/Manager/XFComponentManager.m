@@ -60,7 +60,9 @@ static NSMutableArray *componentKeyArr_;
 + (void)sendApplicationEventForAllComponents:(NSNotification *)noti
 {
     for(id<XFComponentRoutable> component in componentTable_.objectEnumerator) {
-        [component receiveComponentEventName:noti.name intentData:noti.userInfo];
+        if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
+            [component receiveComponentEventName:noti.name intentData:noti.userInfo];
+        }
     }
 }
 
