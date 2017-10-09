@@ -1,3 +1,12 @@
+# V4.3.0
+## New Feture:
+1. `XFComponentManager`添加可加入普通控制器到组件容器的过渡方法`+addIncompatibleComponent:componentName:`, 在控制器的dealloc方法要调用`+removeIncompatibleComponentWithName:`移除
+2. MVVM模块添加MVVM组件连接器`LEMVVMConnector`和连接器导航`LEMVVMNavigationController`, 同样是增加的过渡功能，使用普通的写法来达到组件事件数据传递的功能
+
+## Fix Bugs:
+1. 修复系统应用级通知在调用没有实现`-receiveComponentEventName:intentData:`方法的组件时崩溃的问题，感谢@shanshuiren
+
+
 # V4.2.1
 ## Fix Bugs:
 1. 修复子组件重复利用问题，`XF_SubUInterface_URL`不再有缓存组件功能，查找组件请使用`[XFComponent findComponentForName:@"xxx"]`方法。
