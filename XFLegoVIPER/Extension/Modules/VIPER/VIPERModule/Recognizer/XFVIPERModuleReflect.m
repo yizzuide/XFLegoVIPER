@@ -44,8 +44,7 @@
 
 + (NSString *)moduleNameForSuperRoutingClass:(Class)subRoutingClass
 {
-    NSString *superClassName = NSStringFromClass([subRoutingClass superclass]);
-    NSAssert([superClassName containsString:@"Routing"], @"当前路由类的父类不是一个路由类！");
+    NSAssert([NSStringFromClass([subRoutingClass superclass]) containsString:@"Routing"], @"当前路由类的父类不是一个路由类！");
     return [self moduleNameForRouting:[[[subRoutingClass superclass] alloc] init]];
 }
 

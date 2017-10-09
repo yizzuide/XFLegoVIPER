@@ -31,7 +31,7 @@
 
 + (BOOL)matchUInterface:(UIViewController *)uInterface
 {
-    return [uInterface valueForKeyPath:@"eventHandler"];
+    return !![uInterface valueForKeyPath:@"eventHandler"];
 }
 
 + (id<XFComponentRoutable>)createComponentFromName:(NSString *)componentName

@@ -84,6 +84,19 @@ static NSMutableArray *componentKeyArr_;
     [self _log];
 }
 
++ (void)addIncompatibleComponent:(UIViewController *)viewController componentName:(NSString *)componentName
+{
+    [componentTable_ setObject:viewController forKey:componentName];
+    [componentKeyArr_ addObject:componentName];
+}
+
++ (void)removeIncompatibleComponentWithName:(NSString *)componentName
+{
+    [componentTable_ removeObjectForKey:componentName];
+    [componentKeyArr_ removeObject:componentName];
+    [self _clearZombieComponent];
+}
+
 + (void)_clearZombieComponent
 {
     NSEnumerator *keys = componentTable_.keyEnumerator;

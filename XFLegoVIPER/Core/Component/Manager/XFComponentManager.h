@@ -6,7 +6,7 @@
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 // 给某个组件发事件数据
 #define XF_SendEventForComponent_(eventName, sendData, componentName) \
@@ -34,6 +34,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param component 组件
  */
 + (void)removeComponent:(id<XFComponentRoutable>)component;
+
+/**
+ * 添加一个不兼容组件件（可以把旧项目的控制器添加到容器，实现事件机制功能）
+ * @param viewController 普通控制器
+ * @param componentName  组件名
+ */
++ (void)addIncompatibleComponent:(UIViewController *)viewController componentName:(NSString *)componentName;
+/**
+ * 移除一个不兼容组件（在dealloc里使用这个方法移除）
+ * @param componentName  组件名
+ */
++ (void)removeIncompatibleComponentWithName:(NSString *)componentName;
+
 /**
  *  组件总数
  *

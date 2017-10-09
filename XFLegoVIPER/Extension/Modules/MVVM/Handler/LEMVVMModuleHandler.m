@@ -26,7 +26,7 @@
 
 + (BOOL)matchUInterface:(UIViewController *)uInterface
 {
-    return uInterface.dataDriver;
+    return !!uInterface.dataDriver;
 }
 
 + (id<XFComponentRoutable>)createComponentFromName:(NSString *)componentName

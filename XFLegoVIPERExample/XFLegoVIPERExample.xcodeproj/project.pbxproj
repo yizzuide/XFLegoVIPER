@@ -15,6 +15,8 @@
 		40391F811E47268000021BF6 /* XFSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F801E47268000021BF6 /* XFSettingViewModel.m */; };
 		40391F851E47269E00021BF6 /* XFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F831E47269E00021BF6 /* XFSettingViewController.m */; };
 		40391F861E47269E00021BF6 /* XFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40391F841E47269E00021BF6 /* XFSettingViewController.xib */; };
+		408690881F8B2F8B00C2FD5D /* LEMVVMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690871F8B23BA00C2FD5D /* LEMVVMNavigationController.m */; };
+		408690891F8B2F8E00C2FD5D /* LEMVVMConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */; };
 		40997F7B1F18CB0E00D784FD /* XFUInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997EF01F18CB0E00D784FD /* XFUInterfaceFactory.m */; };
 		40997F7C1F18CB0E00D784FD /* XFComponentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997EF31F18CB0E00D784FD /* XFComponentManager.m */; };
 		40997F7D1F18CB0E00D784FD /* XFComponentHandlerMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997EF61F18CB0E00D784FD /* XFComponentHandlerMatcher.m */; };
@@ -180,6 +182,10 @@
 		40391F821E47269E00021BF6 /* XFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSettingViewController.h; sourceTree = "<group>"; };
 		40391F831E47269E00021BF6 /* XFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFSettingViewController.m; sourceTree = "<group>"; };
 		40391F841E47269E00021BF6 /* XFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFSettingViewController.xib; sourceTree = "<group>"; };
+		408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMConnector.h; sourceTree = "<group>"; };
+		408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMVVMConnector.m; sourceTree = "<group>"; };
+		408690861F8B23BA00C2FD5D /* LEMVVMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMNavigationController.h; sourceTree = "<group>"; };
+		408690871F8B23BA00C2FD5D /* LEMVVMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMVVMNavigationController.m; sourceTree = "<group>"; };
 		40997EEF1F18CB0E00D784FD /* XFUInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFUInterfaceFactory.h; sourceTree = "<group>"; };
 		40997EF01F18CB0E00D784FD /* XFUInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFUInterfaceFactory.m; sourceTree = "<group>"; };
 		40997EF21F18CB0E00D784FD /* XFComponentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFComponentManager.h; sourceTree = "<group>"; };
@@ -560,6 +566,17 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		408690831F8B23BA00C2FD5D /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */,
+				408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */,
+				408690861F8B23BA00C2FD5D /* LEMVVMNavigationController.h */,
+				408690871F8B23BA00C2FD5D /* LEMVVMNavigationController.m */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
 		40997EEB1F18CB0E00D784FD /* XFLegoVIPER */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +793,7 @@
 			children = (
 				40997F241F18CB0E00D784FD /* Handler */,
 				40997F271F18CB0E00D784FD /* MVVMModule */,
+				408690831F8B23BA00C2FD5D /* Extra */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -1837,7 +1855,6 @@
 				TargetAttributes = {
 					4024C3E81CC48BB5000D8182 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = W7Y2AH8S44;
 						ProvisioningStyle = Automatic;
 					};
 					4024C4011CC48BB5000D8182 = {
@@ -1972,6 +1989,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				408690891F8B2F8E00C2FD5D /* LEMVVMConnector.m in Sources */,
+				408690881F8B2F8B00C2FD5D /* LEMVVMNavigationController.m in Sources */,
 				40997F9E1F18CB0E00D784FD /* XFVIPERModuleReflect.m in Sources */,
 				40997F881F18CB0E00D784FD /* XFControllerHandler.m in Sources */,
 				40EB32201E2C9EF5004581F2 /* XFSearchActivity.m in Sources */,
@@ -2219,9 +2238,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W7Y2AH8S44;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = XFLegoVIPERExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2236,9 +2255,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W7Y2AH8S44;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = XFLegoVIPERExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

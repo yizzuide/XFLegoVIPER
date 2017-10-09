@@ -120,7 +120,6 @@
             return ns;
         } else {
             // 是否是无前辍的模块
-            NSUInteger count = moduleClazzName.length;
             char c = [moduleClazzName characterAtIndex: 1];
             if (c > 96 && c < 123) { // 如果是小写
                 return @"";
