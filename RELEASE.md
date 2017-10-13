@@ -1,3 +1,10 @@
+# V4.3.1
+## Improving:
+1. 针对Extra的MVVM扩展支持自定义组件名
+## Fix Bugs:
+1. 修复Extra的MVVM组件入口对象添加错误问题
+
+
 # V4.3.0
 ## New Feture:
 1. `XFComponentManager`添加可加入普通控制器到组件容器的过渡方法`+addIncompatibleComponent:componentName:`, 在控制器的dealloc方法要调用`+removeIncompatibleComponentWithName:`移除
