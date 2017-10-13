@@ -74,6 +74,12 @@ static NSMutableArray *componentKeyArr_;
     if (enableLog) [self _log];
 }
 
++ (void)addComponent:(id<XFComponentRoutable>)component forName:(NSString *)componentName
+{
+    [componentTable_ setObject:component forKey:componentName];
+    [componentKeyArr_ addObject:componentName];
+}
+
 + (void)removeComponent:(id<XFComponentRoutable>)component
 {
     if (!component) return;
@@ -84,6 +90,13 @@ static NSMutableArray *componentKeyArr_;
     [self _log];
 }
 
++ (void)removeComponentForName:(NSString *)componentName
+{
+    [componentTable_ removeObjectForKey:componentName];
+    [componentKeyArr_ removeObject:componentName];
+    [self _clearZombieComponent];
+}
+
 + (void)addIncompatibleComponent:(UIViewController *)viewController componentName:(NSString *)componentName
 {
     [componentTable_ setObject:viewController forKey:componentName];
@@ -92,9 +105,7 @@ static NSMutableArray *componentKeyArr_;
 
 + (void)removeIncompatibleComponentWithName:(NSString *)componentName
 {
-    [componentTable_ removeObjectForKey:componentName];
-    [componentKeyArr_ removeObject:componentName];
-    [self _clearZombieComponent];
+    [self removeComponentForName:componentName];
 }
 
 + (void)_clearZombieComponent

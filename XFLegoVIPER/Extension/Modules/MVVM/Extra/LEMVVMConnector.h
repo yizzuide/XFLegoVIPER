@@ -17,4 +17,8 @@
  * 添加一个MVVM简化版组件到容器, 返回组件入口
  */
 + (nullable id<XFComponentRoutable>)makeComponentFromUInterface:(UIViewController * _Nonnull)viewController;
+/*
+ * 添加一个自定义组件名的MVVM简化版组件到容器, 返回组件入口
+ */
++ (nullable id<XFComponentRoutable>)makeComponentFromUInterface:(UIViewController * _Nonnull)viewController forName:(NSString * _Nonnull)componentName;
 @end

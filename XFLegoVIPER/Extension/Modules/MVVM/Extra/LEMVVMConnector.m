@@ -22,7 +22,22 @@
         LEViewModel<XFComponentRoutable> *viewModel = [[viewModelClass alloc] init];
         [viewController setValue:viewModel forKeyPath:@"dataDriver"];
         [viewModel.uiBus setUInterface:viewController];
-        [XFComponentManager addComponent:(id)viewController enableLog:NO];
+        [XFComponentManager addComponent:viewModel enableLog:NO];
+        return viewModel;
+    }
+    return nil;
+}
+
++ (id<XFComponentRoutable>)makeComponentFromUInterface:(UIViewController *)viewController forName:(NSString *)componentName
+{
+    NSString *inspectComponentName = [XFComponentReflect componentNameForComponent:(id)viewController];
+    NSString *viewModelClassName = [NSString stringWithFormat:@"%@%@ViewModel", XFLegoConfig.shareInstance.classPrefix, inspectComponentName];
+    Class viewModelClass = NSClassFromString(viewModelClassName);
+    if (viewModelClass && ![viewController valueForKey:@"dataDriver"]) {
+        LEViewModel<XFComponentRoutable> *viewModel = [[viewModelClass alloc] init];
+        [viewController setValue:viewModel forKeyPath:@"dataDriver"];
+        [viewModel.uiBus setUInterface:viewController];
+        [XFComponentManager addComponent:viewModel forName:componentName];
         return viewModel;
     }
     return nil;

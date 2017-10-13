@@ -29,11 +29,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)addComponent:(id<XFComponentRoutable>)component enableLog:(BOOL)enableLog;
 /**
+ * 添加组件，并自定义组件名
+ */
++ (void)addComponent:(id<XFComponentRoutable>)component forName:(NSString *)componentName;
+/**
  *  删除组件
  *
  *  @param component 组件
  */
 + (void)removeComponent:(id<XFComponentRoutable>)component;
+/**
+ * 根据组件名删除组件
+ */
++ (void)removeComponentForName:(NSString *)componentName;
 
 /**
  * 添加一个不兼容组件件（可以把旧项目的控制器添加到容器，实现事件机制功能）
