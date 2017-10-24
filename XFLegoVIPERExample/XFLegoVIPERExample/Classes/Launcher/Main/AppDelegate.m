@@ -27,8 +27,10 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    // 配置乐高框架
-    [[[XFLegoConfig defaultConfig] enableLog] addComponentHanderPlug:[LEMVVMModuleHandler class]];
+    // 配置乐高框架（setClassPrefixList支持设置多种前辍）
+    [[[[XFLegoConfig defaultConfig] enableLog]
+      addComponentHanderPlug:[LEMVVMModuleHandler class]]
+          setClassPrefixList:@[@"XF",@"LG"]];
     
     // 注册URL
     [XFAppURLRegister registerURLs];

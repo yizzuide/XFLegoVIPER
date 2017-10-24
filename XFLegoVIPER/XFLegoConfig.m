@@ -19,6 +19,8 @@
     BOOL _allowDebug;
     // 类前辍
     NSString *_classPrefix;
+    
+    NSArray *_classPrefixList;
     // URL路由插件
     Class<XFURLRoutePlug> _routePlug;
     // 组件处理器插件集合
@@ -96,6 +98,21 @@ static XFLegoConfig *instance_;
         return self->_classPrefix;
     }
     return nil;
+}
+
+- (instancetype)setClassPrefixList:(NSArray *)prefixList
+{
+    self->_classPrefixList = prefixList;
+    // 如果统一的类前辍变量没有设置，并且前辍列表里只有一个前辍，对旧变量进行填充
+    if (!self->_classPrefix && prefixList && prefixList.count == 1) {
+        self->_classPrefix = prefixList.firstObject;
+    }
+    return self;
+}
+
+- (NSArray *)classPrefixList
+{
+    return self->_classPrefixList;
 }
 
 - (NSString *)swiftNamespace

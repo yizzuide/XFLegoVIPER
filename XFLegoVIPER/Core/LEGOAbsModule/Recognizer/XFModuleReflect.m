@@ -40,96 +40,144 @@
 + (NSString *)inspectSuperModuleNameFromSubModuleName:(NSString *)subModuleName stuffixName:(NSString *)stuffixName
 {
     // 从后往前找方案
-    /*NSUInteger count = subModuleName.length;
+    NSString *namespace = [LEGOConfig swiftNamespace];
+    NSString *classPrefix = [LEGOConfig classPrefix];
+    NSString *noneClassPrefix = @"";
+    NSArray *classPrefixList = [LEGOConfig classPrefixList];
+    NSUInteger count = subModuleName.length;
     NSMutableString *appendString = @"".mutableCopy;
     for (NSUInteger i = 0; i < count; i++) {
         char c = [subModuleName characterAtIndex:count - (i + 1)];
         // 添加
         [appendString appendString:[NSString stringWithFormat:@"%c",c]];
-        // 如果是大写
+
+        // 如果是大写就开始检测
         if (c > 64 && c < 91) {
             // 翻转字符串
-            NSMutableString *superModuleName = [NSMutableString string];
+            NSMutableString *moduleName = [NSMutableString string];
             for (NSUInteger j = appendString.length; j > 0; j--) {
-                [superModuleName appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
+                [moduleName appendString:[appendString substringWithRange:NSMakeRange(j - 1, 1)]];
             }
-            return superModuleName;
+            // 开始类匹配
+            if ([self findClassFromPrefix:namespace moduleName:moduleName stuffixName:stuffixName superModuleName:nil] ||
+                [self findClassFromPrefix:classPrefix moduleName:moduleName stuffixName:stuffixName superModuleName:nil] ||
+                [self findClassFromPrefix:noneClassPrefix moduleName:moduleName stuffixName:stuffixName superModuleName:nil]) {
+                return moduleName;
+            } else {
+                // 使用前辍列表来匹配
+                if (classPrefixList.count) {
+                    for (NSString *optClassPrefix in classPrefixList) {
+                        if ([self findClassFromPrefix:optClassPrefix moduleName:moduleName stuffixName:stuffixName superModuleName:nil]) {
+                            return moduleName;
+                        }
+                    }
+                }
+            }
         }
-    }*/
+    }
     
-    // 从前面往后找
-    NSUInteger count = subModuleName.length;
+    
+    // 从前面往后找（虚拟组件只支持一个单词）
+    /*NSUInteger count = subModuleName.length;
     for (NSUInteger i = 1; i < count; i++) {
         char c = [subModuleName characterAtIndex: i];
         // 如果是大写
         if (c > 64 && c < 91) {
             return [subModuleName substringFromIndex: i];
         }
-    }
+    }*/
     return nil;
 }
 
 + (NSString *)inspectModulePrefixWithModule:(id)module stuffixName:(NSString *)stuffixName
 {
-    NSString *ns = [[XFLegoConfig shareInstance] swiftNamespace];
-    NSString *classPrefix = [[XFLegoConfig shareInstance] classPrefix];
-    
+    NSString *namespace = [LEGOConfig swiftNamespace];
+    NSString *classPrefix = [LEGOConfig classPrefix];
+    NSArray *classPrefixList = [LEGOConfig classPrefixList];
     if ([module isKindOfClass:[NSString class]]) {
         NSString *moduleName = module;
-        // 首先判断是否swift模块，因为如果全用swift写是不需要设置前辍的
-        // 是否存在这个swift模块
-        if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",ns,moduleName,stuffixName])) {
-            return ns;
-        }
         NSString *superModuleName = [self inspectSuperModuleNameFromSubModuleName:moduleName stuffixName:stuffixName];
-        // 是否存在这个swift子模块
-        if (superModuleName &&
-            ![superModuleName isEqualToString:moduleName] &&
-            NSClassFromString([NSString stringWithFormat:@"%@%@%@", ns, superModuleName, stuffixName])) {
-            return ns;
+        
+        // 首先判断是否swift模块，因为如果全用swift写是不需要设置前辍的
+        if ([self findClassFromPrefix:namespace moduleName:moduleName stuffixName:stuffixName superModuleName:superModuleName]) {
+            return namespace;
         }
         
         // 判断OC模块
-        // 是否存在这个OC模块
-        if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",classPrefix,moduleName,stuffixName])) {
-            return classPrefix ?: @"";
-        }
-        // 是否存在这个OC子模块
-        if (superModuleName &&
-            ![superModuleName isEqualToString:moduleName] &&
-            NSClassFromString([NSString stringWithFormat:@"%@%@%@", classPrefix, superModuleName, stuffixName])) {
-            return classPrefix  ?: @"";
+        if (classPrefix && [self findClassFromPrefix:classPrefix moduleName:moduleName stuffixName:stuffixName superModuleName:superModuleName]) {
+            return classPrefix;
         }
         
         // 判断无类前辍的OC模块
-        // 是否存在这个OC模块
-        if (NSClassFromString([NSString stringWithFormat:@"%@%@",moduleName,stuffixName])) {
+        if ([self findClassFromPrefix:@"" moduleName:moduleName stuffixName:stuffixName superModuleName:superModuleName]) {
             return @"";
         }
-        // 是否存在这个OC子模块
-        if (superModuleName &&
-            ![superModuleName isEqualToString:moduleName] &&
-            NSClassFromString([NSString stringWithFormat:@"%@%@", superModuleName, stuffixName])) {
-            return @"";
+        
+        // 查找提供的前辍列表
+        if (classPrefixList.count) {
+            for (NSString *optClassPrefix in classPrefixList) {
+                if ([self findClassFromPrefix:optClassPrefix moduleName:moduleName stuffixName:stuffixName superModuleName:superModuleName]) {
+                    return optClassPrefix;
+                }
+            }
         }
         return nil;
     } else {
         // 如果传过来是一个模块层对象
         NSString *moduleClazzName = NSStringFromClass([module class]);
         if ([moduleClazzName containsString:@"."]) { // 是否含有swift命名空间
-            return ns;
-        } else {
-            // 是否是无前辍的模块
-            char c = [moduleClazzName characterAtIndex: 1];
-            if (c > 96 && c < 123) { // 如果是小写
-                return @"";
-            }
-            // 有前辍的模块
-            return classPrefix ?: @"";
+            return namespace;
         }
+        
+        // 是否是无前辍的模块（判断标准：第二个字母为小写）
+        char c = [moduleClazzName characterAtIndex: 1];
+        if (c > 96 && c < 123) { // 如果是小写
+            return @"";
+        }
+        
+        // 有前辍的模块，并且有统一的前辍
+        if (classPrefix) {
+            return classPrefix;
+        }
+        
+        // 从前辍列表里找前辍
+        NSString *frontPart = [moduleClazzName componentsSeparatedByString:stuffixName].firstObject;
+        NSMutableString *prefixM = @"".mutableCopy;
+        NSInteger len = moduleClazzName.length;
+        for (NSString *optClassPrefix in classPrefixList) {
+            for (NSInteger i = 0; i < len; i++) {
+                char c = [frontPart characterAtIndex:i];
+                [prefixM appendFormat:@"%c", c];
+                // 长度大于2时开始匹配
+                if (i >= 2) {
+                    if ([optClassPrefix isEqualToString:prefixM]) {
+                        return optClassPrefix;
+                    }
+                }
+                // 长度大于4（不会有这么长的前辍），直接退出
+                if (i > 4) {
+                    return nil;
+                }
+            }
+        }
+        return nil;
     }
 }
 
++ (BOOL)findClassFromPrefix:(NSString *)prefix moduleName:(NSString *)moduleName stuffixName:(NSString *)stuffixName superModuleName:(NSString *)superModuleName
+{
+    // 是否存在这个模块
+    if (NSClassFromString([NSString stringWithFormat:@"%@%@%@",prefix,moduleName,stuffixName])) {
+        return YES;
+    }
+    // 是否存在这个子模块
+    if (superModuleName &&
+        ![superModuleName isEqualToString:moduleName] &&
+        NSClassFromString([NSString stringWithFormat:@"%@%@%@", prefix, superModuleName, stuffixName])) {
+        return YES;
+    }
+    return NO;
+}
 
 
 + (BOOL)verifyModule:(NSString *)moduleName stuffixName:(NSString *)stuffixName

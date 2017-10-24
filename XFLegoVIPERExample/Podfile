@@ -6,7 +6,7 @@ target 'XFLegoVIPERExample' do
 pod 'MJExtension'
 pod 'AFNetworking', '~> 2.0'
 pod 'AFNetworking-RACExtensions'
-pod 'ReactiveCocoa'
+pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag => '2.5.2'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SDWebImage'
 pod 'MJRefresh'

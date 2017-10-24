@@ -10,13 +10,15 @@
 #import "XFLegoVIPER.h"
 #import "UIViewController+LEView.h"
 #import "LEViewModel.h"
+#import "XFModuleReflect.h"
 
 @implementation LEMVVMConnector
 
 + (id<XFComponentRoutable>)makeComponentFromUInterface:(UIViewController *)viewController
 {
     NSString *componentName = [XFComponentReflect componentNameForComponent:(id)viewController];
-    NSString *viewModelClassName = [NSString stringWithFormat:@"%@%@ViewModel", XFLegoConfig.shareInstance.classPrefix, componentName];
+    NSString *classPrefix = [XFModuleReflect inspectModulePrefixWithModule:componentName stuffixName:@"ViewModel"];
+    NSString *viewModelClassName = [NSString stringWithFormat:@"%@%@ViewModel", classPrefix, componentName];
     Class viewModelClass = NSClassFromString(viewModelClassName);
     if (viewModelClass && ![viewController valueForKey:@"dataDriver"]) {
         LEViewModel<XFComponentRoutable> *viewModel = [[viewModelClass alloc] init];
@@ -31,7 +33,8 @@
 + (id<XFComponentRoutable>)makeComponentFromUInterface:(UIViewController *)viewController forName:(NSString *)componentName
 {
     NSString *inspectComponentName = [XFComponentReflect componentNameForComponent:(id)viewController];
-    NSString *viewModelClassName = [NSString stringWithFormat:@"%@%@ViewModel", XFLegoConfig.shareInstance.classPrefix, inspectComponentName];
+    NSString *classPrefix = [XFModuleReflect inspectModulePrefixWithModule:inspectComponentName stuffixName:@"ViewModel"];
+    NSString *viewModelClassName = [NSString stringWithFormat:@"%@%@ViewModel", classPrefix, inspectComponentName];
     Class viewModelClass = NSClassFromString(viewModelClassName);
     if (viewModelClass && ![viewController valueForKey:@"dataDriver"]) {
         LEViewModel<XFComponentRoutable> *viewModel = [[viewModelClass alloc] init];

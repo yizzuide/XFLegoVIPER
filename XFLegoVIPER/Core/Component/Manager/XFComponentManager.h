@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeComponentForName:(NSString *)componentName;
 
 /**
- * 添加一个不兼容组件件（可以把旧项目的控制器添加到容器，实现事件机制功能）
+ * 添加一个不兼容组件（在viewDidLoad里可以把旧项目的控制器添加到容器，实现事件机制功能）
  * @param viewController 普通控制器
  * @param componentName  组件名
  */

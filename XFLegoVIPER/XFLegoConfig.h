@@ -50,6 +50,14 @@
  *
  */
 - (NSString *)classPrefix;
+/**
+ * 设置类前缀列表
+ */
+- (instancetype)setClassPrefixList:(NSArray *)prefixList;
+/**
+ *  返回类前缀列表
+ */
+- (NSArray *)classPrefixList;
 
 /**
  *  返回swift命名空间

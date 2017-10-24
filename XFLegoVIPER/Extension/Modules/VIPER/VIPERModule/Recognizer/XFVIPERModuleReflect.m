@@ -104,7 +104,7 @@
 
 + (void)inspectModulePrefixFromClass:(Class)clazz
 {
-    if (XF_Class_Prefix) return;
+    if (XF_Class_Prefix || [LEGOConfig classPrefixList].count) return;
     // 开始解析模块前辍
     NSString *clazzName = NSStringFromClass(clazz);
     NSUInteger count = clazzName.length;

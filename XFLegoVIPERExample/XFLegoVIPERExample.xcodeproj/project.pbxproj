@@ -12,9 +12,9 @@
 		4024C3FC1CC48BB5000D8182 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4024C3FA1CC48BB5000D8182 /* LaunchScreen.storyboard */; };
 		4024C4071CC48BB5000D8182 /* XFLegoVIPERExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C4061CC48BB5000D8182 /* XFLegoVIPERExampleTests.m */; };
 		4024C4121CC48BB5000D8182 /* XFLegoVIPERExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C4111CC48BB5000D8182 /* XFLegoVIPERExampleUITests.m */; };
-		40391F811E47268000021BF6 /* XFSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F801E47268000021BF6 /* XFSettingViewModel.m */; };
-		40391F851E47269E00021BF6 /* XFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F831E47269E00021BF6 /* XFSettingViewController.m */; };
-		40391F861E47269E00021BF6 /* XFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40391F841E47269E00021BF6 /* XFSettingViewController.xib */; };
+		40391F811E47268000021BF6 /* LGSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F801E47268000021BF6 /* LGSettingViewModel.m */; };
+		40391F851E47269E00021BF6 /* LGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F831E47269E00021BF6 /* LGSettingViewController.m */; };
+		40391F861E47269E00021BF6 /* LGSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40391F841E47269E00021BF6 /* LGSettingViewController.xib */; };
 		408690881F8B2F8B00C2FD5D /* LEMVVMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690871F8B23BA00C2FD5D /* LEMVVMNavigationController.m */; };
 		408690891F8B2F8E00C2FD5D /* LEMVVMConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */; };
 		40997F7B1F18CB0E00D784FD /* XFUInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997EF01F18CB0E00D784FD /* XFUInterfaceFactory.m */; };
@@ -177,11 +177,11 @@
 		4024C40D1CC48BB5000D8182 /* XFLegoVIPERExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XFLegoVIPERExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C4111CC48BB5000D8182 /* XFLegoVIPERExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFLegoVIPERExampleUITests.m; sourceTree = "<group>"; };
 		4024C4131CC48BB5000D8182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40391F7F1E47268000021BF6 /* XFSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSettingViewModel.h; sourceTree = "<group>"; };
-		40391F801E47268000021BF6 /* XFSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFSettingViewModel.m; sourceTree = "<group>"; };
-		40391F821E47269E00021BF6 /* XFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFSettingViewController.h; sourceTree = "<group>"; };
-		40391F831E47269E00021BF6 /* XFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFSettingViewController.m; sourceTree = "<group>"; };
-		40391F841E47269E00021BF6 /* XFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFSettingViewController.xib; sourceTree = "<group>"; };
+		40391F7F1E47268000021BF6 /* LGSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSettingViewModel.h; sourceTree = "<group>"; };
+		40391F801E47268000021BF6 /* LGSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSettingViewModel.m; sourceTree = "<group>"; };
+		40391F821E47269E00021BF6 /* LGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSettingViewController.h; sourceTree = "<group>"; };
+		40391F831E47269E00021BF6 /* LGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSettingViewController.m; sourceTree = "<group>"; };
+		40391F841E47269E00021BF6 /* LGSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGSettingViewController.xib; sourceTree = "<group>"; };
 		408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMConnector.h; sourceTree = "<group>"; };
 		408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMVVMConnector.m; sourceTree = "<group>"; };
 		408690861F8B23BA00C2FD5D /* LEMVVMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMNavigationController.h; sourceTree = "<group>"; };
@@ -557,11 +557,11 @@
 		40391F7E1E47265900021BF6 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				40391F7F1E47268000021BF6 /* XFSettingViewModel.h */,
-				40391F801E47268000021BF6 /* XFSettingViewModel.m */,
-				40391F821E47269E00021BF6 /* XFSettingViewController.h */,
-				40391F831E47269E00021BF6 /* XFSettingViewController.m */,
-				40391F841E47269E00021BF6 /* XFSettingViewController.xib */,
+				40391F7F1E47268000021BF6 /* LGSettingViewModel.h */,
+				40391F801E47268000021BF6 /* LGSettingViewModel.m */,
+				40391F821E47269E00021BF6 /* LGSettingViewController.h */,
+				40391F831E47269E00021BF6 /* LGSettingViewController.m */,
+				40391F841E47269E00021BF6 /* LGSettingViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1901,7 +1901,7 @@
 				40B6588D1E2CA0B100AB507F /* XFMessageViewController.xib in Resources */,
 				40F811B91DC2015B00237347 /* statuses.plist in Resources */,
 				40F811B81DC2015B00237347 /* 926680527.jpeg in Resources */,
-				40391F861E47269E00021BF6 /* XFSettingViewController.xib in Resources */,
+				40391F861E47269E00021BF6 /* LGSettingViewController.xib in Resources */,
 				40EB31F71E2C9EF5004581F2 /* XFCollectActivity.xib in Resources */,
 				40EB32051E2C9EF5004581F2 /* XFDetailsActivity.xib in Resources */,
 				4024C3FC1CC48BB5000D8182 /* LaunchScreen.storyboard in Resources */,
@@ -2033,7 +2033,7 @@
 				40EB32001E2C9EF5004581F2 /* XFSubControlRouting.m in Sources */,
 				40EB31EC1E2C9EF5004581F2 /* XFMusicActivity.m in Sources */,
 				40997F8F1F18CB0E00D784FD /* XFVIPERModuleHandler.m in Sources */,
-				40391F851E47269E00021BF6 /* XFSettingViewController.m in Sources */,
+				40391F851E47269E00021BF6 /* LGSettingViewController.m in Sources */,
 				40EB32121E2C9EF5004581F2 /* XFPictureResultsDataManager.m in Sources */,
 				40997FA41F18CB0E00D784FD /* XFLegoConfig.m in Sources */,
 				40997F8B1F18CB0E00D784FD /* LEViewController.m in Sources */,
@@ -2098,7 +2098,7 @@
 				40997F911F18CB0E00D784FD /* XFExpressPiece.m in Sources */,
 				40997FA21F18CB0E00D784FD /* NSObject+XFLegoInvokeMethod.m in Sources */,
 				40EB31FF1E2C9EF5004581F2 /* XFSubControl2Routing.m in Sources */,
-				40391F811E47268000021BF6 /* XFSettingViewModel.m in Sources */,
+				40391F811E47268000021BF6 /* LGSettingViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2242,6 +2242,28 @@
 				INFOPLIST_FILE = XFLegoVIPERExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AFNetworking-RACExtensions\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"SDWebImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-w",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2259,6 +2281,28 @@
 				INFOPLIST_FILE = XFLegoVIPERExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AFNetworking-RACExtensions\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"SDWebImage\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-w",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

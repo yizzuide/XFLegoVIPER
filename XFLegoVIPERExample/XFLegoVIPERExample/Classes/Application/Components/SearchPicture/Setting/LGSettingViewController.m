@@ -6,13 +6,13 @@
 //  Copyright © 2017年 yizzuide. All rights reserved.
 //
 
-#import "XFSettingViewController.h"
+#import "LGSettingViewController.h"
 
-@interface XFSettingViewController ()
+@interface LGSettingViewController ()
 
 @end
 
-@implementation XFSettingViewController
+@implementation LGSettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
