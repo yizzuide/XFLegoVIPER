@@ -1,4 +1,5 @@
 # V4.4.0
+### 旧项目的过渡方案来了之系列二，支持无厘头项目的多前辍问题
 ## New Feture:
 1. 添加多前辍可选列表方法`-setClassPrefixList:`，通过给出的可选前辍列表，框架会自动为你找到相应的模块，且旧版设置前辍方法不受影响
 
@@ -7,10 +8,12 @@
 ```ini
 基因组件名：PostPage
 虚拟组件名: NewAllPostPage、NewVideoPostPage
+
 ```
+
 2. 框架内部针对模块匹配核心代码抽取与重构
 
-
+>> 注：框架中的组件名和模块名是等同的概念
 
 # V4.3.1
 ## Improving:
@@ -20,6 +23,7 @@
 
 
 # V4.3.0
+### 旧项目的过渡方案来了之系列一，多种过渡方案任你选，可以是普通控制器添加到组件容器来接收组件事件，可以是无URL路由的MVVM组件连接器来转化你的控制器变身MVVM层的View，再添加一个ViewModel就Go了！
 ## New Feture:
 1. `XFComponentManager`添加可加入普通控制器到组件容器的过渡方法`+addIncompatibleComponent:componentName:`, 在控制器的dealloc方法要调用`+removeIncompatibleComponentWithName:`移除
 2. MVVM模块添加MVVM组件连接器`LEMVVMConnector`和连接器导航`LEMVVMNavigationController`, 同样是增加的过渡功能，使用普通的写法来达到组件事件数据传递的功能
