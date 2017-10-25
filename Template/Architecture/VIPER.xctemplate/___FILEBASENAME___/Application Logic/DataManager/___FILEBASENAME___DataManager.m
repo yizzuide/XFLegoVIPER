@@ -7,12 +7,12 @@
 //
 
 
-#import "___FILEBASENAME___DataManager.h"
+#import "___VARIABLE_productName:identifier___DataManager.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___DataManager ()
+@interface ___VARIABLE_productName:identifier___DataManager ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___DataManager
+@implementation ___VARIABLE_productName:identifier___DataManager
 
 @end

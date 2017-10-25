@@ -9,9 +9,9 @@
 import UIKit
 import XFLegoVIPER
 
-private func View(_ viewModel: LEViewModel) ->___FILEBASENAMEASIDENTIFIER___ViewProtocol? { return viewModel.view as? ___FILEBASENAMEASIDENTIFIER___ViewProtocol }
+private func View(_ viewModel: LEViewModel) ->___VARIABLE_productName:identifier___ViewProtocol? { return viewModel.view as? ___VARIABLE_productName:identifier___ViewProtocol }
 
-class ___FILEBASENAMEASIDENTIFIER___ViewModel: LEViewModel, ___FILEBASENAMEASIDENTIFIER___DataDriverProtocol{
+class ___VARIABLE_productName:identifier___ViewModel: LEViewModel {
     
     override func viewDidLoad() {
         //        print("当前组件名: \(XFComponentReflect.componentName(forComponent: self))")
@@ -22,7 +22,7 @@ class ___FILEBASENAMEASIDENTIFIER___ViewModel: LEViewModel, ___FILEBASENAMEASIDE
 }
 
 //MARK:- Lego Life Cycle
-extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
+extension ___VARIABLE_productName:identifier___ViewModel {
     // 初始化视图数据
     override func initRenderView() {
         
@@ -50,16 +50,16 @@ extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
 }
 
 //MARK:- Action
-extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
+extension ___VARIABLE_productName:identifier___ViewModel : ___VARIABLE_productName:identifier___DataDriverProtocol {
     
 }
 
 //MARK:- ValidData
-extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
+extension ___VARIABLE_productName:identifier___ViewModel {
     
 }
 
 //MARK:- FetchData
-extension ___FILEBASENAMEASIDENTIFIER___ViewModel {
+extension ___VARIABLE_productName:identifier___ViewModel {
     
 }

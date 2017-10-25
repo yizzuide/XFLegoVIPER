@@ -6,16 +6,16 @@
 //  ___COPYRIGHT___
 //
 
-#import "___FILEBASENAME___ViewController.h"
-#import "___FILEBASENAME___DataDriverProtocol.h"
+#import "___VARIABLE_productName:identifier___ViewController.h"
+#import "___VARIABLE_productName:identifier___DataDriverProtocol.h"
 
-#define DataDriver  LEGORealPort(id<___FILEBASENAMEASIDENTIFIER___DataDriverProtocol>, self.dataDriver)
+#define DataDriver  LEGORealPort(id<___VARIABLE_productName:identifier___DataDriverProtocol>, self.dataDriver)
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewController ()
+@interface ___VARIABLE_productName:identifier___ViewController ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___ViewController
+@implementation ___VARIABLE_productName:identifier___ViewController
 
 - (void)viewDidLoad
 {

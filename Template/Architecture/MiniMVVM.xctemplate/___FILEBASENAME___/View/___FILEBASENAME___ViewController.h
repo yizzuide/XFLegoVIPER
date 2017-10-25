@@ -6,8 +6,8 @@
 //  ___COPYRIGHT___
 //
 
-import Foundation
+#import <UIKit/UIKit.h>
 
-protocol ___VARIABLE_productName:identifier___InteractorPort {
-    
-}
+@interface ___VARIABLE_productName:identifier___ViewController : UIViewController
+
+@end

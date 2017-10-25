@@ -7,13 +7,13 @@
 //
 
 
-#ifndef ___FILEBASENAME___DataDriverProtocol_h
-#define ___FILEBASENAME___DataDriverProtocol_h
+#ifndef ___VARIABLE_productName:identifier___DataDriverProtocol_h
+#define ___VARIABLE_productName:identifier___DataDriverProtocol_h
 #import "LEDataDriverProtocol.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___DataDriverProtocol <LEDataDriverProtocol>
+@protocol ___VARIABLE_productName:identifier___DataDriverProtocol <LEDataDriverProtocol>
 
 
 @end
 
-#endif /* ___FILEBASENAME___DataDriverProtocol_h */
+#endif /* ___VARIABLE_productName:identifier___DataDriverProtocol_h */

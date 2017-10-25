@@ -6,8 +6,8 @@
 //  ___COPYRIGHT___
 //
 
-import Foundation
+#import "LEViewModel.h"
 
-protocol ___VARIABLE_productName:identifier___InteractorPort {
-    
-}
+@interface ___VARIABLE_productName:identifier___ViewModel : LEViewModel
+
+@end

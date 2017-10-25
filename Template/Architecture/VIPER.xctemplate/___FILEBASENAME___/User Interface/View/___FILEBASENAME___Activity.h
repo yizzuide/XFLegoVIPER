@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "XFActivity.h"
-#import "___FILEBASENAME___UserInterfacePort.h"
+#import "___VARIABLE_productName:identifier___UserInterfacePort.h"
 
 
-@interface ___FILEBASENAMEASIDENTIFIER___Activity : UIViewController <___FILEBASENAMEASIDENTIFIER___UserInterfacePort>
+@interface ___VARIABLE_productName:identifier___Activity : UIViewController <___VARIABLE_productName:identifier___UserInterfacePort>
 
 @end

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LEViewController.h"
-#import "___FILEBASENAME___ViewProtocol.h"
+#import "___VARIABLE_productName:identifier___ViewProtocol.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewController : UIViewController <___FILEBASENAMEASIDENTIFIER___ViewProtocol>
+@interface ___VARIABLE_productName:identifier___ViewController : UIViewController <___VARIABLE_productName:identifier___ViewProtocol>
 
 @end

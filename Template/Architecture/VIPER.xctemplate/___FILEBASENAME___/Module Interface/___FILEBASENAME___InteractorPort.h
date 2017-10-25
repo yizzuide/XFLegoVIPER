@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XFInteractorPort.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___InteractorPort <XFInteractorPort>
+@protocol ___VARIABLE_productName:identifier___InteractorPort <XFInteractorPort>
 
 @end

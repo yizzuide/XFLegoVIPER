@@ -9,6 +9,6 @@
 import Foundation
 import XFLegoVIPER
 
-protocol ___FILEBASENAMEASIDENTIFIER___UserInterfacePort : XFUserInterfacePort{
+protocol ___VARIABLE_productName:identifier___UserInterfacePort : XFUserInterfacePort{
     
 }

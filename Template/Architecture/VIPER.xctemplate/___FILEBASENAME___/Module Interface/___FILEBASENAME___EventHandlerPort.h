@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XFEventHandlerPort.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___EventHandlerPort <XFEventHandlerPort>
+@protocol ___VARIABLE_productName:identifier___EventHandlerPort <XFEventHandlerPort>
 
 @end

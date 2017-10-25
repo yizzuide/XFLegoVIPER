@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XFDataManagerPort.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___DataManagerPort <XFDataManagerPort>
+@protocol ___VARIABLE_productName:identifier___DataManagerPort <XFDataManagerPort>
 
 
 @end

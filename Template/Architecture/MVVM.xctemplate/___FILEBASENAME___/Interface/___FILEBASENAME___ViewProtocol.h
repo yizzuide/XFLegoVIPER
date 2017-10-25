@@ -6,14 +6,14 @@
 //  ___COPYRIGHT___
 //
 
-#ifndef ___FILEBASENAME___ViewProtocol_h
-#define ___FILEBASENAME___ViewProtocol_h
+#ifndef ___VARIABLE_productName:identifier___ViewProtocol_h
+#define ___VARIABLE_productName:identifier___ViewProtocol_h
 
 #import "LEViewProtocol.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol <LEViewProtocol>
+@protocol ___VARIABLE_productName:identifier___ViewProtocol <LEViewProtocol>
 
 
 @end
 
-#endif /* ___FILEBASENAME___ViewProtocol_h */
+#endif /* ___VARIABLE_productName:identifier___ViewProtocol_h */

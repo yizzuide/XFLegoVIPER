@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ___FILEBASENAMEASIDENTIFIER___DataManagerPort {
+protocol ___VARIABLE_productName:identifier___DataManagerPort {
     
 }

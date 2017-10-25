@@ -7,8 +7,8 @@
 //
 
 #import "XFDataManager.h"
-#import "___FILEBASENAME___DataManagerPort.h"
+#import "___VARIABLE_productName:identifier___DataManagerPort.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___DataManager : XFDataManager <___FILEBASENAMEASIDENTIFIER___DataManagerPort>
+@interface ___VARIABLE_productName:identifier___DataManager : XFDataManager <___VARIABLE_productName:identifier___DataManagerPort>
 
 @end

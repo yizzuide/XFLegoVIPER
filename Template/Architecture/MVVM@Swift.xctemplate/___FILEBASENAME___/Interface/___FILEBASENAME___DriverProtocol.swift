@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ___FILEBASENAMEASIDENTIFIER___DataDriverProtocol {
+protocol ___VARIABLE_productName:identifier___DataDriverProtocol {
     
 }

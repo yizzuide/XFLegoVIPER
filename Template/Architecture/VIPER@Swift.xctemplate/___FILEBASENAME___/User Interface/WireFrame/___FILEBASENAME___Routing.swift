@@ -9,7 +9,7 @@
 import UIKit
 import XFLegoVIPER
 
-class ___FILEBASENAMEASIDENTIFIER___Routing: XFRouting, ___FILEBASENAMEASIDENTIFIER___WireFramePort {
+class ___FILEBASENAMEASIDENTIFIER___Routing: XFRouting {
     
     // 实现父类组装函数
     open override class func assemble() -> Self {
@@ -19,7 +19,10 @@ class ___FILEBASENAMEASIDENTIFIER___Routing: XFRouting, ___FILEBASENAMEASIDENTIF
         //        routing?.assembly.autoAssemblyShareModule() // 虚拟组件时使用这个函数
         return routing!
     }
-    
+}
+
+//MARK:- Navigation
+extension ___FILEBASENAMEASIDENTIFIER___Routing : ___FILEBASENAMEASIDENTIFIER___WireFramePort {
     /*func transition2XXX() {
         self.uiBus.openURL(forPush: "xx://xxx/xxx")
      }*/

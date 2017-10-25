@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "XFRouting.h"
-#import "___FILEBASENAME___WireframePort.h"
+#import "___VARIABLE_productName:identifier___WireframePort.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___Routing : XFRouting <___FILEBASENAMEASIDENTIFIER___WireFramePort>
+@interface ___VARIABLE_productName:identifier___Routing : XFRouting <___VARIABLE_productName:identifier___WireFramePort>
 
 @end

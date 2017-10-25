@@ -6,16 +6,16 @@
 //  ___COPYRIGHT___
 //
 
-#import "___FILEBASENAME___Activity.h"
-#import "___FILEBASENAME___EventHandlerPort.h"
+#import "___VARIABLE_productName:identifier___Activity.h"
+#import "___VARIABLE_productName:identifier___EventHandlerPort.h"
 
-#define EventHandler  XFConvertPresenterToType(id<___FILEBASENAMEASIDENTIFIER___EventHandlerPort>)
+#define EventHandler  XFConvertPresenterToType(id<___VARIABLE_productName:identifier___EventHandlerPort>)
 
-@interface ___FILEBASENAMEASIDENTIFIER___Activity ()
+@interface ___VARIABLE_productName:identifier___Activity ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___Activity
+@implementation ___VARIABLE_productName:identifier___Activity
 
 - (void)viewDidLoad
 {

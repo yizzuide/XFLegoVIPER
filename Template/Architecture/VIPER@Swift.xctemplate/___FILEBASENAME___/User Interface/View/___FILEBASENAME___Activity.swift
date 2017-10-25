@@ -9,9 +9,9 @@
 import UIKit
 import XFLegoVIPER
 
-private func EventHandler(_ activity: UIViewController) ->___FILEBASENAMEASIDENTIFIER___EventHandlerPort? { return activity.eventHandler as? ___FILEBASENAMEASIDENTIFIER___EventHandlerPort }
+private func EventHandler(_ activity: UIViewController) ->___VARIABLE_productName:identifier___EventHandlerPort? { return activity.eventHandler as? ___VARIABLE_productName:identifier___EventHandlerPort }
 
-class ___FILEBASENAMEASIDENTIFIER___Activity: UIViewController, ___FILEBASENAMEASIDENTIFIER___UserInterfacePort {
+class ___VARIABLE_productName:identifier___Activity: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ___FILEBASENAMEASIDENTIFIER___Activity: UIViewController, ___FILEBASENAMEA
 }
 
 //MARK:- init UI
-extension ___FILEBASENAMEASIDENTIFIER___Activity {
+extension ___VARIABLE_productName:identifier___Activity {
     
     fileprivate func setUpUI() {
         config()
@@ -47,16 +47,16 @@ extension ___FILEBASENAMEASIDENTIFIER___Activity {
 }
 
 //MARK:- Change UI State
-extension ___FILEBASENAMEASIDENTIFIER___Activity {
+extension ___VARIABLE_productName:identifier___Activity : ___VARIABLE_productName:identifier___UserInterfacePort {
     
 }
 
 //MARK:- DataSource
-extension ___FILEBASENAMEASIDENTIFIER___Activity {
+extension ___VARIABLE_productName:identifier___Activity {
     
 }
 
 //MARK:- UIControlDelegate
-extension ___FILEBASENAMEASIDENTIFIER___Activity {
+extension ___VARIABLE_productName:identifier___Activity {
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 import XFLegoVIPER
 
-class ___FILEBASENAMEASIDENTIFIER___ViewController: XFComponentViewController {
+class ___VARIABLE_productName:identifier___ViewController: XFComponentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ___FILEBASENAMEASIDENTIFIER___ViewController: XFComponentViewController {
 
 
 //MARK:- init UI
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
     fileprivate func setUpUI() {
         config()
@@ -47,7 +47,7 @@ extension ___FILEBASENAMEASIDENTIFIER___ViewController {
 
 
 //MARK:- Lego Life Cycle
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     // 上一个组件可能设置的意图数据
     override func onNewIntent(_ intentData: Any) {
         
@@ -59,16 +59,16 @@ extension ___FILEBASENAMEASIDENTIFIER___ViewController {
 }
 
 //MARK:- Change UI State
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
 }
 
 //MARK:- DataSource
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
 }
 
 //MARK:- UIControlDelegate
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
 }

@@ -9,6 +9,6 @@
 import Foundation
 import XFLegoVIPER
 
-protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol : LEViewProtocol{
+protocol ___VARIABLE_productName:identifier___ViewProtocol : LEViewProtocol{
     
 }

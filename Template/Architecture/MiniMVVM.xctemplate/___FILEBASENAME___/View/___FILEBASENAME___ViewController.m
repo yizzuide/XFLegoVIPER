@@ -7,15 +7,15 @@
 //
 
 #import "___VARIABLE_productName:identifier___ViewController.h"
+#import "___VARIABLE_productName:identifier___ViewModel.h"
+
+#define ViewModel  LEGORealPort(___VARIABLE_productName:identifier___ViewModel *, self.dataDriver)
 
 @interface ___VARIABLE_productName:identifier___ViewController ()
 
 @end
 
 @implementation ___VARIABLE_productName:identifier___ViewController
-
-// 把控制器导出为组件
-XF_EXPORT_COMPONENT
 
 - (void)viewDidLoad
 {
@@ -25,6 +25,8 @@ XF_EXPORT_COMPONENT
     [self config];
     // 初始化视图
     [self setUpViews];
+    // 绑定视图数据
+    [self bindViewData];
 }
 
 #pragma mark - 初始化
@@ -36,21 +38,21 @@ XF_EXPORT_COMPONENT
     
 }
 
-
-#pragma mark - LifeCycle
-// 接收到组件返回数据
-- (void)onNewIntent:(id)intentData
-{
+- (void)bindViewData {
+    // 双向数据绑定
+    //XF_$_(self.textField, text, DataDriver, text)
+    // 绑定事件层按钮命令
+    //XF_C_(self.btn, DataDriver, Command)
     
-}
-
-// 接受到MVx构架通知或XFLegoVIPER模块的事件
-- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
-{
-    // 匹配对应通知
-    /*XF_EventIs_(XFUserDidLoginNotifaction, {
-     // TODO
-     })*/
+    // load or reset expressPack
+    /*XF_Define_Weak
+     [RACObserve(self.dataDriver, expressData) subscribeNext:^(id x) {
+     XF_Define_Strong
+     // 如果有显示数据加载完成
+     if (x) {
+     [self.tableView reloadData];
+     }
+     }];*/
 }
 
 

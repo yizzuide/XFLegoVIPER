@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XFComponentViewController.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewController : UIViewController <XFControllerRunnable,XFComponentUI>
+@interface ___VARIABLE_productName:identifier___ViewController : UIViewController <XFControllerRunnable,XFComponentUI>
 
 /**
  *  通过其它URL组件传递过来的参数

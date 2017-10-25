@@ -9,9 +9,9 @@
 import UIKit
 import XFLegoVIPER
 
-private func DataDriver(_ viewController: UIViewController) ->___FILEBASENAMEASIDENTIFIER___DataDriverProtocol? { return viewController.dataDriver as? ___FILEBASENAMEASIDENTIFIER___DataDriverProtocol }
+private func DataDriver(_ viewController: UIViewController) ->___VARIABLE_productName:identifier___DataDriverProtocol? { return viewController.dataDriver as? ___VARIABLE_productName:identifier___DataDriverProtocol }
 
-class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController, ___FILEBASENAMEASIDENTIFIER___ViewProtocol {
+class ___VARIABLE_productName:identifier___ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController, ___FILEBAS
 }
 
 //MARK:- init UI
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
     fileprivate func setUpUI() {
         config()
@@ -47,16 +47,16 @@ extension ___FILEBASENAMEASIDENTIFIER___ViewController {
 }
 
 //MARK:- Change UI State
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController : ___VARIABLE_productName:identifier___ViewProtocol {
     
 }
 
 //MARK:- DataSource
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
 }
 
 //MARK:- UIControlDelegate
-extension ___FILEBASENAMEASIDENTIFIER___ViewController {
+extension ___VARIABLE_productName:identifier___ViewController {
     
 }

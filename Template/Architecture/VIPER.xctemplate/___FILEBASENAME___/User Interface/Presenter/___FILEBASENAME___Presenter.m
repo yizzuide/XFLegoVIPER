@@ -6,22 +6,22 @@
 //  ___COPYRIGHT___
 //
 
-#import "___FILEBASENAME___Presenter.h"
-#import "___FILEBASENAME___WireframePort.h"
-#import "___FILEBASENAME___UserInterfacePort.h"
-#import "___FILEBASENAME___InteractorPort.h"
+#import "___VARIABLE_productName:identifier___Presenter.h"
+#import "___VARIABLE_productName:identifier___WireframePort.h"
+#import "___VARIABLE_productName:identifier___UserInterfacePort.h"
+#import "___VARIABLE_productName:identifier___InteractorPort.h"
 //#import "ReactiveCocoa.h"
 
 
-#define Interactor XFConvertInteractorToType(id<___FILEBASENAMEASIDENTIFIER___InteractorPort>)
-#define Interface XFConvertUserInterfaceToType(id<___FILEBASENAMEASIDENTIFIER___UserInterfacePort>)
-#define Routing XFConvertRoutingToType(id<___FILEBASENAMEASIDENTIFIER___WireFramePort>)
+#define Interactor XFConvertInteractorToType(id<___VARIABLE_productName:identifier___InteractorPort>)
+#define Interface XFConvertUserInterfaceToType(id<___VARIABLE_productName:identifier___UserInterfacePort>)
+#define Routing XFConvertRoutingToType(id<___VARIABLE_productName:identifier___WireFramePort>)
 
-@interface ___FILEBASENAMEASIDENTIFIER___Presenter ()
+@interface ___VARIABLE_productName:identifier___Presenter ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___Presenter
+@implementation ___VARIABLE_productName:identifier___Presenter
 
 #pragma mark - lifeCycle
 // 绑定视图层后调用

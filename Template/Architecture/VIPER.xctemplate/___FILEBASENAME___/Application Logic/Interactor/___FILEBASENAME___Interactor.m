@@ -6,16 +6,16 @@
 //  ___COPYRIGHT___
 //
 
-#import "___FILEBASENAME___Interactor.h"
-#import "___FILEBASENAME___DataManagerPort.h"
+#import "___VARIABLE_productName:identifier___Interactor.h"
+#import "___VARIABLE_productName:identifier___DataManagerPort.h"
 
-#define DataManager XFConvertDataManagerToType(id<___FILEBASENAMEASIDENTIFIER___DataManagerPort>)
+#define DataManager XFConvertDataManagerToType(id<___VARIABLE_productName:identifier___DataManagerPort>)
 
-@interface ___FILEBASENAMEASIDENTIFIER___Interactor ()
+@interface ___VARIABLE_productName:identifier___Interactor ()
 
 @end
 
-@implementation ___FILEBASENAMEASIDENTIFIER___Interactor
+@implementation ___VARIABLE_productName:identifier___Interactor
 
 #pragma mark - Request
 /*- (RACSignal *)fetchData

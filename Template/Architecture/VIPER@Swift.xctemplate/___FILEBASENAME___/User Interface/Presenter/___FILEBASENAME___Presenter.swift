@@ -9,11 +9,11 @@
 import UIKit
 import XFLegoVIPER
 
-private func Interactor(_ presenter: XFPresenter) ->___FILEBASENAMEASIDENTIFIER___InteractorPort? { return presenter.interactor as? ___FILEBASENAMEASIDENTIFIER___InteractorPort }
-private func UserInterface(_ presenter: XFPresenter) ->___FILEBASENAMEASIDENTIFIER___UserInterfacePort? { return presenter.userInterface as? ___FILEBASENAMEASIDENTIFIER___UserInterfacePort }
-private func Routing(_ presenter: XFPresenter) ->___FILEBASENAMEASIDENTIFIER___WireFramePort? { return presenter.routing as? ___FILEBASENAMEASIDENTIFIER___WireFramePort }
+private func Interactor(_ presenter: XFPresenter) ->___VARIABLE_productName:identifier___InteractorPort? { return presenter.interactor as? ___VARIABLE_productName:identifier___InteractorPort }
+private func UserInterface(_ presenter: XFPresenter) ->___VARIABLE_productName:identifier___UserInterfacePort? { return presenter.userInterface as? ___VARIABLE_productName:identifier___UserInterfacePort }
+private func Routing(_ presenter: XFPresenter) ->___VARIABLE_productName:identifier___WireFramePort? { return presenter.routing as? ___VARIABLE_productName:identifier___WireFramePort }
 
-class ___FILEBASENAMEASIDENTIFIER___Presenter: XFPresenter, ___FILEBASENAMEASIDENTIFIER___EventHandlerPort {
+class ___VARIABLE_productName:identifier___Presenter: XFPresenter {
     
     override func viewDidLoad() {
         //        print("当前组件名: \(XFComponentReflect.componentName(forComponent: self))")
@@ -23,7 +23,7 @@ class ___FILEBASENAMEASIDENTIFIER___Presenter: XFPresenter, ___FILEBASENAMEASIDE
 }
 
 //MARK:- Lego Life Cycle
-extension ___FILEBASENAMEASIDENTIFIER___Presenter {
+extension ___VARIABLE_productName:identifier___Presenter {
     // 初始化视图数据
     override func initRenderView() {
         //        Interactor(self)?.fetchData()
@@ -51,11 +51,11 @@ extension ___FILEBASENAMEASIDENTIFIER___Presenter {
 }
 
 //MARK:- Action
-extension ___FILEBASENAMEASIDENTIFIER___Presenter {
+extension ___VARIABLE_productName:identifier___Presenter : ___VARIABLE_productName:identifier___EventHandlerPort {
     
 }
 
 //MARK:- ValidData
-extension ___FILEBASENAMEASIDENTIFIER___Presenter {
+extension ___VARIABLE_productName:identifier___Presenter {
     
 }

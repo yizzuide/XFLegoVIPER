@@ -7,8 +7,8 @@
 //
 
 #import "XFInteractor.h"
-#import "___FILEBASENAME___InteractorPort.h"
+#import "___VARIABLE_productName:identifier___InteractorPort.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___Interactor : XFInteractor <___FILEBASENAMEASIDENTIFIER___InteractorPort>
+@interface ___VARIABLE_productName:identifier___Interactor : XFInteractor <___VARIABLE_productName:identifier___InteractorPort>
 
 @end

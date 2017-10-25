@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ___FILEBASENAMEASIDENTIFIER___WireFramePort {
+protocol ___VARIABLE_productName:identifier___WireFramePort {
 //    func transition2XXX()
 }

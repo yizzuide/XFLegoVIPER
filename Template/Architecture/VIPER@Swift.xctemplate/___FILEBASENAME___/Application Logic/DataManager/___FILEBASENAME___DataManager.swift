@@ -9,6 +9,11 @@
 import UIKit
 import XFLegoVIPER
 
-class ___FILEBASENAMEASIDENTIFIER___DataManager: XFDataManager, ___FILEBASENAMEASIDENTIFIER___DataManagerPort {
+class ___VARIABLE_productName:identifier___DataManager: XFDataManager {
+    
+}
 
+//MARK:- Get Data
+extension ___VARIABLE_productName:identifier___DataManager : ___VARIABLE_productName:identifier___DataManagerPort {
+    
 }

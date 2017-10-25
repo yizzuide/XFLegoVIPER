@@ -7,9 +7,9 @@
 //
 
 
-#import "___FILEBASENAME___Routing.h"
+#import "___VARIABLE_productName:identifier___Routing.h"
 
-@implementation ___FILEBASENAMEASIDENTIFIER___Routing
+@implementation ___VARIABLE_productName:identifier___Routing
 
 // 组装模块
 XF_AutoAssemblyModule_Fast

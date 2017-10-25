@@ -9,23 +9,25 @@
 import UIKit
 import XFLegoVIPER
 
-private func DataManager(_ interactor: XFInteractor) ->___FILEBASENAMEASIDENTIFIER___DataManagerPort? { return interactor.dataManager as? ___FILEBASENAMEASIDENTIFIER___DataManagerPort }
+private func DataManager(_ interactor: XFInteractor) ->___VARIABLE_productName:identifier___DataManagerPort? { return interactor.dataManager as? ___VARIABLE_productName:identifier___DataManagerPort }
 
-class ___FILEBASENAMEASIDENTIFIER___Interactor: XFInteractor, ___FILEBASENAMEASIDENTIFIER___InteractorPort {
-    
-    //MARK:- Request
-    /*func fetchData() {
-        print("___FILEBASENAMEASIDENTIFIER___Interactor -- fetchData")
-     }*/
+class ___VARIABLE_productName:identifier___Interactor: XFInteractor {
     
 }
 
+//MARK:- Request
+extension ___VARIABLE_productName:identifier___Interactor : ___VARIABLE_productName:identifier___InteractorPort {
+    /*func fetchData() {
+        print("___VARIABLE_productName:identifier___Interactor -- fetchData")
+     }*/
+}
+
 //MARK:- BusinessReduce
-extension ___FILEBASENAMEASIDENTIFIER___Interactor {
+extension ___VARIABLE_productName:identifier___Interactor {
     
 }
 
 //MARK:- ConvertData
-extension ___FILEBASENAMEASIDENTIFIER___Interactor {
+extension ___VARIABLE_productName:identifier___Interactor {
     
 }

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XFWireFramePort.h"
 
-@protocol ___FILEBASENAMEASIDENTIFIER___WireFramePort <XFWireFramePort>
+@protocol ___VARIABLE_productName:identifier___WireFramePort <XFWireFramePort>
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "LEViewModel.h"
-#import "___FILEBASENAME___DataDriverProtocol.h"
+#import "___VARIABLE_productName:identifier___DataDriverProtocol.h"
 
-@interface ___FILEBASENAMEASIDENTIFIER___ViewModel : LEViewModel <___FILEBASENAMEASIDENTIFIER___DataDriverProtocol>
+@interface ___VARIABLE_productName:identifier___ViewModel : LEViewModel <___VARIABLE_productName:identifier___DataDriverProtocol>
 
 @end

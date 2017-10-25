@@ -7,9 +7,9 @@
 //
 
 #import "___VARIABLE_productName:identifier___ViewModel.h"
-#import "___VARIABLE_productName:identifier___ViewProtocol.h"
+#import "___VARIABLE_productName:identifier___ViewController.h"
 
-#define View LEGORealPort(id<___VARIABLE_productName:identifier___ViewProtocol>, self.view)
+#define View LEGORealPort(___VARIABLE_productName:identifier___ViewController *, self.view)
 
 @interface ___VARIABLE_productName:identifier___ViewModel ()
 
@@ -73,4 +73,7 @@
 
 
 #pragma mark - FetchData
+
+
+#pragma mark - Formatter data
 @end

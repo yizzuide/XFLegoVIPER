@@ -6,11 +6,11 @@
 //  ___COPYRIGHT___
 //
 
-#import "___FILEBASENAME___EventHandlerPort.h"
+#import "___VARIABLE_productName:identifier___EventHandlerPort.h"
 #import "XFPresenter.h"
 
 
-@interface ___FILEBASENAMEASIDENTIFIER___Presenter : XFPresenter <___FILEBASENAMEASIDENTIFIER___EventHandlerPort>
+@interface ___VARIABLE_productName:identifier___Presenter : XFPresenter <___VARIABLE_productName:identifier___EventHandlerPort>
 
 
 @end
