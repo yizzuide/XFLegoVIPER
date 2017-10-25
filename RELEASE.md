@@ -1,3 +1,17 @@
+# V4.4.0
+## New Feture:
+1. 添加多前辍可选列表方法`-setClassPrefixList:`，通过给出的可选前辍列表，框架会自动为你找到相应的模块，且旧版设置前辍方法不受影响
+
+## Improving:
+1. 针对虚拟组件优化基因组件名（以前的叫法是：父模块名）查找的算法，现可支持`多单词基因组件名+多单词虚拟组件名`，如：
+```ini
+基因组件名：PostPage
+虚拟组件名: NewAllPostPage、NewVideoPostPage
+```
+2. 框架内部针对模块匹配核心代码抽取与重构
+
+
+
 # V4.3.1
 ## Improving:
 1. 针对Extra的MVVM扩展支持自定义组件名
