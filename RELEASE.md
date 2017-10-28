@@ -1,3 +1,8 @@
+# V4.4.1
+## New Feture:
+1. MVVM模块Extra添加`compName`，在控制器上可以设置自定义组件名，再通过继承`LEMVVMNavigationController`来连接到乐高组件容器
+
+
 # V4.4.0
 ### 旧项目的过渡方案来了之系列二，支持无厘头项目的多前辍问题
 ## New Feture:
@@ -8,7 +13,6 @@
 ```ini
 基因组件名：PostPage
 虚拟组件名: NewAllPostPage、NewVideoPostPage
-
 ```
 
 2. 框架内部针对模块匹配核心代码抽取与重构
