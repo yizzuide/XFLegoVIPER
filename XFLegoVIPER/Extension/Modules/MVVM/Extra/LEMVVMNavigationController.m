@@ -25,18 +25,13 @@
 {
     NSString *className = NSStringFromClass([viewController class]);
     if ([className containsString:@"ViewController"]) {
-        id<XFComponentRoutable> componentRoutable;
         // 是否有自定义的组件名
         if ([viewController respondsToSelector:@selector(compName)] &&
             viewController.compName.length) {
-             componentRoutable = [LEMVVMConnector makeComponentFromUInterface:viewController forName:viewController.compName];
+             [LEMVVMConnector makeComponentFromUInterface:viewController forName:viewController.compName];
         } else {
             // 否则就用框架自动检测功能
-            componentRoutable = [LEMVVMConnector makeComponentFromUInterface:viewController];
-        }
-        if ([viewController respondsToSelector:@selector(intentData)] &&
-            viewController.intentData) {
-            componentRoutable.intentData = viewController.intentData;
+            [LEMVVMConnector makeComponentFromUInterface:viewController];
         }
     }
     [super pushViewController:viewController animated:animated];
