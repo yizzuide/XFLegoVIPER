@@ -167,7 +167,7 @@
 /* Begin PBXFileReference section */
 		03E9152FD23584F0674B0301 /* libPods-XFLegoVIPERExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XFLegoVIPERExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAFD3E7A4FB020A558221E3 /* Pods-XFLegoVIPERExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XFLegoVIPERExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XFLegoVIPERExample/Pods-XFLegoVIPERExample.debug.xcconfig"; sourceTree = "<group>"; };
-		4008F6611FA4644600400A4C /* LEMVVMComponetName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMComponetName.h; sourceTree = "<group>"; };
+		4008F6611FA4644600400A4C /* LEMVVMIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMIntent.h; sourceTree = "<group>"; };
 		4024C3E91CC48BB5000D8182 /* XFLegoVIPERExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFLegoVIPERExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C3F81CC48BB5000D8182 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4024C3FB1CC48BB5000D8182 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -570,7 +570,7 @@
 		408690831F8B23BA00C2FD5D /* Extra */ = {
 			isa = PBXGroup;
 			children = (
-				4008F6611FA4644600400A4C /* LEMVVMComponetName.h */,
+				4008F6611FA4644600400A4C /* LEMVVMIntent.h */,
 				408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */,
 				408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */,
 				408690861F8B23BA00C2FD5D /* LEMVVMNavigationController.h */,

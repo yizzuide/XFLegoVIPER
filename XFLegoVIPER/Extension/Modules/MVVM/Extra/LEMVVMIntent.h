@@ -6,15 +6,19 @@
 //  Copyright © 2017年 yizzuide. All rights reserved.
 //
 
-#ifndef LEMVVMComponetName_h
-#define LEMVVMComponetName_h
+#ifndef LEMVVMIntent_h
+#define LEMVVMIntent_h
 
-@protocol LEMVVMComponetName
+@protocol LEMVVMIntent
 
 /*
  * 组件名
  */
 @property (copy, nonatomic) NSString *compName;
+/*
+ * 意图数据
+ */
+@property (copy, nonatomic) id intentData;
 @end
 
 #endif /* LEMVVMComponetName_h */
