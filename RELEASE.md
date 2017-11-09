@@ -1,3 +1,10 @@
+# V4.4.2
+## New Feture:
+1. MVVM模块Extra里添加`intentData`，在控制器上可以设置意图数据传输至事件层
+
+## API Breaking:
+1. MVVM模块Extra扩展协议名改为`LEMVVMIntent`, 支持设置自定义的组件名和组件意图数据
+
 # V4.4.1
 ## New Feture:
 1. MVVM模块Extra添加`compName`，在控制器上可以设置自定义组件名，再通过继承`LEMVVMNavigationController`来连接到乐高组件容器
