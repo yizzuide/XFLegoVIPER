@@ -1,3 +1,11 @@
+# V4.4.3
+### 迷你MVVM开发方式加强版
+## New Feture:
+1. 支持实现协议`LEMVVMIntent`和调用`LEMVVMConnector`方法`makeComponentFromUInterface:forName:intentData:`双方式
+
+## Improving:
+1. 内部对`LEMVVMConnector`重载方法重构
+
 # V4.4.2
 ## New Feture:
 1. MVVM模块Extra里添加`intentData`，在控制器上可以设置意图数据传输至事件层
