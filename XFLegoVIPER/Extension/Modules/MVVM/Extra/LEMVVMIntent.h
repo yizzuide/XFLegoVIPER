@@ -11,10 +11,12 @@
 
 @protocol LEMVVMIntent
 
+@optional
 /*
  * 组件名
  */
 @property (copy, nonatomic) NSString *compName;
+
 /*
  * 意图数据
  */

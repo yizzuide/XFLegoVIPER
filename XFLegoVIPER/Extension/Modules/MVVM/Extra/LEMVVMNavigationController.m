@@ -25,14 +25,7 @@
 {
     NSString *className = NSStringFromClass([viewController class]);
     if ([className containsString:@"ViewController"]) {
-        // 是否有自定义的组件名
-        if ([viewController respondsToSelector:@selector(compName)] &&
-            viewController.compName.length) {
-             [LEMVVMConnector makeComponentFromUInterface:viewController forName:viewController.compName];
-        } else {
-            // 否则就用框架自动检测功能
-            [LEMVVMConnector makeComponentFromUInterface:viewController];
-        }
+        [LEMVVMConnector makeComponentFromUInterface:viewController];
     }
     [super pushViewController:viewController animated:animated];
 }

@@ -62,6 +62,8 @@
 		40B6588C1E2CA0B100AB507F /* XFMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B6588A1E2CA0B100AB507F /* XFMessageViewController.m */; };
 		40B6588D1E2CA0B100AB507F /* XFMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B6588B1E2CA0B100AB507F /* XFMessageViewController.xib */; };
 		40B658911E2CAE1C00AB507F /* XFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B658901E2CAE1C00AB507F /* XFNavigationController.m */; };
+		40C2F2261FB42B6500311684 /* XFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C2F2221FB42B6500311684 /* XFAboutViewController.m */; };
+		40C2F2271FB42B6500311684 /* XFAboutViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C2F2251FB42B6500311684 /* XFAboutViewModel.m */; };
 		40EB31E51E2C9EF5004581F2 /* XFBookPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EB31151E2C9EF5004581F2 /* XFBookPresenter.m */; };
 		40EB31E61E2C9EF5004581F2 /* XFMoviePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EB31171E2C9EF5004581F2 /* XFMoviePresenter.m */; };
 		40EB31E71E2C9EF5004581F2 /* XFMusicPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EB31191E2C9EF5004581F2 /* XFMusicPresenter.m */; };
@@ -295,6 +297,10 @@
 		40B6588B1E2CA0B100AB507F /* XFMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMessageViewController.xib; sourceTree = "<group>"; };
 		40B6588F1E2CAE1C00AB507F /* XFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFNavigationController.h; sourceTree = "<group>"; };
 		40B658901E2CAE1C00AB507F /* XFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFNavigationController.m; sourceTree = "<group>"; };
+		40C2F2211FB42B6500311684 /* XFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFAboutViewController.h; sourceTree = "<group>"; };
+		40C2F2221FB42B6500311684 /* XFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFAboutViewController.m; sourceTree = "<group>"; };
+		40C2F2241FB42B6500311684 /* XFAboutViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFAboutViewModel.h; sourceTree = "<group>"; };
+		40C2F2251FB42B6500311684 /* XFAboutViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFAboutViewModel.m; sourceTree = "<group>"; };
 		40EB31111E2C9EF5004581F2 /* XFPageControlUserInterfacePort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFPageControlUserInterfacePort.h; sourceTree = "<group>"; };
 		40EB31141E2C9EF5004581F2 /* XFBookPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFBookPresenter.h; sourceTree = "<group>"; };
 		40EB31151E2C9EF5004581F2 /* XFBookPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFBookPresenter.m; sourceTree = "<group>"; };
@@ -1030,6 +1036,49 @@
 			path = UIControls;
 			sourceTree = "<group>";
 		};
+		40C2F21D1FB42B6500311684 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				40C2F21E1FB42B6500311684 /* Express */,
+				40C2F21F1FB42B6500311684 /* Model */,
+				40C2F2201FB42B6500311684 /* View */,
+				40C2F2231FB42B6500311684 /* ViewModel */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		40C2F21E1FB42B6500311684 /* Express */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Express;
+			sourceTree = "<group>";
+		};
+		40C2F21F1FB42B6500311684 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		40C2F2201FB42B6500311684 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40C2F2211FB42B6500311684 /* XFAboutViewController.h */,
+				40C2F2221FB42B6500311684 /* XFAboutViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40C2F2231FB42B6500311684 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				40C2F2241FB42B6500311684 /* XFAboutViewModel.h */,
+				40C2F2251FB42B6500311684 /* XFAboutViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		40EB310A1E2C9EF5004581F2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1402,6 +1451,7 @@
 		40EB31881E2C9EF5004581F2 /* SearchPicture */ = {
 			isa = PBXGroup;
 			children = (
+				40C2F21D1FB42B6500311684 /* About */,
 				40391F7E1E47265900021BF6 /* Setting */,
 				40B658881E2CA0A100AB507F /* Message */,
 				40EB31891E2C9EF5004581F2 /* PictureResults */,
@@ -2089,6 +2139,7 @@
 				40EB322A1E2C9EF5004581F2 /* AppDelegate.m in Sources */,
 				40997F861F18CB0E00D784FD /* XFComponentViewController.m in Sources */,
 				40EB320C1E2C9EF5004581F2 /* XFStautsRenderItem.m in Sources */,
+				40C2F2271FB42B6500311684 /* XFAboutViewModel.m in Sources */,
 				40997F821F18CB0E00D784FD /* UIViewController+ComponentUI.m in Sources */,
 				40EB32221E2C9EF5004581F2 /* XFSearchRouting.m in Sources */,
 				40EB32191E2C9EF5004581F2 /* XFPictureTableViewCell.m in Sources */,
@@ -2100,6 +2151,7 @@
 				40997F911F18CB0E00D784FD /* XFExpressPiece.m in Sources */,
 				40997FA21F18CB0E00D784FD /* NSObject+XFLegoInvokeMethod.m in Sources */,
 				40EB31FF1E2C9EF5004581F2 /* XFSubControl2Routing.m in Sources */,
+				40C2F2261FB42B6500311684 /* XFAboutViewController.m in Sources */,
 				40391F811E47268000021BF6 /* LGSettingViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2264,7 +2316,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
-					"-w",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2303,7 +2354,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
-					"-w",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

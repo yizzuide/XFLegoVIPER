@@ -8,6 +8,9 @@
 
 #import "XFSearchRouting.h"
 #import "XFPictureResultsRouting.h"
+#import "XFAboutViewController.h"
+#import "LEMVVMConnector.h"
+#import "XFNavigationController.h"
 
 @implementation XFSearchRouting
 
@@ -58,5 +61,15 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
             completionBlock();
         }];
     } customCode:nil];
+}
+
+// 测试MiniMVVM
+- (void)transition2About
+{
+    XFAboutViewController *aboutVC = [[XFAboutViewController alloc] init];
+//    [LEMVVMConnector makeComponentFromUInterface:aboutVC forName:@"about"];
+    [LEMVVMConnector makeComponentFromUInterface:aboutVC forName:@"about" intentData:@{@"id":@(123)}];
+    UINavigationController *nav = [[XFNavigationController alloc] initWithRootViewController:aboutVC];
+    [self.realUInterface presentViewController:nav animated:YES completion:nil];
 }
 @end

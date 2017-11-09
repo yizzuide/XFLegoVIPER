@@ -16,6 +16,7 @@
 
 - (void)transition2Message;
 - (void)transition2Setting;
+- (void)transition2About;
 @end
 
 

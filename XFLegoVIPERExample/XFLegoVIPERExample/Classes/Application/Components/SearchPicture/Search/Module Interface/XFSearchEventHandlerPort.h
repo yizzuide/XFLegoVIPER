@@ -18,6 +18,7 @@
 @property (strong, nonatomic) RACCommand *executeSearch;
 @property (nonatomic, strong) RACCommand *showMessageCommand;
 @property (nonatomic, strong) RACCommand *showSettingCommand;
+@property (nonatomic, strong) RACCommand *showAboutCommand;
 
 @property (strong, nonatomic) RACSignal *connectionErrors;
 
