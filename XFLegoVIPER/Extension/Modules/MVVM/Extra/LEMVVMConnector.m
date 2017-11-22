@@ -46,8 +46,8 @@ static char *kIntentDataKey = "intentData";
             [XFComponentManager addComponent:viewModel forName:viewController.compName];
         } else if (dynamicCompName && dynamicCompName.length) { // 通过Objc动态属性
             [XFComponentManager addComponent:viewModel forName:dynamicCompName];
-        } else { // 自动检测
-            [XFComponentManager addComponent:viewModel enableLog:NO];
+        } else { // 使用自动检测的组件名添加
+            [XFComponentManager addComponent:viewModel forName:inspectComponentName];
         }
         return viewModel;
     }

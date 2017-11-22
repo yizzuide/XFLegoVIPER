@@ -13,9 +13,9 @@
 #define View LEGORealPort(XFAboutViewController *, self.view)
 
 // 解决模拟器无法打印，修改仅针对开发模式生效
-#ifndef __OPTIMIZE__
+/*#ifndef __OPTIMIZE__
 #define NSLog(...) printf("%f %s\n",[[NSDate date]timeIntervalSince1970],[[NSString stringWithFormat:__VA_ARGS__]UTF8String]);
-#endif
+#endif*/
 
 @interface XFAboutViewModel ()
 

@@ -11,11 +11,15 @@
 @interface UIViewController (ComponentUI)
 
 /**
- *  针对TabBarViewController的框架视图加载完成方法
+ *  针对TabBarViewController的框架视图加载完成方法的勾子方法
  */
 - (void)xfLego_viewDidLoadForTabBarViewController;
 /**
- *  当前视图将被Pop或Dismiss
+ *  当前视图将被Pop或Dismiss的勾子方法
  */
 - (void)xfLego_viewWillPopOrDismiss;
+/**
+ * 是否在视图被完全移除时，使用框架自动移除当前组件机制的勾子方法，默认为YES
+ */
+- (BOOL)xfLego_enableAutoRemoveSelfComp;
 @end

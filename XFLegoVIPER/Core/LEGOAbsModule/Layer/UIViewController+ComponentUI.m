@@ -97,6 +97,20 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
     MatchComponent
     if ([component respondsToSelector:@selector(viewDidDisappear)])
         [component viewDidDisappear];
+    
+    // 如果当前控制器属于TabBar直接子控制器，直接返回 (因为该组件不需要移除)
+    if ([self.parentViewController isKindOfClass:[UITabBarController class]]) {
+        return;
+    }
+    if ([self.parentViewController isKindOfClass:[UINavigationController class]] &&
+        [self.parentViewController.parentViewController isKindOfClass:[UITabBarController class]]) {
+        return;
+    }
+    // 如果当前控制器出于某种原因拒绝被移除，直接返回
+    if (![self xfLego_enableAutoRemoveSelfComp]) {
+        return;
+    }
+    
     // 如果当前视图被pop或dismiss
     if (self.isMovingFromParentViewController ||
         self.isBeingDismissed ||
@@ -124,6 +138,10 @@ if (!component || [component isKindOfClass:[UIViewController class]]) return;
 #pragma mark - 子类可覆盖方法
 - (void)xfLego_viewDidLoadForTabBarViewController {}
 - (void)xfLego_viewWillPopOrDismiss {}
+- (BOOL)xfLego_enableAutoRemoveSelfComp
+{
+    return YES;
+}
 // 实现退出键盘
 - (void)needDismissKeyboard
 {
