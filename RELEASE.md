@@ -1,3 +1,15 @@
+# V4.5.0
+### 引擎在组件在移除行为上的改进
+## New Feture:
+1. 所能模式(MVC、MVVM、VIPER...)组件的控制器视图添加一个`-xfLego_enableAutoRemoveSelfComp`钩子方法，用于框架无法考虑到的常驻在TabBar上子控制器及多级下时可移除情况，可覆盖这个方法返回`NO`来防止被框架自动移除
+
+## Improving:
+1. `LEMVVMConnector`类的功能代码优化
+
+## Fix Bugs:
+1. 修复组件发送事件可能由于组件被移除而无法接收的问题
+
+
 # V4.4.3
 ### 迷你MVVM开发方式加强版
 ## New Feture:
