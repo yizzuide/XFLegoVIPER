@@ -2,8 +2,9 @@
 ### 让事件无处不在
 ## New Feture:
 1. 所有对象都可以成功事件接收对象，实现步骤:
-  - 实现接口`XFEventDispatchPort`的方法
-  - 注册到组件管理`XFComponentManager`，通过`addEventReceiver:componentName:(NSString *)componentName`方法
+
+- 实现接口`XFEventDispatchPort`的方法
+- 注册到组件管理`XFComponentManager`，通过`addEventReceiver:componentName:(NSString *)componentName`方法
 
 # V4.5.0
 ### 引擎在组件在移除行为上的改进
