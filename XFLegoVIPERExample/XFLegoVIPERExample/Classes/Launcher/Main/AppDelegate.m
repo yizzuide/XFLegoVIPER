@@ -11,9 +11,11 @@
 #import "XFLegoVIPER.h"
 #import "XFAppURLRegister.h"
 #import "LEMVVMModuleHandler.h"
+#import "XFEventCollector.h"
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) XFEventCollector *eventCollector;
 @end
 
 @implementation AppDelegate
@@ -44,6 +46,7 @@
     
     [self setWebImageUserAgent];
     
+    self.eventCollector = [[XFEventCollector alloc] init];
     
     return YES;
 }

@@ -25,11 +25,18 @@ static NSMapTable *componentTable_;
  */
 static NSMutableArray *componentKeyArr_;
 
+/**
+ * 事件接收对象
+ */
+static NSMapTable *eventReceiverTable_;
+
 + (void)initialize
 {
     if (self == [XFComponentManager class]) {
         componentTable_ = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
         componentKeyArr_ = [NSMutableArray array];
+        
+        eventReceiverTable_ = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
     }
 }
 
@@ -108,6 +115,16 @@ static NSMutableArray *componentKeyArr_;
     [self removeComponentForName:componentName];
 }
 
++ (void)addEventReceiver:(id)receiver componentName:(NSString *)componentName
+{
+    [eventReceiverTable_ setObject:receiver forKey:componentName];
+}
+
++ (void)removeEventReceiverComponentWithName:(NSString *)componentName
+{
+    [eventReceiverTable_ removeObjectForKey:componentName];
+}
+
 + (void)_clearZombieComponent
 {
     NSEnumerator *keys = componentTable_.keyEnumerator;
@@ -136,6 +153,16 @@ static NSMutableArray *componentKeyArr_;
 
 + (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponent:(nonnull NSString *)componentName
 {
+    // 先检测有没有事件接收者
+    if (eventReceiverTable_.count) {
+        id<XFEventDispatchPort> dispatchPort = [eventReceiverTable_ objectForKey:componentName];
+        if (dispatchPort &&
+            [dispatchPort respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
+            [dispatchPort receiveComponentEventName:eventName intentData:intentData];
+            return;
+        }
+    }
+    
     id<XFComponentRoutable> component = [self findComponentForName:componentName];
     if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
         [component receiveComponentEventName:eventName intentData:intentData];

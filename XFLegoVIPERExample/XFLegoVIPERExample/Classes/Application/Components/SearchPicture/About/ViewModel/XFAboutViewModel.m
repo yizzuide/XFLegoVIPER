@@ -33,6 +33,8 @@
     NSLog(@"find comp: %@", comp);
     
     NSLog(@"intentData: %@", self.intentData);
+    
+    [XFComponentManager sendEventName:@"xxxx" intentData:nil forComponent:@"EventCollector"];
 }
 
 // 初始化视图数据

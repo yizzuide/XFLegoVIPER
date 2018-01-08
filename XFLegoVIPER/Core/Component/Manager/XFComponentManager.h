@@ -12,6 +12,7 @@
 #define XF_SendEventForComponent_(eventName, sendData, componentName) \
 [XFComponentManager sendEventName:eventName intentData:sendData forComponent:componentName];
 
+@protocol XFEventDispatchPort;
 @protocol XFComponentRoutable;
 NS_ASSUME_NONNULL_BEGIN
 @interface XFComponentManager : NSObject
@@ -54,6 +55,18 @@ NS_ASSUME_NONNULL_BEGIN
  * @param componentName  组件名
  */
 + (void)removeIncompatibleComponentWithName:(NSString *)componentName;
+
+/**
+ * 添加一个事件接受者
+ * @param id<XFEventDispatchPort> 实现事件派发端口的任意对象
+ * @param componentName  组件名
+ */
++ (void)addEventReceiver:(id<XFEventDispatchPort>)receiver componentName:(NSString *)componentName;
+/**
+ * 移除一个事件接受者
+ * @param componentName  组件名
+ */
++ (void)removeEventReceiverComponentWithName:(NSString *)componentName;
 
 /**
  *  组件总数

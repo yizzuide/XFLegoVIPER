@@ -15,6 +15,7 @@
 		40391F811E47268000021BF6 /* LGSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F801E47268000021BF6 /* LGSettingViewModel.m */; };
 		40391F851E47269E00021BF6 /* LGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40391F831E47269E00021BF6 /* LGSettingViewController.m */; };
 		40391F861E47269E00021BF6 /* LGSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40391F841E47269E00021BF6 /* LGSettingViewController.xib */; };
+		407C7CBD20036D5F000A4B90 /* XFEventCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 407C7CBC20036D5F000A4B90 /* XFEventCollector.m */; };
 		408690881F8B2F8B00C2FD5D /* LEMVVMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690871F8B23BA00C2FD5D /* LEMVVMNavigationController.m */; };
 		408690891F8B2F8E00C2FD5D /* LEMVVMConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */; };
 		40997F7B1F18CB0E00D784FD /* XFUInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997EF01F18CB0E00D784FD /* XFUInterfaceFactory.m */; };
@@ -185,6 +186,9 @@
 		40391F821E47269E00021BF6 /* LGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSettingViewController.h; sourceTree = "<group>"; };
 		40391F831E47269E00021BF6 /* LGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSettingViewController.m; sourceTree = "<group>"; };
 		40391F841E47269E00021BF6 /* LGSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGSettingViewController.xib; sourceTree = "<group>"; };
+		407C7CB8200367D9000A4B90 /* XFEventDispatchPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEventDispatchPort.h; sourceTree = "<group>"; };
+		407C7CBB20036D5F000A4B90 /* XFEventCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEventCollector.h; sourceTree = "<group>"; };
+		407C7CBC20036D5F000A4B90 /* XFEventCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFEventCollector.m; sourceTree = "<group>"; };
 		408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMConnector.h; sourceTree = "<group>"; };
 		408690851F8B23BA00C2FD5D /* LEMVVMConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMVVMConnector.m; sourceTree = "<group>"; };
 		408690861F8B23BA00C2FD5D /* LEMVVMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMNavigationController.h; sourceTree = "<group>"; };
@@ -573,6 +577,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		407C7CBA20036D3E000A4B90 /* analysis */ = {
+			isa = PBXGroup;
+			children = (
+				407C7CBB20036D5F000A4B90 /* XFEventCollector.h */,
+				407C7CBC20036D5F000A4B90 /* XFEventCollector.m */,
+			);
+			path = analysis;
+			sourceTree = "<group>";
+		};
 		408690831F8B23BA00C2FD5D /* Extra */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,8 +717,9 @@
 		40997F0B1F18CB0E00D784FD /* PlugInterface */ = {
 			isa = PBXGroup;
 			children = (
-				40997F0C1F18CB0E00D784FD /* XFComponentHandlerPlug.h */,
+				407C7CB8200367D9000A4B90 /* XFEventDispatchPort.h */,
 				40997F0D1F18CB0E00D784FD /* XFComponentRoutable.h */,
+				40997F0C1F18CB0E00D784FD /* XFComponentHandlerPlug.h */,
 				40997F0E1F18CB0E00D784FD /* XFURLRoutePlug.h */,
 			);
 			path = PlugInterface;
@@ -1733,6 +1747,7 @@
 		40EB31D01E2C9EF5004581F2 /* FoundationCollect */ = {
 			isa = PBXGroup;
 			children = (
+				407C7CBA20036D3E000A4B90 /* analysis */,
 				40EB31D11E2C9EF5004581F2 /* Utils */,
 			);
 			path = FoundationCollect;
@@ -2127,6 +2142,7 @@
 				40997F871F18CB0E00D784FD /* XFControllerReflect.m in Sources */,
 				40997FA01F18CB0E00D784FD /* XFURLRoute.m in Sources */,
 				40EB32081E2C9EF5004581F2 /* XFWeiboInteractor.m in Sources */,
+				407C7CBD20036D5F000A4B90 /* XFEventCollector.m in Sources */,
 				40B658911E2CAE1C00AB507F /* XFNavigationController.m in Sources */,
 				40997F9B1F18CB0E00D784FD /* XFRouting.m in Sources */,
 				40EB31F41E2C9EF5004581F2 /* XFSubControlPresenter.m in Sources */,
