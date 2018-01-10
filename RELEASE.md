@@ -4,7 +4,7 @@
 1. 抽取VIPER里的Express到Component层，使MVVM及其它模块可以拥有些功能，通过ExpressPack来填充数据
 
 ## API Breaking:
-1. 组件事件层的`-xfLego_viewWillPopOrDismiss`改为`-viewWillPopOrDismiss`
+1. 组件事件层方法`-xfLego_viewWillPopOrDismiss`改为`-viewWillPopOrDismiss`
 2. 框架内部接口`XFComponentUIEvent`改为`XFComponentEventResponder`，同时删除不常用的`-dismissKeyboard `方法
 3. VIPER模块事件层方法移除`-xfLego_onBackItemTouch`和`-xfLego_onDismissItemTouch `方法，改为各模块通用的`-popViewAction`和`-dismissViewAction`，并且删除`errorMessage `成员变量
 
@@ -15,7 +15,7 @@
 # V4.6.0
 ### 让事件无处不在
 ## New Feture:
-1. 所有对象都可以成功事件接收对象，实现步骤:
+1. 所有对象都可以成为事件接收对象，实现步骤:
 
 - 实现接口`XFEventDispatchPort`的方法
 - 注册到组件管理`XFComponentManager`，通过`addEventReceiver:componentName:(NSString *)componentName`方法
