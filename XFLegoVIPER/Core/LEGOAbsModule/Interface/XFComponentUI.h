@@ -68,6 +68,10 @@ view.frame = frame;
  *  需要退出键盘
  */
 - (void)needDismissKeyboard;
+/**
+ * 填充数据
+ */
+- (void)needFillRenderData;
 
 @end
 

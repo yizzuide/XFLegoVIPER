@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'XFLegoVIPER'
-s.version = '4.7.0'
+s.version = '4.7.1'
 s.license = 'MIT'
 s.summary = 'A seamless framework for build app from MVC, MVVM, VIPER (etc.) design pattern in iOS world. (OC & Swift)'
 s.homepage = 'https://github.com/yizzuide/XFLegoVIPER'
