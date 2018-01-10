@@ -8,6 +8,9 @@
 
 #import "XFExpressPiece.h"
 
+/**
+ *  子视图渲染包协议
+ */
 @protocol XFExpressPiecePort <NSObject>
 
 @property (nonatomic, weak) XFExpressPiece *expressPiece;

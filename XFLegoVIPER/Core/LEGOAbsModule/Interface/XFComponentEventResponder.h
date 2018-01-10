@@ -29,15 +29,19 @@ commandRef = [[RACCommand alloc] initWithEnabled:enableSignal signalBlock:^RACSi
 }];
 
 /**
- *  这个协议用于模块事件层实现，针对视图要做的统一事件处理
+ *  这个协议用于模块事件层实现，用于视图控件事件响应
  */
-@protocol XFComponentUIEvent <NSObject>
+@protocol XFComponentEventResponder <NSObject>
 
 @optional
 /**
- *  使视图层退下键盘
+ *  pop方式弹出视图
  */
-- (void)dismissKeyboard;
+- (void)popViewAction;
+/**
+ *  dismiss方式弹出视图
+ */
+- (void)dismissViewAction;
 
 @end
 

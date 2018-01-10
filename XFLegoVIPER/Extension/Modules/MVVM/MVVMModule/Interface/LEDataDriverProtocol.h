@@ -8,16 +8,23 @@
 
 #ifndef LEDataDriverProtocol_h
 #define LEDataDriverProtocol_h
+#import "XFComponentEventResponder.h"
+#import "XFExpressPack.h"
 
 /**
  *  数据驱动接口
  */
-@protocol LEDataDriverProtocol <NSObject>
+@protocol LEDataDriverProtocol <XFComponentEventResponder>
 
 /**
- *  快递数据
+ *  快速填充简单数据
  */
 @property (nonatomic, strong) id expressData;
+/**
+ *  填充列表复杂数据（RenderData渲染数据的包装类）
+ *
+ */
+@property (nonatomic, strong) __kindof XFExpressPack *expressPack;
 @end
 
 #endif /* LEDataDriverProtocol_h */

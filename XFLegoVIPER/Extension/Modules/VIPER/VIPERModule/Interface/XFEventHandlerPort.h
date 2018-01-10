@@ -8,9 +8,10 @@
 
 #ifndef XFEventHandlerPort_h
 #define XFEventHandlerPort_h
+#import "XFComponentEventResponder.h"
+#import "XFExpressPack.h"
 
-@class XFExpressPack;
-@protocol XFEventHandlerPort <NSObject>
+@protocol XFEventHandlerPort <XFComponentEventResponder>
 
 /**
  *  快速填充简单数据
@@ -22,19 +23,6 @@
  */
 @property (nonatomic, strong) __kindof XFExpressPack *expressPack;
 
-/**
- *  错误消息
- */
-@property (nonatomic, copy) NSString *errorMessage;
-
-/**
- *  返回按钮被点击的处理方法（子类可以覆盖这个方法实现自己的逻辑）
- */
-- (void)xfLego_onBackItemTouch;
-/**
- *  取消按钮被点击的处理方法（子类可以覆盖这个方法实现自己的逻辑）
- */
-- (void)xfLego_onDismissItemTouch;
 @end
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+ComponentUI.h"
 #import "XFUIBus.h"
 #import "XFEventBus.h"
 

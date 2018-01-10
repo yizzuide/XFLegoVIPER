@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "XFControllerRunnable.h"
-#import "XFComponentUIEvent.h"
+#import "XFComponentEventResponder.h"
 #import "XFControllerReflect.h"
 #import "XFUInterfaceFactory.h"
 
-@interface XFComponentViewController : UIViewController <XFControllerRunnable,XFComponentUI,XFComponentUIEvent>
+@interface XFComponentViewController : UIViewController <XFControllerRunnable,XFComponentUI,XFComponentEventResponder>
 
 /**
  *  通过其它URL组件传递过来的参数

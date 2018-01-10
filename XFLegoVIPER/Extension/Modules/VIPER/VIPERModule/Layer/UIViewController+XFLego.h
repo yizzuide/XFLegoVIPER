@@ -11,7 +11,6 @@
 #import "XFEventHandlerPort.h"
 #import "XFLegoMarco.h"
 #import "XFUInterfaceFactory.h"
-#import "XFExpressPack.h"
 #import "UIViewController+ComponentUI.h"
 
 // 转换事件层真实接口

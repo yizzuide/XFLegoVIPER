@@ -12,10 +12,11 @@
 #import "LEDataDriverProtocol.h"
 #import "XFLegoMarco.h"
 #import "XFComponentBindEvent.h"
-#import "XFComponentUIEvent.h"
+#import "XFComponentEventResponder.h"
 #import "LEMVVMModuleReflect.h"
+#import "XFExpressDirver.h"
 
-@interface LEViewModel : NSObject <XFComponentBindEvent,XFComponentUIEvent, LEDataDriverProtocol,XFControllerRunnable>
+@interface LEViewModel : XFExpressDirver <XFComponentBindEvent, LEDataDriverProtocol, XFControllerRunnable>
 
 /**
  *  视图层

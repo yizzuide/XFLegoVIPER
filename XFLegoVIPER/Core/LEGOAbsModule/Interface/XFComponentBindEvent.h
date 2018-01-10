@@ -15,12 +15,13 @@
 @protocol XFComponentBindEvent <NSObject>
 
 @required
-// 绑定视图
+// 框架提供的模块事件层绑定视图方法（不要手动调用！！）
 - (void)xfLego_bindView:(id)view;
+
 /**
- *  视图将被pop或dismiss
+ *  视图将被pop或dismiss（不要手动调用！！）
  */
-- (void)xfLego_viewWillPopOrDismiss;
+- (void)xf_viewWillPopOrDismiss;
 
 
 @optional
@@ -30,6 +31,7 @@
 - (void)viewDidAppear;
 - (void)viewWillDisappear;
 - (void)viewDidDisappear;
+- (void)viewWillPopOrDismiss;
 
 /**
  *  初始化命令（绑定视图层的事件动作<Action>）

@@ -13,11 +13,14 @@
 // 把控制器导出为组件
 XF_EXPORT_COMPONENT
 
-// 实现事件层的退出键盘事件
-- (void)dismissKeyboard
+- (void)popViewAction
 {
-    // 调用视图层的方法
-    [self needDismissKeyboard];
+    [self.uiBus popComponent];
+}
+
+- (void)dismissViewAction
+{
+    [self.uiBus dismissComponent];
 }
 
 @end

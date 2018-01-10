@@ -27,11 +27,6 @@
 
 @implementation XFVIPERModuleAssembly
 
-- (instancetype)init
-{
-    return [self initWithFromRouting:nil];
-}
-
 - (instancetype)initWithFromRouting:(XFRouting *)fromRouting
 {
     self = [super init];
@@ -155,13 +150,13 @@
         }else{
 #ifdef LogError
             LogError(@"!!!!!!!!!!!!!!!! XFLegoVIPER !!!!!!!!!!!!!!!!!!!!!");
-            LogError(@"!! 从xib或storyboard加载视图错误 !!!!!!!!!!!!!!!!!!!!");
+            LogError(@"!!!!!!!!!!!! 从xib或storyboard加载视图错误 !!!!!!!!!!");
             LogError(@"请检查字符串标识，\n\nxib方式: x-xibName[-activityClass]\n \
                   storyboard方式: s-storyboardName-controllerIdentifier");
             LogError(@"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 #elif (defined DEBUG)
             NSLog(@"!!!!!!!!!!!!!!!! XFLegoVIPER !!!!!!!!!!!!!!!!!!!!!");
-            NSLog(@"!! 从xib或storyboard加载视图错误 !!!!!!!!!!!!!!!!!!!!");
+            NSLog(@"!!!!!!!!!!!! 从xib或storyboard加载视图错误 !!!!!!!!!!");
             NSLog(@"请检查字符串标识，\n\nxib方式: x-xibName[-activityClass]\n \
                   storyboard方式: s-storyboardName-controllerIdentifier");
             NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

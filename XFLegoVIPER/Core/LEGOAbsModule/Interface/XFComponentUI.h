@@ -38,17 +38,24 @@ view.frame = frame;
 @optional
 
 /**
- *  发起请求显示的消息
+ *  显示消息
  *
  *  @param msg 消息
  */
 - (void)needSendRequestWithMsg:(NSString *)msg;
 /**
- *  结束请求显示的消息
+ *  隐藏消息
  *
  *  @param msg 消息
  */
 - (void)needEndRequestWithMsg:(NSString *)msg;
+/**
+ *  隐藏消息
+ *
+ *  @param msg 消息
+ *  @param success 是否成功
+ */
+- (void)needEndRequestWithMsg:(NSString *)msg success:(BOOL)success;
 
 /**
  *  键盘弹起，需要更新输入界面的的Y值

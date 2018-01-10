@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return XFVIPERModuleReflect
  */
-- (instancetype)initWithFromRouting:(XFRouting *)fromRouting NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFromRouting:(XFRouting *)fromRouting;
 
 /**
  *  通过Nav或Nib快速组建一个模块

@@ -55,22 +55,14 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self xfLego_swizzleMethod:@selector(viewWillDisappear:) withMethod:@selector(componentBridge_viewWillDisappear:)];
         [self xfLego_swizzleMethod:@selector(viewDidLoad) withMethod:@selector(componentBridge_viewDidLoad)];
     });
 }
 
-- (void)componentBridge_viewWillDisappear:(BOOL)animated
+// 当前Component响应视图移除
+- (void)xf_viewWillPopOrDismiss
 {
-    [self componentBridge_viewWillDisappear:animated];
-    if (!self.uiBus) return;
-    // 如果当前视图被pop或dismiss
-    if (self.isMovingFromParentViewController ||
-        self.isBeingDismissed ||
-        self.navigationController.isMovingToParentViewController ||
-        self.navigationController.isBeingDismissed) {
-        // 如果通过框架方法,直接返回
-        if ([[self valueForKeyPath:@"poppingProgrammatically"] boolValue]) return;
+    if (self.uiBus) {
         // 将组件移除
         [self.uiBus xfLego_implicitRemoveComponentWithTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
             completionBlock();
