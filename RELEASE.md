@@ -5,7 +5,7 @@
 
 ## API Breaking:
 1. 组件事件层的`-xfLego_viewWillPopOrDismiss`改为`-viewWillPopOrDismiss`
-2. 框架内部去除`XFComponentUIEvent`接口，改为`XFComponentEventResponder`，同时删除不常用的`-dismissKeyboard `方法
+2. 框架内部接口`XFComponentUIEvent`改为`XFComponentEventResponder`，同时删除不常用的`-dismissKeyboard `方法
 3. VIPER模块事件层方法移除`-xfLego_onBackItemTouch`和`-xfLego_onDismissItemTouch `方法，改为各模块通用的`-popViewAction`和`-dismissViewAction`，并且删除`errorMessage `成员变量
 
 ## Improving:
