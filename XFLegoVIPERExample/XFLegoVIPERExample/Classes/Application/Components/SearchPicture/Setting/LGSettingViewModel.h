@@ -10,4 +10,8 @@
 
 @interface LGSettingViewModel : LEViewModel
 
+- (void)startButtonAction;
+- (void)pauseButtonAction;
+- (void)restartButtonAction;
+- (void)stopButtonAction;
 @end

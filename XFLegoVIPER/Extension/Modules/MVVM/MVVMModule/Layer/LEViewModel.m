@@ -62,6 +62,8 @@ XF_EXPORT_COMPONENT
     [self.uiBus xfLego_implicitRemoveComponentWithTransitionBlock:^(Activity *thisInterface, Activity *nextInterface, TransitionCompletionBlock completionBlock) {
         completionBlock();
     }];
+    // 定时器移除
+    [self.eventBus stopTimer];
 }
 
 @end

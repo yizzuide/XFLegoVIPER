@@ -68,6 +68,10 @@
             completionBlock();
         }];
     }
+    if (self.eventBus) {
+        // 定时器移除
+        [self.eventBus stopTimer];
+    }
 }
 
 

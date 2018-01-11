@@ -24,11 +24,6 @@
 @property (nonatomic, weak, readonly) id<LEViewProtocol> view;
 
 /**
- *  快递数据
- */
-@property (nonatomic, strong) id expressData;
-
-/**
  *  UI总线
  */
 @property (nonatomic, strong, readonly) __kindof XFUIBus *uiBus;

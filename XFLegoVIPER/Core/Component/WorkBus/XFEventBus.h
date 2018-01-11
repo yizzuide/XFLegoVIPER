@@ -81,5 +81,28 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)registerMVxNotifications:(NSArray<NSString *> *)notiNames;
 
+/**
+ *  初始化定时器
+ *
+ *  @param interval 重复时间s
+ */
+- (void)setupTimerWithTimeInterval:(NSTimeInterval)interval;
+/**
+ *  启动定时器
+ */
+- (void)startTimer;
+/**
+ *  暂停定时器
+ */
+- (void)pauseTimer;
+/**
+ *  重启定时器
+ */
+- (void)resumeTimer;
+/**
+ *  停止/销毁定时器
+ */
+- (void)stopTimer;
+
 @end
 NS_ASSUME_NONNULL_END

@@ -23,6 +23,11 @@
  *  所有用侦听通知的对象
  */
 @property (nonatomic, strong) NSMutableArray *observers;
+/*
+ * 定时器
+ */
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 @implementation XFEventBus
@@ -122,6 +127,40 @@
      }];
     // 添加到侦听数组
     [self.observers addObject:observer];
+}
+
+- (void)setupTimerWithTimeInterval:(NSTimeInterval)interval
+{
+    if (![self.componentRoutable respondsToSelector:@selector(run)]) {
+        NSAssert(NO, @"当前可运行组件没有实现run方法！");
+        return;
+    }
+    self.timer = [NSTimer timerWithTimeInterval:interval target:self.componentRoutable selector:@selector(run) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    self.timer.fireDate = [NSDate distantFuture];
+}
+
+- (void)startTimer
+{
+    self.timer.fireDate = [NSDate distantPast];
+}
+
+- (void)pauseTimer
+{
+    self.timer.fireDate = [NSDate distantFuture];
+}
+
+- (void)resumeTimer
+{
+    self.timer.fireDate = [NSDate date];
+}
+
+- (void)stopTimer
+{
+    if (self.timer.isValid) {
+        [self.timer invalidate]; // 从运行循环中移除，对运行循环的引用进行一次 release
+        self.timer = nil; // 将销毁定时器
+    }
 }
 
 - (NSMutableArray *)observers

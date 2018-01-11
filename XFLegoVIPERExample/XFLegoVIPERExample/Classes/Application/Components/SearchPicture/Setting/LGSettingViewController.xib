@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LGSettingViewController">
             <connections>
+                <outlet property="pauseButton" destination="2ON-Db-prA" id="2dS-Ph-G8A"/>
+                <outlet property="restartButton" destination="YYu-i3-ToU" id="ve1-5l-qr2"/>
+                <outlet property="startButton" destination="YFq-M9-UT1" id="OYU-gu-4zq"/>
+                <outlet property="stopButton" destination="6DJ-cR-le8" id="BJy-cV-rHx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,9 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT8-t7-hr0">
-                    <rect key="frame" x="88" y="322" width="198" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT8-t7-hr0">
+                    <rect key="frame" x="92" y="91" width="190" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="8lb-QW-T9i"/>
+                    </constraints>
                     <string key="text">我是MVVM里的模块组件
 
  </string>
@@ -29,9 +35,49 @@
                     <color key="textColor" red="0.85098039219999999" green="0.42352941179999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFq-M9-UT1">
+                    <rect key="frame" x="168.5" y="148" width="37" height="34"/>
+                    <state key="normal" title="启动">
+                        <color key="titleColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ON-Db-prA">
+                    <rect key="frame" x="168.5" y="214" width="37" height="34"/>
+                    <state key="normal" title="暂停">
+                        <color key="titleColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYu-i3-ToU">
+                    <rect key="frame" x="168.5" y="288" width="37" height="34"/>
+                    <state key="normal" title="重启">
+                        <color key="titleColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DJ-cR-le8">
+                    <rect key="frame" x="168.5" y="358" width="37" height="34"/>
+                    <state key="normal" title="停止">
+                        <color key="titleColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="-174" y="42"/>
+            <constraints>
+                <constraint firstItem="6DJ-cR-le8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3aQ-M5-d4O"/>
+                <constraint firstItem="YFq-M9-UT1" firstAttribute="top" secondItem="AT8-t7-hr0" secondAttribute="bottom" constant="35" id="4O6-KA-UhA"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="centerX" secondItem="6DJ-cR-le8" secondAttribute="centerX" id="INx-Nd-FIU"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="centerX" secondItem="2ON-Db-prA" secondAttribute="centerX" id="IgZ-Ck-FN0"/>
+                <constraint firstItem="YYu-i3-ToU" firstAttribute="top" secondItem="2ON-Db-prA" secondAttribute="bottom" constant="40" id="LFH-6f-0H0"/>
+                <constraint firstItem="YYu-i3-ToU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gpB-Ih-tHA"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="centerX" secondItem="YFq-M9-UT1" secondAttribute="centerX" id="guL-IV-HfE"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h8w-Ky-EmH"/>
+                <constraint firstItem="2ON-Db-prA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lID-di-EQs"/>
+                <constraint firstItem="6DJ-cR-le8" firstAttribute="top" secondItem="YYu-i3-ToU" secondAttribute="bottom" constant="36" id="mEd-hB-kJ5"/>
+                <constraint firstItem="2ON-Db-prA" firstAttribute="top" secondItem="YFq-M9-UT1" secondAttribute="bottom" constant="32" id="qKr-WR-Bl9"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="centerX" secondItem="YYu-i3-ToU" secondAttribute="centerX" id="rWf-o3-Yng"/>
+                <constraint firstItem="AT8-t7-hr0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="91" id="wUT-Al-viT"/>
+                <constraint firstItem="YFq-M9-UT1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="z34-hu-dar"/>
+            </constraints>
+            <point key="canvasLocation" x="-669" y="-159"/>
         </view>
     </objects>
 </document>

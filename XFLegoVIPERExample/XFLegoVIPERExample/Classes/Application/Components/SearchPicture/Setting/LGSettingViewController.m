@@ -7,8 +7,16 @@
 //
 
 #import "LGSettingViewController.h"
+#import "LGSettingViewModel.h"
 
+#define ViewModel  LEGORealPort(LGSettingViewModel *, self.dataDriver)
 @interface LGSettingViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *restartButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+
 
 @end
 
@@ -22,6 +30,11 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:217/255.0 green:108/255.0 blue:0/255.0 alpha:1];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    
+    [self.startButton addTarget:ViewModel action:@selector(startButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.pauseButton addTarget:ViewModel action:@selector(pauseButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.restartButton addTarget:ViewModel action:@selector(restartButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.stopButton addTarget:ViewModel action:@selector(stopButtonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)cancel
@@ -29,20 +42,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)dealloc
 {

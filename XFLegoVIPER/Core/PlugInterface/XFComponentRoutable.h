@@ -87,5 +87,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)componentWillResignFocus;
 
+/**
+ * 定时器循环运行方法
+ */
+- (void)run;
+
 @end
 NS_ASSUME_NONNULL_END

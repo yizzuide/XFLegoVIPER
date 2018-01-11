@@ -59,7 +59,10 @@ XF_EXPORT_COMPONENT
 
 - (void)xf_viewWillPopOrDismiss
 {
+    // 路由移除
     [self.routing invokeMethod:@"xfLego_removeRouting"];
+    // 定时器移除
+    [self.eventBus stopTimer];
 }
 
 @end
