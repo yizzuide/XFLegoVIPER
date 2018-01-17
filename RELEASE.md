@@ -3,10 +3,11 @@
 
 ## New Feture:
 1. 所有实现`XFComponentRouable`接口的组件事件层通过EventBus提供的Timer机制，实现做定时任务工作，需实现`-run`方法，其它常用方法如下：
+  
   * setupTimerWithTimeInterval: 初始化定时器
-  * startTimer: 启动定时器
+  * startTimer: 启动定时器
   * pauseTimer: 暂停定时器
-  * resumeTimer: 恢复/重启定时器
+  * resumeTimer: 恢复/重启定时器
   * stopTimer: 停止/销毁定时器
 
 
