@@ -61,6 +61,10 @@
 		40997FA21F18CB0E00D784FD /* NSObject+XFLegoInvokeMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997F741F18CB0E00D784FD /* NSObject+XFLegoInvokeMethod.m */; };
 		40997FA31F18CB0E00D784FD /* NSObject+XFLegoSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997F761F18CB0E00D784FD /* NSObject+XFLegoSwizzle.m */; };
 		40997FA41F18CB0E00D784FD /* XFLegoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40997F781F18CB0E00D784FD /* XFLegoConfig.m */; };
+		40AEF9552010925D00A95B98 /* XFPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AEF9542010925D00A95B98 /* XFPipe.m */; };
+		40AEF9592010997C00A95B98 /* NSObject+XFPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AEF9582010997C00A95B98 /* NSObject+XFPipe.m */; };
+		40AEF95D20109D1200A95B98 /* XFApplicationEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AEF95C20109D1200A95B98 /* XFApplicationEmitter.m */; };
+		40AEF9632010CB2600A95B98 /* XFNetworkEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AEF9622010CB2600A95B98 /* XFNetworkEmitter.m */; };
 		40B6588C1E2CA0B100AB507F /* XFMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B6588A1E2CA0B100AB507F /* XFMessageViewController.m */; };
 		40B6588D1E2CA0B100AB507F /* XFMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B6588B1E2CA0B100AB507F /* XFMessageViewController.xib */; };
 		40B658911E2CAE1C00AB507F /* XFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B658901E2CAE1C00AB507F /* XFNavigationController.m */; };
@@ -299,6 +303,16 @@
 		40997F781F18CB0E00D784FD /* XFLegoConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFLegoConfig.m; sourceTree = "<group>"; };
 		40997F791F18CB0E00D784FD /* XFLegoMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLegoMarco.h; sourceTree = "<group>"; };
 		40997F7A1F18CB0E00D784FD /* XFLegoVIPER.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFLegoVIPER.h; sourceTree = "<group>"; };
+		40AEF9532010925D00A95B98 /* XFPipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFPipe.h; sourceTree = "<group>"; };
+		40AEF9542010925D00A95B98 /* XFPipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFPipe.m; sourceTree = "<group>"; };
+		40AEF956201092C600A95B98 /* XFEmitterPlug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEmitterPlug.h; sourceTree = "<group>"; };
+		40AEF9572010997C00A95B98 /* NSObject+XFPipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XFPipe.h"; sourceTree = "<group>"; };
+		40AEF9582010997C00A95B98 /* NSObject+XFPipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XFPipe.m"; sourceTree = "<group>"; };
+		40AEF95B20109D1200A95B98 /* XFApplicationEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFApplicationEmitter.h; sourceTree = "<group>"; };
+		40AEF95C20109D1200A95B98 /* XFApplicationEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFApplicationEmitter.m; sourceTree = "<group>"; };
+		40AEF95E2010A9B900A95B98 /* XFPipePort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFPipePort.h; sourceTree = "<group>"; };
+		40AEF9612010CB2600A95B98 /* XFNetworkEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFNetworkEmitter.h; sourceTree = "<group>"; };
+		40AEF9622010CB2600A95B98 /* XFNetworkEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFNetworkEmitter.m; sourceTree = "<group>"; };
 		40B658891E2CA0B100AB507F /* XFMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFMessageViewController.h; sourceTree = "<group>"; };
 		40B6588A1E2CA0B100AB507F /* XFMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFMessageViewController.m; sourceTree = "<group>"; };
 		40B6588B1E2CA0B100AB507F /* XFMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFMessageViewController.xib; sourceTree = "<group>"; };
@@ -670,6 +684,11 @@
 			children = (
 				40997EF21F18CB0E00D784FD /* XFComponentManager.h */,
 				40997EF31F18CB0E00D784FD /* XFComponentManager.m */,
+				40AEF9572010997C00A95B98 /* NSObject+XFPipe.h */,
+				40AEF9582010997C00A95B98 /* NSObject+XFPipe.m */,
+				40AEF95E2010A9B900A95B98 /* XFPipePort.h */,
+				40AEF9532010925D00A95B98 /* XFPipe.h */,
+				40AEF9542010925D00A95B98 /* XFPipe.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -743,6 +762,7 @@
 				40997F0D1F18CB0E00D784FD /* XFComponentRoutable.h */,
 				40997F0C1F18CB0E00D784FD /* XFComponentHandlerPlug.h */,
 				40997F0E1F18CB0E00D784FD /* XFURLRoutePlug.h */,
+				40AEF956201092C600A95B98 /* XFEmitterPlug.h */,
 			);
 			path = PlugInterface;
 			sourceTree = "<group>";
@@ -752,6 +772,7 @@
 			children = (
 				40997F101F18CB0E00D784FD /* Modules */,
 				40997F6A1F18CB0E00D784FD /* Route */,
+				40AEF95A20109CCA00A95B98 /* Emitter */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1034,6 +1055,32 @@
 				40997F761F18CB0E00D784FD /* NSObject+XFLegoSwizzle.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		40AEF95A20109CCA00A95B98 /* Emitter */ = {
+			isa = PBXGroup;
+			children = (
+				40AEF95B20109D1200A95B98 /* XFApplicationEmitter.h */,
+				40AEF95C20109D1200A95B98 /* XFApplicationEmitter.m */,
+			);
+			path = Emitter;
+			sourceTree = "<group>";
+		};
+		40AEF95F2010CAF900A95B98 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				40AEF9602010CAF900A95B98 /* XFLegoVIPER */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		40AEF9602010CAF900A95B98 /* XFLegoVIPER */ = {
+			isa = PBXGroup;
+			children = (
+				40AEF9612010CB2600A95B98 /* XFNetworkEmitter.h */,
+				40AEF9622010CB2600A95B98 /* XFNetworkEmitter.m */,
+			);
+			path = XFLegoVIPER;
 			sourceTree = "<group>";
 		};
 		40B658881E2CA0A100AB507F /* Message */ = {
@@ -1752,6 +1799,7 @@
 		40EB31D01E2C9EF5004581F2 /* FoundationCollect */ = {
 			isa = PBXGroup;
 			children = (
+				40AEF95F2010CAF900A95B98 /* Plugin */,
 				407C7CBA20036D3E000A4B90 /* analysis */,
 				40EB31D11E2C9EF5004581F2 /* Utils */,
 			);
@@ -2072,6 +2120,7 @@
 				40EB32061E2C9EF5004581F2 /* XFDetailsRouting.m in Sources */,
 				40EB32251E2C9EF5004581F2 /* NSArray+HOM.m in Sources */,
 				40260EB8200604CA0095E925 /* XFRenderData.m in Sources */,
+				40AEF9552010925D00A95B98 /* XFPipe.m in Sources */,
 				40EB320F1E2C9EF5004581F2 /* XFStatusCell.m in Sources */,
 				40997F941F18CB0E00D784FD /* XFRoutingFactory.m in Sources */,
 				40EB32171E2C9EF5004581F2 /* XFPictureResultsPresenter.m in Sources */,
@@ -2111,6 +2160,7 @@
 				40EB32121E2C9EF5004581F2 /* XFPictureResultsDataManager.m in Sources */,
 				40997FA41F18CB0E00D784FD /* XFLegoConfig.m in Sources */,
 				40997F8B1F18CB0E00D784FD /* LEViewController.m in Sources */,
+				40AEF9592010997C00A95B98 /* NSObject+XFPipe.m in Sources */,
 				40EB31ED1E2C9EF5004581F2 /* XFPageControlActivity.m in Sources */,
 				40EB31F31E2C9EF5004581F2 /* XFSubControl2Presenter.m in Sources */,
 				40997F7F1F18CB0E00D784FD /* XFEventBus.m in Sources */,
@@ -2120,10 +2170,12 @@
 				40997F991F18CB0E00D784FD /* XFInteractor.m in Sources */,
 				40EB32101E2C9EF5004581F2 /* XFWeiboActivity.m in Sources */,
 				40EB321C1E2C9EF5004581F2 /* XFSearchInteractor.m in Sources */,
+				40AEF9632010CB2600A95B98 /* XFNetworkEmitter.m in Sources */,
 				40EB32181E2C9EF5004581F2 /* XFPictureResultsActivity.m in Sources */,
 				40EB31E61E2C9EF5004581F2 /* XFMoviePresenter.m in Sources */,
 				40EB31EB1E2C9EF5004581F2 /* XFMovieActivity.m in Sources */,
 				40EB32291E2C9EF5004581F2 /* XFAppURLRegister.m in Sources */,
+				40AEF95D20109D1200A95B98 /* XFApplicationEmitter.m in Sources */,
 				40EB31FE1E2C9EF5004581F2 /* XFCollectRouting.m in Sources */,
 				40EB32011E2C9EF5004581F2 /* XFWorksRouting.m in Sources */,
 				40997F9F1F18CB0E00D784FD /* XFURLParse.m in Sources */,

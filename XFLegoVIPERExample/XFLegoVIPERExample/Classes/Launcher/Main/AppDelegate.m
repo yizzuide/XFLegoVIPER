@@ -12,6 +12,7 @@
 #import "XFAppURLRegister.h"
 #import "LEMVVMModuleHandler.h"
 #import "XFEventCollector.h"
+#import "XFNetworkEmitter.h"
 
 @interface AppDelegate ()
 
@@ -29,10 +30,11 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    // 配置乐高框架（setClassPrefixList支持设置多种前辍）
-    [[[[XFLegoConfig defaultConfig] enableLog]
-      addComponentHanderPlug:[LEMVVMModuleHandler class]]
-          setClassPrefixList:@[@"XF",@"LG"]];
+    // 配置乐高框架
+    [[[[[XFLegoConfig defaultConfig] enableLog]
+       addComponentHanderPlug:[LEMVVMModuleHandler class]] // MVVM组件处理器
+      addEmitterPlug:[XFNetworkEmitter class]] // 添加网络监控事件发射器
+      setClassPrefixList:@[@"XF",@"LG"]]; // 支持设置多种前辍
     
     // 注册URL
     [XFAppURLRegister registerURLs];

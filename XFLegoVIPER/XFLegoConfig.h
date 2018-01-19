@@ -13,6 +13,7 @@
 /**
  *  乐高框架启动配置类
  */
+@protocol XFEmitterPlug;
 @interface XFLegoConfig : NSObject
 
 /**
@@ -90,4 +91,13 @@
  *
  */
 @property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<Class<XFComponentHandlerPlug>> *allComponentHanderPlugs;
+
+/**
+ *  添加事件发射器插件（内部包含应用发射器）
+ *
+ *  @param componentHanderPlug 组件处理器插件类
+ *
+ *  @return 配置类
+ */
+- (instancetype)addEmitterPlug:(Class<XFEmitterPlug>)emitterPlug;
 @end

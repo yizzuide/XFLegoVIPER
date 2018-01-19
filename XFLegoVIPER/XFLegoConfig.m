@@ -12,6 +12,9 @@
 #import "XFControllerHandler.h"
 #import "XFVIPERModuleHandler.h"
 #import "XFComponentManager.h"
+#import "XFPipe.h"
+
+#define XFApplicationEmitterClassName @"XFApplicationEmitter"
 
 @implementation XFLegoConfig
 {
@@ -25,12 +28,14 @@
     Class<XFURLRoutePlug> _routePlug;
     // 组件处理器插件集合
     NSMutableArray<Class<XFComponentHandlerPlug>> *_componentHanderPlugs;
+    NSMutableArray<Class<XFEmitterPlug>> *_emitterPlugs;
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
+        _componentHanderPlugs = @[].mutableCopy;
         _componentHanderPlugs = @[].mutableCopy;
     }
     return self;
@@ -69,8 +74,11 @@ static XFLegoConfig *instance_;
     [legoConfig->_componentHanderPlugs addObject:[XFVIPERModuleHandler class]]; // VIPER模块组件处理器
     [legoConfig->_componentHanderPlugs addObject:[XFControllerHandler class]]; // 控制器组件处理器
     
-    // 注册应用级通知，并转为框架能识别的组件事件
-    [XFComponentManager addApplicationNotification];
+    // 添加默认事件发射器（由于没有导入头文件，所以不需要可以移除这个扩展：/Extension/Emitter）
+    Class emitterClass = NSClassFromString(XFApplicationEmitterClassName);
+    if (emitterClass) {
+        [legoConfig addEmitterPlug:emitterClass];
+    }
     
     return legoConfig;
 }
@@ -135,7 +143,7 @@ static XFLegoConfig *instance_;
 
 - (instancetype)addComponentHanderPlug:(Class<XFComponentHandlerPlug>)componentHanderPlug
 {
-    // 放在倒数第二个
+    // 放在倒数第二个，针对MVC组件通过控制器就能识别的问题
     [self->_componentHanderPlugs insertObject:componentHanderPlug atIndex:_componentHanderPlugs.count - 1];
     return self;
 }
@@ -143,6 +151,14 @@ static XFLegoConfig *instance_;
 - (NSArray<Class<XFComponentHandlerPlug>> *)allComponentHanderPlugs
 {
     return self->_componentHanderPlugs;
+}
+
+- (instancetype)addEmitterPlug:(Class<XFEmitterPlug>)emitterPlug
+{
+    [self->_emitterPlugs addObject:emitterPlug];
+    id<XFEmitterPlug> emitter = [[(Class)emitterPlug alloc] init];
+    [[XFPipe shareInstance] addEmitter:emitter];
+    return self;
 }
 
 @end

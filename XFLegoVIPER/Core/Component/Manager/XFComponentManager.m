@@ -40,39 +40,6 @@ static NSMapTable *eventReceiverTable_;
     }
 }
 
-+ (void)addApplicationNotification
-{
-    NSArray *names = @[
-                       UIApplicationDidEnterBackgroundNotification,
-                       UIApplicationWillEnterForegroundNotification,
-                       UIApplicationDidFinishLaunchingNotification,
-                       UIApplicationDidBecomeActiveNotification,
-                       UIApplicationWillResignActiveNotification,
-                       UIApplicationDidReceiveMemoryWarningNotification,
-                       UIApplicationWillTerminateNotification,
-                       UIApplicationSignificantTimeChangeNotification,
-                       UIApplicationWillChangeStatusBarOrientationNotification,
-                       UIApplicationDidChangeStatusBarOrientationNotification,
-                       UIApplicationWillChangeStatusBarFrameNotification,
-                       UIApplicationDidChangeStatusBarFrameNotification,
-                       UIApplicationBackgroundRefreshStatusDidChangeNotification,
-                       UIApplicationProtectedDataWillBecomeUnavailable,
-                       UIApplicationProtectedDataDidBecomeAvailable,
-                       ];
-    for (NSNotificationName name in names) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendApplicationEventForAllComponents:) name:name object:nil];
-    }
-}
-
-+ (void)sendApplicationEventForAllComponents:(NSNotification *)noti
-{
-    for(id<XFComponentRoutable> component in componentTable_.objectEnumerator) {
-        if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
-            [component receiveComponentEventName:noti.name intentData:noti.userInfo];
-        }
-    }
-}
-
 + (void)addComponent:(id<XFComponentRoutable>)component enableLog:(BOOL)enableLog
 {
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
@@ -176,9 +143,17 @@ static NSMapTable *eventReceiverTable_;
     }
 }
 
-- (void)dealloc
++ (void)sendGlobalEventForAllComponents:(NSNotification *)noti
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    for(id<XFComponentRoutable> component in componentTable_.objectEnumerator) {
+        if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
+            // 回主线程
+            dispatch_queue_t mainQueue = dispatch_get_main_queue();
+            dispatch_async(mainQueue, ^{
+                [component receiveComponentEventName:noti.name intentData:noti.userInfo];
+            });
+        }
+    }
 }
 
 #pragma mark - log

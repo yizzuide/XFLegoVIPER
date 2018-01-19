@@ -18,11 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XFComponentManager : NSObject
 
 /**
- *  添加APP应用通知
- */
-+ (void)addApplicationNotification;
-
-/**
  *  添加组件
  *
  *  @param component 组件
@@ -97,6 +92,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param componentNames 组件名数组
  */
 + (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponents:(NSArray<NSString *> *)componentNames;
+/**
+ *  接管事件发射器发送事件
+ *
+ *  @param noti         NSNotification对象
+ */
++ (void)sendGlobalEventForAllComponents:(NSNotification *)noti;
 
 @end
 NS_ASSUME_NONNULL_END
