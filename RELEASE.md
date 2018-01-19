@@ -1,5 +1,47 @@
+# V4.9.0
+### 新增外接事件发射器插件机制
+## New Feture:
+1. 通过框架提供的事件发射器插件机制，可以外接各种全局事件：应用生命周期的通知（框架内置扩展`XFApplicationEmitter`，不需要的话可删除，不会影响框架运行）、网络连接的状态（Demo中提供了`XFNetworkEmitter`的参考方式）。其它的自定义事件扩展实现可参考以下代码：
+```objc
+#import "XFEmitterPlug.h"
+
+@interface XFNetworkEmitter : NSObject <XFEmitterPlug>
+
+@end
+
+
+#import <AFNetworking.h>
+
+#define AFNetworkReachabilityStatusArray \
+@"AFNetworkReachabilityStatusUnknown", \
+@"AFNetworkReachabilityStatusNotReachable", \
+@"AFNetworkReachabilityStatusReachableViaWWAN", \
+@"AFNetworkReachabilityStatusReachableViaWiFi"
+
+@implementation XFNetworkEmitter
+
+- (void)prepare
+{
+    XF_Def_TypeStringArray(AFNetworkReachabilityStatusArray)
+    // 检测网络连接状态
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    // 连接状态回调处理
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
+     {
+         // self.pipe这个管道框架会自动注入，无需自己创建
+         [self.pipe emitEventName:XF_Func_TypeEnumToString(status+1, typeList) intentData:nil];
+     }];
+}
+
+- (void)dealloc
+{
+    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+}
+@end
+```
+
 # V4.8.0
-### EventBus添加Timer
+### EventBus添加Time Loop
 
 ## New Feture:
 1. 所有实现`XFComponentRouable`接口的组件事件层通过EventBus提供的Timer机制，实现做定时任务工作，需实现`-run`方法，其它常用方法如下：
@@ -26,7 +68,7 @@
 
 
 # V4.6.0
-### 让事件无处不在
+### 任何对象都可成为事件接收者
 ## New Feture:
 1. 所有对象都可以成为事件接收对象，实现步骤:
 
