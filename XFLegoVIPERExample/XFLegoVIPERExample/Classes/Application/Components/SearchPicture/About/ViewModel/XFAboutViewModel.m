@@ -34,7 +34,7 @@
     
     NSLog(@"intentData: %@", self.intentData);
     
-    [XFComponentManager sendEventName:@"xxxx" intentData:nil forComponent:@"EventCollector"];
+    [self.eventBus sendEventName:@"xxxx" intentData:nil forComponents:@[@"EventCollector"]];
 }
 
 // 初始化视图数据

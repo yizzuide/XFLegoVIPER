@@ -19,62 +19,62 @@
 /**
  *  组件容器
  */
-static NSMapTable *componentTable_;
+static NSMapTable *__componentTable;
 /**
  *  组件名有序列表
  */
-static NSMutableArray *componentKeyArr_;
+static NSMutableArray *__componentKeyArr;
 
 /**
  * 事件接收对象
  */
-static NSMapTable *eventReceiverTable_;
+static NSMapTable *__eventReceiverTable;
 
 + (void)initialize
 {
     if (self == [XFComponentManager class]) {
-        componentTable_ = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
-        componentKeyArr_ = [NSMutableArray array];
+        __componentTable = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
+        __componentKeyArr = [NSMutableArray array];
         
-        eventReceiverTable_ = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
+        __eventReceiverTable = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
     }
 }
 
 + (void)addComponent:(id<XFComponentRoutable>)component enableLog:(BOOL)enableLog
 {
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
-    [componentTable_ setObject:component forKey:componentName];
-    [componentKeyArr_ addObject:componentName];
+    [__componentTable setObject:component forKey:componentName];
+    [__componentKeyArr addObject:componentName];
     if (enableLog) [self _log];
 }
 
 + (void)addComponent:(id<XFComponentRoutable>)component forName:(NSString *)componentName
 {
-    [componentTable_ setObject:component forKey:componentName];
-    [componentKeyArr_ addObject:componentName];
+    [__componentTable setObject:component forKey:componentName];
+    [__componentKeyArr addObject:componentName];
 }
 
 + (void)removeComponent:(id<XFComponentRoutable>)component
 {
     if (!component) return;
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
-    [componentTable_ removeObjectForKey:componentName];
-    [componentKeyArr_ removeObject:componentName];
+    [__componentTable removeObjectForKey:componentName];
+    [__componentKeyArr removeObject:componentName];
     [self _clearZombieComponent];
     [self _log];
 }
 
 + (void)removeComponentForName:(NSString *)componentName
 {
-    [componentTable_ removeObjectForKey:componentName];
-    [componentKeyArr_ removeObject:componentName];
+    [__componentTable removeObjectForKey:componentName];
+    [__componentKeyArr removeObject:componentName];
     [self _clearZombieComponent];
 }
 
-+ (void)addIncompatibleComponent:(UIViewController *)viewController componentName:(NSString *)componentName
++ (void)addIncompatibleComponent:(id<XFEventReceivable>)incompatibleComponent componentName:(NSString *)componentName
 {
-    [componentTable_ setObject:viewController forKey:componentName];
-    [componentKeyArr_ addObject:componentName];
+    [__componentTable setObject:incompatibleComponent forKey:componentName];
+    [__componentKeyArr addObject:componentName];
 }
 
 + (void)removeIncompatibleComponentWithName:(NSString *)componentName
@@ -84,35 +84,35 @@ static NSMapTable *eventReceiverTable_;
 
 + (void)addEventReceiver:(id)receiver componentName:(NSString *)componentName
 {
-    [eventReceiverTable_ setObject:receiver forKey:componentName];
+    [__eventReceiverTable setObject:receiver forKey:componentName];
 }
 
 + (void)removeEventReceiverComponentWithName:(NSString *)componentName
 {
-    [eventReceiverTable_ removeObjectForKey:componentName];
+    [__eventReceiverTable removeObjectForKey:componentName];
 }
 
 + (void)_clearZombieComponent
 {
-    NSEnumerator *keys = componentTable_.keyEnumerator;
+    NSEnumerator *keys = __componentTable.keyEnumerator;
     for (NSString *key in keys) {
-        if ([componentTable_ objectForKey:key]) continue;
-        [componentTable_ removeObjectForKey:key];
-        [componentKeyArr_ removeObject:key];
+        if ([__componentTable objectForKey:key]) continue;
+        [__componentTable removeObjectForKey:key];
+        [__componentKeyArr removeObject:key];
     }
 }
 
 + (NSInteger)count
 {
-    return componentTable_.count;
+    return __componentTable.count;
 }
 
 + (id<XFComponentRoutable>)findComponentForName:(NSString *)componentName
 {
-    NSEnumerator *keys = componentTable_.keyEnumerator;
+    NSEnumerator *keys = __componentTable.keyEnumerator;
     for (NSString *key in keys) {
         if ([key isEqualToString:componentName]) {
-            return [componentTable_ objectForKey:key];
+            return [__componentTable objectForKey:key];
         }
     }
     return nil;
@@ -121,8 +121,8 @@ static NSMapTable *eventReceiverTable_;
 + (void)sendEventName:(NSString *)eventName intentData:(nullable id)intentData forComponent:(nonnull NSString *)componentName
 {
     // 先检测有没有事件接收者
-    if (eventReceiverTable_.count) {
-        id<XFEventDispatchPort> dispatchPort = [eventReceiverTable_ objectForKey:componentName];
+    if (__eventReceiverTable.count) {
+        id<XFEventReceivable> dispatchPort = [__eventReceiverTable objectForKey:componentName];
         if (dispatchPort &&
             [dispatchPort respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
             [dispatchPort receiveComponentEventName:eventName intentData:intentData];
@@ -143,14 +143,14 @@ static NSMapTable *eventReceiverTable_;
     }
 }
 
-+ (void)sendGlobalEventForAllComponents:(NSNotification *)noti
++ (void)sendGlobalEventName:(NSString *)eventName intentData:(nullable id)intentData
 {
-    for(id<XFComponentRoutable> component in componentTable_.objectEnumerator) {
+    for(id<XFComponentRoutable> component in __componentTable.objectEnumerator) {
         if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
             // 回主线程
             dispatch_queue_t mainQueue = dispatch_get_main_queue();
             dispatch_async(mainQueue, ^{
-                [component receiveComponentEventName:noti.name intentData:noti.userInfo];
+                [component receiveComponentEventName:eventName intentData:intentData];
             });
         }
     }
@@ -158,7 +158,7 @@ static NSMapTable *eventReceiverTable_;
 
 #pragma mark - log
 // 组件树枝深度
-static int treeDeepCount_;
+static int __treeDeepCount;
 + (void)_log {
 #ifdef DEBUG
     if (LEGO_DEBUG) {
@@ -168,8 +168,8 @@ static int treeDeepCount_;
         NSLog(@"Component trace log:");
 #endif
         NSMutableString *logStrM = [NSMutableString string];
-        treeDeepCount_ = 0;
-        __kindof id<XFComponentRoutable> component = [componentTable_ objectForKey:componentKeyArr_[0]];
+        __treeDeepCount = 0;
+        __kindof id<XFComponentRoutable> component = [__componentTable objectForKey:__componentKeyArr[0]];
         [self _printComponentTree:component logStr:logStrM];
 #ifdef LogDebug
         LogDebug(@"%@",logStrM);
@@ -185,11 +185,11 @@ static int treeDeepCount_;
 {
     // tree Begin
     [logStrM appendString:@"\n"];
-    [self _printTabForAppenedString:logStrM deep:treeDeepCount_];
+    [self _printTabForAppenedString:logStrM deep:__treeDeepCount];
     [logStrM appendString:@"(\n"];
     
     // 当前组件
-    [self _printTabForAppenedString:logStrM deep:treeDeepCount_ + 1];
+    [self _printTabForAppenedString:logStrM deep:__treeDeepCount + 1];
     [self _printComponent:component logStr:logStrM];
     
     // 子组件
@@ -201,7 +201,7 @@ static int treeDeepCount_;
         nextComponent = nextComponent.nextComponentRoutable;
         if (nextComponent != nil) {
             [logStrM appendString:@"\n"];
-            [self _printTabForAppenedString:logStrM deep:treeDeepCount_ + 1];
+            [self _printTabForAppenedString:logStrM deep:__treeDeepCount + 1];
             // 下一个关联组件
             [self _printComponent:nextComponent logStr:logStrM];
             // 构建子树
@@ -211,7 +211,7 @@ static int treeDeepCount_;
     
     // tree End
     [logStrM appendString:@"\n"];
-    [self _printTabForAppenedString:logStrM deep:treeDeepCount_];
+    [self _printTabForAppenedString:logStrM deep:__treeDeepCount];
     [logStrM appendString:@")"];
 }
 
@@ -219,7 +219,7 @@ static int treeDeepCount_;
 + (void)_printComponent:(id<XFComponentRoutable>)component logStr:(NSMutableString *)logStrM
 {
     NSString *componentName = [XFComponentReflect componentNameForComponent:component];
-    if ([componentKeyArr_.lastObject isEqualToString:componentName]) {
+    if ([__componentKeyArr.lastObject isEqualToString:componentName]) {
         [logStrM appendString:@"-> "];
     }
     [logStrM appendString:componentName];
@@ -233,24 +233,24 @@ static int treeDeepCount_;
     NSInteger childCount = childInterfaces.count;
     
     if (childCount) {
-        treeDeepCount_ += 2;
+        __treeDeepCount += 2;
         [logStrM appendString:@"\n"];
-        [self _printTabForAppenedString:logStrM deep:treeDeepCount_ - 1];
+        [self _printTabForAppenedString:logStrM deep:__treeDeepCount - 1];
         [logStrM appendString:@"["];
         for (int i = 0; i < childCount; i++) {
             UIViewController *childInterface = childInterfaces[i];
             if ([childInterface isKindOfClass:[UINavigationController class]]) {
                 childInterface = ((UINavigationController *)childInterface).childViewControllers[0];
             }
-            [self _printTabForAppenedString:logStrM deep:treeDeepCount_ + 1];
+            [self _printTabForAppenedString:logStrM deep:__treeDeepCount + 1];
             id<XFComponentRoutable> subComponent = [XFComponentReflect componentForUInterface:childInterface];
             // 构建子树
             [self _printComponentTree:subComponent logStr:logStrM];
         }
         [logStrM appendString:@"\n"];
-        [self _printTabForAppenedString:logStrM deep:treeDeepCount_ - 1];
+        [self _printTabForAppenedString:logStrM deep:__treeDeepCount - 1];
         [logStrM appendString:@"]"];
-        treeDeepCount_ -= 2;
+        __treeDeepCount -= 2;
     }
 }
 // 打印Tab

@@ -9,6 +9,7 @@
 #import "XFSearchPresenter.h"
 #import "XFSearchWireFramePort.h"
 #import "XFSearchInteractorPort.h"
+#import <AFNetworking.h>
 
 #define Routing XFConvertRoutingToType(id<XFSearchWireFramePort>)
 
@@ -79,6 +80,14 @@
     if ([UIApplicationDidEnterBackgroundNotification isEqualToString:eventName]) {
         NSLog(@"应用进入后台！");
     }
+    
+    if ([@"Event_AFNetworkReachabilityStatus" isEqualToString:eventName]) {
+        AFNetworkReachabilityStatus status = [intentData[@"status"] integerValue];
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            NSLog(@"当前没有网络！");
+        }
+    }
+    
     XF_EventIs_(@"loadData", {
         NSLog(@"接收到模块加载数据事件: %@",eventName);
     })

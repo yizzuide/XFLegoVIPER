@@ -17,7 +17,7 @@
 
 @implementation XFPipe
 {
-    dispatch_queue_t queue;
+    dispatch_queue_t __queue;
 }
 
 - (instancetype)init
@@ -25,7 +25,7 @@
     self = [super init];
     if (self) {
         self.emitters = @[].mutableCopy;
-        queue = dispatch_queue_create("com.lego.concurrent", DISPATCH_QUEUE_CONCURRENT);
+        __queue = dispatch_queue_create("com.lego.concurrent", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -34,24 +34,24 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance_ = [super allocWithZone:zone];
+        __instance = [super allocWithZone:zone];
     });
-    return instance_;
+    return __instance;
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return instance_;
+    return __instance;
 }
 
-static XFPipe *instance_;
+static XFPipe *__instance;
 + (instancetype)shareInstance
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance_ = [[XFPipe alloc] init];
+        __instance = [[XFPipe alloc] init];
     });
-    return instance_;
+    return __instance;
 }
 
 - (void)addEmitter:(id<XFEmitterPlug>)emitter
@@ -62,10 +62,27 @@ static XFPipe *instance_;
 
 - (void)emitEventName:(NSString *)eventName intentData:(id)intentData
 {
-    dispatch_async(queue, ^{
-        NSNotification *noti = [NSNotification notificationWithName:eventName object:nil userInfo:intentData];
-        [XFComponentManager sendGlobalEventForAllComponents:noti];
+    dispatch_async(__queue, ^{
+        [XFComponentManager sendGlobalEventName:eventName intentData:intentData];
     });
+}
+
+- (void)subscribeEventOnReceiver:(nonnull id<XFEventReceivable>)eventReceiver withRegisterCompName:(nonnull NSString *)compName needReceiveEmitterEvent:(BOOL)needReceiveEmitterEvent
+{
+    if (needReceiveEmitterEvent) {
+        [XFComponentManager addIncompatibleComponent:eventReceiver componentName:compName];
+    } else {
+        [XFComponentManager addEventReceiver:eventReceiver componentName:compName];
+    }
+}
+
+- (void)unSubscribeEventWithCompName:(NSString *)compName needReceiveEmitterEvent:(BOOL)needReceiveEmitterEvent
+{
+    if (needReceiveEmitterEvent) {
+        [XFComponentManager removeIncompatibleComponentWithName:compName];
+    } else {
+        [XFComponentManager removeEventReceiverComponentWithName:compName];
+    }
 }
 
 @end

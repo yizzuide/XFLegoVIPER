@@ -9,23 +9,17 @@
 #import "XFNetworkEmitter.h"
 #import <AFNetworking.h>
 
-#define AFNetworkReachabilityStatusArray \
-@"AFNetworkReachabilityStatusUnknown", \
-@"AFNetworkReachabilityStatusNotReachable", \
-@"AFNetworkReachabilityStatusReachableViaWWAN", \
-@"AFNetworkReachabilityStatusReachableViaWiFi"
-
 @implementation XFNetworkEmitter
 
 - (void)prepare
 {
-    XF_Def_TypeStringArray(AFNetworkReachabilityStatusArray)
     // 检测网络连接状态
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     // 连接状态回调处理
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
      {
-         [self.pipe emitEventName:XF_Func_TypeEnumToString(status+1, typeList) intentData:nil];
+         // 框架会自动注入这个pipe对象，无需自己创建
+         [self.pipe emitEventName:@"Event_AFNetworkReachabilityStatus" intentData:@{@"status":@(status)}];
      }];
 }
 

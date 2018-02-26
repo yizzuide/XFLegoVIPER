@@ -17,7 +17,7 @@ subTypeArray \
 };
 // 定义字符串数组
 #define XF_Def_TypeStringArray(typeStrings) \
-NSArray *typeList = [NSArray arrayWithObjects:typeStrings, nil];
+[NSArray arrayWithObjects:typeStrings, nil]
 
 // 枚举转字符串
 #define XF_Func_TypeEnumToString(subEnumType,typeStringArray) \

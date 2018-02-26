@@ -18,72 +18,72 @@
 /**
  *  路由容器
  */
-static NSMapTable *linkRoutingTable_;
+static NSMapTable *__linkRoutingTable;
 /**
  *  路由名有序列表
  */
-static NSMutableArray *linkRoutingKeyArr_;
+static NSMutableArray *__linkRoutingKeyArr;
 /**
  *  跟踪一个将要发起跳转动作的路由
  */
-static NSHashTable *trackActionRoutingTable_;
+static NSHashTable *__trackActionRoutingTable;
 
 /**
  * 存储共享路由
  */
-static NSMapTable *sharedRoutingTable_;
+static NSMapTable *__sharedRoutingTable;
 
 + (void)initialize
 {
     if (self == [XFRoutingLinkManager class]) {
-        linkRoutingTable_ = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
-        linkRoutingKeyArr_ = [NSMutableArray array];
+        __linkRoutingTable = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
+        __linkRoutingKeyArr = [NSMutableArray array];
         
-        trackActionRoutingTable_ = [NSHashTable weakObjectsHashTable];
-        sharedRoutingTable_ =[NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
+        __trackActionRoutingTable = [NSHashTable weakObjectsHashTable];
+        __sharedRoutingTable =[NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory];
     }
 }
 
 #pragma mark - 模块管理
 + (void)addRouting:(XFRouting *)routing {
     NSString *key = [XFVIPERModuleReflect moduleNameForRouting:routing];
-    [linkRoutingTable_ setObject:routing forKey:key];
-    [linkRoutingKeyArr_ addObject:key];
+    [__linkRoutingTable setObject:routing forKey:key];
+    [__linkRoutingKeyArr addObject:key];
 }
 
 + (void)removeRouting:(XFRouting *)routing {
     NSString *key = [XFVIPERModuleReflect moduleNameForRouting:routing];
-    [linkRoutingTable_ removeObjectForKey:key];
-    [linkRoutingKeyArr_ removeObject:key];
+    [__linkRoutingTable removeObjectForKey:key];
+    [__linkRoutingKeyArr removeObject:key];
 }
 
 + (NSInteger)count
 {
-    return linkRoutingTable_.count;
+    return __linkRoutingTable.count;
 }
 
 + (void)setCurrentActionRounting:(XFRouting *)routing
 {
-    [trackActionRoutingTable_ removeAllObjects];
+    [__trackActionRoutingTable removeAllObjects];
     if (routing) {
-        [trackActionRoutingTable_ addObject:routing];
+        [__trackActionRoutingTable addObject:routing];
     }
 }
 
 + (XFRouting *)currentActionRouting
 {
-    return trackActionRoutingTable_.anyObject;
+    return __trackActionRoutingTable.anyObject;
 }
 
 + (void)setSharedRounting:(XFRouting *)routing shareModule:(NSString *)moduleName
 {
-    [sharedRoutingTable_ setObject:routing forKey:moduleName];
+    [__sharedRoutingTable setObject:routing forKey:moduleName];
 }
 
 + (XFRouting *)sharedRoutingForShareModule:(NSString *)moduleName
 {
     if (!moduleName) return nil;
-    return [sharedRoutingTable_ objectForKey:moduleName];
+    return [__sharedRoutingTable objectForKey:moduleName];
 }
 
 // 绑定路由的父子关系
@@ -104,39 +104,39 @@ static NSMapTable *sharedRoutingTable_;
 
 #pragma mark - 模块查找
 + (XFRouting *)findRoutingForModuleName:(NSString *)moduleName {
-    NSEnumerator *keys = linkRoutingTable_.keyEnumerator;
+    NSEnumerator *keys = __linkRoutingTable.keyEnumerator;
     for (NSString *key in keys) {
         BOOL condition = [key isEqualToString:moduleName];
         if (condition) {
-            return [linkRoutingTable_ objectForKey:key];
+            return [__linkRoutingTable objectForKey:key];
         }
     }
     return nil;
 }
 
 #pragma mark - Debug
-static BOOL enableLog_ = NO;
+static BOOL __enableLog = NO;
 + (void)enableLog {
-    enableLog_ = YES;
+    __enableLog = YES;
 }
 
 + (void)log {
 #ifdef DEBUG
-    if (enableLog_) {
+    if (__enableLog) {
 #ifdef LogDebug
-        LogDebug(@"current routing count: %zd",linkRoutingTable_.count);
+        LogDebug(@"current routing count: %zd",__linkRoutingTable.count);
         LogDebug(@"Routing link:");
 #elif (defined DEBUG)
-        NSLog(@"current routing count: %zd",linkRoutingTable_.count);
+        NSLog(@"current routing count: %zd",__linkRoutingTable.count);
         NSLog(@"Routing link:");
 #endif
         
         NSMutableString *logStrM = [NSMutableString string];
-        NSUInteger count = linkRoutingKeyArr_.count;
+        NSUInteger count = __linkRoutingKeyArr.count;
         NSUInteger routingCount = 0;
         NSUInteger subRoutingCount = 0;
         for (int i = 0; i < count; i++) {
-            XFRouting *routing = [linkRoutingTable_ objectForKey:linkRoutingKeyArr_[i]];
+            XFRouting *routing = [__linkRoutingTable objectForKey:__linkRoutingKeyArr[i]];
             // 过滤掉非根路由
             if (routing.previousRouting) {
                 break;

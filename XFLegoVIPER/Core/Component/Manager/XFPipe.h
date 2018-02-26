@@ -11,6 +11,9 @@
 
 @protocol XFEmitterPlug;
 NS_ASSUME_NONNULL_BEGIN
+/**
+ * 一个插在框架组件容器里的管道，从外接入发送全局事件或订阅事件消息
+ */
 @interface XFPipe : NSObject <XFPipePort>
 
 + (instancetype)shareInstance;

@@ -66,6 +66,11 @@
 }
 
 
+- (void)dealloc
+{
+    XF_Debug_M()
+}
+
 #pragma mark - Change UI State
 
 

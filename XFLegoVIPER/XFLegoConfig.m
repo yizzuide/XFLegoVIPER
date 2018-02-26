@@ -10,10 +10,10 @@
 #import "XFUIBus.h"
 #import "XFURLRoute.h"
 #import "XFControllerHandler.h"
-#import "XFVIPERModuleHandler.h"
 #import "XFComponentManager.h"
 #import "XFPipe.h"
 
+#define XFVIPERModuleHandlerClassName @"XFVIPERModuleHandler"
 #define XFApplicationEmitterClassName @"XFApplicationEmitter"
 
 @implementation XFLegoConfig
@@ -45,25 +45,25 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance_ = [super allocWithZone:zone];
+        __instance = [super allocWithZone:zone];
     });
-    return instance_;
+    return __instance;
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return instance_;
+    return __instance;
 }
 
 // 使用共享实例
-static XFLegoConfig *instance_;
+static XFLegoConfig *__instance;
 + (instancetype)shareInstance
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance_ = [[XFLegoConfig alloc] init];
+        __instance = [[XFLegoConfig alloc] init];
     });
-    return instance_;
+    return __instance;
 }
 
 + (instancetype)defaultConfig {
@@ -71,7 +71,10 @@ static XFLegoConfig *instance_;
     // 设置默认解析URL路由插件
     [legoConfig setRoutePlug:[XFURLRoute class]];
     // 添加组件处理器
-    [legoConfig->_componentHanderPlugs addObject:[XFVIPERModuleHandler class]]; // VIPER模块组件处理器
+    Class viperHandlerClass = NSClassFromString(XFVIPERModuleHandlerClassName);
+    if (viperHandlerClass) {
+        [legoConfig->_componentHanderPlugs addObject:viperHandlerClass];// VIPER模块组件处理器
+    }
     [legoConfig->_componentHanderPlugs addObject:[XFControllerHandler class]]; // 控制器组件处理器
     
     // 添加默认事件发射器（由于没有导入头文件，所以不需要可以移除这个扩展：/Extension/Emitter）

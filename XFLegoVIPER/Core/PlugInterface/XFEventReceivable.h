@@ -8,11 +8,12 @@
 
 #ifndef XFEventDispatchPort_h
 #define XFEventDispatchPort_h
+#import "NSObject+XFPipe.h"
 
 /**
  *  事件派发接口，实现这个接口的对象皆为事件接收者
  */
-@protocol XFEventDispatchPort <NSObject>
+@protocol XFEventReceivable <NSObject>
 
 @optional
 /**

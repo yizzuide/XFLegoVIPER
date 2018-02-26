@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XFEventDispatchPort.h"
+#import "XFEventReceivable.h"
 
-@interface XFEventCollector : NSObject <XFEventDispatchPort>
+@interface XFEventCollector : NSObject <XFEventReceivable>
 
 @end

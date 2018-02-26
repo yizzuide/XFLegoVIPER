@@ -202,7 +202,7 @@
 		40391F821E47269E00021BF6 /* LGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSettingViewController.h; sourceTree = "<group>"; };
 		40391F831E47269E00021BF6 /* LGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSettingViewController.m; sourceTree = "<group>"; };
 		40391F841E47269E00021BF6 /* LGSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGSettingViewController.xib; sourceTree = "<group>"; };
-		407C7CB8200367D9000A4B90 /* XFEventDispatchPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEventDispatchPort.h; sourceTree = "<group>"; };
+		407C7CB8200367D9000A4B90 /* XFEventReceivable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEventReceivable.h; sourceTree = "<group>"; };
 		407C7CBB20036D5F000A4B90 /* XFEventCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFEventCollector.h; sourceTree = "<group>"; };
 		407C7CBC20036D5F000A4B90 /* XFEventCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFEventCollector.m; sourceTree = "<group>"; };
 		408690841F8B23BA00C2FD5D /* LEMVVMConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMConnector.h; sourceTree = "<group>"; };
@@ -758,7 +758,7 @@
 		40997F0B1F18CB0E00D784FD /* PlugInterface */ = {
 			isa = PBXGroup;
 			children = (
-				407C7CB8200367D9000A4B90 /* XFEventDispatchPort.h */,
+				407C7CB8200367D9000A4B90 /* XFEventReceivable.h */,
 				40997F0D1F18CB0E00D784FD /* XFComponentRoutable.h */,
 				40997F0C1F18CB0E00D784FD /* XFComponentHandlerPlug.h */,
 				40997F0E1F18CB0E00D784FD /* XFURLRoutePlug.h */,
