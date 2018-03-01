@@ -3,6 +3,9 @@
 
 ## New Feture:
 1. `XFPipe`支持任意对象从框架容器中侦听事件，参考代码：
+
+> **注意**：这个侦听事件类需要开发者来创建，这个对象生命周期由开发者自行管理，和事件发射插件有区别
+
 ```objc
 #import "XFEventReceivable.h"
 
@@ -38,6 +41,9 @@
 ### 新增外接事件发射器插件机制
 ## New Feture:
 1. 通过框架提供的事件发射器插件机制，可以外接各种全局事件：应用生命周期的通知（框架内置扩展`XFApplicationEmitter`，不需要的话可删除，不会影响框架运行）、网络连接的状态（Demo中提供了`XFNetworkEmitter`的参考方式）。其它的自定义事件扩展实现可参考以下代码：
+
+> **注意**：这个事件发射器插件通过`XFLegoConfig`类的`-addEmitterPlug:`注册，不需要开发者来创建，这个对象生命周期由框架接管
+
 ```objc
 #import "XFEmitterPlug.h"
 
