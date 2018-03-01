@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v4.9.0-brightgreen.svg" alt="cocoapods" />
+  	<img src="https://img.shields.io/badge/cocoapods-v4.10.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -112,7 +112,7 @@ Architecting iOS Apps with VIPER [English](https://www.objc.io/issues/13-archite
 ## Author
 yizzuide, fu837014586@163.com
 
-QQ讨论群：450518005
+QQ Group：450518005
 
 ## License
 XFLegoVIPER is available under the MIT license. See the LICENSE file for more info.
