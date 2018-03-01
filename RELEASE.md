@@ -1,3 +1,39 @@
+# V4.10.0
+### 统一使用`XFPipe`外接全局事件发射插件和事件侦听
+
+## New Feture:
+1. `XFPipe`支持任意对象从框架容器中侦听事件，参考代码：
+```objc
+#import "XFEventReceivable.h"
+
+@interface XFEventCollector : NSObject <XFEventReceivable>
+
+@end
+
+@implementation XFEventCollector
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        // 框架会自动注入这个pipe对象，无需自己创建
+        [self.pipe subscribeEventOnReceiver:self withRegisterCompName:@"EventCollector" needReceiveEmitterEvent:NO];
+    }
+    return self;
+}
+
+- (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
+{
+    NSLog(@"%@-----%@",eventName,intentData);
+    // 取消订阅
+//    [self.pipe unSubscribeEventWithCompName:@"EventCollector" needReceiveEmitterEvent:NO];
+}
+@end
+```
+
+## API Breaking:
+1. `XFEventDispatchPort`协议名改为`XFEventReceivable`,统一由`XFPipe`接管
+
 # V4.9.0
 ### 新增外接事件发射器插件机制
 ## New Feture:
@@ -12,24 +48,17 @@
 
 #import <AFNetworking.h>
 
-#define AFNetworkReachabilityStatusArray \
-@"AFNetworkReachabilityStatusUnknown", \
-@"AFNetworkReachabilityStatusNotReachable", \
-@"AFNetworkReachabilityStatusReachableViaWWAN", \
-@"AFNetworkReachabilityStatusReachableViaWiFi"
-
 @implementation XFNetworkEmitter
 
 - (void)prepare
 {
-    XF_Def_TypeStringArray(AFNetworkReachabilityStatusArray)
     // 检测网络连接状态
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     // 连接状态回调处理
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
      {
-         // self.pipe这个管道框架会自动注入，无需自己创建
-         [self.pipe emitEventName:XF_Func_TypeEnumToString(status+1, typeList) intentData:nil];
+         // 框架会自动注入这个pipe对象，无需自己创建
+         [self.pipe emitEventName:@"Event_AFNetworkReachabilityStatus" intentData:@{@"status":@(status)}];
      }];
 }
 
