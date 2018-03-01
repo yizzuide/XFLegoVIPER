@@ -122,10 +122,10 @@ static NSMapTable *__eventReceiverTable;
 {
     // 先检测有没有事件接收者
     if (__eventReceiverTable.count) {
-        id<XFEventReceivable> dispatchPort = [__eventReceiverTable objectForKey:componentName];
-        if (dispatchPort &&
-            [dispatchPort respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
-            [dispatchPort receiveComponentEventName:eventName intentData:intentData];
+        id<XFEventReceivable> eventReceivable = [__eventReceiverTable objectForKey:componentName];
+        if (eventReceivable &&
+            [eventReceivable respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
+            [eventReceivable receiveComponentEventName:eventName intentData:intentData];
             return;
         }
     }
