@@ -1,3 +1,14 @@
+# V4.11.0
+### UIBus增加pop回多层上级的功能
+
+## New Feture:
+1. `XFUIBus`添加方法`- popComponent:animated:`，示例代码：
+```
+    // 在组件的入口层使用
+    [self.uiBus popComponent:@"Home" animated:YES];
+```
+
+
 # V4.10.0
 ### 统一使用`XFPipe`外接全局事件发射插件和事件侦听
 
