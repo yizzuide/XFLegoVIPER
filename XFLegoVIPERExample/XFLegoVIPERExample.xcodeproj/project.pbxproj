@@ -1149,7 +1149,6 @@
 			isa = PBXGroup;
 			children = (
 				40EB310B1E2C9EF5004581F2 /* Application */,
-				40EB31CF1E2C9EF5004581F2 /* FoundationABSLayer */,
 				40EB31D01E2C9EF5004581F2 /* FoundationCollect */,
 				40EB31DD1E2C9EF5004581F2 /* Launcher */,
 			);
@@ -1357,19 +1356,11 @@
 		40EB31561E2C9EF5004581F2 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				40EB31571E2C9EF5004581F2 /* Express */,
 				40EB31581E2C9EF5004581F2 /* Presenter */,
 				40EB315B1E2C9EF5004581F2 /* View */,
 				40EB31601E2C9EF5004581F2 /* WireFrame */,
 			);
 			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		40EB31571E2C9EF5004581F2 /* Express */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Express;
 			sourceTree = "<group>";
 		};
 		40EB31581E2C9EF5004581F2 /* Presenter */ = {
@@ -1721,19 +1712,11 @@
 		40EB31BE1E2C9EF5004581F2 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				40EB31BF1E2C9EF5004581F2 /* Express */,
 				40EB31C01E2C9EF5004581F2 /* Presenter */,
 				40EB31C31E2C9EF5004581F2 /* View */,
 				40EB31C71E2C9EF5004581F2 /* WireFrame */,
 			);
 			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		40EB31BF1E2C9EF5004581F2 /* Express */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Express;
 			sourceTree = "<group>";
 		};
 		40EB31C01E2C9EF5004581F2 /* Presenter */ = {
@@ -1767,17 +1750,9 @@
 		40EB31CA1E2C9EF5004581F2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				40EB31CB1E2C9EF5004581F2 /* Local */,
 				40EB31CC1E2C9EF5004581F2 /* Remote */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		40EB31CB1E2C9EF5004581F2 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Local;
 			sourceTree = "<group>";
 		};
 		40EB31CC1E2C9EF5004581F2 /* Remote */ = {
@@ -1787,13 +1762,6 @@
 				40EB31CE1E2C9EF5004581F2 /* XFPictureService.m */,
 			);
 			path = Remote;
-			sourceTree = "<group>";
-		};
-		40EB31CF1E2C9EF5004581F2 /* FoundationABSLayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FoundationABSLayer;
 			sourceTree = "<group>";
 		};
 		40EB31D01E2C9EF5004581F2 /* FoundationCollect */ = {

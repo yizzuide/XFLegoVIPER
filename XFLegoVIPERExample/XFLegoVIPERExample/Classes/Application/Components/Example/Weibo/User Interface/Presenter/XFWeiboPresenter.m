@@ -29,7 +29,10 @@
 // 绑定视图层后调用
 - (void)viewDidLoad
 {
-    
+    // 测试用于返回当前导航的根控制器
+    /*dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [Routing pop2Root];
+    });*/
 }
 
 // 初始化视图数据

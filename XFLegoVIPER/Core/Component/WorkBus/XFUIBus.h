@@ -168,6 +168,13 @@ typedef void(^CustomCodeBlock) (Activity *nextInterface);
 - (void)popComponent;
 
 /**
+ * 自定义pop组件到任意上级组件
+ * @param componentName        上级组件名 注：如果只pop到上一级可传nil
+ * @param animated             是否要动画
+ */
+- (void)popComponent:(nullable NSString *)componentName animated:(BOOL)animated;
+
+/**
  *  Modal一个组件
  *
  *  @param componentName        组件名

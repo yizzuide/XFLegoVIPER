@@ -11,4 +11,5 @@
 
 @protocol XFWeiboWireFramePort <XFWireFramePort>
 
+- (void)pop2Root;
 @end
