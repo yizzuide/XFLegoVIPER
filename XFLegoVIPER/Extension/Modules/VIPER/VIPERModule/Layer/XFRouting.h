@@ -81,7 +81,7 @@
 { \
     return [[super routing].assembly autoAssemblyModuleFromShareModuleName:shareModuleName]; \
 }
-// 自动组装基于本模块成分类型的模块，并共享模块各层给子模块，直接在父路由组装（全自动组装方式中常用）
+// 自动组装一个用于虚拟组件共享模块，直接在父路由组装（虚拟组件必需使用这种方式）
 #define XF_AutoAssemblyModuleForShareShell_Fast XF_AutoAssemblyModuleFromShareModuleName(XF_ModuleNameForSuperRoutingClass)
 
 @interface XFRouting : NSObject <XFWireFramePort>

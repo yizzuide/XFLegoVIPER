@@ -75,6 +75,11 @@
     }];
 }
 
+- (void)onNewIntent:(id)intentData
+{
+    NSLog(@"%@", intentData);
+}
+
 - (void)receiveComponentEventName:(NSString *)eventName intentData:(id)intentData
 {
     if ([UIApplicationDidEnterBackgroundNotification isEqualToString:eventName]) {

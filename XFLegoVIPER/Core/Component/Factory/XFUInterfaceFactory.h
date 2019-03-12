@@ -10,7 +10,7 @@
 
 // 根据组件名获取一个子组件的视图
 #define XF_SubUInterface_(componentName) [XFUInterfaceFactory createSubUInterfaceFromComponentName:componentName parentUInterface:self]
-
+// 通过URL创建子组件视图（虚拟组件方式与XF_SubUInterface_相同）
 #define XF_SubUInterface_URL(urlComponent) [XFUInterfaceFactory createSubUInterfaceFromURLComponent:urlComponent parentUInterface:self]
 
 @interface XFUInterfaceFactory : NSObject

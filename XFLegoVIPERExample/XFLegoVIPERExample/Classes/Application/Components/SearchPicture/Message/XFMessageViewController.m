@@ -32,6 +32,8 @@ XF_EXPORT_COMPONENT
 - (void)cancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    // 这个属性不是自动注入的，只是接口声明，需要在头文件自己添加了属性框架才能反向传值！！
+    self.intentData = @"我是返回数据";
 }
 
 - (void)didReceiveMemoryWarning {

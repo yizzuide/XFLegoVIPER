@@ -11,10 +11,9 @@
 #import "XFRoutingFactory.h"
 #import "XFLegoMarco.h"
 #import "NSObject+XFLegoInvokeMethod.h"
-#import "XFActivity.h"
 #import "XFComponentReflect.h"
 #import "XFUIBus.h"
-#import "XFRoutingLinkManager.h"
+#import "XFComponentManager.h"
 
 @implementation XFUInterfaceFactory
 
@@ -33,6 +32,10 @@
 
 + (__kindof UIViewController *)_subUIterfaceFromSubComponent:(__kindof id<XFComponentRoutable>)component parentUInterface:(__kindof UIViewController *)parentUInterface
 {
+    // 添加子组件到容器，为了不妨碍父组件的跟踪功能，使用延后处理
+    LEGORunAfter0_015({
+        [XFComponentManager addComponent:component enableLog:NO];
+    })
     Class<XFComponentHandlerPlug> matchedComponentHandler = [XFComponentReflect componentHandlerForComponent:component];
     return [matchedComponentHandler subUIterfaceFromSubComponent:component parentUInterface:parentUInterface];
 }

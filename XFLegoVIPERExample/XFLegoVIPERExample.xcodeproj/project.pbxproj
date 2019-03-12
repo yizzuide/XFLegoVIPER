@@ -1105,26 +1105,10 @@
 		40C2F21D1FB42B6500311684 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				40C2F21E1FB42B6500311684 /* Express */,
-				40C2F21F1FB42B6500311684 /* Model */,
 				40C2F2201FB42B6500311684 /* View */,
 				40C2F2231FB42B6500311684 /* ViewModel */,
 			);
 			path = About;
-			sourceTree = "<group>";
-		};
-		40C2F21E1FB42B6500311684 /* Express */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Express;
-			sourceTree = "<group>";
-		};
-		40C2F21F1FB42B6500311684 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		40C2F2201FB42B6500311684 /* View */ = {

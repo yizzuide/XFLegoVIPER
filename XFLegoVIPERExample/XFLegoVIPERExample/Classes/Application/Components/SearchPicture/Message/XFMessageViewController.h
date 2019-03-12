@@ -15,4 +15,9 @@
 // 可接收URL参数
 @property (nonatomic, copy) NSDictionary *URLParams;
 
+/**
+ *  预设要传递给其它组件的意图数据
+ */
+@property (nonatomic, copy, nullable) id intentData;
+
 @end

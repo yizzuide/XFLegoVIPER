@@ -130,6 +130,7 @@ static NSMapTable *__eventReceiverTable;
         }
     }
     
+    // 从容器里的组件找
     id<XFComponentRoutable> component = [self findComponentForName:componentName];
     if ([component respondsToSelector:@selector(receiveComponentEventName:intentData:)]) {
         [component receiveComponentEventName:eventName intentData:intentData];

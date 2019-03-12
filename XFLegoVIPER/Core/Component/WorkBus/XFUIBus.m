@@ -111,10 +111,6 @@
         [XFUIBus _transmitURLParams:params nextInterface:nextInterface nextComponent:component];
         subComponent = component;
     }];
-    // 添加子组件到容器，为了不妨碍父组件的跟踪功能，使用延后处理
-    LEGORunAfter0_015({
-        [XFComponentManager addComponent:subComponent enableLog:NO];
-    })
     return subComponent;
 }
 
