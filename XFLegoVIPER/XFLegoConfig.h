@@ -9,12 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "XFURLRoutePlug.h"
 #import "XFComponentHandlerPlug.h"
+#import "XFURLInterceptor.h"
 
 /**
  *  乐高框架启动配置类
  */
 @protocol XFEmitterPlug;
 @interface XFLegoConfig : NSObject
+
+/**
+ *  是否能打印log
+ *
+ */
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL canDebugLog;
+/**
+ *  所有组件处理器插件
+ *
+ */
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<Class<XFComponentHandlerPlug>> *allComponentHanderPlugs;
 
 /**
  *  返回共享实例
@@ -35,11 +47,6 @@
  *  @return 配置类
  */
 - (instancetype)enableLog;
-/**
- *  是否能打印log
- *
- */
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL canDebugLog;
 
 /**
  *  设置类前缀（注意：如果没有一个使用VIPER的模块，必须手动设置）
@@ -78,6 +85,16 @@
  *
  */
 - (Class<XFURLRoutePlug>)routePlug;
+
+/**
+ *  添加URL拦截处理器
+ *
+ *  @param urlInterceptors 拦截处理器列表
+ *
+ *  @return 配置类
+ */
+- (instancetype)setURLInterceptors:(NSArray<XFURLInterceptor *> *)urlInterceptors;
+
 /**
  *  添加组件处理器插件（内部包含VIPER模块组件处理器、控制器组件处理器）
  *
@@ -86,11 +103,6 @@
  *  @return 配置类
  */
 - (instancetype)addComponentHanderPlug:(Class<XFComponentHandlerPlug>)componentHanderPlug;
-/**
- *  所有组件处理器插件
- *
- */
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<Class<XFComponentHandlerPlug>> *allComponentHanderPlugs;
 
 /**
  *  添加事件发射器插件（内部包含应用发射器）

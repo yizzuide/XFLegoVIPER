@@ -13,6 +13,8 @@
 #import "LEMVVMModuleHandler.h"
 #import "XFEventCollector.h"
 #import "XFNetworkEmitter.h"
+#import "XFSearchInterceptor.h"
+#import "XFAuthInterceptor.h"
 
 @interface AppDelegate ()
 
@@ -31,10 +33,11 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     // 配置乐高框架
-    [[[[[XFLegoConfig defaultConfig] enableLog]
-       addComponentHanderPlug:[LEMVVMModuleHandler class]] // MVVM组件处理器
+    [[[[[[XFLegoConfig defaultConfig] enableLog]
+      addComponentHanderPlug:[LEMVVMModuleHandler class]] // MVVM组件处理器
       addEmitterPlug:[XFNetworkEmitter class]] // 添加网络监控事件发射器
-      setClassPrefixList:@[@"XF",@"LG"]]; // 支持设置多种前辍
+      setClassPrefixList:@[@"XF",@"LG"]] // 支持设置多种前辍
+      setURLInterceptors:@[[XFSearchInterceptor new]/*,[XFAuthInterceptor new]*/]]; // 添加URL拦截器
     
     // 注册URL
     [XFAppURLRegister registerURLs];

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0491CE523D1A66BF554051F0 /* libPods-XFLegoVIPERExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E9152FD23584F0674B0301 /* libPods-XFLegoVIPERExample.a */; };
+		40204941223A797900DCEE68 /* XFURLInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020493F223A797900DCEE68 /* XFURLInterceptor.m */; };
+		40204944223A7A9F00DCEE68 /* XFURLInterceptorChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 40204943223A7A9F00DCEE68 /* XFURLInterceptorChain.m */; };
+		40204948223A827A00DCEE68 /* XFSearchInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40204947223A827900DCEE68 /* XFSearchInterceptor.m */; };
+		4020494B223A871900DCEE68 /* XFAuthInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020494A223A871900DCEE68 /* XFAuthInterceptor.m */; };
 		4024C3F91CC48BB5000D8182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4024C3F81CC48BB5000D8182 /* Assets.xcassets */; };
 		4024C3FC1CC48BB5000D8182 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4024C3FA1CC48BB5000D8182 /* LaunchScreen.storyboard */; };
 		4024C4071CC48BB5000D8182 /* XFLegoVIPERExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4024C4061CC48BB5000D8182 /* XFLegoVIPERExampleTests.m */; };
@@ -176,6 +180,14 @@
 		03E9152FD23584F0674B0301 /* libPods-XFLegoVIPERExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XFLegoVIPERExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAFD3E7A4FB020A558221E3 /* Pods-XFLegoVIPERExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XFLegoVIPERExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XFLegoVIPERExample/Pods-XFLegoVIPERExample.debug.xcconfig"; sourceTree = "<group>"; };
 		4008F6611FA4644600400A4C /* LEMVVMIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMVVMIntent.h; sourceTree = "<group>"; };
+		4020493F223A797900DCEE68 /* XFURLInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFURLInterceptor.m; sourceTree = "<group>"; };
+		40204940223A797900DCEE68 /* XFURLInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFURLInterceptor.h; sourceTree = "<group>"; };
+		40204942223A7A9F00DCEE68 /* XFURLInterceptorChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFURLInterceptorChain.h; sourceTree = "<group>"; };
+		40204943223A7A9F00DCEE68 /* XFURLInterceptorChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFURLInterceptorChain.m; sourceTree = "<group>"; };
+		40204946223A827900DCEE68 /* XFSearchInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFSearchInterceptor.h; sourceTree = "<group>"; };
+		40204947223A827900DCEE68 /* XFSearchInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFSearchInterceptor.m; sourceTree = "<group>"; };
+		40204949223A871900DCEE68 /* XFAuthInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFAuthInterceptor.h; sourceTree = "<group>"; };
+		4020494A223A871900DCEE68 /* XFAuthInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XFAuthInterceptor.m; sourceTree = "<group>"; };
 		4024C3E91CC48BB5000D8182 /* XFLegoVIPERExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFLegoVIPERExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C3F81CC48BB5000D8182 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4024C3FB1CC48BB5000D8182 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -521,6 +533,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4020493E223A797900DCEE68 /* Interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				40204940223A797900DCEE68 /* XFURLInterceptor.h */,
+				4020493F223A797900DCEE68 /* XFURLInterceptor.m */,
+				40204942223A7A9F00DCEE68 /* XFURLInterceptorChain.h */,
+				40204943223A7A9F00DCEE68 /* XFURLInterceptorChain.m */,
+			);
+			path = Interceptor;
+			sourceTree = "<group>";
+		};
+		40204945223A823D00DCEE68 /* interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				40204946223A827900DCEE68 /* XFSearchInterceptor.h */,
+				40204947223A827900DCEE68 /* XFSearchInterceptor.m */,
+				40204949223A871900DCEE68 /* XFAuthInterceptor.h */,
+				4020494A223A871900DCEE68 /* XFAuthInterceptor.m */,
+			);
+			path = interceptor;
+			sourceTree = "<group>";
+		};
 		4024C3E01CC48BB5000D8182 = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +700,7 @@
 				40997EF11F18CB0E00D784FD /* Manager */,
 				40997EF41F18CB0E00D784FD /* Recognizer */,
 				40997EF91F18CB0E00D784FD /* WorkBus */,
+				4020493E223A797900DCEE68 /* Interceptor */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1751,6 +1786,7 @@
 		40EB31D01E2C9EF5004581F2 /* FoundationCollect */ = {
 			isa = PBXGroup;
 			children = (
+				40204945223A823D00DCEE68 /* interceptor */,
 				40AEF95F2010CAF900A95B98 /* Plugin */,
 				407C7CBA20036D3E000A4B90 /* analysis */,
 				40EB31D11E2C9EF5004581F2 /* Utils */,
@@ -2080,6 +2116,7 @@
 				40EB32281E2C9EF5004581F2 /* XFUITool.m in Sources */,
 				40997F7B1F18CB0E00D784FD /* XFUInterfaceFactory.m in Sources */,
 				40EB32141E2C9EF5004581F2 /* XFPictureProvider.m in Sources */,
+				4020494B223A871900DCEE68 /* XFAuthInterceptor.m in Sources */,
 				40EB31E71E2C9EF5004581F2 /* XFMusicPresenter.m in Sources */,
 				40EB320A1E2C9EF5004581F2 /* XFStatusProvider.m in Sources */,
 				40EB32021E2C9EF5004581F2 /* XFDetailsPresenter.m in Sources */,
@@ -2131,6 +2168,7 @@
 				40EB31FE1E2C9EF5004581F2 /* XFCollectRouting.m in Sources */,
 				40EB32011E2C9EF5004581F2 /* XFWorksRouting.m in Sources */,
 				40997F9F1F18CB0E00D784FD /* XFURLParse.m in Sources */,
+				40204941223A797900DCEE68 /* XFURLInterceptor.m in Sources */,
 				40EB32161E2C9EF5004581F2 /* XFPictureRenderItem.m in Sources */,
 				40EB31E81E2C9EF5004581F2 /* XFPageControlPresenter.m in Sources */,
 				40997F841F18CB0E00D784FD /* XFControllerFactory.m in Sources */,
@@ -2145,6 +2183,7 @@
 				40EB31F51E2C9EF5004581F2 /* XFWorksPresenter.m in Sources */,
 				40260EBD200606CA0095E925 /* XFExpressDirver.m in Sources */,
 				40997F8D1F18CB0E00D784FD /* UIViewController+LEView.m in Sources */,
+				40204948223A827A00DCEE68 /* XFSearchInterceptor.m in Sources */,
 				40997F851F18CB0E00D784FD /* UIViewController+ComponentBridge.m in Sources */,
 				40997F7E1F18CB0E00D784FD /* XFComponentReflect.m in Sources */,
 				40EB32041E2C9EF5004581F2 /* XFDetailsActivity.m in Sources */,
@@ -2169,6 +2208,7 @@
 				40C2F2271FB42B6500311684 /* XFAboutViewModel.m in Sources */,
 				40997F821F18CB0E00D784FD /* UIViewController+ComponentUI.m in Sources */,
 				40EB32221E2C9EF5004581F2 /* XFSearchRouting.m in Sources */,
+				40204944223A7A9F00DCEE68 /* XFURLInterceptorChain.m in Sources */,
 				40EB32191E2C9EF5004581F2 /* XFPictureTableViewCell.m in Sources */,
 				40EB320D1E2C9EF5004581F2 /* XFWeiboExpressPack.m in Sources */,
 				40EB321D1E2C9EF5004581F2 /* XFPictureListModel.m in Sources */,

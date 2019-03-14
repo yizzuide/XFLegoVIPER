@@ -12,6 +12,7 @@
 #import "XFControllerHandler.h"
 #import "XFComponentManager.h"
 #import "XFPipe.h"
+#import "XFURLInterceptorChain.h"
 
 #define XFVIPERModuleHandlerClassName @"XFVIPERModuleHandler"
 #define XFApplicationEmitterClassName @"XFApplicationEmitter"
@@ -26,8 +27,11 @@
     NSArray *_classPrefixList;
     // URL路由插件
     Class<XFURLRoutePlug> _routePlug;
+    // URL 组件拦截处理器
+    NSMutableArray<XFURLInterceptor *> *_URLInterceptors;
     // 组件处理器插件集合
     NSMutableArray<Class<XFComponentHandlerPlug>> *_componentHanderPlugs;
+    // 事件触发插件
     NSMutableArray<Class<XFEmitterPlug>> *_emitterPlugs;
 }
 
@@ -35,8 +39,9 @@
 {
     self = [super init];
     if (self) {
+        _URLInterceptors = @[].mutableCopy;
         _componentHanderPlugs = @[].mutableCopy;
-        _componentHanderPlugs = @[].mutableCopy;
+        _emitterPlugs = @[].mutableCopy;
     }
     return self;
 }
@@ -142,6 +147,14 @@ static XFLegoConfig *__instance;
 - (Class<XFURLRoutePlug>)routePlug
 {
     return self->_routePlug;
+}
+
+- (instancetype)setURLInterceptors:(NSArray<XFURLInterceptor *> *)urlInterceptors
+{
+    for (XFURLInterceptor *urlInterceptor in urlInterceptors) {
+        [XFURLInterceptorChain addHandler:urlInterceptor];
+    }
+    return self;
 }
 
 - (instancetype)addComponentHanderPlug:(Class<XFComponentHandlerPlug>)componentHanderPlug
