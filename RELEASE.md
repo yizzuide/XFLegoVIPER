@@ -1,4 +1,37 @@
-# V4.11.0
+# V4.20.0
+### 框架新增URL拦截器功能，可以根据业务进行拦截指定的跳转URL
+
+## New Featrue：
+1. 为配置类`XFLegoConfig`新增添加URL拦截器方法，使用例子：
+```objc
+// 定义拦截器需要继承XFURLInterceptor
+@interface XFAuthInterceptor : XFURLInterceptor
+@end
+
+@implementation XFAuthInterceptor
+// 实现类中覆盖如下方法
+- (bool)interceptWithURL:(NSString *)url componentName:(NSString *)componentName
+{
+    NSLog(@"AuthInterceptor拦截到 URL：%@", url);
+    NSLog(@"AuthInterceptor拦截到组件名：%@", componentName);
+    // 测试拦截掉搜索结果页面，实际情况可以跟据业务需要处理，比如支付页面先判断有无 token，否则跳转到登录
+    if ([url containsString:@"pictureResults"]) {
+        NSLog(@"AuthInterceptor拦截了 URL：%@", url);
+        // 拦截掉
+        return YES;
+    }
+    // 不进行拦截
+    return NO;
+}
+@end
+   
+// AppDelegate 启动类里配置乐高框架
+[[[[XFLegoConfig defaultConfig] enableLog]
+  addComponentHanderPlug:[LEMVVMModuleHandler class]] // MVVM组件处理器
+  setURLInterceptors:@[[XFSearchInterceptor new],[XFAuthInterceptor new]]]; // 添加URL拦截器  
+```
+
+# V4.12.0
 ### 修复一个隐藏的问题
 > 感谢 @那个女孩比我美所以要珍惜 的提出
 
@@ -11,9 +44,8 @@
 
 ## New Feture:
 1. `XFUIBus`添加方法`- popComponent:animated:`，示例代码：
-```
-    // 在组件的入口层使用
-    [self.uiBus popComponent:@"Home" animated:YES];
+```objc
+[self.uiBus popComponent:@"Home" animated:YES];
 ```
 
 
