@@ -17,6 +17,8 @@
 * Real-Time track Component link 💫 .
 * Consider MVx, VIPER (etc.) module as component, using the same transition and event API.
 * Add plugin mechanism for custom extension other design pattern module and URL Route.
+* Add URL interceptor for intercept special URL before transition.
+
 
 🍺 Thanks VIPER!
 
