@@ -2386,7 +2386,7 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.lego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -2425,7 +2425,7 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.XFLegoVIPERExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yizzuide.lego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
