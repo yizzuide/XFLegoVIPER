@@ -2,8 +2,8 @@
 //  CBUITool.h
 //  XFLegoVIPERExample
 //
-//  Created by yizzuide on 15/9/18.
-//  Copyright © 2015年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 15/9/18.
+//  Copyright © 2015年 Yizzuide. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

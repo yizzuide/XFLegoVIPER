@@ -3,7 +3,7 @@
 //  XFLegoVIPERExample
 //
 //  Created by Yizzuide on 2019/3/14.
-//  Copyright © 2019 yizzuide. All rights reserved.
+//  Copyright © 2019 Yizzuide. All rights reserved.
 //
 
 #import "XFURLInterceptor.h"

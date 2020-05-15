@@ -3,7 +3,7 @@
 //  TZEducation
 //
 //  Created by Yizzuide on 2017/10/28.
-//  Copyright © 2017年 yizzuide. All rights reserved.
+//  Copyright © 2017年 Yizzuide. All rights reserved.
 //
 
 #ifndef LEMVVMIntent_h

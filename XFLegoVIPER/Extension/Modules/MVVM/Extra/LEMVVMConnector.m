@@ -3,7 +3,7 @@
 //  TZEducation
 //
 //  Created by Yizzuide on 2017/9/29.
-//  Copyright © 2017年 yizzuide. All rights reserved.
+//  Copyright © 2017年 Yizzuide. All rights reserved.
 //
 
 #import "LEMVVMConnector.h"

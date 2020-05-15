@@ -3,7 +3,7 @@
 //  XFLegoVIPER
 //
 //  Created by Yizzuide on 2017/2/10.
-//  Copyright © 2017年 yizzuide. All rights reserved.
+//  Copyright © 2017年 Yizzuide. All rights reserved.
 //
 
 #import "UIView+ComponentSubView.h"

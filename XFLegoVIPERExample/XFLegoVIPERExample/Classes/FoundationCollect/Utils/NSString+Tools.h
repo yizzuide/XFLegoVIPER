@@ -2,8 +2,8 @@
 //  NSString+Tools.h
 //
 //
-//  Created by yizzuide on 16-8-21.
-//  Copyright (c) 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 16-8-21.
+//  Copyright (c) 2016年 Yizzuide. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,8 +2,8 @@
 //  XFPictureResultsDataManagerProt.h
 //  XFLegoVIPERExample
 //
-//  Created by yizzuide on 2016/11/9.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 2016/11/9.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #import "XFDataManagerPort.h"

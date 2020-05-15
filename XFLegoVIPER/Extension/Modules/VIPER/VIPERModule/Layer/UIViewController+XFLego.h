@@ -2,8 +2,8 @@
 //  UIViewController+XFLego.h
 //  XFLegoVIPER
 //
-//  Created by yizzuide on 16/2/24.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 16/2/24.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

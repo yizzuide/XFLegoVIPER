@@ -3,7 +3,7 @@
 //  XFLegoVIPERExample
 //
 //  Created by Yizzuide on 2017/2/5.
-//  Copyright © 2017年 yizzuide. All rights reserved.
+//  Copyright © 2017年 Yizzuide. All rights reserved.
 //
 
 #import "LEViewModel.h"

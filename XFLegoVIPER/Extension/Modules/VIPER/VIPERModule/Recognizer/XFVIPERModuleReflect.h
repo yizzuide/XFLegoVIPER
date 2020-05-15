@@ -2,8 +2,8 @@
 //  XFVIPERModuleReflect.h
 //  XFLegoVIPER
 //
-//  Created by yizzuide on 2016/11/25.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 2016/11/25.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

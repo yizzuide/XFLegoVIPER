@@ -2,8 +2,8 @@
 //  XFSubContol2WireframePort.h
 //  XFLegoVIPERExample
 //
-//  Created by yizzuide on 2016/10/4.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 2016/10/4.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #ifndef XFSubContol2WireframePort_h

@@ -2,8 +2,8 @@
 //  XFInteractor.h
 //  XFLegoVIPER
 //
-//  Created by yizzuide on 15/12/22.
-//  Copyright © 2015年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 15/12/22.
+//  Copyright © 2015年 Yizzuide. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

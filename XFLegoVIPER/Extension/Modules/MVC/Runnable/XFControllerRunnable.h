@@ -3,7 +3,7 @@
 //  XFLegoVIPER
 //
 //  Created by Yizzuide on 2016/12/18.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #import "XFComponentRoutable.h"

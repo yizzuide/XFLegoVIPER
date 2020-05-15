@@ -2,8 +2,8 @@
 //  XFLegoVIPERExampleUITests.m
 //  XFLegoVIPERExampleUITests
 //
-//  Created by yizzuide on 16/4/18.
-//  Copyright © 2016年 yizzuide. All rights reserved.
+//  Created by Yizzuide on 16/4/18.
+//  Copyright © 2016年 Yizzuide. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
