@@ -32,18 +32,18 @@ static XFURLInterceptor *nextHandler_;
 
 + (bool)executeChainWithURL:(NSString *)url componentName:(NSString *)componentName
 {
-    bool isIntercept = NO;
+    bool isIntercepted = NO;
     if (firstHanlder_ == nil) {
-        return isIntercept;
+        return isIntercepted;
     }
     XFURLInterceptor *handler = firstHanlder_;
     do {
-        isIntercept = [handler interceptWithURL:url componentName:componentName];
+        isIntercepted = [handler interceptWithURL:url componentName:componentName];
         handler = handler.nextHandler;
         if (handler == nil) {
             break;
         }
-    } while (!isIntercept);
-    return isIntercept;
+    } while (!isIntercepted);
+    return isIntercepted;
 }
 @end

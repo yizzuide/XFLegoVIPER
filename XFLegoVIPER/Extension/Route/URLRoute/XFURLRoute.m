@@ -106,7 +106,7 @@ static NSMutableDictionary<NSString *,NSString *> *URLHandler_;
         return NO;
     }
     
-    // 一起正常，可以开始切换组件
+    // 一切正常，可以开始切换组件
     if (transitionBlock)
         transitionBlock(componentName,params);
 
