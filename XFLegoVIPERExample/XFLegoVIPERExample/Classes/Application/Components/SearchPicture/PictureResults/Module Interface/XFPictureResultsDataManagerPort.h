@@ -2,7 +2,7 @@
 //  XFPictureResultsDataManagerProt.h
 //  XFLegoVIPERExample
 //
-//  Created by 付星 on 2016/11/9.
+//  Created by yizzuide on 2016/11/9.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

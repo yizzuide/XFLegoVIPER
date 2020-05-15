@@ -2,7 +2,7 @@
 //  XFDetailsActivity.m
 //  XFLegoVIPERExample
 //
-//  Created by 付星 on 16/9/21.
+//  Created by yizzuide on 16/9/21.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

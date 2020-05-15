@@ -2,7 +2,7 @@
 //  XFSubControl2EventHandlerPort.h
 //  XFLegoVIPERExample
 //
-//  Created by 付星 on 2016/10/4.
+//  Created by yizzuide on 2016/10/4.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

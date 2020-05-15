@@ -2,7 +2,7 @@
 //  XFSearchRouting.m
 //  XFLegoVIPERExample
 //
-//  Created by 付星 on 16/8/26.
+//  Created by yizzuide on 16/8/26.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  XFComponentRoutable.h
 //  XFLegoVIPER
 //
-//  Created by 付星 on 2016/11/25.
+//  Created by yizzuide on 2016/11/25.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

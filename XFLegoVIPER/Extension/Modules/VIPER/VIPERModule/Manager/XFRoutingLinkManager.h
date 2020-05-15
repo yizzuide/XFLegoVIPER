@@ -2,7 +2,7 @@
 //  XFRoutingLinkManager.h
 //  XFLegoVIPER
 //
-//  Created by 付星 on 16/9/2.
+//  Created by yizzuide on 16/9/2.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

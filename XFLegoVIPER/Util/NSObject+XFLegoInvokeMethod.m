@@ -2,7 +2,7 @@
 //  NSObject+XFLegoInvokeMethod.m
 //  XFLegoVIPER
 //
-//  Created by 付星 on 16/8/28.
+//  Created by yizzuide on 16/8/28.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

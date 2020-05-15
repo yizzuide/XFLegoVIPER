@@ -2,7 +2,7 @@
 //  XFControllerFactory.h
 //  XFLegoVIPER
 //
-//  Created by 付星 on 2016/11/18.
+//  Created by yizzuide on 2016/11/18.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

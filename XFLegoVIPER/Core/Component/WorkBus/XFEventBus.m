@@ -2,7 +2,7 @@
 //  XFEventBus.m
 //  XFLegoVIPER
 //
-//  Created by 付星 on 2016/11/3.
+//  Created by yizzuide on 2016/11/3.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

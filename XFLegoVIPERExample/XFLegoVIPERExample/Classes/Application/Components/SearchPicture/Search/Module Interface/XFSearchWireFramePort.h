@@ -2,7 +2,7 @@
 //  XFSearchWireFramePort.h
 //  XFLegoVIPERExample
 //
-//  Created by 付星 on 16/8/30.
+//  Created by yizzuide on 16/8/30.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

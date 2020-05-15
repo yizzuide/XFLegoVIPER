@@ -2,7 +2,7 @@
 //  XFRenderItem.h
 //  XFLegoVIPERE
 //
-//  Created by 付星 on 2016/10/20.
+//  Created by yizzuide on 2016/10/20.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

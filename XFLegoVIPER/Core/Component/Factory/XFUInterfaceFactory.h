@@ -2,7 +2,7 @@
 //  XFUInterfaceFactory.h
 //  XFLegoVIPER
 //
-//  Created by 付星 on 2016/10/5.
+//  Created by yizzuide on 2016/10/5.
 //  Copyright © 2016年 yizzuide. All rights reserved.
 //
 

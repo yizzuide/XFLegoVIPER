@@ -2,7 +2,7 @@
 //  XFWeiboDataManager.h
 //  kaixue83.0
 //
-//  Created by 付星 on 2016/10/1.
+//  Created by yizzuide on 2016/10/1.
 //  Copyright © 2016年 dayang. All rights reserved.
 //
 
