@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="http://cocoadocs.org/docsets/XFLegoVIPER">
-  	<img src="https://img.shields.io/badge/cocoapods-v4.20.0-brightgreen.svg" alt="cocoapods" />
+  	<a href="https://opencollective.com/xflego" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/xflego/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/badge/cocoapods-v4.20.0-brightgreen.svg" alt="cocoapods" />
   </a>
   <img src="https://img.shields.io/badge/language-ObjC-orange.svg" alt="language" />
   <img src="https://img.shields.io/npm/l/express.svg" alt="LICENSE" />
@@ -115,6 +115,36 @@ Architecting iOS Apps with VIPER [English](https://www.objc.io/issues/13-archite
 yizzuide, fu837014586@163.com
 
 QQ Group：450518005
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/yizzuide/XFLegoVIPER/graphs/contributors"><img src="https://opencollective.com/xflego/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/xflego/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/xflego"><img src="https://opencollective.com/xflego/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/xflego/contribute)]
+
+<a href="https://opencollective.com/xflego/organization/0/website"><img src="https://opencollective.com/xflego/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/1/website"><img src="https://opencollective.com/xflego/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/2/website"><img src="https://opencollective.com/xflego/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/3/website"><img src="https://opencollective.com/xflego/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/4/website"><img src="https://opencollective.com/xflego/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/5/website"><img src="https://opencollective.com/xflego/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/6/website"><img src="https://opencollective.com/xflego/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/7/website"><img src="https://opencollective.com/xflego/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/8/website"><img src="https://opencollective.com/xflego/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/xflego/organization/9/website"><img src="https://opencollective.com/xflego/organization/9/avatar.svg"></a>
 
 ## License
 XFLegoVIPER is available under the MIT license. See the LICENSE file for more info.
