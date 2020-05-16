@@ -46,6 +46,15 @@ DEPENDENCIES:
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - SDWebImage
 
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - AFNetworking-RACExtensions
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
+
 EXTERNAL SOURCES:
   ReactiveCocoa:
     :git: https://github.com/zhao0/ReactiveCocoa.git
@@ -65,6 +74,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: a1ef90701079a3f1e9a4172577a352e9fba6f807
+PODFILE CHECKSUM: 851eb63edf9948c6cefd5ea5dde7fb46019a4170
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.9.1
