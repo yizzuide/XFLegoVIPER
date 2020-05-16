@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *showMessageButton;
 @property (weak, nonatomic) IBOutlet UIButton *showSettingButton;
 @property (weak, nonatomic) IBOutlet UIButton *showAboutButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *showFlutterButton;
 
 
 @end
@@ -55,6 +55,7 @@
     XF_C_(self.showMessageButton, presenter, showMessageCommand)
     XF_C_(self.showSettingButton, presenter, showSettingCommand)
     XF_C_(self.showAboutButton, presenter, showAboutCommand)
+    XF_C_(self.showFlutterButton, presenter, showFlutterCommand)
     
 
     // 绑定信号执行状态: 命令执行状态信号，初始时有一个非执行状态信号，执行命令后又有执行状态信号 -> 非执行状态信号

@@ -23,6 +23,11 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Flutter (1.0.0)
+  - FlutterPluginRegistrant (0.0.1):
+    - Flutter
+  - lego_flutter (0.0.1):
+    - Flutter
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
@@ -40,6 +45,9 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFNetworking-RACExtensions
+  - Flutter (from `../lego_flutter/.ios/Flutter/engine`)
+  - FlutterPluginRegistrant (from `../lego_flutter/.ios/Flutter/FlutterPluginRegistrant`)
+  - lego_flutter (from `../lego_flutter/.ios/Flutter`)
   - MBProgressHUD (~> 0.9.1)
   - MJExtension
   - MJRefresh
@@ -56,6 +64,12 @@ SPEC REPOS:
     - SDWebImage
 
 EXTERNAL SOURCES:
+  Flutter:
+    :path: "../lego_flutter/.ios/Flutter/engine"
+  FlutterPluginRegistrant:
+    :path: "../lego_flutter/.ios/Flutter/FlutterPluginRegistrant"
+  lego_flutter:
+    :path: "../lego_flutter/.ios/Flutter"
   ReactiveCocoa:
     :git: https://github.com/zhao0/ReactiveCocoa.git
     :tag: 2.5.2
@@ -68,12 +82,15 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   AFNetworking-RACExtensions: a043c6b492fa892395ceb9d20bc4c94e96e08a57
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  FlutterPluginRegistrant: d59dd07dd90e9c6430996073575a5bd1ea19677e
+  lego_flutter: b2ef0ddf59e676af625170ca2c81d752ba709614
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: 851eb63edf9948c6cefd5ea5dde7fb46019a4170
+PODFILE CHECKSUM: e04ff74728e0e69baa00e7454867e1e3e200b671
 
 COCOAPODS: 1.9.1

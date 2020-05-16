@@ -1,6 +1,11 @@
 # Uncomment this line to define a global platform for your project
- platform :ios, '8.0'
+platform :ios, '8.0'
 
+# Flutter Note
+# Your app does not run on a simulator in Release mode because Flutter does not yet support output x86 ahead-of-time (AOT) binaries for your Dart code. You can run in Debug mode on a simulator or a real device, and Release on a real device.
+# When you change the Flutter plugin dependencies in lego_flutter/pubspec.yaml, run `flutter pub get` in your Flutter module directory to refresh the list of plugins read by the podhelper.rb script. Then, run pod install again from your application.
+flutter_application_path = '../lego_flutter'
+load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
 target 'XFLegoVIPERExample' do
 pod 'MJExtension'
@@ -10,6 +15,8 @@ pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag 
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SDWebImage'
 pod 'MJRefresh'
+
+install_all_flutter_pods(flutter_application_path)
 
 end
 

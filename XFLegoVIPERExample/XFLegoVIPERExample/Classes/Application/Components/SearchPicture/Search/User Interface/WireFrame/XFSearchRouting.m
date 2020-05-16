@@ -11,6 +11,8 @@
 #import "XFAboutViewController.h"
 #import "LEMVVMConnector.h"
 #import "XFNavigationController.h"
+#import "AppDelegate.h"
+@import Flutter;
 
 @implementation XFSearchRouting
 
@@ -30,14 +32,15 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
         CATransition *animation = [CATransition animation];
         animation.duration = 0.5;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeOut"];
-        //animation.type = kCATransitionPush;
-        //animation.subtype = kCATransitionFromBottom;
+        animation.type = kCATransitionPush;
+        animation.subtype = kCATransitionFromBottom;
         
+        // 以下为私有API,上架审核可能不会通过
 //         animation.type = @"cube";//立方体效果
-//         animation.type = @"suckEffect";//收缩效果
+//        animation.type = @"suckEffect";//收缩效果（该效果在iOS13中被移除，被kCATransitionFade代替）
 //         animation.type = @"oglFlip";//上下翻转效果
-         animation.type = @"rippleEffect";//滴水效果
-//         animation.type = @"pageCurl";//向上翻一页效果
+//         animation.type = @"rippleEffect";//滴水效果（该效果在iOS13中被移除，被kCATransitionFade代替）
+//         animation.type = kCATransitionFade @"pageCurl";//向上翻一页效果
 //         animation.type = @"pageUnCurl";//向下翻一页效果
         
         [self.realUInterface.navigationController.view.layer addAnimation:animation forKey:@"animation"];
@@ -71,5 +74,25 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
     [LEMVVMConnector makeComponentFromUInterface:aboutVC forName:@"about" intentData:@{@"id":@(123)}];
     UINavigationController *nav = [[XFNavigationController alloc] initWithRootViewController:aboutVC];
     [self.realUInterface presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)transition2Flutter
+{
+    FlutterEngine *flutterEngine =
+        ((AppDelegate *)UIApplication.sharedApplication.delegate).flutterEngine;
+    FlutterViewController *flutterViewController =
+        [[FlutterViewController alloc] initWithEngine:flutterEngine nibName:nil bundle:nil];
+    
+    // 添加消息通道
+    FlutterMethodChannel* navitatorMethodChannel = [FlutterMethodChannel
+    methodChannelWithName:@"flutter.channel.nav"
+    binaryMessenger:flutterViewController.binaryMessenger];
+    [navitatorMethodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
+        if ([call.method isEqualToString:@"dismiss"]) {
+            [flutterViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+    
+    [self.realUInterface presentViewController:flutterViewController animated:YES completion:nil];
 }
 @end

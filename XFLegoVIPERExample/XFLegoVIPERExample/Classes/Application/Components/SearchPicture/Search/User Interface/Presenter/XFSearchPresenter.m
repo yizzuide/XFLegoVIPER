@@ -56,6 +56,10 @@
         [Routing transition2About];
     })
     
+    XF_CEXE_(self.showFlutterCommand, {
+        [Routing transition2Flutter];
+    })
+    
     // 连接错误信号
     self.connectionErrors = self.executeSearch.errors;
 }

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) RACCommand *showMessageCommand;
 @property (nonatomic, strong) RACCommand *showSettingCommand;
 @property (nonatomic, strong) RACCommand *showAboutCommand;
+@property (nonatomic, strong) RACCommand *showFlutterCommand;
 
 @property (strong, nonatomic) RACSignal *connectionErrors;
 

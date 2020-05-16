@@ -17,6 +17,7 @@
 - (void)transition2Message;
 - (void)transition2Setting;
 - (void)transition2About;
+- (void)transition2Flutter;
 @end
 
 

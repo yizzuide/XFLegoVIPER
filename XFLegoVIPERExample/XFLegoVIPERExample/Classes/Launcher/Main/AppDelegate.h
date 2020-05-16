@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Flutter;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : FlutterAppDelegate
 
-@property (strong, nonatomic) UIWindow *window;
-
+//@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic,strong) FlutterEngine *flutterEngine;
 
 @end
 

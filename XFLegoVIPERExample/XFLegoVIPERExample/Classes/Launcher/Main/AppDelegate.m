@@ -15,6 +15,8 @@
 #import "XFNetworkEmitter.h"
 #import "XFSearchInterceptor.h"
 #import "XFAuthInterceptor.h"
+// Used to connect plugins (only if you have plugins with iOS platform code).
+#import <FlutterPluginRegistrant/GeneratedPluginRegistrant.h>
 
 @interface AppDelegate ()
 
@@ -53,7 +55,18 @@
     
     self.eventCollector = [[XFEventCollector alloc] init];
     
-    return YES;
+    
+    // The FlutterEngine serves as a host to the Dart VM and your Flutter runtime, and the FlutterViewController attaches to a FlutterEngine to pass UIKit input events into Flutter and to display frames rendered by the FlutterEngine.
+    // It’s generally recommended to pre-warm a long-lived FlutterEngine for your application because:
+    // - The first frame appears faster when showing the FlutterViewController.
+    // - Your Flutter and Dart state will outlive one FlutterViewController.
+    // - Your application and your plugins can interact with Flutter and your Dart logic before showing the UI.
+    self.flutterEngine = [[FlutterEngine alloc] initWithName:@"lego flutter"];
+    // Runs the default Dart entrypoint with a default Flutter route.
+    [self.flutterEngine run];
+    // Used to connect plugins (only if you have plugins with iOS platform code).
+    [GeneratedPluginRegistrant registerWithRegistry:self.flutterEngine];
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 // 使SDWebImage支持URL有逗号也能显示

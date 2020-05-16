@@ -6,6 +6,28 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B26E11467D023FA6CDCE36F75198812F /* Build configuration list for PBXAggregateTarget "Flutter" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Flutter;
+		};
+		DB0ABF53D1DA593C765B413848D8E6F4 /* lego_flutter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F5DDAB226EEEA50305A1DCB16C836E3B /* Build configuration list for PBXAggregateTarget "lego_flutter" */;
+			buildPhases = (
+			);
+			dependencies = (
+				AD40E00D3620D546411930DBA7F04C5C /* PBXTargetDependency */,
+			);
+			name = lego_flutter;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		00C381F7F091B7E9F4D8D3880DD69D2B /* UIImagePickerController+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = B080E498332743EBCCEE9D17930C5D97 /* UIImagePickerController+RACSignalSupport.m */; };
 		02A6E49D5381411870EE544881EF3AED /* RACTestScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA251B5EAC102B6FBCE01339AB61DC /* RACTestScheduler.m */; };
@@ -25,6 +47,7 @@
 		10CC41A8024044B722238AA8F83921FC /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F966670017E77ED6354AC3836F3 /* UIImageView+HighlightedWebCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		10D8F2CCAC85793AF5CC9BDC179F3172 /* RACKVOChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5365350FD8797D3A7E0E7E9243264CC6 /* RACKVOChannel.m */; };
 		112155ED5FF8907B52CC1333D3760525 /* RACArraySequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F40E574C86FA77D257A6BC7463C6E7 /* RACArraySequence.m */; };
+		11967CEC233EDC777E0F609CA1F983F5 /* FlutterPluginRegistrant-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE6BABA2DC037A1FA5A1FB2AAA8F13A /* FlutterPluginRegistrant-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		128DC21B3B109C3045330FEF39316D13 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C5572AFF801AB556590EDDA2A2CCF0 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		139697D9E4AC066C9F1F60627027D6C5 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAE91252A500A9A32FB2F482CB634E /* MJRefreshBackFooter.m */; };
 		14AD53E9A23EBEE857D983C7DE233276 /* RACReturnSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 85CA47C0F2FDAE916BCC5F480E822F46 /* RACReturnSignal.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -88,7 +111,7 @@
 		37946DA2E47D8699A89B31932E0044E8 /* RACEXTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AE3572ACBA92871E1B7944B110AC98 /* RACEXTRuntimeExtensions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		381F9667A3CD93D37D88DE8129D22CAC /* RACImmediateScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 413EAE7B8C0DE7497BE6455835FAE037 /* RACImmediateScheduler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		383DD34ABE13C8289364CFC5316DD0A2 /* NSArray+RACSequenceAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 83C6FB9EB2784D8D71D69ACE320672AC /* NSArray+RACSequenceAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3EAC1E6EC39681571C704D616DB954C0 /* Pods-XFLegoVIPERExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE82A482962E2026B64577CF6DAA970B /* Pods-XFLegoVIPERExample-dummy.m */; };
+		3DF51F536A23EEAB6EF332C27B130769 /* GeneratedPluginRegistrant.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AF4C46DF890734897479A27239D0285 /* GeneratedPluginRegistrant.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3F67E3DAA400A73C10F23EBD4ADD52A8 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B52F368D9355A0562B3EAD1FF7C3784 /* NSData+ImageContentType.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3FC150B390F14CBA4BC59C1E1E97F5DE /* RACSubscriptionScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F47F7C838C76E95FE3E9EE091FD368 /* RACSubscriptionScheduler.m */; };
 		4023961192EAC86346E15D948618FF32 /* NSURLConnection+RACSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCFC68DE05EF005086F27AE8E717C /* NSURLConnection+RACSupport.m */; };
@@ -124,6 +147,7 @@
 		56EBB62C37555CA94B8859157DE33A82 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 903B7801AA5B9CE667347199B49EBDC9 /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		57121F857DDDD16CF25F36472AEF7C1A /* RACEmptySignal.m in Sources */ = {isa = PBXBuildFile; fileRef = C77961260CF343AE9A944FFFAC992B33 /* RACEmptySignal.m */; };
 		5A3E297705F3A4547756B09B4044B940 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E529C33239EE6426FA1C162B8551D /* MBProgressHUD-dummy.m */; };
+		5AE3DAEF41AD923DB828042F45528AFB /* FlutterPluginRegistrant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AD2385DB6C1087BA0923C499628F0E /* FlutterPluginRegistrant-dummy.m */; };
 		5B04412011DD275D70663EB63C9454BC /* RACSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = A3557587C28007E14F15EB7D9384EB32 /* RACSignal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5B2BF916683DD3AC8D80F9B10901B8D3 /* NSURLConnection+RACSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA6E93EC941D5D617799C7795D0408F /* NSURLConnection+RACSupport.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5B69AEF39E06F46B23A52592D59FD94F /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5743C179EF6AC5856D24F4036FE0DD78 /* SDImageCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -140,6 +164,7 @@
 		6475051F7B3A59A7FC679591053FD563 /* MKAnnotationView+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6738F5F714E9771B5928BA725EC94 /* MKAnnotationView+RACSignalSupport.m */; };
 		64ABF366DFC18AC9E78676C060E328D7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3B8053F17AC6A3E510BA85ED687737 /* UIRefreshControl+AFNetworking.m */; };
 		658E53E887C607B07254162FD8F4FF6D /* SDWebImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED22DE6FE7D9B2350B4791FEC7CED25 /* SDWebImage-dummy.m */; };
+		661771581DDC93D7459C058963042B39 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA84BE5D9794275BFF37A8BE564C45 /* GeneratedPluginRegistrant.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6650B97C09E9A66F295009F40DAF25F8 /* RACStringSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 21267F7A87EBD4312B7AE0D9CBD1880A /* RACStringSequence.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		68BF05992AA5297E264F35FEC51F0D49 /* UIControl+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF2CA27300ECF5C1FEC702415013DD3 /* UIControl+RACSignalSupport.m */; };
 		6993A640542D72CAFD558CBB178CD8E3 /* UIBarButtonItem+RACCommandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3140B0921093C8A9F4F3CB5A0BB4B1 /* UIBarButtonItem+RACCommandSupport.m */; };
@@ -319,6 +344,7 @@
 		EF0F7861CFFC8C11B4545731DF0940D7 /* RACmetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 36982AAC1764E2D92F1E29A120EA94D0 /* RACmetamacros.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F00ABB0FE87957C0C91091B575916A69 /* NSOrderedSet+RACSequenceAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 81765600F4E1D6D0C9CF75902A5F1948 /* NSOrderedSet+RACSequenceAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F0936F2C919AA963786187ED8EC90EFC /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C7F0D1ED67B95E5A2248CB1201FE34E /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F1E622B46FD8588519F836FEE41FA10A /* Pods-XFLegoVIPERExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C2F334290DE7F48AC388ABA217D8C /* Pods-XFLegoVIPERExample-dummy.m */; };
 		F390A75CD40BBB07194D9E33EA71CDEA /* RACSubscriber+AFProgressCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = C3693FA29EB379945BA649C44EDCBFF8 /* RACSubscriber+AFProgressCallbacks.m */; };
 		F3BEC72DF6437D61B39B73EA2EE0591C /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 88F364B80280A8452B78CF6FFAF184F2 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F4C593492844D37C58705DACB3409C28 /* MJRefreshAutoGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE8D54F0BF3278DD77DE9168038CDB2 /* MJRefreshAutoGifFooter.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -344,12 +370,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C2F582102E051B8C75C0B6C7E655E2D /* PBXContainerItemProxy */ = {
+		1965691EBAF93508A32D233D74DA7726 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 82B0A41D3031FF27D78E17B0A9A46FB0;
-			remoteInfo = MBProgressHUD;
+			remoteGlobalIDString = ED718F6F1C8AFDA714DB8FCB679B17A2;
+			remoteInfo = "AFNetworking-RACExtensions";
+		};
+		51C85FC44BF617F30E2892AA087B8DDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
+			remoteInfo = SDWebImage;
 		};
 		53FB3249BFEDAC522FDA14C93DE9A268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -358,12 +391,26 @@
 			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
 			remoteInfo = AFNetworking;
 		};
-		58E5E3E9CF4A542158867AD7D828CD95 /* PBXContainerItemProxy */ = {
+		544F27DD7354F8179C634C027D443187 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6868056D761E163D10FDAF8CF1C4D9B8;
-			remoteInfo = MJRefresh;
+			remoteGlobalIDString = 83DAA8F43D74F8D51203DE23C7C3A3F5;
+			remoteInfo = FlutterPluginRegistrant;
+		};
+		5A7C9802EFC052A7B67DC88807530494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EFDDC32A34D56D411E640A81DCD9E73;
+			remoteInfo = Flutter;
+		};
+		628910894B257145D83E502025E58201 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D3BA58D0583DF37575CACAB3DDADC85;
+			remoteInfo = MJExtension;
 		};
 		65BBE018C0AD6E9629FFB47B1A37A9EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -372,40 +419,54 @@
 			remoteGlobalIDString = 07B5C6907D09E767CDC5954A9468CA2E;
 			remoteInfo = ReactiveCocoa;
 		};
-		6B26B283CEEF374CDAE9EB749F71DBD2 /* PBXContainerItemProxy */ = {
+		695E1921198DF55A46F798CCF8C955A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
-			remoteInfo = SDWebImage;
+			remoteGlobalIDString = 82B0A41D3031FF27D78E17B0A9A46FB0;
+			remoteInfo = MBProgressHUD;
 		};
-		B1AB7D89B78E6DCB1D45CF082F3B2905 /* PBXContainerItemProxy */ = {
+		91F351BB60378E33378D03C8A88CBD67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4D3BA58D0583DF37575CACAB3DDADC85;
-			remoteInfo = MJExtension;
+			remoteGlobalIDString = 1EFDDC32A34D56D411E640A81DCD9E73;
+			remoteInfo = Flutter;
 		};
-		B90E6C5DC757392AA19FC43AC4A359EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07B5C6907D09E767CDC5954A9468CA2E;
-			remoteInfo = ReactiveCocoa;
-		};
-		C33DBAAAFF3DA55E6103457809A635AE /* PBXContainerItemProxy */ = {
+		C413655AE390E9A2571CEB8BF44CB1C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
 			remoteInfo = AFNetworking;
 		};
-		C59A423B6CB0A6B38126E43B669E10CE /* PBXContainerItemProxy */ = {
+		E87933CD374C16CB09891E5382886D6B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ED718F6F1C8AFDA714DB8FCB679B17A2;
-			remoteInfo = "AFNetworking-RACExtensions";
+			remoteGlobalIDString = DB0ABF53D1DA593C765B413848D8E6F4;
+			remoteInfo = lego_flutter;
+		};
+		EE770D54F3446D55EF05BAD6FEB1E262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07B5C6907D09E767CDC5954A9468CA2E;
+			remoteInfo = ReactiveCocoa;
+		};
+		FD2E9E114CDF6BA3E27040D99451A419 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6868056D761E163D10FDAF8CF1C4D9B8;
+			remoteInfo = MJRefresh;
+		};
+		FD304D89750E37378D028426F504E175 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EFDDC32A34D56D411E640A81DCD9E73;
+			remoteInfo = Flutter;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -417,6 +478,8 @@
 		02CC11C01D3E3DE5676773DEBAFBBC0F /* RACObjCRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACObjCRuntime.h; path = ReactiveCocoa/RACObjCRuntime.h; sourceTree = "<group>"; };
 		032785B1AA3460DCC656CD53FD12F91D /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+AFNetworking.m"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
 		035F8BF570D7B5F6FD00FEE7BC765F4C /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		03AD2385DB6C1087BA0923C499628F0E /* FlutterPluginRegistrant-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FlutterPluginRegistrant-dummy.m"; sourceTree = "<group>"; };
+		040C2F334290DE7F48AC388ABA217D8C /* Pods-XFLegoVIPERExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XFLegoVIPERExample-dummy.m"; sourceTree = "<group>"; };
 		040D030E8A77C5DD2ADA55579BF34D34 /* NSDictionary+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+RACSequenceAdditions.m"; path = "ReactiveCocoa/NSDictionary+RACSequenceAdditions.m"; sourceTree = "<group>"; };
 		05B1C42D298EFD42636B33B5295341D0 /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
 		05E52573C76C7061A220919038DF8292 /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
@@ -424,8 +487,6 @@
 		061040AB412403B93C965AF32D8F1653 /* RACObjCRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACObjCRuntime.m; path = ReactiveCocoa/RACObjCRuntime.m; sourceTree = "<group>"; };
 		06164BE2A0520136A8C66F057FA41C79 /* RACTupleSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACTupleSequence.h; path = ReactiveCocoa/RACTupleSequence.h; sourceTree = "<group>"; };
 		06ED47A91DF4F0B9717ABCA945108038 /* UIControl+RACSignalSupportPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIControl+RACSignalSupportPrivate.h"; path = "ReactiveCocoa/UIControl+RACSignalSupportPrivate.h"; sourceTree = "<group>"; };
-		07E880D0538DBD362BB256A751AB62E0 /* Pods-XFLegoVIPERExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XFLegoVIPERExample.release.xcconfig"; sourceTree = "<group>"; };
-		081DDB551E6025CB29A4E0F88974CB82 /* Pods-XFLegoVIPERExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XFLegoVIPERExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		087601C203C3C0FF864FB1B68E4293A2 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		0A3140B0921093C8A9F4F3CB5A0BB4B1 /* UIBarButtonItem+RACCommandSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+RACCommandSupport.m"; path = "ReactiveCocoa/UIBarButtonItem+RACCommandSupport.m"; sourceTree = "<group>"; };
 		0A86D0337572067A915693126F3110F6 /* RACAFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACAFNetworking.h; path = RACAFNetworking/RACAFNetworking.h; sourceTree = "<group>"; };
@@ -457,6 +518,7 @@
 		1D8BED2C4B6F0070175EE972491E4DD6 /* RACEXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACEXTScope.h; path = ReactiveCocoa/extobjc/RACEXTScope.h; sourceTree = "<group>"; };
 		1ED22DE6FE7D9B2350B4791FEC7CED25 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		1EE5E404D92C00CEE5013072A61FE3C5 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		1F54BD3758DAB2E2876953F4C6592F93 /* FlutterPluginRegistrant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FlutterPluginRegistrant.modulemap; sourceTree = "<group>"; };
 		1F6F7FCAE06AB57D9E2F161EA0BA8AB3 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
 		2086BBC10DED41409ADE8610C91DC588 /* NSFileHandle+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSFileHandle+RACSupport.m"; path = "ReactiveCocoa/NSFileHandle+RACSupport.m"; sourceTree = "<group>"; };
 		20FF7593F5F5CC7B014616DA428EA57B /* RACIndexSetSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACIndexSetSequence.h; path = ReactiveCocoa/RACIndexSetSequence.h; sourceTree = "<group>"; };
@@ -468,21 +530,25 @@
 		24FDE8BF351EF70CB6F0DB89186FAAEC /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		2622F49162E2465A50A4027D180F10C0 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
 		26E2949903692C453B1FE99A75D654E3 /* RACSerialDisposable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSerialDisposable.h; path = ReactiveCocoa/RACSerialDisposable.h; sourceTree = "<group>"; };
+		277844BF2E30D372B345357B39A63373 /* Flutter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter.debug.xcconfig; sourceTree = "<group>"; };
 		27DC1A3AFEDDCD52ECC5E286F8410FC8 /* ReactiveCocoa-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReactiveCocoa-prefix.pch"; sourceTree = "<group>"; };
 		27E6738F5F714E9771B5928BA725EC94 /* MKAnnotationView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+RACSignalSupport.m"; path = "ReactiveCocoa/MKAnnotationView+RACSignalSupport.m"; sourceTree = "<group>"; };
 		292FDFC29D0D55C25E5C0EA88D737C82 /* RACValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACValueTransformer.m; path = ReactiveCocoa/RACValueTransformer.m; sourceTree = "<group>"; };
 		296BC114FA36CC51BD28A16E995EA845 /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
 		296D1FB0B88D5F8B1A32527AAC302139 /* MJExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJExtension.debug.xcconfig; sourceTree = "<group>"; };
 		2A3B8053F17AC6A3E510BA85ED687737 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		2A76C542032DAA30931A0BA4CCBF7DBB /* lego_flutter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = lego_flutter.release.xcconfig; sourceTree = "<group>"; };
 		2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B610A74BDE540BC10D98D9834C46E41 /* UISegmentedControl+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UISegmentedControl+RACSignalSupport.m"; path = "ReactiveCocoa/UISegmentedControl+RACSignalSupport.m"; sourceTree = "<group>"; };
 		2B6FC78A46399891829867AE6B0287F7 /* UITableViewCell+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+RACSignalSupport.m"; path = "ReactiveCocoa/UITableViewCell+RACSignalSupport.m"; sourceTree = "<group>"; };
+		2BE6BABA2DC037A1FA5A1FB2AAA8F13A /* FlutterPluginRegistrant-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlutterPluginRegistrant-umbrella.h"; sourceTree = "<group>"; };
 		2D7CA02C1B6120B60FA5A3AE5E597979 /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
 		30829032FDC74BD13B0A6CA0931A1FA0 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		31071502A33BC566F77BF79B7F1D709C /* RACSignalProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; name = RACSignalProvider.d; path = ReactiveCocoa/RACSignalProvider.d; sourceTree = "<group>"; };
 		31B33683EC75AD6BE71F668BCF8A1839 /* RACDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACDelegateProxy.m; path = ReactiveCocoa/RACDelegateProxy.m; sourceTree = "<group>"; };
 		31CC8D5181493E543F4BF83B790FD5FC /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
 		32924AD464B2E4F817F04D36A44FB0CB /* NSObject+RACLifting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACLifting.h"; path = "ReactiveCocoa/NSObject+RACLifting.h"; sourceTree = "<group>"; };
+		32B36BC2ECFB96EF5DF4BBB849484C6E /* Pods-XFLegoVIPERExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XFLegoVIPERExample-resources.sh"; sourceTree = "<group>"; };
 		35C05FD50E0D99D869339D5843B686C8 /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackNormalFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.h; sourceTree = "<group>"; };
 		35E28AFF348E9148E6565E5E3B1ADCE9 /* ReactiveCocoa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReactiveCocoa.debug.xcconfig; sourceTree = "<group>"; };
 		3628F75586952F5F93C2C57C4B30C86C /* RACEXTKeyPathCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACEXTKeyPathCoding.h; path = ReactiveCocoa/extobjc/RACEXTKeyPathCoding.h; sourceTree = "<group>"; };
@@ -508,6 +574,7 @@
 		47D339AC463B6A8103BC40043C7504A3 /* ReactiveCocoa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReactiveCocoa.h; path = ReactiveCocoa/ReactiveCocoa.h; sourceTree = "<group>"; };
 		48A88B3046EB4959E2C4481DDE8E53C7 /* AFNetworking-RACExtensions-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-RACExtensions-prefix.pch"; sourceTree = "<group>"; };
 		490AC753C5C289D7B70E73B4E7512560 /* libReactiveCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReactiveCocoa.a; path = libReactiveCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4935652AD04BA4C0A1EC5A77E40E302A /* FlutterPluginRegistrant-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlutterPluginRegistrant-prefix.pch"; sourceTree = "<group>"; };
 		495EDD9B7CEA22B0498FAA2486697F88 /* UIGestureRecognizer+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIGestureRecognizer+RACSignalSupport.m"; path = "ReactiveCocoa/UIGestureRecognizer+RACSignalSupport.m"; sourceTree = "<group>"; };
 		4967125354038826A0F9E1124C281BB3 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJExtension.m"; path = "MJRefresh/UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
 		497F0D8B8DD6F46546D15945E82E0EEC /* RACTargetQueueScheduler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACTargetQueueScheduler.m; path = ReactiveCocoa/RACTargetQueueScheduler.m; sourceTree = "<group>"; };
@@ -523,9 +590,11 @@
 		519BC00AD5524D96633582E528DA8379 /* AFNetworking-RACExtensions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-RACExtensions-dummy.m"; sourceTree = "<group>"; };
 		526777343C0EC2EC8516F19C83F82F12 /* MJPropertyType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyType.h; path = MJExtension/MJPropertyType.h; sourceTree = "<group>"; };
 		52C14CF61C9883A70366CEF29FB90321 /* RACArraySequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACArraySequence.h; path = ReactiveCocoa/RACArraySequence.h; sourceTree = "<group>"; };
+		52CA84BE5D9794275BFF37A8BE564C45 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GeneratedPluginRegistrant.m; path = Classes/GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		52E3D859F09D9BFADA93BAEDDDC2AE03 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		5365350FD8797D3A7E0E7E9243264CC6 /* RACKVOChannel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACKVOChannel.m; path = ReactiveCocoa/RACKVOChannel.m; sourceTree = "<group>"; };
 		536F9321E7BD33B1FE57C9B529F02F3A /* RACStream+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RACStream+Private.h"; path = "ReactiveCocoa/RACStream+Private.h"; sourceTree = "<group>"; };
+		5424B6D3273921FAB1F51CAF5432E876 /* lego_flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = lego_flutter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5429895A055A350ADB9A1BE90EED1704 /* RACScopedDisposable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACScopedDisposable.h; path = ReactiveCocoa/RACScopedDisposable.h; sourceTree = "<group>"; };
 		545C7EB7618A50E0EEE09B0521095B0F /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
 		56B474AF85C8AC362775944203D11B93 /* RACQueueScheduler+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RACQueueScheduler+Subclass.h"; path = "ReactiveCocoa/RACQueueScheduler+Subclass.h"; sourceTree = "<group>"; };
@@ -534,6 +603,7 @@
 		583ED1BEB8B7391BAFCDE7E5624A535E /* RACKVOTrampoline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACKVOTrampoline.m; path = ReactiveCocoa/RACKVOTrampoline.m; sourceTree = "<group>"; };
 		584CD17034288855640FBCFDD41C9531 /* RACStringSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACStringSequence.m; path = ReactiveCocoa/RACStringSequence.m; sourceTree = "<group>"; };
 		58C1EFE9641A64D59E646A963A729DE3 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		58E3B2C21793543E59669FF8BB63B571 /* Pods-XFLegoVIPERExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XFLegoVIPERExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		590672E3EC95C695235AFB9EB6CD8024 /* MJFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJFoundation.h; path = MJExtension/MJFoundation.h; sourceTree = "<group>"; };
 		5965B8656AA10657AD919F4A4ED6604B /* NSObject+RACDeallocating.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+RACDeallocating.m"; path = "ReactiveCocoa/NSObject+RACDeallocating.m"; sourceTree = "<group>"; };
 		5A386FE1C26D54B9D4BE3F055402E71D /* NSObject+MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJProperty.h"; path = "MJExtension/NSObject+MJProperty.h"; sourceTree = "<group>"; };
@@ -546,7 +616,6 @@
 		63E5E45B1B2D856F9926784859F186D0 /* MJRefreshConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConst.m; path = MJRefresh/MJRefreshConst.m; sourceTree = "<group>"; };
 		64591EF8E2EFCABA86104CEFE9B711F5 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		64D455D6AF157C70F58E593E287AE40C /* AFNetworking-RACExtensions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AFNetworking-RACExtensions.debug.xcconfig"; sourceTree = "<group>"; };
-		64F5780AFE35A7D83219154B603D842D /* Pods-XFLegoVIPERExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XFLegoVIPERExample-resources.sh"; sourceTree = "<group>"; };
 		6597E58EC06068EC454A9F2DC473586D /* UIStepper+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIStepper+RACSignalSupport.h"; path = "ReactiveCocoa/UIStepper+RACSignalSupport.h"; sourceTree = "<group>"; };
 		65BEF4EC94FF5D7D1B9BF41945018E34 /* UIBarButtonItem+RACCommandSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+RACCommandSupport.h"; path = "ReactiveCocoa/UIBarButtonItem+RACCommandSupport.h"; sourceTree = "<group>"; };
 		65C14E518EE776B2AA75BF8F6A5283A4 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
@@ -561,6 +630,7 @@
 		6944F9142B38DA1850844C424D4832FC /* NSEnumerator+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSEnumerator+RACSequenceAdditions.m"; path = "ReactiveCocoa/NSEnumerator+RACSequenceAdditions.m"; sourceTree = "<group>"; };
 		6A4D8984BD9992D24108B1454854F80D /* UITextView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+RACSignalSupport.m"; path = "ReactiveCocoa/UITextView+RACSignalSupport.m"; sourceTree = "<group>"; };
 		6A952FCFCA9B653E131306C1F71B1021 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalHeader.h; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.h; sourceTree = "<group>"; };
+		6AF4C46DF890734897479A27239D0285 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GeneratedPluginRegistrant.h; path = Classes/GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		6B00B61A5500501E218555DBADF40D9C /* NSSet+RACSequenceAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+RACSequenceAdditions.h"; path = "ReactiveCocoa/NSSet+RACSequenceAdditions.h"; sourceTree = "<group>"; };
 		6BB2A90B0B01B6A1F40E301B5E5900C3 /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
 		6BB9940FDC4EC46C27E51F1A55088290 /* RACCompoundDisposable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACCompoundDisposable.m; path = ReactiveCocoa/RACCompoundDisposable.m; sourceTree = "<group>"; };
@@ -600,7 +670,6 @@
 		8071B4E27C8E9D2C3D52205E980BDD2D /* libAFNetworking-RACExtensions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libAFNetworking-RACExtensions.a"; path = "libAFNetworking-RACExtensions.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E284679F19AFD3FB602D01514FCF6F /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		80F65FD5EA84CEC87F74E191E9114E00 /* RACPassthroughSubscriber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACPassthroughSubscriber.h; path = ReactiveCocoa/RACPassthroughSubscriber.h; sourceTree = "<group>"; };
-		8145E361F8C43096CB1EE10024D627A1 /* Pods-XFLegoVIPERExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XFLegoVIPERExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		81765600F4E1D6D0C9CF75902A5F1948 /* NSOrderedSet+RACSequenceAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSOrderedSet+RACSequenceAdditions.h"; path = "ReactiveCocoa/NSOrderedSet+RACSequenceAdditions.h"; sourceTree = "<group>"; };
 		818DA257883EA6A9A3E9DB22926CC0D2 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoStateFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		81FBDF42718E5A035CF65011C42596D8 /* RACMulticastConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACMulticastConnection.m; path = ReactiveCocoa/RACMulticastConnection.m; sourceTree = "<group>"; };
@@ -651,9 +720,12 @@
 		9A2C122ECDC727E6A169892ED70B02B3 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		9BDF0C5D54A04E043438144B50FF3EE2 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackGifFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		9C40AE4035FF25E34A1DA6CBD4F42E28 /* RACIndexSetSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACIndexSetSequence.m; path = ReactiveCocoa/RACIndexSetSequence.m; sourceTree = "<group>"; };
+		9C6D5256124C406821BE139502F7417A /* lego_flutter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = lego_flutter.debug.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E2C96BA31A56FF6603ECB82DC2C5A4D /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
+		9E96E3C53B61BA15C66CA45FDDCB3B90 /* Pods-XFLegoVIPERExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XFLegoVIPERExample-frameworks.sh"; sourceTree = "<group>"; };
 		9F1C854E4D9220F394CB5867CA47B323 /* RACReplaySubject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACReplaySubject.m; path = ReactiveCocoa/RACReplaySubject.m; sourceTree = "<group>"; };
+		A014DE54D805F6C2E7075488B0A023D1 /* FlutterPluginRegistrant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlutterPluginRegistrant.release.xcconfig; sourceTree = "<group>"; };
 		A06DC3D4CB6DE9607C6BB8D083096C90 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		A12832DCE10C4CF564933861025EA308 /* RACEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACEvent.h; path = ReactiveCocoa/RACEvent.h; sourceTree = "<group>"; };
 		A158BF586DF4BF38F607BA141C295E33 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
@@ -662,7 +734,7 @@
 		A3367C0DA215072FA69197CC07D7E54C /* AFURLConnectionOperation+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFURLConnectionOperation+RACSupport.h"; path = "RACAFNetworking/AFURLConnectionOperation+RACSupport.h"; sourceTree = "<group>"; };
 		A3557587C28007E14F15EB7D9384EB32 /* RACSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSignal.h; path = ReactiveCocoa/RACSignal.h; sourceTree = "<group>"; };
 		A3DC4E43B2C87CFCB34F4B7FD93018C1 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
-		A4477C59FCFBB4DEFE49C316C045B369 /* Pods-XFLegoVIPERExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XFLegoVIPERExample.debug.xcconfig"; sourceTree = "<group>"; };
+		A44AFCF362B2EB1C4A3F86A870BD98CC /* FlutterPluginRegistrant.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FlutterPluginRegistrant.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62204E2968239317DC6381F8A19DF42 /* NSNotificationCenter+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+RACSupport.m"; path = "ReactiveCocoa/NSNotificationCenter+RACSupport.m"; sourceTree = "<group>"; };
 		A6E7BB47B7C5231C9FBA7BE6B0D1F61C /* ReactiveCocoa-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReactiveCocoa-dummy.m"; sourceTree = "<group>"; };
@@ -677,7 +749,10 @@
 		AFD6E037393E92CA245C18F0C9C8E17A /* MJExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJExtension-prefix.pch"; sourceTree = "<group>"; };
 		B03441672784BB9213DE9F03EF4C8241 /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
 		B080E498332743EBCCEE9D17930C5D97 /* UIImagePickerController+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImagePickerController+RACSignalSupport.m"; path = "ReactiveCocoa/UIImagePickerController+RACSignalSupport.m"; sourceTree = "<group>"; };
+		B0932C5C9D67AAF38D012DDF309E10F8 /* Pods-XFLegoVIPERExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XFLegoVIPERExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B0B214D775196BA7CA8E17E53048A493 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B17D5703B000481A3C743D8D3BF6B870 /* Flutter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter.release.xcconfig; sourceTree = "<group>"; };
+		B2638C85C0987C28DF81BE3F99E56F4F /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
 		B3E18A8DCC340D4E7A97FC0DADB8416F /* UIActionSheet+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+RACSignalSupport.m"; path = "ReactiveCocoa/UIActionSheet+RACSignalSupport.m"; sourceTree = "<group>"; };
 		B4F4864270B921DAFEB7F6BCC0A470F6 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		B58EA6860D2EB4905E0EE9EC8C1F043F /* AFHTTPSessionManager+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFHTTPSessionManager+RACSupport.h"; path = "RACAFNetworking/AFHTTPSessionManager+RACSupport.h"; sourceTree = "<group>"; };
@@ -692,8 +767,10 @@
 		BA29089CCDBDDAFE20D940CEEB9C1681 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		BB5267B989A76CFF4E1FECF1A7A4997B /* RACReturnSignal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACReturnSignal.m; path = ReactiveCocoa/RACReturnSignal.m; sourceTree = "<group>"; };
 		BC582B4DF60E63D5DAFCFA097DFAF899 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
+		BCE2457104A13F45A19C5F0CCBBACC56 /* FlutterPluginRegistrant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlutterPluginRegistrant.debug.xcconfig; sourceTree = "<group>"; };
 		BD53FE61695C251ABB7F4CA62D4C69A6 /* RACDynamicSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACDynamicSequence.m; path = ReactiveCocoa/RACDynamicSequence.m; sourceTree = "<group>"; };
 		BFB633F8CAC067651F875A6032AD3C66 /* NSObject+RACKVOWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACKVOWrapper.h"; path = "ReactiveCocoa/NSObject+RACKVOWrapper.h"; sourceTree = "<group>"; };
+		BFEE019C25DE9B4C681DBCDB618F11F7 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
 		C021A92F34AA2475AF8D61A3E0A6CA25 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		C076863599B9E4AF02E3FE011D20666E /* RACEagerSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACEagerSequence.h; path = ReactiveCocoa/RACEagerSequence.h; sourceTree = "<group>"; };
 		C1CF250CB9A473C478BF2B51940281C2 /* NSObject+RACLifting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+RACLifting.m"; path = "ReactiveCocoa/NSObject+RACLifting.m"; sourceTree = "<group>"; };
@@ -718,6 +795,7 @@
 		CAD6ECEEE818181407714C22C573E3E6 /* AFHTTPRequestOperationManager+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFHTTPRequestOperationManager+RACSupport.h"; path = "RACAFNetworking/AFHTTPRequestOperationManager+RACSupport.h"; sourceTree = "<group>"; };
 		CDBAD9CC12E9F70F167DF4AF02062F31 /* NSObject+RACDeallocating.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACDeallocating.h"; path = "ReactiveCocoa/NSObject+RACDeallocating.h"; sourceTree = "<group>"; };
 		CEF2CA27300ECF5C1FEC702415013DD3 /* UIControl+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIControl+RACSignalSupport.m"; path = "ReactiveCocoa/UIControl+RACSignalSupport.m"; sourceTree = "<group>"; };
+		D0A868D10441B69A814B886A47988ECD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		D112C5C58CE137C55B7D2C42FB4A18F1 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		D27A284CF6E301CB13EA9E1F3399792A /* UISlider+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UISlider+RACSignalSupport.h"; path = "ReactiveCocoa/UISlider+RACSignalSupport.h"; sourceTree = "<group>"; };
 		D2C7EE6206C7F2071DC588FFEDC055F3 /* NSObject+MJCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJCoding.m"; path = "MJExtension/NSObject+MJCoding.m"; sourceTree = "<group>"; };
@@ -728,12 +806,15 @@
 		D5E675838AA4D5C391F5B2FB6D0B20EC /* MJRefreshHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshHeader.h; path = MJRefresh/Base/MJRefreshHeader.h; sourceTree = "<group>"; };
 		D5F62FEEC1F224392D0D299E97272183 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoStateFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
 		D650655D856CAA04F4C7EAD13961C594 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		D6BFBEDA4815429818F1A6653C1375EA /* Flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Flutter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D75E0B223308581FC3D66EC1528DCF38 /* UITextView+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+RACSignalSupport.h"; path = "ReactiveCocoa/UITextView+RACSignalSupport.h"; sourceTree = "<group>"; };
 		D781E3444F080D2A5A926EC13642711A /* RACTestScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACTestScheduler.h; path = ReactiveCocoa/RACTestScheduler.h; sourceTree = "<group>"; };
 		D79785AD0ED85DCC4E7AAE2EF5F7B62C /* NSUserDefaults+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+RACSupport.m"; path = "ReactiveCocoa/NSUserDefaults+RACSupport.m"; sourceTree = "<group>"; };
 		D8BF02AF088606DC07E37B416AD0B846 /* RACEmptySequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACEmptySequence.m; path = ReactiveCocoa/RACEmptySequence.m; sourceTree = "<group>"; };
 		D968EAF8CDE6F6D0069849576E1334AB /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
+		D99354D5DBD2069C5266B402B7B38D15 /* Pods-XFLegoVIPERExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XFLegoVIPERExample.release.xcconfig"; sourceTree = "<group>"; };
 		DA23ED7C35DC73DE60224D33204F0865 /* AFURLConnectionOperation+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AFURLConnectionOperation+RACSupport.m"; path = "RACAFNetworking/AFURLConnectionOperation+RACSupport.m"; sourceTree = "<group>"; };
+		DF7C6EBB9161EEF650EC12B4BB67E628 /* libFlutterPluginRegistrant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFlutterPluginRegistrant.a; path = libFlutterPluginRegistrant.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFAC75C365BB69B177AFC9C20C7CC9F1 /* MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtension.h; path = MJExtension/MJExtension.h; sourceTree = "<group>"; };
 		DFF4BC1F109F7BDD2AABFB955248D85F /* UIControl+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIControl+RACSignalSupport.h"; path = "ReactiveCocoa/UIControl+RACSignalSupport.h"; sourceTree = "<group>"; };
 		E1C21E8343A7FD37DCC82511B289F71A /* UIRefreshControl+RACCommandSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+RACCommandSupport.m"; path = "ReactiveCocoa/UIRefreshControl+RACCommandSupport.m"; sourceTree = "<group>"; };
@@ -757,10 +838,10 @@
 		ECFDCFC68DE05EF005086F27AE8E717C /* NSURLConnection+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLConnection+RACSupport.m"; path = "ReactiveCocoa/NSURLConnection+RACSupport.m"; sourceTree = "<group>"; };
 		EDC28028605FE0844706944DAC08BC4B /* RACReplaySubject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACReplaySubject.h; path = ReactiveCocoa/RACReplaySubject.h; sourceTree = "<group>"; };
 		EE29F8E21FCC39DC12387730A33C3C22 /* RACStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACStream.h; path = ReactiveCocoa/RACStream.h; sourceTree = "<group>"; };
-		EE82A482962E2026B64577CF6DAA970B /* Pods-XFLegoVIPERExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XFLegoVIPERExample-dummy.m"; sourceTree = "<group>"; };
 		EFE967C05DA1030DF97610EBA174F65E /* MJRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh-dummy.m"; sourceTree = "<group>"; };
 		F10F4E42D2DD2F398A13653042037F6F /* MJRefreshComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshComponent.m; path = MJRefresh/Base/MJRefreshComponent.m; sourceTree = "<group>"; };
 		F20AD8282DE04AD36D85E4514CA277E3 /* NSInvocation+RACTypeParsing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+RACTypeParsing.h"; path = "ReactiveCocoa/NSInvocation+RACTypeParsing.h"; sourceTree = "<group>"; };
+		F409196BE005B2C0DCE358931575C68D /* Pods-XFLegoVIPERExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XFLegoVIPERExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F5405FA9CC8F63506588C95261BCBB37 /* RACKVOProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACKVOProxy.h; path = ReactiveCocoa/RACKVOProxy.h; sourceTree = "<group>"; };
 		F5D4D72B532B4DD0FF9CA9D9775817D2 /* RACEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACEvent.m; path = ReactiveCocoa/RACEvent.m; sourceTree = "<group>"; };
 		F648D437830D8857488B3CEC96A72C46 /* RACDynamicSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACDynamicSignal.h; path = ReactiveCocoa/RACDynamicSignal.h; sourceTree = "<group>"; };
@@ -790,6 +871,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2E057C1A3A028A3F34D43018E95CB32E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3C7C90401FE0605D4D0B5309FC7AD075 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -797,14 +885,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E20158134C50B58302506F8F4419F4D /* Frameworks */ = {
+		4289769C938DCDB114882186137F957A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BCE021868768AFDE978838C4A2BCE59D /* Frameworks */ = {
+		4E20158134C50B58302506F8F4419F4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -842,6 +930,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152697A9B03737AC151A3B405E395930 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				55F90281CB68291AD28C7216A09649FC /* Frameworks */,
+				9D80EE3AAE25BFCCF4C978F213188429 /* Pod */,
+				329F5C928208F32D2F6832C3C2FDFC7F /* Support Files */,
+			);
+			name = Flutter;
+			path = ../../lego_flutter/.ios/Flutter/engine;
+			sourceTree = "<group>";
+		};
 		244E15D8BE7621D8795056F332F60C48 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +953,33 @@
 			path = "../Target Support Files/MBProgressHUD";
 			sourceTree = "<group>";
 		};
+		2730E036BE5EC99110F9149F805BC769 /* lego_flutter */ = {
+			isa = PBXGroup;
+			children = (
+				A74CC6AE72A0857E18CFD57592951E37 /* Frameworks */,
+				398873BB27A5474F515949C82FBB61C6 /* Pod */,
+				61967ED4FE6891C1A7B72189D3B7DAA4 /* Support Files */,
+			);
+			name = lego_flutter;
+			path = ../../lego_flutter/.ios/Flutter;
+			sourceTree = "<group>";
+		};
+		2A17E4EFB748144026D7E7D117B3E6B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */,
+				8071B4E27C8E9D2C3D52205E980BDD2D /* libAFNetworking-RACExtensions.a */,
+				DF7C6EBB9161EEF650EC12B4BB67E628 /* libFlutterPluginRegistrant.a */,
+				8B8FAB0D627B17EDE1366984278705D9 /* libMBProgressHUD.a */,
+				2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */,
+				E49D6D248DD1CEE584E6776B9164A1B2 /* libMJRefresh.a */,
+				94406C813D6526337A83F98FC3D9AA9C /* libPods-XFLegoVIPERExample.a */,
+				490AC753C5C289D7B70E73B4E7512560 /* libReactiveCocoa.a */,
+				B0B214D775196BA7CA8E17E53048A493 /* libSDWebImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		308373F0DE4905EB6D08349020DCE3CF /* Security */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +987,16 @@
 				24FDE8BF351EF70CB6F0DB89186FAAEC /* AFSecurityPolicy.m */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		329F5C928208F32D2F6832C3C2FDFC7F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				277844BF2E30D372B345357B39A63373 /* Flutter.debug.xcconfig */,
+				B17D5703B000481A3C743D8D3BF6B870 /* Flutter.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../../../XFLegoVIPERExample/Pods/Target Support Files/Flutter";
 			sourceTree = "<group>";
 		};
 		35A2C2A434D7DF5E38E51A3C20FA1E84 /* UIKit */ = {
@@ -885,6 +1021,15 @@
 				66EDEF32BF95CD048E427DCCBD4246FD /* UIWebView+AFNetworking.m */,
 			);
 			name = UIKit;
+			sourceTree = "<group>";
+		};
+		398873BB27A5474F515949C82FBB61C6 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5424B6D3273921FAB1F51CAF5432E876 /* lego_flutter.podspec */,
+				D0A868D10441B69A814B886A47988ECD /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		3BF431A422AD55AA5137C3BFB461B856 /* no-arc */ = {
@@ -981,6 +1126,20 @@
 			);
 			name = AFNetworking;
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		491DFCCE9FFF6F1C40EB701391D9BB71 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F54BD3758DAB2E2876953F4C6592F93 /* FlutterPluginRegistrant.modulemap */,
+				03AD2385DB6C1087BA0923C499628F0E /* FlutterPluginRegistrant-dummy.m */,
+				4935652AD04BA4C0A1EC5A77E40E302A /* FlutterPluginRegistrant-prefix.pch */,
+				2BE6BABA2DC037A1FA5A1FB2AAA8F13A /* FlutterPluginRegistrant-umbrella.h */,
+				BCE2457104A13F45A19C5F0CCBBACC56 /* FlutterPluginRegistrant.debug.xcconfig */,
+				A014DE54D805F6C2E7075488B0A023D1 /* FlutterPluginRegistrant.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../../../XFLegoVIPERExample/Pods/Target Support Files/FlutterPluginRegistrant";
 			sourceTree = "<group>";
 		};
 		4C04DF5F5A7965CE7AB68F58452517D3 /* Core */ = {
@@ -1138,6 +1297,16 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		4FBE5A9F8CCA0F63823327245C08443D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				152697A9B03737AC151A3B405E395930 /* Flutter */,
+				AB38BD2D8E1456FD3298ACE90A304153 /* FlutterPluginRegistrant */,
+				2730E036BE5EC99110F9149F805BC769 /* lego_flutter */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		50A308802FE3FB043F6B0F3D22E826BF /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1149,12 +1318,38 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		55F90281CB68291AD28C7216A09649FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFEE019C25DE9B4C681DBCDB618F11F7 /* Flutter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5FA6D3D0B63F2869230AE35BDD0BD8A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				EBBEB7733FD7F5F7C5337BC741AA81FD /* MJRefresh.bundle */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		61967ED4FE6891C1A7B72189D3B7DAA4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C6D5256124C406821BE139502F7417A /* lego_flutter.debug.xcconfig */,
+				2A76C542032DAA30931A0BA4CCBF7DBB /* lego_flutter.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../../XFLegoVIPERExample/Pods/Target Support Files/lego_flutter";
+			sourceTree = "<group>";
+		};
+		63C482A7A3E09F08EE8BAFCE79595956 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A44AFCF362B2EB1C4A3F86A870BD98CC /* FlutterPluginRegistrant.podspec */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		708B0008A0F9AC9FB2AE4457C68E763D /* Reachability */ = {
@@ -1251,28 +1446,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		7DE32BE0EFDAC007B25C8894E9230BED /* Pods-XFLegoVIPERExample */ = {
-			isa = PBXGroup;
-			children = (
-				8145E361F8C43096CB1EE10024D627A1 /* Pods-XFLegoVIPERExample-acknowledgements.markdown */,
-				081DDB551E6025CB29A4E0F88974CB82 /* Pods-XFLegoVIPERExample-acknowledgements.plist */,
-				EE82A482962E2026B64577CF6DAA970B /* Pods-XFLegoVIPERExample-dummy.m */,
-				64F5780AFE35A7D83219154B603D842D /* Pods-XFLegoVIPERExample-resources.sh */,
-				A4477C59FCFBB4DEFE49C316C045B369 /* Pods-XFLegoVIPERExample.debug.xcconfig */,
-				07E880D0538DBD362BB256A751AB62E0 /* Pods-XFLegoVIPERExample.release.xcconfig */,
-			);
-			name = "Pods-XFLegoVIPERExample";
-			path = "Target Support Files/Pods-XFLegoVIPERExample";
-			sourceTree = "<group>";
-		};
-		89259CE3C26387B82BA25983E0179EE1 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7DE32BE0EFDAC007B25C8894E9230BED /* Pods-XFLegoVIPERExample */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		8CD1AD2C55DB57C89C723B42D7272762 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1328,6 +1501,14 @@
 			path = "AFNetworking-RACExtensions";
 			sourceTree = "<group>";
 		};
+		9D80EE3AAE25BFCCF4C978F213188429 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				D6BFBEDA4815429818F1A6653C1375EA /* Flutter.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		9FA0B52DCB59E6B09FA5B0E56066CBFF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1340,6 +1521,14 @@
 			path = "../Target Support Files/ReactiveCocoa";
 			sourceTree = "<group>";
 		};
+		A74CC6AE72A0857E18CFD57592951E37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2638C85C0987C28DF81BE3F99E56F4F /* App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A776D411BC6AA08C1941B7DCAFB003C8 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1348,6 +1537,18 @@
 			);
 			name = SDWebImage;
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		AB38BD2D8E1456FD3298ACE90A304153 /* FlutterPluginRegistrant */ = {
+			isa = PBXGroup;
+			children = (
+				6AF4C46DF890734897479A27239D0285 /* GeneratedPluginRegistrant.h */,
+				52CA84BE5D9794275BFF37A8BE564C45 /* GeneratedPluginRegistrant.m */,
+				63C482A7A3E09F08EE8BAFCE79595956 /* Pod */,
+				491DFCCE9FFF6F1C40EB701391D9BB71 /* Support Files */,
+			);
+			name = FlutterPluginRegistrant;
+			path = ../../lego_flutter/.ios/Flutter/FlutterPluginRegistrant;
 			sourceTree = "<group>";
 		};
 		B0BD9CB010AD59B4AEC360A332124BF2 /* NSURLConnection */ = {
@@ -1373,6 +1574,14 @@
 			);
 			name = ReactiveCocoa;
 			path = ReactiveCocoa;
+			sourceTree = "<group>";
+		};
+		C8F50ACDF3C0F64756CE2C4A68E3BB9E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E724CEF82CF70299A1ECD3DAEBE0AD05 /* Pods-XFLegoVIPERExample */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		CC37958C5A05E507BCFB0114A6BEDFC7 /* NSURLSession */ = {
@@ -1402,10 +1611,11 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				4FBE5A9F8CCA0F63823327245C08443D /* Development Pods */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				9403B3B09EC639241B5A4C27815D1089 /* Pods */,
-				F4EA90A132760E3C7FDF924EBB14253F /* Products */,
-				89259CE3C26387B82BA25983E0179EE1 /* Targets Support Files */,
+				2A17E4EFB748144026D7E7D117B3E6B0 /* Products */,
+				C8F50ACDF3C0F64756CE2C4A68E3BB9E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1414,6 +1624,21 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E724CEF82CF70299A1ECD3DAEBE0AD05 /* Pods-XFLegoVIPERExample */ = {
+			isa = PBXGroup;
+			children = (
+				F409196BE005B2C0DCE358931575C68D /* Pods-XFLegoVIPERExample-acknowledgements.markdown */,
+				58E3B2C21793543E59669FF8BB63B571 /* Pods-XFLegoVIPERExample-acknowledgements.plist */,
+				040C2F334290DE7F48AC388ABA217D8C /* Pods-XFLegoVIPERExample-dummy.m */,
+				9E96E3C53B61BA15C66CA45FDDCB3B90 /* Pods-XFLegoVIPERExample-frameworks.sh */,
+				32B36BC2ECFB96EF5DF4BBB849484C6E /* Pods-XFLegoVIPERExample-resources.sh */,
+				B0932C5C9D67AAF38D012DDF309E10F8 /* Pods-XFLegoVIPERExample.debug.xcconfig */,
+				D99354D5DBD2069C5266B402B7B38D15 /* Pods-XFLegoVIPERExample.release.xcconfig */,
+			);
+			name = "Pods-XFLegoVIPERExample";
+			path = "Target Support Files/Pods-XFLegoVIPERExample";
 			sourceTree = "<group>";
 		};
 		ECD1AE91BD0CDD181F1D116BA27153A4 /* MJExtension */ = {
@@ -1444,21 +1669,6 @@
 			);
 			name = MJExtension;
 			path = MJExtension;
-			sourceTree = "<group>";
-		};
-		F4EA90A132760E3C7FDF924EBB14253F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */,
-				8071B4E27C8E9D2C3D52205E980BDD2D /* libAFNetworking-RACExtensions.a */,
-				8B8FAB0D627B17EDE1366984278705D9 /* libMBProgressHUD.a */,
-				2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */,
-				E49D6D248DD1CEE584E6776B9164A1B2 /* libMJRefresh.a */,
-				94406C813D6526337A83F98FC3D9AA9C /* libPods-XFLegoVIPERExample.a */,
-				490AC753C5C289D7B70E73B4E7512560 /* libReactiveCocoa.a */,
-				B0B214D775196BA7CA8E17E53048A493 /* libSDWebImage.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F700CFBEC8E4ACA9E63E978B238D68E9 /* Support Files */ = {
@@ -1503,6 +1713,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19CB772B9E76EE112F7C1DEA970AB40C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11967CEC233EDC777E0F609CA1F983F5 /* FlutterPluginRegistrant-umbrella.h in Headers */,
+				3DF51F536A23EEAB6EF332C27B130769 /* GeneratedPluginRegistrant.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3304A9ABB8207833A11A244FD15FE9AF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1540,6 +1759,13 @@
 				47916D3B76B6DCC61842DF497A9A8957 /* UIImageView+HighlightedWebCache.h in Headers */,
 				98CB7253B74722EB26C96843AC61BBE4 /* UIImageView+WebCache.h in Headers */,
 				1F5BE468A92EB4F8383B27FBC39C54F3 /* UIView+WebCacheOperation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9299FC0F5FCCB06B8B12396B795351D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1658,13 +1884,6 @@
 				8EF91439EE355FA1F1F8BAC397554A2E /* AFURLConnectionOperation+RACSupport.h in Headers */,
 				B92350CA7D242E7F36B42D841BB6D1EF /* RACAFNetworking.h in Headers */,
 				25B65AB7617789DE7E74C46B2E8C9338 /* RACSubscriber+AFProgressCallbacks.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A10043E6FEF46FBA52634E4DA19EC29A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1807,24 +2026,45 @@
 			productReference = 8B8FAB0D627B17EDE1366984278705D9 /* libMBProgressHUD.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		C2338C0EC4816C56540121C458963C42 /* Pods-XFLegoVIPERExample */ = {
+		83DAA8F43D74F8D51203DE23C7C3A3F5 /* FlutterPluginRegistrant */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6648763B19C48E2A78C09F59DA8589BA /* Build configuration list for PBXNativeTarget "Pods-XFLegoVIPERExample" */;
+			buildConfigurationList = D11066AA8D3D09A6419C992764A5C331 /* Build configuration list for PBXNativeTarget "FlutterPluginRegistrant" */;
 			buildPhases = (
-				A10043E6FEF46FBA52634E4DA19EC29A /* Headers */,
-				C05E04908BDE5609FC8986270D893743 /* Sources */,
-				BCE021868768AFDE978838C4A2BCE59D /* Frameworks */,
+				19CB772B9E76EE112F7C1DEA970AB40C /* Headers */,
+				3308CF4D73155186C7E0FCD30DE3071C /* Sources */,
+				2E057C1A3A028A3F34D43018E95CB32E /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A52B3AEF6462AF726E28FE0DBE752B60 /* PBXTargetDependency */,
-				10AE016A0223457560730BD96B539F33 /* PBXTargetDependency */,
-				319C0B996D801349AF575C63ADF86340 /* PBXTargetDependency */,
-				5709F7456DC14CEB369F51CA36F7AF61 /* PBXTargetDependency */,
-				8A392D0487295AAD91737A56E4729206 /* PBXTargetDependency */,
-				26EFD56615D2AB2A51617621FC958B3F /* PBXTargetDependency */,
-				35E2EE9D2E1FC03B18F4275DEAEBAEBF /* PBXTargetDependency */,
+				D861247E670AF688A52282015D51F9D2 /* PBXTargetDependency */,
+			);
+			name = FlutterPluginRegistrant;
+			productName = FlutterPluginRegistrant;
+			productReference = DF7C6EBB9161EEF650EC12B4BB67E628 /* libFlutterPluginRegistrant.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C2338C0EC4816C56540121C458963C42 /* Pods-XFLegoVIPERExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2DF59666929C1BB20DD185DDAE45C00 /* Build configuration list for PBXNativeTarget "Pods-XFLegoVIPERExample" */;
+			buildPhases = (
+				9299FC0F5FCCB06B8B12396B795351D7 /* Headers */,
+				AD4BC6273270B7B181F32F8968285BA6 /* Sources */,
+				4289769C938DCDB114882186137F957A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4FF08AA31443BF51102B4642F196DB3 /* PBXTargetDependency */,
+				FD3A2545B8DED76A7FA3EF08B1F2A4DD /* PBXTargetDependency */,
+				0CF41B1F4B3F0B7936E8BA353873C46A /* PBXTargetDependency */,
+				1CBF1001C0DBCCBB61B717E13D5B0AD5 /* PBXTargetDependency */,
+				C2C94A7445380580C2C560A67CD0BDFB /* PBXTargetDependency */,
+				5AA016BE33A8E9B25EC1009C67351A08 /* PBXTargetDependency */,
+				D1D41DBBEBAFD470052DF310F2A5524F /* PBXTargetDependency */,
+				4A3B17A71E3E4033A174D51FA3A23931 /* PBXTargetDependency */,
+				7CD4AB7E2215FDCD558A17A8481B627F /* PBXTargetDependency */,
+				0ED90394713D8D67C22F5DB87291AD72 /* PBXTargetDependency */,
 			);
 			name = "Pods-XFLegoVIPERExample";
 			productName = "Pods-XFLegoVIPERExample";
@@ -1868,12 +2108,15 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = F4EA90A132760E3C7FDF924EBB14253F /* Products */;
+			productRefGroup = 2A17E4EFB748144026D7E7D117B3E6B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */,
 				ED718F6F1C8AFDA714DB8FCB679B17A2 /* AFNetworking-RACExtensions */,
+				1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */,
+				83DAA8F43D74F8D51203DE23C7C3A3F5 /* FlutterPluginRegistrant */,
+				DB0ABF53D1DA593C765B413848D8E6F4 /* lego_flutter */,
 				82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */,
 				4D3BA58D0583DF37575CACAB3DDADC85 /* MJExtension */,
 				6868056D761E163D10FDAF8CF1C4D9B8 /* MJRefresh */,
@@ -2009,6 +2252,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3308CF4D73155186C7E0FCD30DE3071C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AE3DAEF41AD923DB828042F45528AFB /* FlutterPluginRegistrant-dummy.m in Sources */,
+				661771581DDC93D7459C058963042B39 /* GeneratedPluginRegistrant.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39261A3821EA0B45F95301099852B974 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2045,6 +2297,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD4BC6273270B7B181F32F8968285BA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1E622B46FD8588519F836FEE41FA10A /* Pods-XFLegoVIPERExample-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AF92A2F4D9F49497501BBC807A716B92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2075,14 +2335,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C05E04908BDE5609FC8986270D893743 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3EAC1E6EC39681571C704D616DB954C0 /* Pods-XFLegoVIPERExample-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D39B414259B5D4A3A961519A36DA5D72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2108,29 +2360,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		10AE016A0223457560730BD96B539F33 /* PBXTargetDependency */ = {
+		0CF41B1F4B3F0B7936E8BA353873C46A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "AFNetworking-RACExtensions";
-			target = ED718F6F1C8AFDA714DB8FCB679B17A2 /* AFNetworking-RACExtensions */;
-			targetProxy = C59A423B6CB0A6B38126E43B669E10CE /* PBXContainerItemProxy */;
+			name = Flutter;
+			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
+			targetProxy = FD304D89750E37378D028426F504E175 /* PBXContainerItemProxy */;
 		};
-		26EFD56615D2AB2A51617621FC958B3F /* PBXTargetDependency */ = {
+		0ED90394713D8D67C22F5DB87291AD72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = lego_flutter;
+			target = DB0ABF53D1DA593C765B413848D8E6F4 /* lego_flutter */;
+			targetProxy = E87933CD374C16CB09891E5382886D6B /* PBXContainerItemProxy */;
+		};
+		1CBF1001C0DBCCBB61B717E13D5B0AD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlutterPluginRegistrant;
+			target = 83DAA8F43D74F8D51203DE23C7C3A3F5 /* FlutterPluginRegistrant */;
+			targetProxy = 544F27DD7354F8179C634C027D443187 /* PBXContainerItemProxy */;
+		};
+		4A3B17A71E3E4033A174D51FA3A23931 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ReactiveCocoa;
 			target = 07B5C6907D09E767CDC5954A9468CA2E /* ReactiveCocoa */;
-			targetProxy = B90E6C5DC757392AA19FC43AC4A359EB /* PBXContainerItemProxy */;
-		};
-		319C0B996D801349AF575C63ADF86340 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MBProgressHUD;
-			target = 82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */;
-			targetProxy = 2C2F582102E051B8C75C0B6C7E655E2D /* PBXContainerItemProxy */;
-		};
-		35E2EE9D2E1FC03B18F4275DEAEBAEBF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SDWebImage;
-			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
-			targetProxy = 6B26B283CEEF374CDAE9EB749F71DBD2 /* PBXContainerItemProxy */;
+			targetProxy = EE770D54F3446D55EF05BAD6FEB1E262 /* PBXContainerItemProxy */;
 		};
 		53EF8B6C2BEA1CD3875E5446B9D171BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2138,23 +2390,53 @@
 			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
 			targetProxy = 53FB3249BFEDAC522FDA14C93DE9A268 /* PBXContainerItemProxy */;
 		};
-		5709F7456DC14CEB369F51CA36F7AF61 /* PBXTargetDependency */ = {
+		5AA016BE33A8E9B25EC1009C67351A08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MJExtension;
 			target = 4D3BA58D0583DF37575CACAB3DDADC85 /* MJExtension */;
-			targetProxy = B1AB7D89B78E6DCB1D45CF082F3B2905 /* PBXContainerItemProxy */;
+			targetProxy = 628910894B257145D83E502025E58201 /* PBXContainerItemProxy */;
 		};
-		8A392D0487295AAD91737A56E4729206 /* PBXTargetDependency */ = {
+		7CD4AB7E2215FDCD558A17A8481B627F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
+			targetProxy = 51C85FC44BF617F30E2892AA087B8DDF /* PBXContainerItemProxy */;
+		};
+		AD40E00D3620D546411930DBA7F04C5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Flutter;
+			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
+			targetProxy = 91F351BB60378E33378D03C8A88CBD67 /* PBXContainerItemProxy */;
+		};
+		C2C94A7445380580C2C560A67CD0BDFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBProgressHUD;
+			target = 82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */;
+			targetProxy = 695E1921198DF55A46F798CCF8C955A9 /* PBXContainerItemProxy */;
+		};
+		D1D41DBBEBAFD470052DF310F2A5524F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MJRefresh;
 			target = 6868056D761E163D10FDAF8CF1C4D9B8 /* MJRefresh */;
-			targetProxy = 58E5E3E9CF4A542158867AD7D828CD95 /* PBXContainerItemProxy */;
+			targetProxy = FD2E9E114CDF6BA3E27040D99451A419 /* PBXContainerItemProxy */;
 		};
-		A52B3AEF6462AF726E28FE0DBE752B60 /* PBXTargetDependency */ = {
+		D861247E670AF688A52282015D51F9D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Flutter;
+			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
+			targetProxy = 5A7C9802EFC052A7B67DC88807530494 /* PBXContainerItemProxy */;
+		};
+		E4FF08AA31443BF51102B4642F196DB3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = C33DBAAAFF3DA55E6103457809A635AE /* PBXContainerItemProxy */;
+			targetProxy = C413655AE390E9A2571CEB8BF44CB1C5 /* PBXContainerItemProxy */;
+		};
+		FD3A2545B8DED76A7FA3EF08B1F2A4DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "AFNetworking-RACExtensions";
+			target = ED718F6F1C8AFDA714DB8FCB679B17A2 /* AFNetworking-RACExtensions */;
+			targetProxy = 1965691EBAF93508A32D233D74DA7726 /* PBXContainerItemProxy */;
 		};
 		FFF167B6F55961633EFF2B49D310DCCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2209,6 +2491,42 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32DF5650E534B18EA090A8E9C45A626A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D99354D5DBD2069C5266B402B7B38D15 /* Pods-XFLegoVIPERExample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4ADEE751F099FE35E33FE8FDEBC40E0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A76C542032DAA30931A0BA4CCBF7DBB /* lego_flutter.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2274,26 +2592,19 @@
 			};
 			name = Release;
 		};
-		524F8B57EF484A98969C8F4B9013A5FE /* Debug */ = {
+		529D49BB2D1944079DF7A42133938A7F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4477C59FCFBB4DEFE49C316C045B369 /* Pods-XFLegoVIPERExample.debug.xcconfig */;
+			baseConfigurationReference = B17D5703B000481A3C743D8D3BF6B870 /* Flutter.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		5AB212B30C3018BFD584F6768EC1B697 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2413,6 +2724,31 @@
 			};
 			name = Debug;
 		};
+		7466C49838BD5304AD012C781180366F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A014DE54D805F6C2E7075488B0A023D1 /* FlutterPluginRegistrant.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FlutterPluginRegistrant/FlutterPluginRegistrant-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/FlutterPluginRegistrant/FlutterPluginRegistrant.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FlutterPluginRegistrant;
+				PRODUCT_NAME = FlutterPluginRegistrant;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		79AA3583533898F5D16E57A0C877B3F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B614598E6A87795A7B6EFE481C5D749B /* ReactiveCocoa.release.xcconfig */;
@@ -2501,6 +2837,19 @@
 			};
 			name = Debug;
 		};
+		8AD99D6DCB41153EAE422AA5673D9D90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 277844BF2E30D372B345357B39A63373 /* Flutter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		911112008708C78DB0DF066C7159DA54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 296D1FB0B88D5F8B1A32527AAC302139 /* MJExtension.debug.xcconfig */;
@@ -2547,6 +2896,43 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		9D65782763AF535E92A17AF03A9EF2B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C6D5256124C406821BE139502F7417A /* lego_flutter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBCCDA977A6FEED12ECF9483D73F445D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCE2457104A13F45A19C5F0CCBBACC56 /* FlutterPluginRegistrant.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FlutterPluginRegistrant/FlutterPluginRegistrant-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/FlutterPluginRegistrant/FlutterPluginRegistrant.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FlutterPluginRegistrant;
+				PRODUCT_NAME = FlutterPluginRegistrant;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		CC408C67B0FC065B86E52662B83E205E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2618,9 +3004,9 @@
 			};
 			name = Debug;
 		};
-		EE7D293AFAB147E1B04B2C59351B907D /* Release */ = {
+		ED2578B6CE3006BA7B21A73998645018 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07E880D0538DBD362BB256A751AB62E0 /* Pods-XFLegoVIPERExample.release.xcconfig */;
+			baseConfigurationReference = B0932C5C9D67AAF38D012DDF309E10F8 /* Pods-XFLegoVIPERExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2636,9 +3022,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		EFC7D3888F68982DD082D2E7A230C8D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2720,15 +3105,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6648763B19C48E2A78C09F59DA8589BA /* Build configuration list for PBXNativeTarget "Pods-XFLegoVIPERExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				524F8B57EF484A98969C8F4B9013A5FE /* Debug */,
-				EE7D293AFAB147E1B04B2C59351B907D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9AED9370D9C044D9419AFE51BFB65889 /* Build configuration list for PBXNativeTarget "MJExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2738,11 +3114,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B26E11467D023FA6CDCE36F75198812F /* Build configuration list for PBXAggregateTarget "Flutter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AD99D6DCB41153EAE422AA5673D9D90 /* Debug */,
+				529D49BB2D1944079DF7A42133938A7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B2B92CAB768E6E8058714483F0A8D7A9 /* Build configuration list for PBXNativeTarget "MJRefresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FAB810F05F95B4230B9A4D43959D795 /* Debug */,
 				9BEAEFB9D56116D2979A542018A7D04F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2DF59666929C1BB20DD185DDAE45C00 /* Build configuration list for PBXNativeTarget "Pods-XFLegoVIPERExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED2578B6CE3006BA7B21A73998645018 /* Debug */,
+				32DF5650E534B18EA090A8E9C45A626A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D11066AA8D3D09A6419C992764A5C331 /* Build configuration list for PBXNativeTarget "FlutterPluginRegistrant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBCCDA977A6FEED12ECF9483D73F445D /* Debug */,
+				7466C49838BD5304AD012C781180366F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5DDAB226EEEA50305A1DCB16C836E3B /* Build configuration list for PBXAggregateTarget "lego_flutter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D65782763AF535E92A17AF03A9EF2B7 /* Debug */,
+				4ADEE751F099FE35E33FE8FDEBC40E0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
