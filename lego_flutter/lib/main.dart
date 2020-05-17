@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -108,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             CloseButton(
-              color: Color.fromARGB(255, 0, 122, 25),
+              color: Color.fromARGB(255, 205, 65, 98),
               onPressed: _pop,
             )
           ],

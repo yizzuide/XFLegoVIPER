@@ -90,6 +90,7 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
     [navitatorMethodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
         if ([call.method isEqualToString:@"dismiss"]) {
             [flutterViewController dismissViewControllerAnimated:YES completion:nil];
+            flutterEngine.viewController = nil;
         }
     }];
     
