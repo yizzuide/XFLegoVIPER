@@ -83,7 +83,7 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
     FlutterViewController *flutterViewController =
         [[FlutterViewController alloc] initWithEngine:flutterEngine nibName:nil bundle:nil];
     
-    // 添加消息通道
+    // 添加消息通道/Users/yizzuide/Programing/iOS/Github/XFLegoVIPER/XFLegoVIPERExample/XFLegoVIPERExample/Classes/Application/Components/SearchPicture/Search/User Interface/WireFrame
     FlutterMethodChannel* navitatorMethodChannel = [FlutterMethodChannel
     methodChannelWithName:@"flutter.channel.nav"
     binaryMessenger:flutterViewController.binaryMessenger];
@@ -94,6 +94,13 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
         }
     }];
     
+    // In iOS 13 modal presentations using the automatic, form and page sheet style can be dismissed with a pan down gesture.
+    // Using a sheet that can't be dismissed via swipe solution:
+//    if (@available(iOS 13.0, *)) {
+//        [flutterViewController setModalInPresentation:YES];
+//    }
+    // Or use full screen style
+    [flutterViewController setModalPresentationStyle:UIModalPresentationFullScreen];
     [self.realUInterface presentViewController:flutterViewController animated:YES completion:nil];
 }
 @end
