@@ -163,6 +163,10 @@ static int __treeDeepCount;
 + (void)_log {
 #ifdef DEBUG
     if (LEGO_DEBUG) {
+        // 忽略根组件切换的情况
+        if (__componentKeyArr.count == 0) {
+            return;
+        }
 #ifdef LogDebug
         LogDebug(@"Component trace log:");
 #elif (defined DEBUG)
@@ -171,6 +175,9 @@ static int __treeDeepCount;
         NSMutableString *logStrM = [NSMutableString string];
         __treeDeepCount = 0;
         __kindof id<XFComponentRoutable> component = [__componentTable objectForKey:__componentKeyArr[0]];
+        if (component == nil) {
+            return;
+        }
         [self _printComponentTree:component logStr:logStrM];
 #ifdef LogDebug
         LogDebug(@"%@",logStrM);

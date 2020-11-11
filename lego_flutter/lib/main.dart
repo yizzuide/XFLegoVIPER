@@ -70,9 +70,9 @@ class RandomWordsState extends State<RandomWords> {
               title: Text('Saved Suggestions'),
             ),
             body: ListView(children: divided),
-          ); 
+          );
         },
-      ),  
+      ),
     );
   }
 
@@ -82,7 +82,7 @@ class RandomWordsState extends State<RandomWords> {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       // Two parameters are passed to the function—the BuildContext, and the row iterator, i. 
-      // The iterator begins at 0 and increments each time the function is called. 
+      // The iterator begins at 0 and increments each time the function is called.
       // It increments twice for every suggested word pairing: once for the ListTile, and once for the Divider.
       itemBuilder: (context, i) { // Anonymous function
         // For odd rows, the function adds a Divider widget to visually separate the entries.
@@ -114,9 +114,9 @@ class RandomWordsState extends State<RandomWords> {
           setState(() {
             if (alreadySaved) {
               _saved.remove(pair);
-            } else { 
-              _saved.add(pair); 
-            } 
+            } else {
+              _saved.add(pair);
+            }
           });
         },
       );
@@ -124,7 +124,7 @@ class RandomWordsState extends State<RandomWords> {
 }
 
 // Stateless widgets are immutable, meaning that their properties can’t change—all values are final.
-// Stateful widgets maintain state that might change during the lifetime of the widget. 
+// Stateful widgets maintain state that might change during the lifetime of the widget.
 class RandomWords extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => RandomWordsState();
@@ -135,9 +135,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //final wordPair = WordPair.random();
     return MaterialApp(
-      title: 'Startup Name Generator',            
+      title: 'Startup Name Generator',
       home: RandomWords(),
-      // You can easily change an app's theme by configuring the ThemeData class. 
+      // You can easily change an app's theme by configuring the ThemeData class.
       theme: ThemeData(
         primaryColor: Colors.orange[50],
       ),
