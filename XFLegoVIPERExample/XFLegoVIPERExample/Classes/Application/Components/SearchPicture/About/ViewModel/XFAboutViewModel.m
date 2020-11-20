@@ -35,6 +35,8 @@
     NSLog(@"intentData: %@", self.intentData);
     
     [self.eventBus sendEventName:@"xxxx" intentData:nil forComponents:@[@"EventCollector"]];
+    
+    self.expressData = @"我是数据";
 }
 
 // 初始化视图数据

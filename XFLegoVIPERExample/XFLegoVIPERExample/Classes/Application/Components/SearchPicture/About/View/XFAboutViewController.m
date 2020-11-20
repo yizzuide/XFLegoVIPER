@@ -9,6 +9,7 @@
 #import "XFAboutViewController.h"
 #import "UIViewController+LEView.h"
 #import "XFAboutViewModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #define ViewModel  LEGORealPort(XFAboutViewModel *, self.dataDriver)
 
@@ -55,14 +56,17 @@
     //XF_C_(self.btn, DataDriver, Command)
     
     // load or reset expressPack
-    /*XF_Define_Weak
-     [RACObserve(self.dataDriver, expressData) subscribeNext:^(id x) {
-     XF_Define_Strong
-     // 如果有显示数据加载完成
-     if (x) {
-     [self.tableView reloadData];
-     }
-     }];*/
+    XF_Define_Weak
+    [RACObserve(self.dataDriver, expressData) subscribeNext:^(id x) {
+        XF_Define_Strong
+         // 如果有显示数据加载完成
+         /*
+          if (x) {
+            [self.tableView reloadData];
+          }
+          */
+        NSLog(@"self: %@, data: %@", self, x);
+     }];
 }
 
 
