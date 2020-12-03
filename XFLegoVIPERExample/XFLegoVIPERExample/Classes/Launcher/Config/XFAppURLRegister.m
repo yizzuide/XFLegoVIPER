@@ -21,6 +21,7 @@
                                   @"xf://search",
                                   @"xf://search/message",
                                   @"xf://search/setting",
+                                  @"xf://search/about",
                                   @"xf://search/pictureResults",
                                   @"xf://search/pictureResults/details",
                                   @"xf://search/pictureResults/subControl",

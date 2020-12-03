@@ -69,11 +69,15 @@ XF_AutoAssemblyModule_ShareDM(@"PictureResults") // 使用共享DataManager方�
 // 测试MiniMVVM
 - (void)transition2About
 {
-    XFAboutViewController *aboutVC = [[XFAboutViewController alloc] init];
+    // 旧项目里从ViewController --跳转到--> MVVM组件
+    /*XFAboutViewController *aboutVC = [[XFAboutViewController alloc] init];
 //    [LEMVVMConnector makeComponentFromUInterface:aboutVC forName:@"about"];
     [LEMVVMConnector makeComponentFromUInterface:aboutVC forName:@"about" intentData:@{@"id":@(123)}];
     UINavigationController *nav = [[XFNavigationController alloc] initWithRootViewController:aboutVC];
-    [self.realUInterface presentViewController:nav animated:YES completion:nil];
+    [self.realUInterface presentViewController:nav animated:YES completion:nil];*/
+    
+    // 模式组件 --跳转到--> 模式组件
+    XF_Present_URLComponent_Fast(@"xf://search/about?nav=UI")
 }
 
 - (void)transition2Flutter
